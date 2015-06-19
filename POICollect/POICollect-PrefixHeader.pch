@@ -1,0 +1,89 @@
+//
+//  POICollect-PrefixHeader.pch
+//  POICollect
+//
+//  Created by 常敏 on 15-6-18.
+//  Copyright (c) 2015年 cm. All rights reserved.
+//
+
+#ifndef POICollect_POICollect_PrefixHeader_pch
+#define POICollect_POICollect_PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#import "Availability.h"
+
+#ifndef __IPHONE_7_0
+#warning "本应用适用于IOS 7.0 或者以上版本";
+#endif
+
+
+#pragma mark - 导入公共类
+#ifdef __OBJC__
+
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import "UIColor+Expanded.h"
+
+//define this constant if you want to use Masonry without the 'mas_' prefix
+#define MAS_SHORTHAND
+
+//define this constant if you want to enable auto-boxing for default syntax
+#define MAS_SHORTHAND_GLOBALS
+
+#import "Masonry.h"
+
+#endif
+
+
+#pragma mark - 公共的颜色
+
+/**
+ *  APP的背景颜色
+ */
+#define kAppBackgroundColor [UIColor colorWithHexString:@"0xF7F7F7"]
+
+/**
+ *  主要颜色
+ */
+#define kAppThemePrimaryColor [UIColor colorWithHexString:@"0x0076AB"]
+
+/**
+ *  次要颜色
+ */
+#define kAppThemeSecondaryColor [UIColor colorWithHexString:@"0xD0E3EF"]
+
+
+#pragma mark - 公用的常量
+
+/**
+ *  文字的字体名字
+ */
+#define kAppThemeTextName @"Helvetica-Oblique"
+
+
+/**
+ *  屏幕的bounds
+ */
+#define kScreenBounds [[UIScreen mainScreen] bounds]
+
+/**
+ *  屏幕的宽度
+ */
+#define kScreenWidth [[UIScreen mainScreen] bounds].size.width
+
+/**
+ *  屏幕的高度
+ */
+#define kScreenHeight [[UIScreen mainScreen] bounds].size.height
+
+/**
+ *  状态栏的高度
+ */
+#define kStateBarHeight [UIApplication  sharedApplication].statusBarFrame.size.height
+
+
+#define kNavBarHeight 44.0f
+
+#endif
