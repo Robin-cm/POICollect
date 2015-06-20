@@ -8,8 +8,9 @@
 
 #import "LoginViewController.h"
 #import "CMRoundSegmentControl.h"
+#import "CMPageView.h"
 
-@interface LoginViewController () <CMRoundSegmentControlDelegate>
+@interface LoginViewController () <CMRoundSegmentControlDelegate, CMPageViewDelegate>
 
 @property (nonatomic, strong) CMRoundSegmentControl* mSegmentControl;
 
@@ -18,6 +19,8 @@
 @property (nonatomic, strong) NSMutableArray* views;
 
 @property (nonatomic, strong) UIScrollView* mScrollView;
+
+@property (nonatomic, strong) CMPageView* pageView;
 
 @end
 
@@ -61,6 +64,7 @@
 
 - (void)initializeTitle
 {
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
     _mSegmentControl = [[CMRoundSegmentControl alloc] initWithSectionTitles:_titles];
     _mSegmentControl.delegate = self;
     self.navigationItem.titleView = _mSegmentControl;
@@ -68,34 +72,24 @@
 
 - (void)initializeBody
 {
-    _mScrollView = [[UIScrollView alloc] initWithFrame:CGRectZero];
-    [self.view addSubview:_mScrollView];
-    _mScrollView.pagingEnabled = YES;
-    _mScrollView.bounces = NO;
-    NSLog(@"标题的个数是:%lu", (unsigned long)_titles.count);
-    _mScrollView.contentSize = CGSizeMake(kScreenWidth * _titles.count, kScreenHeight - kStateBarHeight - kNavBarHeight);
-    _mScrollView.showsHorizontalScrollIndicator = NO;
-    _mScrollView.showsVerticalScrollIndicator = NO;
-    [_mScrollView makeConstraints:^(MASConstraintMaker* make) {
-        make.edges.equalTo(self.view);
+    __weak typeof(self) weakSelf = self;
+    UIView* mainBgView = [[UIView alloc] init];
+    mainBgView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:mainBgView];
+    [mainBgView makeConstraints:^(MASConstraintMaker* make) {
+        make.edges.equalTo(weakSelf.view);
     }];
 
-    for (UIView* view in _views) {
-        [_mScrollView addSubview:view];
-    }
-
-    for (int i = 0; i < _views.count; i++) {
-        UIView* view = [_views objectAtIndex:i];
-        __weak typeof(_mScrollView) weakScrollView = _mScrollView;
-        [view makeConstraints:^(MASConstraintMaker* make) {
-            make.top.equalTo(weakScrollView.top).offset(0);
-            make.bottom.equalTo(weakScrollView.bottom).offset(0);
-            make.width.equalTo(kScreenWidth);
-            make.height.equalTo(kScreenHeight - kStateBarHeight - kNavBarHeight);
-            make.left.equalTo(i == 0 ? weakScrollView.left : ((UIView*)[_views objectAtIndex:(i - 1)]).right).offset(0);
-            make.right.equalTo(i == (_views.count) - 1 ? weakScrollView.right : ((UIView*)[_views objectAtIndex:(i + 1)]).left).offset(0);
-        }];
-    }
+    _pageView = [[CMPageView alloc] initPageViewWithViews:_views];
+    _pageView.pageViewDelegate = self;
+    [self.view addSubview:_pageView];
+    _pageView.frame = CGRectMake(0, kStateBarHeight + 44, kScreenWidth, kScreenHeight - kStateBarHeight - 44);
+    [_pageView makeConstraints:^(MASConstraintMaker* make) {
+        //        make.top.equalTo(((UIView*)weakSelf.topLayoutGuide).bottom).offset(0);
+        make.edges.equalTo(weakSelf.view);
+        //        make.bottom.equalTo(weakSelf.view.bottom).offset(0);
+        //        make.left.and.right.equalTo(weakSelf.view);
+    }];
 }
 
 #pragma mark - CMRoundSegmentControlDelegate
@@ -109,6 +103,15 @@
 - (void)segmentControl:(CMRoundSegmentControl*)pSegmentControl didSelectIndex:(NSUInteger)pIndex
 {
     NSLog(@"当前选中的序号是%lu", pIndex);
+    [_pageView setCurrentViewIndex:pIndex withAnimation:YES];
+}
+
+#pragma mark - CMPageViewDelegate
+
+- (void)chagedOfpageview:(CMPageView*)pageview withCurrentIndex:(NSUInteger)index
+{
+    NSLog(@"滑动到---> %lu", (unsigned long)index);
+    [_mSegmentControl setSelectedSegmentIndex:index];
 }
 
 /*

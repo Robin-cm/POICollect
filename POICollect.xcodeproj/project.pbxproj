@@ -22,6 +22,8 @@
 		766CC70A1B32A3E000DCFFB4 /* CMRoundSegmentControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 766CC7091B32A3E000DCFFB4 /* CMRoundSegmentControl.m */; };
 		769BD6891B34194F0089FB39 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 769BD6881B34194F0089FB39 /* LoginView.m */; };
 		769BD68C1B3419660089FB39 /* RegisterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 769BD68B1B3419660089FB39 /* RegisterView.m */; };
+		A100F86D1B35577400271B2E /* CMPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A100F86C1B35577400271B2E /* CMPageView.m */; };
+		A100F8701B35B5B100271B2E /* UIView+CMExpened.m in Sources */ = {isa = PBXBuildFile; fileRef = A100F86F1B35B5B100271B2E /* UIView+CMExpened.m */; };
 		FCA9D93553FE54FD075523F3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F54E2C1591D38029EA79878 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +69,10 @@
 		769BD6881B34194F0089FB39 /* LoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginView.m; path = Views/Pages/LoginView.m; sourceTree = "<group>"; };
 		769BD68A1B3419660089FB39 /* RegisterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegisterView.h; path = Views/Pages/RegisterView.h; sourceTree = "<group>"; };
 		769BD68B1B3419660089FB39 /* RegisterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegisterView.m; path = Views/Pages/RegisterView.m; sourceTree = "<group>"; };
+		A100F86B1B35577400271B2E /* CMPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMPageView.h; path = Views/Compnents/CMPageView.h; sourceTree = "<group>"; };
+		A100F86C1B35577400271B2E /* CMPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMPageView.m; path = Views/Compnents/CMPageView.m; sourceTree = "<group>"; };
+		A100F86E1B35B5B100271B2E /* UIView+CMExpened.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+CMExpened.h"; path = "Utils/Categories/UIView+CMExpened.h"; sourceTree = "<group>"; };
+		A100F86F1B35B5B100271B2E /* UIView+CMExpened.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+CMExpened.m"; path = "Utils/Categories/UIView+CMExpened.m"; sourceTree = "<group>"; };
 		E894C5602C63A8F560BB3637 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -158,6 +164,7 @@
 		7658F4961B32606A00E41A0B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A100F86A1B35570600271B2E /* Compnents */,
 				769BD6861B3419350089FB39 /* Pages */,
 			);
 			name = Views;
@@ -235,6 +242,8 @@
 			children = (
 				7658F4A71B32698E00E41A0B /* UIColor+Expanded.h */,
 				7658F4A81B32698E00E41A0B /* UIColor+Expanded.m */,
+				A100F86E1B35B5B100271B2E /* UIView+CMExpened.h */,
+				A100F86F1B35B5B100271B2E /* UIView+CMExpened.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -277,6 +286,15 @@
 				3F88B26D608DC3CEEF691C2B /* Pods.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		A100F86A1B35570600271B2E /* Compnents */ = {
+			isa = PBXGroup;
+			children = (
+				A100F86B1B35577400271B2E /* CMPageView.h */,
+				A100F86C1B35577400271B2E /* CMPageView.m */,
+			);
+			name = Compnents;
 			sourceTree = "<group>";
 		};
 		A3903ACEC749488EDA56C839 /* Frameworks */ = {
@@ -423,6 +441,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A100F8701B35B5B100271B2E /* UIView+CMExpened.m in Sources */,
 				7658F4731B325FFF00E41A0B /* AppDelegate.m in Sources */,
 				7658F4A31B3261EE00E41A0B /* BaseViewController.m in Sources */,
 				766CC7031B328DA800DCFFB4 /* CMThemeKit.m in Sources */,
@@ -430,6 +449,7 @@
 				769BD68C1B3419660089FB39 /* RegisterView.m in Sources */,
 				766CC7061B329BB200DCFFB4 /* LoginViewController.m in Sources */,
 				76386F0A1B33A4B800E8A115 /* CMRoundSegmentedThumb.m in Sources */,
+				A100F86D1B35577400271B2E /* CMPageView.m in Sources */,
 				7658F4761B325FFF00E41A0B /* POICollect.xcdatamodeld in Sources */,
 				766CC70A1B32A3E000DCFFB4 /* CMRoundSegmentControl.m in Sources */,
 				769BD6891B34194F0089FB39 /* LoginView.m in Sources */,

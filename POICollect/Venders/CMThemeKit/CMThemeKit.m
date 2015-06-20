@@ -79,6 +79,7 @@ static CGFloat const kDefaultTabBarFontSize = 14;
 + (void)customizeNavigationBarColor:(UIColor*)barColor textColor:(UIColor*)textColor fontName:(NSString*)fontName fontSize:(CGFloat)fontSize buttonColor:(UIColor*)buttonColor
 {
     [UINavigationBar appearance].barTintColor = barColor;
+    [UINavigationBar appearance].translucent = NO;
     [UINavigationBar appearance].tintColor = buttonColor;
     UIFont* font = [UIFont fontWithName:fontName size:fontSize];
     if (font) {

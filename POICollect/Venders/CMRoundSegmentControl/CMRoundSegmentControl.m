@@ -100,6 +100,14 @@
  */
 - (void)setSelectedSegmentIndex:(NSUInteger)pIndex
 {
+    if (pIndex >= _mSectionTitles.count) {
+        @throw [NSException exceptionWithName:@"setSelectedSegmentIndex错误" reason:@"超出范围" userInfo:nil];
+        return;
+    }
+    if (_mSelectedSegmendIndex == pIndex) {
+        return;
+    }
+    [self setSelectedSegmentIndex:pIndex animated:YES];
 }
 
 #pragma mark - Setter

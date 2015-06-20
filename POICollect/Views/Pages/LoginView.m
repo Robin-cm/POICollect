@@ -7,6 +7,7 @@
 //
 
 #import "LoginView.h"
+#import "UIView+CMExpened.h"
 
 @implementation LoginView
 
@@ -15,16 +16,23 @@
     self = [super init];
     if (self) {
         self.backgroundColor = [UIColor redColor];
-        UILabel* label = [[UILabel alloc] init];
-        [self addSubview:label];
-        label.text = @"这个是登录页面";
-
-        [label makeConstraints:^(MASConstraintMaker* make) {
-            make.width.equalTo(self);
-            make.height.equalTo(@40);
-        }];
     }
     return self;
+}
+
+- (void)layoutSubviews
+{
+    UILabel* label = [[UILabel alloc] init];
+    [self addSubview:label];
+    [label borderWithColor:[UIColor blackColor] andWidth:1];
+    label.text = @"这个是登录页面";
+    //    label.frame = CGRectMake(0, 0, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds));
+
+    [label makeConstraints:^(MASConstraintMaker* make) {
+        make.bottom.equalTo(self);
+        make.width.equalTo(self);
+        make.height.equalTo(@40);
+    }];
 }
 
 /*
