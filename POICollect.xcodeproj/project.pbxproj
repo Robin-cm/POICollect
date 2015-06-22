@@ -27,6 +27,9 @@
 		A1CB74781B3694C400EF062B /* CMSimpleTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CB74771B3694C400EF062B /* CMSimpleTextView.m */; };
 		A1CD5A3D1B37B34B008BC36A /* CMSimpleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CD5A3C1B37B34B008BC36A /* CMSimpleButton.m */; };
 		A1CD5A401B37C27D008BC36A /* UIImage+Expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CD5A3F1B37C27D008BC36A /* UIImage+Expanded.m */; };
+		A1CD5A441B384155008BC36A /* CMCustomAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CD5A431B384155008BC36A /* CMCustomAnimation.m */; };
+		A1CD5A471B384490008BC36A /* TestAnimationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CD5A461B384490008BC36A /* TestAnimationViewController.m */; };
+		A1CD5A4D1B384B4F008BC36A /* CMCustomPopAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CD5A4C1B384B4F008BC36A /* CMCustomPopAnimation.m */; };
 		FCA9D93553FE54FD075523F3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F54E2C1591D38029EA79878 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +85,12 @@
 		A1CD5A3C1B37B34B008BC36A /* CMSimpleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMSimpleButton.m; path = Views/Compnents/CMSimpleButton.m; sourceTree = "<group>"; };
 		A1CD5A3E1B37C27D008BC36A /* UIImage+Expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Expanded.h"; path = "Utils/Categories/UIImage+Expanded.h"; sourceTree = "<group>"; };
 		A1CD5A3F1B37C27D008BC36A /* UIImage+Expanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Expanded.m"; path = "Utils/Categories/UIImage+Expanded.m"; sourceTree = "<group>"; };
+		A1CD5A421B384155008BC36A /* CMCustomAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMCustomAnimation.h; path = Utils/Animations/CMCustomAnimation.h; sourceTree = "<group>"; };
+		A1CD5A431B384155008BC36A /* CMCustomAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMCustomAnimation.m; path = Utils/Animations/CMCustomAnimation.m; sourceTree = "<group>"; };
+		A1CD5A451B384490008BC36A /* TestAnimationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestAnimationViewController.h; path = Controllers/Login/TestAnimationViewController.h; sourceTree = "<group>"; };
+		A1CD5A461B384490008BC36A /* TestAnimationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestAnimationViewController.m; path = Controllers/Login/TestAnimationViewController.m; sourceTree = "<group>"; };
+		A1CD5A4B1B384B4F008BC36A /* CMCustomPopAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMCustomPopAnimation.h; path = Utils/Animations/CMCustomPopAnimation.h; sourceTree = "<group>"; };
+		A1CD5A4C1B384B4F008BC36A /* CMCustomPopAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMCustomPopAnimation.m; path = Utils/Animations/CMCustomPopAnimation.m; sourceTree = "<group>"; };
 		E894C5602C63A8F560BB3637 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -189,6 +198,7 @@
 		7658F4981B32607900E41A0B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				A1CD5A411B38412F008BC36A /* Animations */,
 				7658F4A61B32691D00E41A0B /* Categories */,
 			);
 			name = Utils;
@@ -242,6 +252,8 @@
 			children = (
 				766CC7041B329BB200DCFFB4 /* LoginViewController.h */,
 				766CC7051B329BB200DCFFB4 /* LoginViewController.m */,
+				A1CD5A451B384490008BC36A /* TestAnimationViewController.h */,
+				A1CD5A461B384490008BC36A /* TestAnimationViewController.m */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -310,6 +322,17 @@
 				A1CD5A3C1B37B34B008BC36A /* CMSimpleButton.m */,
 			);
 			name = Compnents;
+			sourceTree = "<group>";
+		};
+		A1CD5A411B38412F008BC36A /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				A1CD5A421B384155008BC36A /* CMCustomAnimation.h */,
+				A1CD5A431B384155008BC36A /* CMCustomAnimation.m */,
+				A1CD5A4B1B384B4F008BC36A /* CMCustomPopAnimation.h */,
+				A1CD5A4C1B384B4F008BC36A /* CMCustomPopAnimation.m */,
+			);
+			name = Animations;
 			sourceTree = "<group>";
 		};
 		A3903ACEC749488EDA56C839 /* Frameworks */ = {
@@ -457,9 +480,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A100F8701B35B5B100271B2E /* UIView+CMExpened.m in Sources */,
+				A1CD5A471B384490008BC36A /* TestAnimationViewController.m in Sources */,
 				A1CB74781B3694C400EF062B /* CMSimpleTextView.m in Sources */,
 				A1CD5A401B37C27D008BC36A /* UIImage+Expanded.m in Sources */,
 				7658F4731B325FFF00E41A0B /* AppDelegate.m in Sources */,
+				A1CD5A4D1B384B4F008BC36A /* CMCustomPopAnimation.m in Sources */,
 				7658F4A31B3261EE00E41A0B /* BaseViewController.m in Sources */,
 				766CC7031B328DA800DCFFB4 /* CMThemeKit.m in Sources */,
 				7658F4701B325FFF00E41A0B /* main.m in Sources */,
@@ -469,6 +494,7 @@
 				A100F86D1B35577400271B2E /* CMPageView.m in Sources */,
 				A1CD5A3D1B37B34B008BC36A /* CMSimpleButton.m in Sources */,
 				7658F4761B325FFF00E41A0B /* POICollect.xcdatamodeld in Sources */,
+				A1CD5A441B384155008BC36A /* CMCustomAnimation.m in Sources */,
 				766CC70A1B32A3E000DCFFB4 /* CMRoundSegmentControl.m in Sources */,
 				769BD6891B34194F0089FB39 /* LoginView.m in Sources */,
 				7658F4A91B32698E00E41A0B /* UIColor+Expanded.m in Sources */,
