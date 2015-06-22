@@ -24,6 +24,9 @@
 		769BD68C1B3419660089FB39 /* RegisterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 769BD68B1B3419660089FB39 /* RegisterView.m */; };
 		A100F86D1B35577400271B2E /* CMPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A100F86C1B35577400271B2E /* CMPageView.m */; };
 		A100F8701B35B5B100271B2E /* UIView+CMExpened.m in Sources */ = {isa = PBXBuildFile; fileRef = A100F86F1B35B5B100271B2E /* UIView+CMExpened.m */; };
+		A1CB74781B3694C400EF062B /* CMSimpleTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CB74771B3694C400EF062B /* CMSimpleTextView.m */; };
+		A1CD5A3D1B37B34B008BC36A /* CMSimpleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CD5A3C1B37B34B008BC36A /* CMSimpleButton.m */; };
+		A1CD5A401B37C27D008BC36A /* UIImage+Expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CD5A3F1B37C27D008BC36A /* UIImage+Expanded.m */; };
 		FCA9D93553FE54FD075523F3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F54E2C1591D38029EA79878 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +76,12 @@
 		A100F86C1B35577400271B2E /* CMPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMPageView.m; path = Views/Compnents/CMPageView.m; sourceTree = "<group>"; };
 		A100F86E1B35B5B100271B2E /* UIView+CMExpened.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+CMExpened.h"; path = "Utils/Categories/UIView+CMExpened.h"; sourceTree = "<group>"; };
 		A100F86F1B35B5B100271B2E /* UIView+CMExpened.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+CMExpened.m"; path = "Utils/Categories/UIView+CMExpened.m"; sourceTree = "<group>"; };
+		A1CB74761B3694C400EF062B /* CMSimpleTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMSimpleTextView.h; path = Views/Compnents/CMSimpleTextView.h; sourceTree = "<group>"; };
+		A1CB74771B3694C400EF062B /* CMSimpleTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMSimpleTextView.m; path = Views/Compnents/CMSimpleTextView.m; sourceTree = "<group>"; };
+		A1CD5A3B1B37B34B008BC36A /* CMSimpleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMSimpleButton.h; path = Views/Compnents/CMSimpleButton.h; sourceTree = "<group>"; };
+		A1CD5A3C1B37B34B008BC36A /* CMSimpleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMSimpleButton.m; path = Views/Compnents/CMSimpleButton.m; sourceTree = "<group>"; };
+		A1CD5A3E1B37C27D008BC36A /* UIImage+Expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Expanded.h"; path = "Utils/Categories/UIImage+Expanded.h"; sourceTree = "<group>"; };
+		A1CD5A3F1B37C27D008BC36A /* UIImage+Expanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Expanded.m"; path = "Utils/Categories/UIImage+Expanded.m"; sourceTree = "<group>"; };
 		E894C5602C63A8F560BB3637 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -244,6 +253,8 @@
 				7658F4A81B32698E00E41A0B /* UIColor+Expanded.m */,
 				A100F86E1B35B5B100271B2E /* UIView+CMExpened.h */,
 				A100F86F1B35B5B100271B2E /* UIView+CMExpened.m */,
+				A1CD5A3E1B37C27D008BC36A /* UIImage+Expanded.h */,
+				A1CD5A3F1B37C27D008BC36A /* UIImage+Expanded.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -293,6 +304,10 @@
 			children = (
 				A100F86B1B35577400271B2E /* CMPageView.h */,
 				A100F86C1B35577400271B2E /* CMPageView.m */,
+				A1CB74761B3694C400EF062B /* CMSimpleTextView.h */,
+				A1CB74771B3694C400EF062B /* CMSimpleTextView.m */,
+				A1CD5A3B1B37B34B008BC36A /* CMSimpleButton.h */,
+				A1CD5A3C1B37B34B008BC36A /* CMSimpleButton.m */,
 			);
 			name = Compnents;
 			sourceTree = "<group>";
@@ -442,6 +457,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A100F8701B35B5B100271B2E /* UIView+CMExpened.m in Sources */,
+				A1CB74781B3694C400EF062B /* CMSimpleTextView.m in Sources */,
+				A1CD5A401B37C27D008BC36A /* UIImage+Expanded.m in Sources */,
 				7658F4731B325FFF00E41A0B /* AppDelegate.m in Sources */,
 				7658F4A31B3261EE00E41A0B /* BaseViewController.m in Sources */,
 				766CC7031B328DA800DCFFB4 /* CMThemeKit.m in Sources */,
@@ -450,6 +467,7 @@
 				766CC7061B329BB200DCFFB4 /* LoginViewController.m in Sources */,
 				76386F0A1B33A4B800E8A115 /* CMRoundSegmentedThumb.m in Sources */,
 				A100F86D1B35577400271B2E /* CMPageView.m in Sources */,
+				A1CD5A3D1B37B34B008BC36A /* CMSimpleButton.m in Sources */,
 				7658F4761B325FFF00E41A0B /* POICollect.xcdatamodeld in Sources */,
 				766CC70A1B32A3E000DCFFB4 /* CMRoundSegmentControl.m in Sources */,
 				769BD6891B34194F0089FB39 /* LoginView.m in Sources */,

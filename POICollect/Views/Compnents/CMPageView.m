@@ -84,9 +84,9 @@
 {
     self.backgroundColor = [UIColor clearColor];
     self.bounces = NO;
-    self.showsVerticalScrollIndicator = YES;
+    self.showsVerticalScrollIndicator = NO;
     self.pagingEnabled = YES;
-    self.showsHorizontalScrollIndicator = YES;
+    self.showsHorizontalScrollIndicator = NO;
     self.delegate = self;
 }
 

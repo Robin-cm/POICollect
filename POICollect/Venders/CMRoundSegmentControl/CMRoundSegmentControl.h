@@ -12,8 +12,8 @@
 #define kRoundSegmentControlDefaultPrimaryColor [UIColor colorWithHexString:@"0x0076AB"]
 #define kRoundSegmentControlDefaultSecendColor [UIColor colorWithHexString:@"0xD0E3EF"]
 
-#define kRoundSegmentControlDefaultHeight 30.0f
-#define kRoundSegmentControlDefaultFontSize 15.f
+#define kRoundSegmentControlDefaultHeight 28.0f
+#define kRoundSegmentControlDefaultFontSize 14.f
 
 @class CMRoundSegmentControl;
 @class CMRoundSegmentedThumb;
