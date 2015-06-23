@@ -11,7 +11,7 @@
 /**
  *  默认的导航条的文字的大小
  */
-static CGFloat const kDefaultNavigationBarFontSize = 20;
+static CGFloat const kDefaultNavigationBarFontSize = 16;
 
 /**
  *  默认的TabBar的文字大小

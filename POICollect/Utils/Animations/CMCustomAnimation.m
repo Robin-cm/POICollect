@@ -7,20 +7,32 @@
 //
 
 #import "CMCustomAnimation.h"
+#import "MainPOIListViewController.h"
 
 @implementation CMCustomAnimation
 
 - (NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext
 {
-    return 0.8f;
+    return 0.3f;
 }
 // This method can only  be a nop if the transition is interactive and not a percentDriven interactive transition.
 - (void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext
 {
 
     UIViewController* toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
+    UIViewController* fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     CGRect finalFrame = [transitionContext finalFrameForViewController:toVC];
-    toVC.view.frame = CGRectZero;
+
+    CGRect startFrame = CGRectZero;
+    if ([fromVC isKindOfClass:[MainPOIListViewController class]]) {
+        MainPOIListViewController* fromMainVC = ((MainPOIListViewController*)fromVC);
+        //        startFrame = [fromMainVC.addPOIBtn convertRect:fromMainVC.addPOIBtn.frame toView:fromMainVC.view];
+        startFrame = CGRectMake(fromMainVC.addPOIBtn.frame.origin.x, fromMainVC.addPOIBtn.frame.origin.y + 64, fromMainVC.addPOIBtn.frame.size.width, fromMainVC.addPOIBtn.frame.size.height);
+        [fromMainVC hideAddPoiBtnWithAnimate:YES];
+    }
+
+    toVC.view.frame = startFrame;
+    toVC.view.alpha = 0;
 
     UIView* viewContainer = [transitionContext containerView];
     [viewContainer addSubview:toVC.view];
@@ -29,10 +41,9 @@
 
     [UIView animateWithDuration:duration
         delay:0
-        usingSpringWithDamping:0.6
-        initialSpringVelocity:1
-        options:UIViewAnimationOptionCurveEaseInOut
+        options:UIViewAnimationOptionCurveEaseOut
         animations:^{
+            toVC.view.alpha = 1;
             toVC.view.frame = finalFrame;
         }
         completion:^(BOOL finished) {

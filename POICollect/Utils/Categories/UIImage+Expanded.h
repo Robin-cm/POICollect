@@ -12,4 +12,6 @@
 
 + (UIImage*)imageWithColor:(UIColor*)color andWithFrame:(CGRect)frame;
 
++ (UIImage*)roundImageWithColor:(UIColor*)color andWithFrame:(CGRect)frame;
+
 @end

@@ -349,6 +349,36 @@ static NSMutableDictionary* colorNameCache = nil;
     return [self colorByDarkeningToRed:f green:f blue:f alpha:1.0f];
 }
 
+#pragma mark - 工具方法
+
+/**
+ *  <#Description#>
+ *
+ *  @param persent 0.85
+ *
+ *  @return <#return value description#>
+ */
+- (UIColor*)darkenedColorWithBrightnessFloat:(CGFloat)persent
+{
+    CGFloat h, s, b, a;
+    [self getHue:&h saturation:&s brightness:&b alpha:&a];
+    return [UIColor colorWithHue:h saturation:s brightness:b * persent alpha:a];
+}
+
+/**
+ *  <#Description#>
+ *
+ *  @param persent 1.15f
+ *
+ *  @return <#return value description#>
+ */
+- (UIColor*)lightenedColorWithBrightnessFloat:(CGFloat)persent;
+{
+    CGFloat h, s, b, a;
+    [self getHue:&h saturation:&s brightness:&b alpha:&a];
+    return [UIColor colorWithHue:h saturation:s brightness:b * persent alpha:a];
+}
+
 - (UIColor*)colorByMultiplyingByColor:(UIColor*)color
 {
     NSAssert(self.canProvideRGBComponents, @"只有RGB的颜色能进行算术操作");

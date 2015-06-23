@@ -26,4 +26,15 @@
     return image;
 }
 
++ (UIImage*)roundImageWithColor:(UIColor*)color andWithFrame:(CGRect)frame
+{
+    UIGraphicsBeginImageContext(frame.size);
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(ctx, color.CGColor);
+    CGContextFillEllipseInRect(ctx, frame);
+    UIImage* image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
+}
+
 @end

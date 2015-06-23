@@ -11,6 +11,7 @@
 #import "LoginViewController.h"
 #import "LoginView.h"
 #import "RegisterView.h"
+#import "MainPOIListViewController.h"
 
 @interface AppDelegate ()
 
@@ -27,7 +28,8 @@
 
     [CMThemeKit setupThemeWithPrimaryColor:kAppThemePrimaryColor secondaryColor:kAppThemeSecondaryColor fontName:kAppThemeTextName lightStatusBar:YES];
 
-    [self showLoginController];
+    [self showMainListViewController];
+    //    [self showLoginController];
 
     [self.window makeKeyAndVisible];
 
@@ -64,6 +66,12 @@
 }
 
 #pragma mark - 自定义实例变量
+
+- (void)showMainListViewController
+{
+    MainPOIListViewController* mainListVieController = [[MainPOIListViewController alloc] init];
+    [self.window setRootViewController:[[UINavigationController alloc] initWithRootViewController:mainListVieController]];
+}
 
 - (void)showLoginController
 {

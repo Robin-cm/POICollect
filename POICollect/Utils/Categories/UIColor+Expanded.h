@@ -140,7 +140,11 @@
 - (UIColor*)colorByLighteningTo:(CGFloat)f;
 - (UIColor*)colorByDarkeningTo:(CGFloat)f;
 
-- (UIColor*)colorByMultiplyingByColor:(UIColor*)color;
+- (UIColor*)darkenedColorWithBrightnessFloat:(CGFloat)persent;
+- (UIColor*)lightenedColorWithBrightnessFloat:(CGFloat)persent;
+
+- (UIColor*)
+colorByMultiplyingByColor:(UIColor*)color;
 - (UIColor*)colorByAddingColor:(UIColor*)color;
 - (UIColor*)colorByLighteningToColor:(UIColor*)color;
 - (UIColor*)colorByDarkeningToColor:(UIColor*)color;

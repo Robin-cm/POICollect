@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		76386F0A1B33A4B800E8A115 /* CMRoundSegmentedThumb.m in Sources */ = {isa = PBXBuildFile; fileRef = 76386F091B33A4B800E8A115 /* CMRoundSegmentedThumb.m */; };
+		764C8C9B1B38E5FF00FF2F51 /* MainPOIListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 764C8C9A1B38E5FF00FF2F51 /* MainPOIListViewController.m */; };
+		764C8C9E1B38E68D00FF2F51 /* CMRoundBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 764C8C9D1B38E68D00FF2F51 /* CMRoundBtn.m */; };
+		764C8CA21B3924DD00FF2F51 /* MainListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 764C8CA11B3924DD00FF2F51 /* MainListTableViewCell.m */; };
+		764C8CA51B393C5200FF2F51 /* NSString+Expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = 764C8CA41B393C5200FF2F51 /* NSString+Expanded.m */; };
+		764C8CA81B39455200FF2F51 /* AddPOIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 764C8CA71B39455200FF2F51 /* AddPOIViewController.m */; };
 		7658F4701B325FFF00E41A0B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7658F46F1B325FFF00E41A0B /* main.m */; };
 		7658F4731B325FFF00E41A0B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7658F4721B325FFF00E41A0B /* AppDelegate.m */; };
 		7658F4761B325FFF00E41A0B /* POICollect.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7658F4741B325FFF00E41A0B /* POICollect.xcdatamodeld */; };
@@ -48,6 +53,16 @@
 		6F54E2C1591D38029EA79878 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		76386F081B33A4B800E8A115 /* CMRoundSegmentedThumb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMRoundSegmentedThumb.h; path = Venders/CMRoundSegmentControl/CMRoundSegmentedThumb.h; sourceTree = "<group>"; };
 		76386F091B33A4B800E8A115 /* CMRoundSegmentedThumb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMRoundSegmentedThumb.m; path = Venders/CMRoundSegmentControl/CMRoundSegmentedThumb.m; sourceTree = "<group>"; };
+		764C8C991B38E5FF00FF2F51 /* MainPOIListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainPOIListViewController.h; path = Controllers/MainPOIListViewController.h; sourceTree = "<group>"; };
+		764C8C9A1B38E5FF00FF2F51 /* MainPOIListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainPOIListViewController.m; path = Controllers/MainPOIListViewController.m; sourceTree = "<group>"; };
+		764C8C9C1B38E68D00FF2F51 /* CMRoundBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMRoundBtn.h; path = Views/Compnents/CMRoundBtn.h; sourceTree = "<group>"; };
+		764C8C9D1B38E68D00FF2F51 /* CMRoundBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMRoundBtn.m; path = Views/Compnents/CMRoundBtn.m; sourceTree = "<group>"; };
+		764C8CA01B3924DD00FF2F51 /* MainListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainListTableViewCell.h; path = Views/Cells/MainListTableViewCell.h; sourceTree = "<group>"; };
+		764C8CA11B3924DD00FF2F51 /* MainListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainListTableViewCell.m; path = Views/Cells/MainListTableViewCell.m; sourceTree = "<group>"; };
+		764C8CA31B393C5200FF2F51 /* NSString+Expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Expanded.h"; path = "Utils/Categories/NSString+Expanded.h"; sourceTree = "<group>"; };
+		764C8CA41B393C5200FF2F51 /* NSString+Expanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Expanded.m"; path = "Utils/Categories/NSString+Expanded.m"; sourceTree = "<group>"; };
+		764C8CA61B39455200FF2F51 /* AddPOIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddPOIViewController.h; path = Controllers/AddPOIViewController.h; sourceTree = "<group>"; };
+		764C8CA71B39455200FF2F51 /* AddPOIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddPOIViewController.m; path = Controllers/AddPOIViewController.m; sourceTree = "<group>"; };
 		7658F46A1B325FFF00E41A0B /* POICollect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = POICollect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7658F46E1B325FFF00E41A0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7658F46F1B325FFF00E41A0B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -113,6 +128,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		764C8C9F1B39248A00FF2F51 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				764C8CA01B3924DD00FF2F51 /* MainListTableViewCell.h */,
+				764C8CA11B3924DD00FF2F51 /* MainListTableViewCell.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		7658F4611B325FFF00E41A0B = {
 			isa = PBXGroup;
 			children = (
@@ -182,6 +206,7 @@
 		7658F4961B32606A00E41A0B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				764C8C9F1B39248A00FF2F51 /* Cells */,
 				A100F86A1B35570600271B2E /* Compnents */,
 				769BD6861B3419350089FB39 /* Pages */,
 			);
@@ -218,6 +243,10 @@
 			children = (
 				7658F4A41B3261F400E41A0B /* Login */,
 				7658F4A01B3261C400E41A0B /* Base */,
+				764C8C991B38E5FF00FF2F51 /* MainPOIListViewController.h */,
+				764C8C9A1B38E5FF00FF2F51 /* MainPOIListViewController.m */,
+				764C8CA61B39455200FF2F51 /* AddPOIViewController.h */,
+				764C8CA71B39455200FF2F51 /* AddPOIViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -267,6 +296,8 @@
 				A100F86F1B35B5B100271B2E /* UIView+CMExpened.m */,
 				A1CD5A3E1B37C27D008BC36A /* UIImage+Expanded.h */,
 				A1CD5A3F1B37C27D008BC36A /* UIImage+Expanded.m */,
+				764C8CA31B393C5200FF2F51 /* NSString+Expanded.h */,
+				764C8CA41B393C5200FF2F51 /* NSString+Expanded.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -320,6 +351,8 @@
 				A1CB74771B3694C400EF062B /* CMSimpleTextView.m */,
 				A1CD5A3B1B37B34B008BC36A /* CMSimpleButton.h */,
 				A1CD5A3C1B37B34B008BC36A /* CMSimpleButton.m */,
+				764C8C9C1B38E68D00FF2F51 /* CMRoundBtn.h */,
+				764C8C9D1B38E68D00FF2F51 /* CMRoundBtn.m */,
 			);
 			name = Compnents;
 			sourceTree = "<group>";
@@ -480,7 +513,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A100F8701B35B5B100271B2E /* UIView+CMExpened.m in Sources */,
+				764C8CA81B39455200FF2F51 /* AddPOIViewController.m in Sources */,
 				A1CD5A471B384490008BC36A /* TestAnimationViewController.m in Sources */,
+				764C8C9B1B38E5FF00FF2F51 /* MainPOIListViewController.m in Sources */,
 				A1CB74781B3694C400EF062B /* CMSimpleTextView.m in Sources */,
 				A1CD5A401B37C27D008BC36A /* UIImage+Expanded.m in Sources */,
 				7658F4731B325FFF00E41A0B /* AppDelegate.m in Sources */,
@@ -490,12 +525,15 @@
 				7658F4701B325FFF00E41A0B /* main.m in Sources */,
 				769BD68C1B3419660089FB39 /* RegisterView.m in Sources */,
 				766CC7061B329BB200DCFFB4 /* LoginViewController.m in Sources */,
+				764C8CA51B393C5200FF2F51 /* NSString+Expanded.m in Sources */,
 				76386F0A1B33A4B800E8A115 /* CMRoundSegmentedThumb.m in Sources */,
 				A100F86D1B35577400271B2E /* CMPageView.m in Sources */,
+				764C8CA21B3924DD00FF2F51 /* MainListTableViewCell.m in Sources */,
 				A1CD5A3D1B37B34B008BC36A /* CMSimpleButton.m in Sources */,
 				7658F4761B325FFF00E41A0B /* POICollect.xcdatamodeld in Sources */,
 				A1CD5A441B384155008BC36A /* CMCustomAnimation.m in Sources */,
 				766CC70A1B32A3E000DCFFB4 /* CMRoundSegmentControl.m in Sources */,
+				764C8C9E1B38E68D00FF2F51 /* CMRoundBtn.m in Sources */,
 				769BD6891B34194F0089FB39 /* LoginView.m in Sources */,
 				7658F4A91B32698E00E41A0B /* UIColor+Expanded.m in Sources */,
 			);
