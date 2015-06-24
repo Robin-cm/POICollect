@@ -9,20 +9,21 @@
 #import "MainPOIListViewController.h"
 #import "MainListTableViewCell.h"
 #import "CMCustomAnimation.h"
+#import "CMCustomCircleAnimation.h"
 #import "CMCustomPopAnimation.h"
 #import "AddPOIViewController.h"
 
 #define kMainListCellIdentifine @"MainListCellIdentifine"
 
-@interface MainPOIListViewController () <UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegate, UINavigationControllerDelegate>
+@interface MainPOIListViewController () <UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegate, UINavigationControllerDelegate, CMCustomCircleAnimationProtocol>
 
 @property (nonatomic, strong) UITableView* tableView;
 
 @property (nonatomic, strong, readwrite) CMRoundBtn* addPOIBtn;
 
-@property (nonatomic, strong) CMCustomAnimation* mAnimation;
+@property (nonatomic, strong) CMCustomCircleAnimation* mAnimation;
 
-@property (nonatomic, strong) CMCustomPopAnimation* mPopAnimation;
+//@property (nonatomic, strong) CMCustomPopAnimation* mPopAnimation;
 
 @property (nonatomic, strong) AddPOIViewController* addPoiViewController;
 
@@ -59,8 +60,9 @@
 
 - (void)initializeData
 {
-    _mAnimation = [[CMCustomAnimation alloc] init];
-    _mPopAnimation = [[CMCustomPopAnimation alloc] init];
+    _mAnimation = [[CMCustomCircleAnimation alloc] init];
+    _mAnimation.delegate = self;
+    //    _mPopAnimation = [[CMCustomPopAnimation alloc] init];
     self.navigationController.delegate = self;
     self.transitioningDelegate = self;
 }
@@ -74,11 +76,13 @@
 - (void)initializeTitle
 {
     self.title = @"未上传";
+    [self setNavigationBarTranslucent:YES];
+    [self showBackgroundImage:YES];
 }
 
 - (void)initializeBody
 {
-
+    __weak typeof(self) weakSelf = self;
     if (!_tableView) {
         _tableView = [[UITableView alloc] init];
         _tableView.backgroundColor = [UIColor clearColor];
@@ -90,11 +94,14 @@
     }
 
     [_tableView makeConstraints:^(MASConstraintMaker* make) {
-        make.edges.equalTo(self.view);
+        make.top.equalTo(((UIView*)weakSelf.topLayoutGuide).bottom);
+        make.left.and.right.and.bottom.equalTo(weakSelf.view);
+        //        make.edges.equalTo(self.view);
     }];
 
     if (!_addPOIBtn) {
         _addPOIBtn = [[CMRoundBtn alloc] initRoundBtnWithBtnType:TYPE_ADD];
+        _addPOIBtn.normalBackgroundColor = kAppThemeThirdColor;
         [_addPOIBtn addTarget:self action:@selector(addPOIBtnTaped:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:_addPOIBtn];
     }
@@ -174,7 +181,7 @@
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
     MainListTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:kMainListCellIdentifine];
-    [cell setTitle:@"主标题主标题主标题主标题主标题主标题主标题主标题主标题主标题主标题主标题主标题主标题主标题主标题主标题" andSubTitle:@"副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题"];
+    [cell setTitle:@"名称" andSubTitle:@"华苑产业技术园兰苑路5号"];
     return cell;
 }
 
@@ -182,7 +189,7 @@
 
 - (CGFloat)tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath
 {
-    return [MainListTableViewCell getCellHeightWithTitle:@"主标题主标题主标题主标题主标题主标题主标题主标题主标题主标题主标题主标题主标题主标题主标题主标题主标题" andSubTitle:@"副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题"];
+    return [MainListTableViewCell getCellHeightWithTitle:@"名称" andSubTitle:@"华苑产业技术园兰苑路5号"];
 }
 
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
@@ -205,13 +212,27 @@
                                                  toViewController:(UIViewController*)toVC
 {
     if (operation == UINavigationControllerOperationPush) {
+        _mAnimation.isPositiveAnimation = YES;
         return _mAnimation;
     }
     else if (operation == UINavigationControllerOperationPop) {
-        return _mPopAnimation;
+        _mAnimation.isPositiveAnimation = NO;
+        return _mAnimation;
     }
     else {
         return nil;
+    }
+}
+
+#pragma mark - CMCustomCircleAnimationProtocol
+
+- (void)stateChange:(BOOL)isOpen
+{
+    if (isOpen) {
+        [self hideAddPoiBtnWithAnimate:YES];
+    }
+    else {
+        [self showAddPoiBtnWithAnimate:YES];
     }
 }
 

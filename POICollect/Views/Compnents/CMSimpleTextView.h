@@ -37,6 +37,8 @@ typedef enum {
 
 @property (nonatomic, assign) CMSimpleTextFieldType cType;
 
+@property (nonatomic, assign) UIImage* icon;
+
 #pragma mark - 初始化方法
 
 - (id)initWithPlaceholder:(NSString*)placeholder;
@@ -44,5 +46,7 @@ typedef enum {
 - (id)initWithInputType:(CMSimpleTextFieldType)inputType;
 
 - (id)initWithPlaceholder:(NSString*)placeholder andWithInputType:(CMSimpleTextFieldType)inputType;
+
+- (id)initWithIcon:(UIImage*)icon andWithPlaceholder:(NSString*)placeholder andWithInputType:(CMSimpleTextFieldType)inputType;
 
 @end

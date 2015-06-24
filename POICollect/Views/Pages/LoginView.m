@@ -14,20 +14,15 @@
 static const CGFloat padding = 20;
 
 @interface LoginView () {
-    UIView* _firstLine;
-
-    UIView* _secendLine;
 }
 
 @property (nonatomic, strong) CMSimpleTextView* loginNameTextView;
 
 @property (nonatomic, strong) CMSimpleTextView* loginPassTextView;
 
-@property (nonatomic, strong) UILabel* loginNameLabel;
-
-@property (nonatomic, strong) UILabel* loginPassLabel;
-
 @property (nonatomic, strong) CMSimpleButton* loginBtn;
+
+@property (nonatomic, strong) UIView* whiteBg;
 
 @end
 
@@ -45,57 +40,32 @@ static const CGFloat padding = 20;
 
 - (void)layoutSubviews
 {
-    if (_loginNameLabel) {
-        [_loginNameLabel makeConstraints:^(MASConstraintMaker* make) {
-            make.top.equalTo(self.top).offset(padding);
-            make.left.equalTo(self).offset(padding);
-            make.right.equalTo(_loginNameTextView.left).offset(-padding);
-            make.height.equalTo(@35);
-            make.width.equalTo(@60);
+    __weak typeof(self) weakSelf = self;
+
+    if (_whiteBg) {
+        [_whiteBg makeConstraints:^(MASConstraintMaker* make) {
+            make.left.and.right.equalTo(weakSelf);
+            make.bottom.equalTo(weakSelf);
+            make.top.equalTo(_loginNameTextView.top).offset(-padding);
         }];
     }
 
     if (_loginNameTextView) {
         [_loginNameTextView makeConstraints:^(MASConstraintMaker* make) {
-            make.top.equalTo(self.top).offset(padding);
-            make.left.equalTo(_loginNameLabel.right).offset(padding);
-            make.right.equalTo(self.right).offset(-padding);
+            make.bottom.equalTo(weakSelf.loginPassTextView.top).offset(-padding);
+            make.left.equalTo(weakSelf.left).offset(padding);
+            make.right.equalTo(weakSelf.right).offset(-padding);
             make.height.equalTo(@35);
-        }];
-    }
-
-    if (_firstLine) {
-        [_firstLine makeConstraints:^(MASConstraintMaker* make) {
-            make.left.and.right.equalTo(self);
-            make.height.equalTo(@1);
-            make.top.equalTo(_loginNameLabel.bottom).offset(padding);
-        }];
-    }
-
-    if (_loginPassLabel) {
-        [_loginPassLabel makeConstraints:^(MASConstraintMaker* make) {
-            make.top.equalTo(_firstLine.bottom).offset(padding);
-            make.left.equalTo(self).offset(padding);
-            make.right.equalTo(_loginPassTextView.left).offset(-padding);
-            make.height.equalTo(@35);
-            make.width.equalTo(@60);
         }];
     }
 
     if (_loginPassTextView) {
         [_loginPassTextView makeConstraints:^(MASConstraintMaker* make) {
-            make.top.equalTo(_firstLine.bottom).offset(padding);
-            make.left.equalTo(_loginPassLabel.right).offset(padding);
-            make.right.equalTo(self.right).offset(-padding);
+            //            make.top.equalTo(_firstLine.bottom).offset(padding);
+            make.left.equalTo(weakSelf.left).offset(padding);
+            make.right.equalTo(weakSelf.right).offset(-padding);
+            make.bottom.equalTo(weakSelf.loginBtn.top).offset(-padding);
             make.height.equalTo(@35);
-        }];
-    }
-
-    if (_secendLine) {
-        [_secendLine makeConstraints:^(MASConstraintMaker* make) {
-            make.left.and.right.equalTo(self);
-            make.height.equalTo(@1);
-            make.top.equalTo(_loginPassLabel.bottom).offset(padding);
         }];
     }
 
@@ -103,7 +73,7 @@ static const CGFloat padding = 20;
         [_loginBtn makeConstraints:^(MASConstraintMaker* make) {
             make.left.equalTo(self.left).offset(padding);
             make.right.equalTo(self.right).offset(-padding);
-            make.top.equalTo(_secendLine.bottom).offset(padding);
+            make.bottom.equalTo(self.bottom).offset(-padding);
             make.height.equalTo(@35);
         }];
     }
@@ -119,41 +89,31 @@ static const CGFloat padding = 20;
 
 - (void)configView
 {
-    if (!_firstLine) {
-        _firstLine = [[UIView alloc] init];
-        _firstLine.backgroundColor = [UIColor lightGrayColor];
-        [self addSubview:_firstLine];
-    }
-    if (!_secendLine) {
-        _secendLine = [[UIView alloc] init];
-        _secendLine.backgroundColor = [UIColor lightGrayColor];
-        [self addSubview:_secendLine];
+    if (!_whiteBg) {
+        _whiteBg = [[UIView alloc] init];
+        _whiteBg.backgroundColor = [UIColor colorWithHexString:@"0xf7f7f7"];
+        [self addSubview:_whiteBg];
     }
 
-    if (!_loginNameLabel) {
-        _loginNameLabel = [[UILabel alloc] init];
-        _loginNameLabel.textColor = [UIColor lightGrayColor];
-        _loginNameLabel.text = @"用户名";
-        _loginNameLabel.textAlignment = NSTextAlignmentJustified;
-        [self addSubview:_loginNameLabel];
-    }
     if (!_loginNameTextView) {
-        _loginNameTextView = [[CMSimpleTextView alloc] initWithPlaceholder:@"用户名..."];
+        _loginNameTextView = [[CMSimpleTextView alloc] initWithIcon:[UIImage imageNamed:@"name_ico"] andWithPlaceholder:@"用户名" andWithInputType:Email];
+        _loginNameTextView.borderColor = kAppThemeLoginTextfieldBorderColor;
+        _loginNameTextView.borderWidth = 2;
         [self addSubview:_loginNameTextView];
     }
-    if (!_loginPassLabel) {
-        _loginPassLabel = [[UILabel alloc] init];
-        _loginPassLabel.textAlignment = NSTextAlignmentJustified;
-        _loginPassLabel.textColor = [UIColor lightGrayColor];
-        _loginPassLabel.text = @"密    码";
-        [self addSubview:_loginPassLabel];
-    }
     if (!_loginPassTextView) {
-        _loginPassTextView = [[CMSimpleTextView alloc] initWithPlaceholder:@"密码..."];
+        _loginPassTextView = [[CMSimpleTextView alloc] initWithIcon:[UIImage imageNamed:@"pass_ico"] andWithPlaceholder:@"密码" andWithInputType:Password];
+        _loginPassTextView.borderColor = kAppThemeLoginTextfieldBorderColor;
+        _loginPassTextView.borderWidth = 2;
         [self addSubview:_loginPassTextView];
     }
     if (!_loginBtn) {
         _loginBtn = [[CMSimpleButton alloc] initSimpleButtonWithTitle:@"登陆"];
+        _loginBtn.normalBorderColor = kAppThemeThirdColor;
+        _loginBtn.normalForegroundColor = [UIColor whiteColor];
+        _loginBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+        _loginBtn.normalBackgroundColor = kAppThemeThirdColor;
+        _loginBtn.highlightBackgroundColor = [kAppThemeThirdColor darkenedColorWithBrightnessFloat:0.8];
         [self addSubview:_loginBtn];
     }
 }

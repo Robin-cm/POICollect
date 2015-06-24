@@ -8,7 +8,11 @@
 
 #import "BaseViewController.h"
 
+#import "UIImage+Expanded.h"
+
 @interface BaseViewController ()
+
+@property (nonatomic, strong) UIImageView* bgImgView;
 
 @end
 
@@ -18,7 +22,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = kAppBackgroundColor;
+    //    self.view.backgroundColor = kAppBackgroundColor;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -31,6 +35,34 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)setNavigationBarTranslucent:(BOOL)isTranslucent
+{
+    if (isTranslucent) {
+        self.navigationController.navigationBar.translucent = YES;
+        [self.navigationController.navigationBar setShadowImage:[UIImage imageWithColor:[UIColor clearColor]]];
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[UIColor clearColor]] forBarMetrics:UIBarMetricsDefault];
+    }
+    else {
+        self.navigationController.navigationBar.barTintColor = kAppThemePrimaryColor;
+        self.navigationController.navigationBar.translucent = NO;
+    }
+}
+
+- (void)showBackgroundImage:(BOOL)isShow
+{
+    if (!_bgImgView) {
+        _bgImgView = [[UIImageView alloc] init];
+        _bgImgView.image = [UIImage imageNamed:@"main_bg"];
+        _bgImgView.contentMode = UIViewContentModeScaleToFill;
+        //        [self.view insertSubview:_bgImgView
+        //                         atIndex:0];
+        [self.view addSubview:_bgImgView];
+    }
+    [_bgImgView makeConstraints:^(MASConstraintMaker* make) {
+        make.edges.equalTo(self.view);
+    }];
 }
 
 /*

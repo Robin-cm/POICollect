@@ -16,4 +16,10 @@
     self.layer.borderWidth = borderWidth;
 }
 
+- (void)circleCornerWithRadius:(CGFloat)radius
+{
+    self.layer.masksToBounds = YES;
+    self.layer.cornerRadius = radius;
+}
+
 @end

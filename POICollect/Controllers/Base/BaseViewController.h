@@ -30,4 +30,8 @@
  */
 - (void)popViewControllerAnimated:(BOOL)animation;
 
+- (void)setNavigationBarTranslucent:(BOOL)isTranslucent;
+
+- (void)showBackgroundImage:(BOOL)isShow;
+
 @end

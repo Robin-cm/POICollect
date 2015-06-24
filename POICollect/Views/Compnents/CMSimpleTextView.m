@@ -67,11 +67,17 @@ static const CGFloat sDefaultCornerRadius = 4.f;
 
 - (id)initWithPlaceholder:(NSString*)placeholder andWithInputType:(CMSimpleTextFieldType)inputType
 {
+    return [self initWithIcon:nil andWithPlaceholder:placeholder andWithInputType:inputType];
+}
+
+- (id)initWithIcon:(UIImage*)icon andWithPlaceholder:(NSString*)placeholder andWithInputType:(CMSimpleTextFieldType)inputType
+{
     self = [super init];
     if (self) {
         if (placeholder) {
             _placeHolder = placeholder;
         }
+        _icon = icon;
         _cType = inputType;
         [self configView];
         [self configInputType];
@@ -83,16 +89,16 @@ static const CGFloat sDefaultCornerRadius = 4.f;
 
 - (CGRect)textRectForBounds:(CGRect)bounds
 {
-    return CGRectMake(bounds.origin.x + 10, bounds.origin.y, bounds.size.width - 10, bounds.size.height);
+    return CGRectMake(bounds.origin.x + (_icon ? 35 : 10), bounds.origin.y, bounds.size.width - (_icon ? 35 : 10), bounds.size.height);
 }
 
 - (CGRect)placeholderRectForBounds:(CGRect)bounds
 {
-    return CGRectMake(bounds.origin.x + 10, bounds.origin.y, bounds.size.width - 10, bounds.size.height);
+    return CGRectMake(bounds.origin.x + (_icon ? 35 : 10), bounds.origin.y, bounds.size.width - (_icon ? 35 : 10), bounds.size.height);
 }
 - (CGRect)editingRectForBounds:(CGRect)bounds
 {
-    return CGRectMake(bounds.origin.x + 10, bounds.origin.y, bounds.size.width - 10, bounds.size.height);
+    return CGRectMake(bounds.origin.x + (_icon ? 35 : 10), bounds.origin.y, bounds.size.width - (_icon ? 35 : 10), bounds.size.height);
 }
 
 #pragma mark - Setter
@@ -185,20 +191,27 @@ static const CGFloat sDefaultCornerRadius = 4.f;
     self.autocorrectionType = UITextAutocorrectionTypeNo;
     self.autocapitalizationType = UITextAutocapitalizationTypeNone;
     self.font = [UIFont systemFontOfSize:15];
-    //    UIView* views = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 20)];
-    //    views.backgroundColor = [UIColor greenColor];
-    //    self.leftView = views;
-    //    self.leftViewMode = UITextFieldViewModeAlways;
-    //    self.rightViewMode = UITextFieldViewModeAlways;
+
+    if (_icon) {
+        UIView* views = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 30, 20)];
+        views.backgroundColor = [UIColor clearColor];
+        UIImageView* iconView = [[UIImageView alloc] initWithImage:_icon];
+        iconView.frame = CGRectMake(10, 0, 20, 20);
+        [views addSubview:iconView];
+        self.leftView = views;
+        self.leftViewMode = UITextFieldViewModeAlways;
+        self.rightViewMode = UITextFieldViewModeAlways;
+    }
 }
 
 - (void)updateView
 {
-    self.layer.cornerRadius = _cornerRadius;
-    self.layer.borderColor = _borderColor.CGColor;
-    self.layer.borderWidth = _borderWidth;
-    self.font = _normalFont;
+    self.layer.cornerRadius = _cornerRadius ? _cornerRadius : sDefaultCornerRadius;
+    self.layer.borderColor = _borderColor ? _borderColor.CGColor : kDefaultBorderColor;
+    self.layer.borderWidth = _borderWidth ? _borderWidth : sDefaultBorderWidth;
+    //    self.font = _normalFont ? _normalFont : [UIFont systemFontOfSize:15];
     self.backgroundColor = [UIColor whiteColor];
+    [self setNeedsDisplay];
 }
 
 - (void)configInputType

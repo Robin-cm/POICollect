@@ -25,6 +25,11 @@
 		766CC7031B328DA800DCFFB4 /* CMThemeKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 766CC7021B328DA800DCFFB4 /* CMThemeKit.m */; };
 		766CC7061B329BB200DCFFB4 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 766CC7051B329BB200DCFFB4 /* LoginViewController.m */; };
 		766CC70A1B32A3E000DCFFB4 /* CMRoundSegmentControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 766CC7091B32A3E000DCFFB4 /* CMRoundSegmentControl.m */; };
+		7685EA711B3A445B00AD1645 /* CMCustomCircleAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7685EA701B3A445B00AD1645 /* CMCustomCircleAnimation.m */; };
+		7685EA741B3A45BA00AD1645 /* CMCustomBaseAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7685EA731B3A45BA00AD1645 /* CMCustomBaseAnimation.m */; };
+		7685EA771B3A5E1200AD1645 /* main_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 7685EA761B3A5E1200AD1645 /* main_bg.png */; };
+		7685EA7B1B3A761200AD1645 /* name_ico.png in Resources */ = {isa = PBXBuildFile; fileRef = 7685EA791B3A761200AD1645 /* name_ico.png */; };
+		7685EA7C1B3A761200AD1645 /* pass_ico.png in Resources */ = {isa = PBXBuildFile; fileRef = 7685EA7A1B3A761200AD1645 /* pass_ico.png */; };
 		769BD6891B34194F0089FB39 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 769BD6881B34194F0089FB39 /* LoginView.m */; };
 		769BD68C1B3419660089FB39 /* RegisterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 769BD68B1B3419660089FB39 /* RegisterView.m */; };
 		A100F86D1B35577400271B2E /* CMPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A100F86C1B35577400271B2E /* CMPageView.m */; };
@@ -86,6 +91,13 @@
 		766CC7051B329BB200DCFFB4 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = Controllers/Login/LoginViewController.m; sourceTree = "<group>"; };
 		766CC7081B32A3E000DCFFB4 /* CMRoundSegmentControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMRoundSegmentControl.h; path = Venders/CMRoundSegmentControl/CMRoundSegmentControl.h; sourceTree = "<group>"; };
 		766CC7091B32A3E000DCFFB4 /* CMRoundSegmentControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMRoundSegmentControl.m; path = Venders/CMRoundSegmentControl/CMRoundSegmentControl.m; sourceTree = "<group>"; };
+		7685EA6F1B3A445B00AD1645 /* CMCustomCircleAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMCustomCircleAnimation.h; path = Utils/Animations/CMCustomCircleAnimation.h; sourceTree = "<group>"; };
+		7685EA701B3A445B00AD1645 /* CMCustomCircleAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMCustomCircleAnimation.m; path = Utils/Animations/CMCustomCircleAnimation.m; sourceTree = "<group>"; };
+		7685EA721B3A45BA00AD1645 /* CMCustomBaseAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMCustomBaseAnimation.h; path = Utils/Animations/CMCustomBaseAnimation.h; sourceTree = "<group>"; };
+		7685EA731B3A45BA00AD1645 /* CMCustomBaseAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMCustomBaseAnimation.m; path = Utils/Animations/CMCustomBaseAnimation.m; sourceTree = "<group>"; };
+		7685EA761B3A5E1200AD1645 /* main_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = main_bg.png; path = Resources/Backgrounds/main_bg.png; sourceTree = "<group>"; };
+		7685EA791B3A761200AD1645 /* name_ico.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = name_ico.png; path = Resources/Logins/name_ico.png; sourceTree = "<group>"; };
+		7685EA7A1B3A761200AD1645 /* pass_ico.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pass_ico.png; path = Resources/Logins/pass_ico.png; sourceTree = "<group>"; };
 		769BD6871B34194F0089FB39 /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginView.h; path = Views/Pages/LoginView.h; sourceTree = "<group>"; };
 		769BD6881B34194F0089FB39 /* LoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginView.m; path = Views/Pages/LoginView.m; sourceTree = "<group>"; };
 		769BD68A1B3419660089FB39 /* RegisterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegisterView.h; path = Views/Pages/RegisterView.h; sourceTree = "<group>"; };
@@ -254,6 +266,8 @@
 		7658F49B1B32609100E41A0B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7685EA781B3A75CA00AD1645 /* Logins */,
+				7685EA751B3A5DB400AD1645 /* Backgrounds */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -322,6 +336,23 @@
 			name = CMRoundSegmentControl;
 			sourceTree = "<group>";
 		};
+		7685EA751B3A5DB400AD1645 /* Backgrounds */ = {
+			isa = PBXGroup;
+			children = (
+				7685EA761B3A5E1200AD1645 /* main_bg.png */,
+			);
+			name = Backgrounds;
+			sourceTree = "<group>";
+		};
+		7685EA781B3A75CA00AD1645 /* Logins */ = {
+			isa = PBXGroup;
+			children = (
+				7685EA791B3A761200AD1645 /* name_ico.png */,
+				7685EA7A1B3A761200AD1645 /* pass_ico.png */,
+			);
+			name = Logins;
+			sourceTree = "<group>";
+		};
 		769BD6861B3419350089FB39 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
@@ -364,6 +395,10 @@
 				A1CD5A431B384155008BC36A /* CMCustomAnimation.m */,
 				A1CD5A4B1B384B4F008BC36A /* CMCustomPopAnimation.h */,
 				A1CD5A4C1B384B4F008BC36A /* CMCustomPopAnimation.m */,
+				7685EA6F1B3A445B00AD1645 /* CMCustomCircleAnimation.h */,
+				7685EA701B3A445B00AD1645 /* CMCustomCircleAnimation.m */,
+				7685EA721B3A45BA00AD1645 /* CMCustomBaseAnimation.h */,
+				7685EA731B3A45BA00AD1645 /* CMCustomBaseAnimation.m */,
 			);
 			name = Animations;
 			sourceTree = "<group>";
@@ -459,9 +494,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7685EA7C1B3A761200AD1645 /* pass_ico.png in Resources */,
 				7658F47C1B325FFF00E41A0B /* Main.storyboard in Resources */,
+				7685EA7B1B3A761200AD1645 /* name_ico.png in Resources */,
 				7658F4811B325FFF00E41A0B /* LaunchScreen.xib in Resources */,
 				7658F47E1B325FFF00E41A0B /* Images.xcassets in Resources */,
+				7685EA771B3A5E1200AD1645 /* main_bg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -530,9 +568,11 @@
 				A100F86D1B35577400271B2E /* CMPageView.m in Sources */,
 				764C8CA21B3924DD00FF2F51 /* MainListTableViewCell.m in Sources */,
 				A1CD5A3D1B37B34B008BC36A /* CMSimpleButton.m in Sources */,
+				7685EA741B3A45BA00AD1645 /* CMCustomBaseAnimation.m in Sources */,
 				7658F4761B325FFF00E41A0B /* POICollect.xcdatamodeld in Sources */,
 				A1CD5A441B384155008BC36A /* CMCustomAnimation.m in Sources */,
 				766CC70A1B32A3E000DCFFB4 /* CMRoundSegmentControl.m in Sources */,
+				7685EA711B3A445B00AD1645 /* CMCustomCircleAnimation.m in Sources */,
 				764C8C9E1B38E68D00FF2F51 /* CMRoundBtn.m in Sources */,
 				769BD6891B34194F0089FB39 /* LoginView.m in Sources */,
 				7658F4A91B32698E00E41A0B /* UIColor+Expanded.m in Sources */,

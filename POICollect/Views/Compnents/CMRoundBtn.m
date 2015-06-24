@@ -93,6 +93,14 @@ static const CGFloat sDefaultLineWidthPersent = 0.1;
     return;
 }
 
+#pragma mark -
+
+- (void)setNormalBackgroundColor:(UIColor*)normalBackgroundColor
+{
+    _normalBackgroundColor = normalBackgroundColor;
+    [self configView];
+}
+
 #pragma mark - 自定义实例私有方法
 
 - (void)configView
@@ -119,7 +127,7 @@ static const CGFloat sDefaultLineWidthPersent = 0.1;
 
     _normalBackgroundColor = _normalBackgroundColor ? _normalBackgroundColor : kDefaultBackgroundColor;
 
-    _highlightBackgroundColor = _highlightBackgroundColor ? _highlightBackgroundColor : [_normalBackgroundColor darkenedColorWithBrightnessFloat:0.85];
+    _highlightBackgroundColor = [_normalBackgroundColor darkenedColorWithBrightnessFloat:0.85];
 
     _normalForegroundColor = _normalForegroundColor ? _normalForegroundColor : kDefaultForegroundColor;
 
@@ -186,18 +194,13 @@ static const CGFloat sDefaultLineWidthPersent = 0.1;
 
         break;
     case TYPE_STOP:
-
-        //        [iconPath moveToPoint:CGPointMake(0, 0)];
-        //        [iconPath addLineToPoint:CGPointMake(0, 20)];
-        //        [iconPath addLineToPoint:CGPointMake(20, 20)];
-        //        [iconPath addLineToPoint:CGPointMake(20, 0)];
-        NSLog(@"第一个点的坐标是：%f -- %f", rX + rWidth * sDefaultRectPaddingPersent, rY + rHeight * sDefaultRectPaddingPersent);
+        //        NSLog(@"第一个点的坐标是：%f -- %f", rX + rWidth * sDefaultRectPaddingPersent, rY + rHeight * sDefaultRectPaddingPersent);
         [iconPath moveToPoint:CGPointMake(rX + rWidth * sDefaultRectPaddingPersent, rY + rHeight * sDefaultRectPaddingPersent)];
-        NSLog(@"第二个点的坐标是：%f -- %f", rX + rWidth * sDefaultRectPaddingPersent, rY + rHeight * (1 - sDefaultRectPaddingPersent));
+        //        NSLog(@"第二个点的坐标是：%f -- %f", rX + rWidth * sDefaultRectPaddingPersent, rY + rHeight * (1 - sDefaultRectPaddingPersent));
         [iconPath addLineToPoint:CGPointMake(rX + rWidth * sDefaultRectPaddingPersent, rY + rHeight * (1 - sDefaultRectPaddingPersent))];
-        NSLog(@"第三个点的坐标是：%f -- %f", rX + rWidth * (1 - sDefaultRectPaddingPersent), rY + rHeight * (1 - sDefaultRectPaddingPersent));
+        //        NSLog(@"第三个点的坐标是：%f -- %f", rX + rWidth * (1 - sDefaultRectPaddingPersent), rY + rHeight * (1 - sDefaultRectPaddingPersent));
         [iconPath addLineToPoint:CGPointMake(rX + rWidth * (1 - sDefaultRectPaddingPersent), rY + rHeight * (1 - sDefaultRectPaddingPersent))];
-        NSLog(@"第四个点的坐标是：%f -- %f", rX + rWidth * (1 - sDefaultRectPaddingPersent), rY + rHeight * sDefaultRectPaddingPersent);
+        //        NSLog(@"第四个点的坐标是：%f -- %f", rX + rWidth * (1 - sDefaultRectPaddingPersent), rY + rHeight * sDefaultRectPaddingPersent);
         [iconPath addLineToPoint:CGPointMake(rX + rWidth * (1 - sDefaultRectPaddingPersent), rY + rHeight * sDefaultRectPaddingPersent)];
 
         [iconPath closePath];

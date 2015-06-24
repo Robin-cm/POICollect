@@ -58,6 +58,18 @@
 #define kAppThemeSecondaryColor [UIColor colorWithHexString:@"0xD0E3EF"]
 
 
+/**
+ *  第三颜色,粉色
+ */
+#define kAppThemeThirdColor [UIColor colorWithHexString:@"0xff4d4d"]
+
+/**
+ *  登录的框的边框颜色
+ */
+#define kAppThemeLoginTextfieldBorderColor [UIColor colorWithHexString:@"0x9fc5e7"]
+
+
+
 #pragma mark - 公用的常量
 
 /**

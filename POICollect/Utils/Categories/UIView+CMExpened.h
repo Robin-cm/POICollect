@@ -10,4 +10,6 @@
 
 - (void)borderWithColor:(UIColor*)borderColor andWidth:(CGFloat)borderWidth;
 
+- (void)circleCornerWithRadius:(CGFloat)radius;
+
 @end

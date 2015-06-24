@@ -13,11 +13,6 @@
 static const CGFloat padding = 20;
 
 @interface RegisterView () {
-    UIView* _firstLine;
-
-    UIView* _secendLine;
-
-    UIView* _thirdLine;
 }
 
 @property (nonatomic, strong) CMSimpleTextView* registNameTextView;
@@ -26,13 +21,9 @@ static const CGFloat padding = 20;
 
 @property (nonatomic, strong) CMSimpleTextView* registPassCConfirmTextView;
 
-@property (nonatomic, strong) UILabel* registNameLabel;
-
-@property (nonatomic, strong) UILabel* registPassLabel;
-
-@property (nonatomic, strong) UILabel* registPassConfirmLabel;
-
 @property (nonatomic, strong) CMSimpleButton* registBtn;
+
+@property (nonatomic, strong) UIView* whiteBg;
 
 @end
 
@@ -50,92 +41,48 @@ static const CGFloat padding = 20;
 
 - (void)layoutSubviews
 {
-    if (_registNameLabel) {
-        [_registNameLabel makeConstraints:^(MASConstraintMaker* make) {
-            make.top.equalTo(self.top).offset(padding);
-            make.left.equalTo(self).offset(padding);
-            make.right.equalTo(_registNameTextView.left).offset(-padding);
-            make.height.equalTo(@35);
-            make.width.equalTo(@80);
+    __weak typeof(self) weakSelf = self;
+
+    if (_whiteBg) {
+        [_whiteBg makeConstraints:^(MASConstraintMaker* make) {
+            make.left.and.right.equalTo(weakSelf);
+            make.bottom.equalTo(weakSelf);
+            make.top.equalTo(_registNameTextView.top).offset(-padding);
         }];
     }
 
     if (_registNameTextView) {
         [_registNameTextView makeConstraints:^(MASConstraintMaker* make) {
-            make.top.equalTo(self.top).offset(padding);
-            make.left.equalTo(_registNameLabel.right).offset(padding);
-            make.right.equalTo(self.right).offset(-padding);
+            make.bottom.equalTo(weakSelf.registPassTextView.top).offset(-padding);
+            make.left.equalTo(weakSelf.left).offset(padding);
+            make.right.equalTo(weakSelf.right).offset(-padding);
             make.height.equalTo(@35);
-        }];
-    }
-
-    if (_firstLine) {
-        [_firstLine makeConstraints:^(MASConstraintMaker* make) {
-            make.left.and.right.equalTo(self);
-            make.height.equalTo(@1);
-            make.top.equalTo(_registNameLabel.bottom).offset(padding);
-        }];
-    }
-
-    if (_registPassLabel) {
-        [_registPassLabel makeConstraints:^(MASConstraintMaker* make) {
-            make.top.equalTo(_firstLine.bottom).offset(padding);
-            make.left.equalTo(self).offset(padding);
-            make.right.equalTo(_registPassTextView.left).offset(-padding);
-            make.height.equalTo(@35);
-            make.width.equalTo(@80);
         }];
     }
 
     if (_registPassTextView) {
         [_registPassTextView makeConstraints:^(MASConstraintMaker* make) {
-            make.top.equalTo(_firstLine.bottom).offset(padding);
-            make.left.equalTo(_registPassLabel.right).offset(padding);
-            make.right.equalTo(self.right).offset(-padding);
+            make.bottom.equalTo(weakSelf.registPassCConfirmTextView.top).offset(-padding);
+            make.left.equalTo(weakSelf.left).offset(padding);
+            make.right.equalTo(weakSelf.right).offset(-padding);
             make.height.equalTo(@35);
-        }];
-    }
-
-    if (_secendLine) {
-        [_secendLine makeConstraints:^(MASConstraintMaker* make) {
-            make.left.and.right.equalTo(self);
-            make.height.equalTo(@1);
-            make.top.equalTo(_registPassLabel.bottom).offset(padding);
-        }];
-    }
-
-    if (_registPassConfirmLabel) {
-        [_registPassConfirmLabel makeConstraints:^(MASConstraintMaker* make) {
-            make.top.equalTo(_secendLine.bottom).offset(padding);
-            make.left.equalTo(self).offset(padding);
-            make.right.equalTo(_registPassCConfirmTextView.left).offset(-padding);
-            make.height.equalTo(@35);
-            make.width.equalTo(@80);
         }];
     }
 
     if (_registPassCConfirmTextView) {
         [_registPassCConfirmTextView makeConstraints:^(MASConstraintMaker* make) {
-            make.top.equalTo(_secendLine.bottom).offset(padding);
-            make.left.equalTo(_registPassConfirmLabel.right).offset(padding);
-            make.right.equalTo(self.right).offset(-padding);
+            make.bottom.equalTo(weakSelf.registBtn.top).offset(-padding);
+            make.left.equalTo(weakSelf.left).offset(padding);
+            make.right.equalTo(weakSelf.right).offset(-padding);
             make.height.equalTo(@35);
-        }];
-    }
-
-    if (_thirdLine) {
-        [_thirdLine makeConstraints:^(MASConstraintMaker* make) {
-            make.left.and.right.equalTo(self);
-            make.height.equalTo(@1);
-            make.top.equalTo(_registPassCConfirmTextView.bottom).offset(padding);
         }];
     }
 
     if (_registBtn) {
         [_registBtn makeConstraints:^(MASConstraintMaker* make) {
-            make.left.equalTo(self.left).offset(padding);
-            make.right.equalTo(self.right).offset(-padding);
-            make.top.equalTo(_thirdLine.bottom).offset(padding);
+            make.left.equalTo(weakSelf.left).offset(padding);
+            make.right.equalTo(weakSelf.right).offset(-padding);
+            make.bottom.equalTo(weakSelf.bottom).offset(-padding);
             make.height.equalTo(@35);
         }];
     }
@@ -152,58 +99,40 @@ static const CGFloat padding = 20;
 
 - (void)configView
 {
-    if (!_firstLine) {
-        _firstLine = [[UIView alloc] init];
-        _firstLine.backgroundColor = [UIColor lightGrayColor];
-        [self addSubview:_firstLine];
-    }
-    if (!_secendLine) {
-        _secendLine = [[UIView alloc] init];
-        _secendLine.backgroundColor = [UIColor lightGrayColor];
-        [self addSubview:_secendLine];
-    }
-    if (!_thirdLine) {
-        _thirdLine = [[UIView alloc] init];
-        _thirdLine.backgroundColor = [UIColor lightGrayColor];
-        [self addSubview:_thirdLine];
+    if (!_whiteBg) {
+        _whiteBg = [[UIView alloc] init];
+        _whiteBg.backgroundColor = [UIColor colorWithHexString:@"0xf7f7f7"];
+        [self addSubview:_whiteBg];
     }
 
-    if (!_registNameLabel) {
-        _registNameLabel = [[UILabel alloc] init];
-        _registNameLabel.textColor = [UIColor lightGrayColor];
-        _registNameLabel.text = @"用户名";
-        _registNameLabel.textAlignment = NSTextAlignmentJustified;
-        [self addSubview:_registNameLabel];
-    }
     if (!_registNameTextView) {
-        _registNameTextView = [[CMSimpleTextView alloc] initWithPlaceholder:@"用户名..."];
+        _registNameTextView = [[CMSimpleTextView alloc] initWithIcon:[UIImage imageNamed:@"name_ico"] andWithPlaceholder:@"用户名" andWithInputType:Email];
+        _registNameTextView.borderColor = kAppThemeLoginTextfieldBorderColor;
+        _registNameTextView.borderWidth = 2;
         [self addSubview:_registNameTextView];
     }
-    if (!_registPassLabel) {
-        _registPassLabel = [[UILabel alloc] init];
-        _registPassLabel.textAlignment = NSTextAlignmentJustified;
-        _registPassLabel.textColor = [UIColor lightGrayColor];
-        _registPassLabel.text = @"密    码";
-        [self addSubview:_registPassLabel];
-    }
+
     if (!_registPassTextView) {
-        _registPassTextView = [[CMSimpleTextView alloc] initWithPlaceholder:@"密码..."];
+        _registPassTextView = [[CMSimpleTextView alloc] initWithIcon:[UIImage imageNamed:@"pass_ico"] andWithPlaceholder:@"密码" andWithInputType:Email];
+        _registPassTextView.borderColor = kAppThemeLoginTextfieldBorderColor;
+        _registPassTextView.borderWidth = 2;
         [self addSubview:_registPassTextView];
     }
-    if (!_registPassConfirmLabel) {
-        _registPassConfirmLabel = [[UILabel alloc] init];
-        _registPassConfirmLabel.textAlignment = NSTextAlignmentJustified;
-        _registPassConfirmLabel.textColor = [UIColor lightGrayColor];
-        _registPassConfirmLabel.text = @"确认密码";
-        [self addSubview:_registPassConfirmLabel];
-    }
+
     if (!_registPassCConfirmTextView) {
-        _registPassCConfirmTextView = [[CMSimpleTextView alloc] initWithPlaceholder:@"确认密码..."];
+        _registPassCConfirmTextView = [[CMSimpleTextView alloc] initWithIcon:[UIImage imageNamed:@"pass_ico"] andWithPlaceholder:@"确认密码" andWithInputType:Email];
+        _registPassCConfirmTextView.borderColor = kAppThemeLoginTextfieldBorderColor;
+        _registPassCConfirmTextView.borderWidth = 2;
         [self addSubview:_registPassCConfirmTextView];
     }
 
     if (!_registBtn) {
         _registBtn = [[CMSimpleButton alloc] initSimpleButtonWithTitle:@"注册"];
+        _registBtn.normalBorderColor = kAppThemeThirdColor;
+        _registBtn.normalForegroundColor = [UIColor whiteColor];
+        _registBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+        _registBtn.normalBackgroundColor = kAppThemeThirdColor;
+        _registBtn.highlightBackgroundColor = [kAppThemeThirdColor darkenedColorWithBrightnessFloat:0.8];
         [self addSubview:_registBtn];
     }
 }

@@ -60,6 +60,10 @@
 
 #pragma mark - 自定义私有方法
 
+- (void)initializeData
+{
+}
+
 - (void)initializeView
 {
     [self initializeTitle];
@@ -68,8 +72,11 @@
 
 - (void)initializeTitle
 {
-    self.navigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
+    [self setNavigationBarTranslucent:YES];
+    [self showBackgroundImage:YES];
+    //    self.navigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
     _mSegmentControl = [[CMRoundSegmentControl alloc] initWithSectionTitles:_titles];
+    _mSegmentControl.mBackgroundTintColor = [UIColor clearColor];
     _mSegmentControl.delegate = self;
     self.navigationItem.titleView = _mSegmentControl;
 }
@@ -78,10 +85,11 @@
 {
     __weak typeof(self) weakSelf = self;
     UIView* mainBgView = [[UIView alloc] init];
-    mainBgView.backgroundColor = [UIColor whiteColor];
+    mainBgView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:mainBgView];
     [mainBgView makeConstraints:^(MASConstraintMaker* make) {
-        make.edges.equalTo(weakSelf.view);
+        make.top.equalTo(((UIView*)weakSelf.topLayoutGuide).bottom);
+        make.left.and.right.and.bottom.equalTo(weakSelf.view);
     }];
 
     if (!_pageView) {
@@ -89,9 +97,8 @@
         _pageView.pageViewDelegate = self;
         [self.view addSubview:_pageView];
     }
-    //    _pageView.frame = CGRectMake(0, kStateBarHeight + 44, kScreenWidth, kScreenHeight - kStateBarHeight - 44);
     [_pageView makeConstraints:^(MASConstraintMaker* make) {
-        make.edges.equalTo(weakSelf.view);
+        make.edges.equalTo(mainBgView);
     }];
 }
 
