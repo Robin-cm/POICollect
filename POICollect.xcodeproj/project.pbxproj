@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7625BA6C1B3C01B600D53440 /* CMDropdownButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7625BA6B1B3C01B600D53440 /* CMDropdownButton.m */; };
 		76386F0A1B33A4B800E8A115 /* CMRoundSegmentedThumb.m in Sources */ = {isa = PBXBuildFile; fileRef = 76386F091B33A4B800E8A115 /* CMRoundSegmentedThumb.m */; };
 		764C8C9B1B38E5FF00FF2F51 /* MainPOIListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 764C8C9A1B38E5FF00FF2F51 /* MainPOIListViewController.m */; };
 		764C8C9E1B38E68D00FF2F51 /* CMRoundBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 764C8C9D1B38E68D00FF2F51 /* CMRoundBtn.m */; };
@@ -32,6 +33,8 @@
 		7685EA7C1B3A761200AD1645 /* pass_ico.png in Resources */ = {isa = PBXBuildFile; fileRef = 7685EA7A1B3A761200AD1645 /* pass_ico.png */; };
 		769BD6891B34194F0089FB39 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 769BD6881B34194F0089FB39 /* LoginView.m */; };
 		769BD68C1B3419660089FB39 /* RegisterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 769BD68B1B3419660089FB39 /* RegisterView.m */; };
+		76E7CBFA1B3B897A00D0BBED /* CMSimpleCheckBoxBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 76E7CBF91B3B897A00D0BBED /* CMSimpleCheckBoxBtn.m */; };
+		76E7CBFD1B3BC70C00D0BBED /* CMCustomWithButtonTextfield.m in Sources */ = {isa = PBXBuildFile; fileRef = 76E7CBFC1B3BC70C00D0BBED /* CMCustomWithButtonTextfield.m */; };
 		A100F86D1B35577400271B2E /* CMPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A100F86C1B35577400271B2E /* CMPageView.m */; };
 		A100F8701B35B5B100271B2E /* UIView+CMExpened.m in Sources */ = {isa = PBXBuildFile; fileRef = A100F86F1B35B5B100271B2E /* UIView+CMExpened.m */; };
 		A1CB74781B3694C400EF062B /* CMSimpleTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CB74771B3694C400EF062B /* CMSimpleTextView.m */; };
@@ -56,6 +59,8 @@
 /* Begin PBXFileReference section */
 		3F88B26D608DC3CEEF691C2B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		6F54E2C1591D38029EA79878 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		7625BA6A1B3C01B600D53440 /* CMDropdownButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMDropdownButton.h; path = Venders/CMDropDownButton/CMDropdownButton.h; sourceTree = "<group>"; };
+		7625BA6B1B3C01B600D53440 /* CMDropdownButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMDropdownButton.m; path = Venders/CMDropDownButton/CMDropdownButton.m; sourceTree = "<group>"; };
 		76386F081B33A4B800E8A115 /* CMRoundSegmentedThumb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMRoundSegmentedThumb.h; path = Venders/CMRoundSegmentControl/CMRoundSegmentedThumb.h; sourceTree = "<group>"; };
 		76386F091B33A4B800E8A115 /* CMRoundSegmentedThumb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMRoundSegmentedThumb.m; path = Venders/CMRoundSegmentControl/CMRoundSegmentedThumb.m; sourceTree = "<group>"; };
 		764C8C991B38E5FF00FF2F51 /* MainPOIListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainPOIListViewController.h; path = Controllers/MainPOIListViewController.h; sourceTree = "<group>"; };
@@ -102,6 +107,10 @@
 		769BD6881B34194F0089FB39 /* LoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginView.m; path = Views/Pages/LoginView.m; sourceTree = "<group>"; };
 		769BD68A1B3419660089FB39 /* RegisterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegisterView.h; path = Views/Pages/RegisterView.h; sourceTree = "<group>"; };
 		769BD68B1B3419660089FB39 /* RegisterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegisterView.m; path = Views/Pages/RegisterView.m; sourceTree = "<group>"; };
+		76E7CBF81B3B897A00D0BBED /* CMSimpleCheckBoxBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMSimpleCheckBoxBtn.h; path = Views/Compnents/CMSimpleCheckBoxBtn.h; sourceTree = "<group>"; };
+		76E7CBF91B3B897A00D0BBED /* CMSimpleCheckBoxBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMSimpleCheckBoxBtn.m; path = Views/Compnents/CMSimpleCheckBoxBtn.m; sourceTree = "<group>"; };
+		76E7CBFB1B3BC70C00D0BBED /* CMCustomWithButtonTextfield.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMCustomWithButtonTextfield.h; path = Views/Compnents/CMCustomWithButtonTextfield.h; sourceTree = "<group>"; };
+		76E7CBFC1B3BC70C00D0BBED /* CMCustomWithButtonTextfield.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMCustomWithButtonTextfield.m; path = Views/Compnents/CMCustomWithButtonTextfield.m; sourceTree = "<group>"; };
 		A100F86B1B35577400271B2E /* CMPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMPageView.h; path = Views/Compnents/CMPageView.h; sourceTree = "<group>"; };
 		A100F86C1B35577400271B2E /* CMPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMPageView.m; path = Views/Compnents/CMPageView.m; sourceTree = "<group>"; };
 		A100F86E1B35B5B100271B2E /* UIView+CMExpened.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+CMExpened.h"; path = "Utils/Categories/UIView+CMExpened.h"; sourceTree = "<group>"; };
@@ -140,6 +149,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7625BA691B3C015C00D53440 /* CMDropDownButton */ = {
+			isa = PBXGroup;
+			children = (
+				7625BA6A1B3C01B600D53440 /* CMDropdownButton.h */,
+				7625BA6B1B3C01B600D53440 /* CMDropdownButton.m */,
+			);
+			name = CMDropDownButton;
+			sourceTree = "<group>";
+		};
 		764C8C9F1B39248A00FF2F51 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -244,6 +262,7 @@
 		7658F4991B32607F00E41A0B /* Venders */ = {
 			isa = PBXGroup;
 			children = (
+				7625BA691B3C015C00D53440 /* CMDropDownButton */,
 				766CC7071B32A3A200DCFFB4 /* CMRoundSegmentControl */,
 				766CC7001B328D8A00DCFFB4 /* CMThemeKit */,
 			);
@@ -384,6 +403,10 @@
 				A1CD5A3C1B37B34B008BC36A /* CMSimpleButton.m */,
 				764C8C9C1B38E68D00FF2F51 /* CMRoundBtn.h */,
 				764C8C9D1B38E68D00FF2F51 /* CMRoundBtn.m */,
+				76E7CBF81B3B897A00D0BBED /* CMSimpleCheckBoxBtn.h */,
+				76E7CBF91B3B897A00D0BBED /* CMSimpleCheckBoxBtn.m */,
+				76E7CBFB1B3BC70C00D0BBED /* CMCustomWithButtonTextfield.h */,
+				76E7CBFC1B3BC70C00D0BBED /* CMCustomWithButtonTextfield.m */,
 			);
 			name = Compnents;
 			sourceTree = "<group>";
@@ -558,10 +581,12 @@
 				A1CD5A401B37C27D008BC36A /* UIImage+Expanded.m in Sources */,
 				7658F4731B325FFF00E41A0B /* AppDelegate.m in Sources */,
 				A1CD5A4D1B384B4F008BC36A /* CMCustomPopAnimation.m in Sources */,
+				76E7CBFD1B3BC70C00D0BBED /* CMCustomWithButtonTextfield.m in Sources */,
 				7658F4A31B3261EE00E41A0B /* BaseViewController.m in Sources */,
 				766CC7031B328DA800DCFFB4 /* CMThemeKit.m in Sources */,
 				7658F4701B325FFF00E41A0B /* main.m in Sources */,
 				769BD68C1B3419660089FB39 /* RegisterView.m in Sources */,
+				7625BA6C1B3C01B600D53440 /* CMDropdownButton.m in Sources */,
 				766CC7061B329BB200DCFFB4 /* LoginViewController.m in Sources */,
 				764C8CA51B393C5200FF2F51 /* NSString+Expanded.m in Sources */,
 				76386F0A1B33A4B800E8A115 /* CMRoundSegmentedThumb.m in Sources */,
@@ -573,6 +598,7 @@
 				A1CD5A441B384155008BC36A /* CMCustomAnimation.m in Sources */,
 				766CC70A1B32A3E000DCFFB4 /* CMRoundSegmentControl.m in Sources */,
 				7685EA711B3A445B00AD1645 /* CMCustomCircleAnimation.m in Sources */,
+				76E7CBFA1B3B897A00D0BBED /* CMSimpleCheckBoxBtn.m in Sources */,
 				764C8C9E1B38E68D00FF2F51 /* CMRoundBtn.m in Sources */,
 				769BD6891B34194F0089FB39 /* LoginView.m in Sources */,
 				7658F4A91B32698E00E41A0B /* UIColor+Expanded.m in Sources */,

@@ -9,6 +9,7 @@
 #import "MainListTableViewCell.h"
 #import "NSString+Expanded.h"
 #import "UIView+CMExpened.h"
+#import "CMSimpleCheckBoxBtn.h"
 
 static const CGFloat sDefaultPadding = 10;
 
@@ -33,6 +34,8 @@ static const CGFloat sDefaultPadding = 10;
 @property (nonatomic, strong) UIButton* editBtn;
 
 @property (nonatomic, strong) UIButton* deleteBtn;
+
+@property (nonatomic, strong) CMSimpleCheckBoxBtn* selectBtn;
 
 @end
 
@@ -100,9 +103,19 @@ static const CGFloat sDefaultPadding = 10;
         }];
     }
 
+    if (_selectBtn) {
+        [_selectBtn makeConstraints:^(MASConstraintMaker* make) {
+            make.top.equalTo(weakSelf.whiteBg.top).offset(sDefaultPadding);
+            make.left.equalTo(weakSelf.whiteBg.left).offset(sDefaultPadding);
+            make.width.equalTo(20);
+        }];
+    }
+
     if (_subContainerView) {
         [_subContainerView makeConstraints:^(MASConstraintMaker* make) {
-            make.edges.equalTo(weakSelf.whiteBg);
+            make.top.and.bottom.and.right.equalTo(weakSelf.whiteBg).offset(0);
+            make.left.equalTo(weakSelf.selectBtn.right).offset(0);
+            //            make.edges.equalTo(weakSelf.whiteBg);
         }];
     }
 
@@ -182,6 +195,12 @@ static const CGFloat sDefaultPadding = 10;
         _whiteBg.backgroundColor = [UIColor colorWithHexString:@"0xD0E0E8"];
         [_whiteBg circleCornerWithRadius:7];
         [self.contentView addSubview:_whiteBg];
+    }
+
+    if (!_selectBtn) {
+        _selectBtn = [[CMSimpleCheckBoxBtn alloc] initBoxButtonWithSize:CMSimpleCheckBoxBtnSize_Tint];
+        _selectBtn.selected = YES;
+        [_whiteBg addSubview:_selectBtn];
     }
 
     if (!_subContainerView) {
