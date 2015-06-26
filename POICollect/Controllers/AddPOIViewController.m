@@ -9,6 +9,8 @@
 #import "AddPOIViewController.h"
 #import "UIView+CMExpened.h"
 #import "CMCustomWithButtonTextfield.h"
+#import "CMDropdownButton.h"
+#import "CMPhotoPickButton.h"
 
 static const CGFloat sDefaultPadding = 10;
 
@@ -23,6 +25,10 @@ static const CGFloat sDefaultPadding = 10;
 @property (nonatomic, strong) CMCustomWithButtonTextfield* poiNameTF;
 
 @property (nonatomic, strong) CMCustomWithButtonTextfield* poiAddressTF;
+
+@property (nonatomic, strong) CMDropdownButton* dropDownBtn;
+
+@property (nonatomic, strong) CMPhotoPickButton* pickBtn;
 
 @end
 
@@ -103,6 +109,22 @@ static const CGFloat sDefaultPadding = 10;
         //        _poiAddressTF.rightViewMode = UITextFieldViewModeAlways;
         [_formBgView addSubview:_poiAddressTF];
     }
+
+    if (!_dropDownBtn) {
+        _dropDownBtn = [[CMDropdownButton alloc] initDropdownButtonWithTitle:@"分类"];
+        //        [_dropDownBtn setTitle:@"分类啊啊啊啊" forState:UIControlStateNormal];
+        _dropDownBtn.datas = @[
+            @"分类一",
+            @"分类二"
+        ];
+        [_formBgView addSubview:_dropDownBtn];
+    }
+
+    if (!_pickBtn) {
+        _pickBtn = [[CMPhotoPickButton alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
+        [_scrollView addSubview:_pickBtn];
+    }
+
     //    [self relayoutSubviews];
 }
 
@@ -131,7 +153,7 @@ static const CGFloat sDefaultPadding = 10;
             make.width.equalTo(kScreenWidth - sDefaultPadding * 2);
             //            make.width.equalTo(@100);
             //            make.height.equalTo(@35);
-            make.bottom.equalTo(weakSelf.poiAddressTF.bottom).offset(sDefaultPadding);
+            make.bottom.equalTo(weakSelf.dropDownBtn.bottom).offset(sDefaultPadding);
         }];
     }
 
@@ -151,7 +173,24 @@ static const CGFloat sDefaultPadding = 10;
             make.left.equalTo(weakSelf.formBgView.left).offset(sDefaultPadding);
             make.right.equalTo(weakSelf.formBgView.right).offset(-sDefaultPadding);
             make.height.equalTo(@35);
+            make.bottom.equalTo(weakSelf.dropDownBtn.top).offset(-sDefaultPadding);
+        }];
+    }
+
+    if (_dropDownBtn) {
+        [_dropDownBtn makeConstraints:^(MASConstraintMaker* make) {
+            make.top.equalTo(weakSelf.poiAddressTF.bottom).offset(sDefaultPadding);
+            make.left.equalTo(weakSelf.formBgView.left).offset(sDefaultPadding);
+            make.right.equalTo(weakSelf.formBgView.right).offset(-sDefaultPadding);
+            make.height.equalTo(@35);
             make.bottom.equalTo(weakSelf.formBgView.bottom).offset(-sDefaultPadding);
+        }];
+    }
+
+    if (_pickBtn) {
+        [_pickBtn makeConstraints:^(MASConstraintMaker* make) {
+            make.top.equalTo(weakSelf.formBgView.bottom).offset(sDefaultPadding);
+            make.left.equalTo(weakSelf.scrollView.left).offset(sDefaultPadding * 2);
         }];
     }
 }

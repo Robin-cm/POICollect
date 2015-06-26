@@ -79,6 +79,12 @@
 
 
 /**
+ *  keyWindow
+ */
+#define kKeyWindow [UIApplication sharedApplication].keyWindow
+
+
+/**
  *  屏幕的bounds
  */
 #define kScreenBounds [[UIScreen mainScreen] bounds]
@@ -98,7 +104,25 @@
  */
 #define kStateBarHeight [UIApplication  sharedApplication].statusBarFrame.size.height
 
+/**
+ *  屏幕的缩放比
+ */
+#define kScreen_Scale [UIScreen mainScreen].scale
+
 
 #define kNavBarHeight 44.0f
+
+
+#pragma mark - 常用函数
+
+/**
+ *  角度换成弧度
+ */
+#define DEGREES_TO_RADIANS(angle) ((angle)/180.0 *M_PI)
+
+/**
+ *  弧度换成角度
+ */
+#define RADIANS_TO_DEGREES(radians) ((radians)*(180.0/M_PI))
 
 #endif

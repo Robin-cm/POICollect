@@ -23,6 +23,11 @@
 		7658F48D1B325FFF00E41A0B /* POICollectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7658F48C1B325FFF00E41A0B /* POICollectTests.m */; };
 		7658F4A31B3261EE00E41A0B /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7658F4A21B3261EE00E41A0B /* BaseViewController.m */; };
 		7658F4A91B32698E00E41A0B /* UIColor+Expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = 7658F4A81B32698E00E41A0B /* UIColor+Expanded.m */; };
+		76615EAB1B3CDD190064BCB0 /* CMDropdownButtonArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76615EAA1B3CDD190064BCB0 /* CMDropdownButtonArrowView.m */; };
+		76615EAE1B3CFC6C0064BCB0 /* CMDropdownButtonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76615EAD1B3CFC6C0064BCB0 /* CMDropdownButtonTableViewCell.m */; };
+		76615EB11B3CFF7E0064BCB0 /* UITableView+Expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = 76615EB01B3CFF7E0064BCB0 /* UITableView+Expanded.m */; };
+		76615EB41B3D41150064BCB0 /* CMPhotoPickButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 76615EB31B3D41150064BCB0 /* CMPhotoPickButton.m */; };
+		76615EC11B3D4E840064BCB0 /* CMPhotoPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76615EC01B3D4E840064BCB0 /* CMPhotoPickerViewController.m */; };
 		766CC7031B328DA800DCFFB4 /* CMThemeKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 766CC7021B328DA800DCFFB4 /* CMThemeKit.m */; };
 		766CC7061B329BB200DCFFB4 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 766CC7051B329BB200DCFFB4 /* LoginViewController.m */; };
 		766CC70A1B32A3E000DCFFB4 /* CMRoundSegmentControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 766CC7091B32A3E000DCFFB4 /* CMRoundSegmentControl.m */; };
@@ -90,6 +95,17 @@
 		7658F4A51B32627100E41A0B /* POICollect-PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "POICollect-PrefixHeader.pch"; sourceTree = "<group>"; };
 		7658F4A71B32698E00E41A0B /* UIColor+Expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+Expanded.h"; path = "Utils/Categories/UIColor+Expanded.h"; sourceTree = "<group>"; };
 		7658F4A81B32698E00E41A0B /* UIColor+Expanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+Expanded.m"; path = "Utils/Categories/UIColor+Expanded.m"; sourceTree = "<group>"; };
+		76615EA91B3CDD190064BCB0 /* CMDropdownButtonArrowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMDropdownButtonArrowView.h; path = Venders/CMDropDownButton/CMDropdownButtonArrowView.h; sourceTree = "<group>"; };
+		76615EAA1B3CDD190064BCB0 /* CMDropdownButtonArrowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMDropdownButtonArrowView.m; path = Venders/CMDropDownButton/CMDropdownButtonArrowView.m; sourceTree = "<group>"; };
+		76615EAC1B3CFC6C0064BCB0 /* CMDropdownButtonTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMDropdownButtonTableViewCell.h; path = Venders/CMDropDownButton/CMDropdownButtonTableViewCell.h; sourceTree = "<group>"; };
+		76615EAD1B3CFC6C0064BCB0 /* CMDropdownButtonTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMDropdownButtonTableViewCell.m; path = Venders/CMDropDownButton/CMDropdownButtonTableViewCell.m; sourceTree = "<group>"; };
+		76615EAF1B3CFF7E0064BCB0 /* UITableView+Expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UITableView+Expanded.h"; path = "Utils/Categories/UITableView+Expanded.h"; sourceTree = "<group>"; };
+		76615EB01B3CFF7E0064BCB0 /* UITableView+Expanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITableView+Expanded.m"; path = "Utils/Categories/UITableView+Expanded.m"; sourceTree = "<group>"; };
+		76615EB21B3D41150064BCB0 /* CMPhotoPickButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMPhotoPickButton.h; path = Views/Compnents/CMPhotoPickButton.h; sourceTree = "<group>"; };
+		76615EB31B3D41150064BCB0 /* CMPhotoPickButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMPhotoPickButton.m; path = Views/Compnents/CMPhotoPickButton.m; sourceTree = "<group>"; };
+		76615EB61B3D4CC20064BCB0 /* CMPhotoKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMPhotoKit.h; path = Venders/CMPhotoKit/CMPhotoKit.h; sourceTree = "<group>"; };
+		76615EBF1B3D4E840064BCB0 /* CMPhotoPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMPhotoPickerViewController.h; path = Venders/CMPhotoKit/CMPhotoPicker/Controllers/CMPhotoPickerViewController.h; sourceTree = "<group>"; };
+		76615EC01B3D4E840064BCB0 /* CMPhotoPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMPhotoPickerViewController.m; path = Venders/CMPhotoKit/CMPhotoPicker/Controllers/CMPhotoPickerViewController.m; sourceTree = "<group>"; };
 		766CC7011B328DA800DCFFB4 /* CMThemeKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMThemeKit.h; path = Venders/CMThemeKit/CMThemeKit.h; sourceTree = "<group>"; };
 		766CC7021B328DA800DCFFB4 /* CMThemeKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMThemeKit.m; path = Venders/CMThemeKit/CMThemeKit.m; sourceTree = "<group>"; };
 		766CC7041B329BB200DCFFB4 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = Controllers/Login/LoginViewController.h; sourceTree = "<group>"; };
@@ -154,6 +170,10 @@
 			children = (
 				7625BA6A1B3C01B600D53440 /* CMDropdownButton.h */,
 				7625BA6B1B3C01B600D53440 /* CMDropdownButton.m */,
+				76615EA91B3CDD190064BCB0 /* CMDropdownButtonArrowView.h */,
+				76615EAA1B3CDD190064BCB0 /* CMDropdownButtonArrowView.m */,
+				76615EAC1B3CFC6C0064BCB0 /* CMDropdownButtonTableViewCell.h */,
+				76615EAD1B3CFC6C0064BCB0 /* CMDropdownButtonTableViewCell.m */,
 			);
 			name = CMDropDownButton;
 			sourceTree = "<group>";
@@ -262,6 +282,7 @@
 		7658F4991B32607F00E41A0B /* Venders */ = {
 			isa = PBXGroup;
 			children = (
+				76615EB51B3D4C8E0064BCB0 /* CMPhotoKit */,
 				7625BA691B3C015C00D53440 /* CMDropDownButton */,
 				766CC7071B32A3A200DCFFB4 /* CMRoundSegmentControl */,
 				766CC7001B328D8A00DCFFB4 /* CMThemeKit */,
@@ -331,8 +352,68 @@
 				A1CD5A3F1B37C27D008BC36A /* UIImage+Expanded.m */,
 				764C8CA31B393C5200FF2F51 /* NSString+Expanded.h */,
 				764C8CA41B393C5200FF2F51 /* NSString+Expanded.m */,
+				76615EAF1B3CFF7E0064BCB0 /* UITableView+Expanded.h */,
+				76615EB01B3CFF7E0064BCB0 /* UITableView+Expanded.m */,
 			);
 			name = Categories;
+			sourceTree = "<group>";
+		};
+		76615EB51B3D4C8E0064BCB0 /* CMPhotoKit */ = {
+			isa = PBXGroup;
+			children = (
+				76615EBB1B3D4D650064BCB0 /* CMPhotoCamera */,
+				76615EBA1B3D4D400064BCB0 /* CMPhotoBrowser */,
+				76615EB91B3D4D310064BCB0 /* CMPhotoPicker */,
+				76615EB61B3D4CC20064BCB0 /* CMPhotoKit.h */,
+			);
+			name = CMPhotoKit;
+			sourceTree = "<group>";
+		};
+		76615EB91B3D4D310064BCB0 /* CMPhotoPicker */ = {
+			isa = PBXGroup;
+			children = (
+				76615EBE1B3D4E410064BCB0 /* Controllers */,
+				76615EBD1B3D4E3B0064BCB0 /* Views */,
+				76615EBC1B3D4E320064BCB0 /* Models */,
+			);
+			name = CMPhotoPicker;
+			sourceTree = "<group>";
+		};
+		76615EBA1B3D4D400064BCB0 /* CMPhotoBrowser */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = CMPhotoBrowser;
+			sourceTree = "<group>";
+		};
+		76615EBB1B3D4D650064BCB0 /* CMPhotoCamera */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = CMPhotoCamera;
+			sourceTree = "<group>";
+		};
+		76615EBC1B3D4E320064BCB0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		76615EBD1B3D4E3B0064BCB0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		76615EBE1B3D4E410064BCB0 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				76615EBF1B3D4E840064BCB0 /* CMPhotoPickerViewController.h */,
+				76615EC01B3D4E840064BCB0 /* CMPhotoPickerViewController.m */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 		766CC7001B328D8A00DCFFB4 /* CMThemeKit */ = {
@@ -407,6 +488,8 @@
 				76E7CBF91B3B897A00D0BBED /* CMSimpleCheckBoxBtn.m */,
 				76E7CBFB1B3BC70C00D0BBED /* CMCustomWithButtonTextfield.h */,
 				76E7CBFC1B3BC70C00D0BBED /* CMCustomWithButtonTextfield.m */,
+				76615EB21B3D41150064BCB0 /* CMPhotoPickButton.h */,
+				76615EB31B3D41150064BCB0 /* CMPhotoPickButton.m */,
 			);
 			name = Compnents;
 			sourceTree = "<group>";
@@ -579,6 +662,8 @@
 				764C8C9B1B38E5FF00FF2F51 /* MainPOIListViewController.m in Sources */,
 				A1CB74781B3694C400EF062B /* CMSimpleTextView.m in Sources */,
 				A1CD5A401B37C27D008BC36A /* UIImage+Expanded.m in Sources */,
+				76615EB11B3CFF7E0064BCB0 /* UITableView+Expanded.m in Sources */,
+				76615EC11B3D4E840064BCB0 /* CMPhotoPickerViewController.m in Sources */,
 				7658F4731B325FFF00E41A0B /* AppDelegate.m in Sources */,
 				A1CD5A4D1B384B4F008BC36A /* CMCustomPopAnimation.m in Sources */,
 				76E7CBFD1B3BC70C00D0BBED /* CMCustomWithButtonTextfield.m in Sources */,
@@ -594,9 +679,12 @@
 				764C8CA21B3924DD00FF2F51 /* MainListTableViewCell.m in Sources */,
 				A1CD5A3D1B37B34B008BC36A /* CMSimpleButton.m in Sources */,
 				7685EA741B3A45BA00AD1645 /* CMCustomBaseAnimation.m in Sources */,
+				76615EAB1B3CDD190064BCB0 /* CMDropdownButtonArrowView.m in Sources */,
 				7658F4761B325FFF00E41A0B /* POICollect.xcdatamodeld in Sources */,
 				A1CD5A441B384155008BC36A /* CMCustomAnimation.m in Sources */,
+				76615EB41B3D41150064BCB0 /* CMPhotoPickButton.m in Sources */,
 				766CC70A1B32A3E000DCFFB4 /* CMRoundSegmentControl.m in Sources */,
+				76615EAE1B3CFC6C0064BCB0 /* CMDropdownButtonTableViewCell.m in Sources */,
 				7685EA711B3A445B00AD1645 /* CMCustomCircleAnimation.m in Sources */,
 				76E7CBFA1B3B897A00D0BBED /* CMSimpleCheckBoxBtn.m in Sources */,
 				764C8C9E1B38E68D00FF2F51 /* CMRoundBtn.m in Sources */,
