@@ -120,6 +120,13 @@ static const int kTagLineView = 1007;
     }
 }
 
+- (CGRect)boundsWithoutStatBarAndNavBar
+{
+    CGRect frame = self.bounds;
+    frame.size.height -= (kStateBarHeight + kNavBarHeight);
+    return frame;
+}
+
 /**
  *  得到一个带有横线的View，横线的Y坐标是pointY
  *  @param  pointY   横线的Y坐标

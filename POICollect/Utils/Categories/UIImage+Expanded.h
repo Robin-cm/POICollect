@@ -14,4 +14,8 @@
 
 + (UIImage*)roundImageWithColor:(UIColor*)color andWithFrame:(CGRect)frame;
 
++ (UIImage*)imageWithURL:(NSURL*)url;
+
+- (UIImage *)scaleToSize:(CGSize)size;
+
 @end

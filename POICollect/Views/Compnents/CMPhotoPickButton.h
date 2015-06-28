@@ -8,12 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@class CMPhotoAssets;
+
 @interface CMPhotoPickButton : UIButton
 
 #pragma mark - 属性
 
 @property (nonatomic, strong) UIImage* normalBgImage;
 @property (nonatomic, strong) UIImage* highlightBgImage;
+
+@property (nonatomic, strong) CMPhotoAssets* currentPhotoAsset;
 
 #pragma mark - 初始化
 

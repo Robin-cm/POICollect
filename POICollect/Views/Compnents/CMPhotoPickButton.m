@@ -8,11 +8,17 @@
 
 #import "CMPhotoPickButton.h"
 #import "UIView+CMExpened.h"
+#import "CMPhotoKit.h"
+#import "UIImage+Expanded.h"
 
 #define kDefaultNormalBgColor [UIColor colorWithHexString:@"0xD1D1D1"]
 
 static const CGFloat sDefaultBorderWidth = 4;
 static const CGFloat sDefaultCornerRadius = 5;
+
+@interface CMPhotoPickButton () <CMPhotoPickerViewControllerDelegate>
+
+@end
 
 @implementation CMPhotoPickButton
 
@@ -58,6 +64,9 @@ static const CGFloat sDefaultCornerRadius = 5;
 - (void)btnTaped:(id)sender
 {
     NSLog(@"我已经点击了!");
+    CMPhotoPickerViewController* photoPickVC = [[CMPhotoPickerViewController alloc] init];
+    photoPickVC.delegate = self;
+    [photoPickVC show];
 }
 
 #pragma mark - 公共方法
@@ -94,6 +103,37 @@ static const CGFloat sDefaultCornerRadius = 5;
     UIGraphicsPopContext();
     UIGraphicsEndImageContext();
     return image;
+}
+
+#pragma mark - CMPhotoPickerViewControllerDelegate
+
+/**
+ *  返回所有的Asstes对象
+ */
+- (void)pickerViewControllerDoneAsstes:(NSArray*)assets
+{
+    if (assets && assets.count > 0) {
+        UIImage* tmpImage = nil;
+        // 判断类型来获取Image
+        _currentPhotoAsset = assets[0];
+        if ([_currentPhotoAsset isKindOfClass:[CMPhotoAssets class]]) {
+            tmpImage = _currentPhotoAsset.thumbImage;
+        }
+        else if ([_currentPhotoAsset isKindOfClass:[NSString class]]) {
+            tmpImage = [UIImage imageWithURL:[NSURL URLWithString:(NSString*)_currentPhotoAsset]];
+            //            [cell.imageview1 sd_setImageWithURL:[NSURL URLWithString:(NSString*)asset] placeholderImage:[UIImage imageNamed:@"wallpaper_placeholder"]];
+        }
+        else if ([_currentPhotoAsset isKindOfClass:[UIImage class]]) {
+            tmpImage = (UIImage*)_currentPhotoAsset;
+        }
+
+        if (tmpImage) {
+            tmpImage = [tmpImage scaleToSize:self.frame.size];
+        }
+
+        [self setBackgroundImage:tmpImage forState:UIControlStateNormal];
+        [self setBackgroundImage:tmpImage forState:UIControlStateHighlighted];
+    }
 }
 
 /*

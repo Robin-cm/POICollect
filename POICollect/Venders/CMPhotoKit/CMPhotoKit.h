@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CMPhotoKit : NSObject
+#import "CMPhotoPickerViewController.h"
+#import "CMPhotoGroupPickerViewController.h"
+#import "CMPhotoAssets.h"
 
-@end
+static NSString* PICKER_TAKE_DONE = @"PICKER_TAKE_DONE";

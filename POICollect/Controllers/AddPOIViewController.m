@@ -11,6 +11,7 @@
 #import "CMCustomWithButtonTextfield.h"
 #import "CMDropdownButton.h"
 #import "CMPhotoPickButton.h"
+#import "CMPhotoKit.h"
 
 static const CGFloat sDefaultPadding = 10;
 

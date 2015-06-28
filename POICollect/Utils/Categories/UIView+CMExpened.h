@@ -59,6 +59,8 @@
  **/
 - (void)removeViewWithTag:(NSInteger)tag;
 
+- (CGRect)boundsWithoutStatBarAndNavBar;
+
 /**
  *  得到一个带有横线的View，横线的Y坐标是pointY
  *  @param  pointY   横线的Y坐标

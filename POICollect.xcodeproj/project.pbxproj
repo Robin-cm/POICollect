@@ -42,12 +42,24 @@
 		76E7CBFD1B3BC70C00D0BBED /* CMCustomWithButtonTextfield.m in Sources */ = {isa = PBXBuildFile; fileRef = 76E7CBFC1B3BC70C00D0BBED /* CMCustomWithButtonTextfield.m */; };
 		A100F86D1B35577400271B2E /* CMPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A100F86C1B35577400271B2E /* CMPageView.m */; };
 		A100F8701B35B5B100271B2E /* UIView+CMExpened.m in Sources */ = {isa = PBXBuildFile; fileRef = A100F86F1B35B5B100271B2E /* UIView+CMExpened.m */; };
+		A147713C1B3F8BD100A3F60C /* CMPhotoPickerAssetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A147713B1B3F8BD100A3F60C /* CMPhotoPickerAssetsViewController.m */; };
+		A147713F1B3F8F7F00A3F60C /* CMPhotoPickerConllectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = A147713E1B3F8F7F00A3F60C /* CMPhotoPickerConllectionView.m */; };
+		A14771421B3F90B500A3F60C /* CMPhotoAssets.m in Sources */ = {isa = PBXBuildFile; fileRef = A14771411B3F90B500A3F60C /* CMPhotoAssets.m */; };
+		A14771451B3F949A00A3F60C /* CMPhotoPickerFooterCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = A14771441B3F949A00A3F60C /* CMPhotoPickerFooterCollectionReusableView.m */; };
+		A14771481B3F9AD600A3F60C /* CMPhotoPickerCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A14771471B3F9AD600A3F60C /* CMPhotoPickerCollectionViewCell.m */; };
+		A147714B1B3F9C2F00A3F60C /* CMPhotoPickerImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A147714A1B3F9C2F00A3F60C /* CMPhotoPickerImageView.m */; };
+		A147714E1B3F9D4F00A3F60C /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A147714D1B3F9D4F00A3F60C /* Media.xcassets */; };
 		A1CB74781B3694C400EF062B /* CMSimpleTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CB74771B3694C400EF062B /* CMSimpleTextView.m */; };
 		A1CD5A3D1B37B34B008BC36A /* CMSimpleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CD5A3C1B37B34B008BC36A /* CMSimpleButton.m */; };
 		A1CD5A401B37C27D008BC36A /* UIImage+Expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CD5A3F1B37C27D008BC36A /* UIImage+Expanded.m */; };
 		A1CD5A441B384155008BC36A /* CMCustomAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CD5A431B384155008BC36A /* CMCustomAnimation.m */; };
 		A1CD5A471B384490008BC36A /* TestAnimationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CD5A461B384490008BC36A /* TestAnimationViewController.m */; };
 		A1CD5A4D1B384B4F008BC36A /* CMCustomPopAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CD5A4C1B384B4F008BC36A /* CMCustomPopAnimation.m */; };
+		A1F484391B3D9BF500FD49A4 /* CMPhotoGroupPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1F484381B3D9BF500FD49A4 /* CMPhotoGroupPickerViewController.m */; };
+		A1F4843C1B3DA62A00FD49A4 /* CMPhotoPickerDatas.m in Sources */ = {isa = PBXBuildFile; fileRef = A1F4843B1B3DA62A00FD49A4 /* CMPhotoPickerDatas.m */; };
+		A1F4843F1B3DAAD200FD49A4 /* CMPhotoPickerGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = A1F4843E1B3DAAD200FD49A4 /* CMPhotoPickerGroup.m */; };
+		A1F484431B3DAFC100FD49A4 /* CMPhotoPickerGroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1F484411B3DAFC100FD49A4 /* CMPhotoPickerGroupTableViewCell.m */; };
+		A1F484441B3DAFC100FD49A4 /* CMPhotoPickerGroupTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1F484421B3DAFC100FD49A4 /* CMPhotoPickerGroupTableViewCell.xib */; };
 		FCA9D93553FE54FD075523F3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F54E2C1591D38029EA79878 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -131,6 +143,19 @@
 		A100F86C1B35577400271B2E /* CMPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMPageView.m; path = Views/Compnents/CMPageView.m; sourceTree = "<group>"; };
 		A100F86E1B35B5B100271B2E /* UIView+CMExpened.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+CMExpened.h"; path = "Utils/Categories/UIView+CMExpened.h"; sourceTree = "<group>"; };
 		A100F86F1B35B5B100271B2E /* UIView+CMExpened.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+CMExpened.m"; path = "Utils/Categories/UIView+CMExpened.m"; sourceTree = "<group>"; };
+		A147713A1B3F8BD100A3F60C /* CMPhotoPickerAssetsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMPhotoPickerAssetsViewController.h; path = Venders/CMPhotoKit/CMPhotoPicker/Controllers/CMPhotoPickerAssetsViewController.h; sourceTree = "<group>"; };
+		A147713B1B3F8BD100A3F60C /* CMPhotoPickerAssetsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMPhotoPickerAssetsViewController.m; path = Venders/CMPhotoKit/CMPhotoPicker/Controllers/CMPhotoPickerAssetsViewController.m; sourceTree = "<group>"; };
+		A147713D1B3F8F7F00A3F60C /* CMPhotoPickerConllectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMPhotoPickerConllectionView.h; path = Venders/CMPhotoKit/CMPhotoPicker/Views/CMPhotoPickerConllectionView.h; sourceTree = "<group>"; };
+		A147713E1B3F8F7F00A3F60C /* CMPhotoPickerConllectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMPhotoPickerConllectionView.m; path = Venders/CMPhotoKit/CMPhotoPicker/Views/CMPhotoPickerConllectionView.m; sourceTree = "<group>"; };
+		A14771401B3F90B500A3F60C /* CMPhotoAssets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMPhotoAssets.h; path = Venders/CMPhotoKit/CMPhotoPicker/Models/CMPhotoAssets.h; sourceTree = "<group>"; };
+		A14771411B3F90B500A3F60C /* CMPhotoAssets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMPhotoAssets.m; path = Venders/CMPhotoKit/CMPhotoPicker/Models/CMPhotoAssets.m; sourceTree = "<group>"; };
+		A14771431B3F949A00A3F60C /* CMPhotoPickerFooterCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMPhotoPickerFooterCollectionReusableView.h; path = Venders/CMPhotoKit/CMPhotoPicker/Views/CMPhotoPickerFooterCollectionReusableView.h; sourceTree = "<group>"; };
+		A14771441B3F949A00A3F60C /* CMPhotoPickerFooterCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMPhotoPickerFooterCollectionReusableView.m; path = Venders/CMPhotoKit/CMPhotoPicker/Views/CMPhotoPickerFooterCollectionReusableView.m; sourceTree = "<group>"; };
+		A14771461B3F9AD600A3F60C /* CMPhotoPickerCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMPhotoPickerCollectionViewCell.h; path = Venders/CMPhotoKit/CMPhotoPicker/Views/CMPhotoPickerCollectionViewCell.h; sourceTree = "<group>"; };
+		A14771471B3F9AD600A3F60C /* CMPhotoPickerCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMPhotoPickerCollectionViewCell.m; path = Venders/CMPhotoKit/CMPhotoPicker/Views/CMPhotoPickerCollectionViewCell.m; sourceTree = "<group>"; };
+		A14771491B3F9C2F00A3F60C /* CMPhotoPickerImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMPhotoPickerImageView.h; path = Venders/CMPhotoKit/CMPhotoPicker/Views/CMPhotoPickerImageView.h; sourceTree = "<group>"; };
+		A147714A1B3F9C2F00A3F60C /* CMPhotoPickerImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMPhotoPickerImageView.m; path = Venders/CMPhotoKit/CMPhotoPicker/Views/CMPhotoPickerImageView.m; sourceTree = "<group>"; };
+		A147714D1B3F9D4F00A3F60C /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = Venders/CMPhotoKit/Resources/Media.xcassets; sourceTree = "<group>"; };
 		A1CB74761B3694C400EF062B /* CMSimpleTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMSimpleTextView.h; path = Views/Compnents/CMSimpleTextView.h; sourceTree = "<group>"; };
 		A1CB74771B3694C400EF062B /* CMSimpleTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMSimpleTextView.m; path = Views/Compnents/CMSimpleTextView.m; sourceTree = "<group>"; };
 		A1CD5A3B1B37B34B008BC36A /* CMSimpleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMSimpleButton.h; path = Views/Compnents/CMSimpleButton.h; sourceTree = "<group>"; };
@@ -143,6 +168,15 @@
 		A1CD5A461B384490008BC36A /* TestAnimationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestAnimationViewController.m; path = Controllers/Login/TestAnimationViewController.m; sourceTree = "<group>"; };
 		A1CD5A4B1B384B4F008BC36A /* CMCustomPopAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMCustomPopAnimation.h; path = Utils/Animations/CMCustomPopAnimation.h; sourceTree = "<group>"; };
 		A1CD5A4C1B384B4F008BC36A /* CMCustomPopAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMCustomPopAnimation.m; path = Utils/Animations/CMCustomPopAnimation.m; sourceTree = "<group>"; };
+		A1F484371B3D9BF500FD49A4 /* CMPhotoGroupPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMPhotoGroupPickerViewController.h; path = Venders/CMPhotoKit/CMPhotoPicker/Controllers/CMPhotoGroupPickerViewController.h; sourceTree = "<group>"; };
+		A1F484381B3D9BF500FD49A4 /* CMPhotoGroupPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMPhotoGroupPickerViewController.m; path = Venders/CMPhotoKit/CMPhotoPicker/Controllers/CMPhotoGroupPickerViewController.m; sourceTree = "<group>"; };
+		A1F4843A1B3DA62A00FD49A4 /* CMPhotoPickerDatas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMPhotoPickerDatas.h; path = Venders/CMPhotoKit/CMPhotoPicker/Models/CMPhotoPickerDatas.h; sourceTree = "<group>"; };
+		A1F4843B1B3DA62A00FD49A4 /* CMPhotoPickerDatas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMPhotoPickerDatas.m; path = Venders/CMPhotoKit/CMPhotoPicker/Models/CMPhotoPickerDatas.m; sourceTree = "<group>"; };
+		A1F4843D1B3DAAD200FD49A4 /* CMPhotoPickerGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMPhotoPickerGroup.h; path = Venders/CMPhotoKit/CMPhotoPicker/Models/CMPhotoPickerGroup.h; sourceTree = "<group>"; };
+		A1F4843E1B3DAAD200FD49A4 /* CMPhotoPickerGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMPhotoPickerGroup.m; path = Venders/CMPhotoKit/CMPhotoPicker/Models/CMPhotoPickerGroup.m; sourceTree = "<group>"; };
+		A1F484401B3DAFC100FD49A4 /* CMPhotoPickerGroupTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMPhotoPickerGroupTableViewCell.h; path = Venders/CMPhotoKit/CMPhotoPicker/Views/CMPhotoPickerGroupTableViewCell.h; sourceTree = "<group>"; };
+		A1F484411B3DAFC100FD49A4 /* CMPhotoPickerGroupTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMPhotoPickerGroupTableViewCell.m; path = Venders/CMPhotoKit/CMPhotoPicker/Views/CMPhotoPickerGroupTableViewCell.m; sourceTree = "<group>"; };
+		A1F484421B3DAFC100FD49A4 /* CMPhotoPickerGroupTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CMPhotoPickerGroupTableViewCell.xib; path = Venders/CMPhotoKit/CMPhotoPicker/Views/CMPhotoPickerGroupTableViewCell.xib; sourceTree = "<group>"; };
 		E894C5602C63A8F560BB3637 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -361,6 +395,7 @@
 		76615EB51B3D4C8E0064BCB0 /* CMPhotoKit */ = {
 			isa = PBXGroup;
 			children = (
+				A147714C1B3F9D0B00A3F60C /* Resources */,
 				76615EBB1B3D4D650064BCB0 /* CMPhotoCamera */,
 				76615EBA1B3D4D400064BCB0 /* CMPhotoBrowser */,
 				76615EB91B3D4D310064BCB0 /* CMPhotoPicker */,
@@ -396,6 +431,12 @@
 		76615EBC1B3D4E320064BCB0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A1F4843A1B3DA62A00FD49A4 /* CMPhotoPickerDatas.h */,
+				A1F4843B1B3DA62A00FD49A4 /* CMPhotoPickerDatas.m */,
+				A1F4843D1B3DAAD200FD49A4 /* CMPhotoPickerGroup.h */,
+				A1F4843E1B3DAAD200FD49A4 /* CMPhotoPickerGroup.m */,
+				A14771401B3F90B500A3F60C /* CMPhotoAssets.h */,
+				A14771411B3F90B500A3F60C /* CMPhotoAssets.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -403,6 +444,17 @@
 		76615EBD1B3D4E3B0064BCB0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A1F484401B3DAFC100FD49A4 /* CMPhotoPickerGroupTableViewCell.h */,
+				A1F484411B3DAFC100FD49A4 /* CMPhotoPickerGroupTableViewCell.m */,
+				A1F484421B3DAFC100FD49A4 /* CMPhotoPickerGroupTableViewCell.xib */,
+				A147713D1B3F8F7F00A3F60C /* CMPhotoPickerConllectionView.h */,
+				A147713E1B3F8F7F00A3F60C /* CMPhotoPickerConllectionView.m */,
+				A14771431B3F949A00A3F60C /* CMPhotoPickerFooterCollectionReusableView.h */,
+				A14771441B3F949A00A3F60C /* CMPhotoPickerFooterCollectionReusableView.m */,
+				A14771461B3F9AD600A3F60C /* CMPhotoPickerCollectionViewCell.h */,
+				A14771471B3F9AD600A3F60C /* CMPhotoPickerCollectionViewCell.m */,
+				A14771491B3F9C2F00A3F60C /* CMPhotoPickerImageView.h */,
+				A147714A1B3F9C2F00A3F60C /* CMPhotoPickerImageView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -412,6 +464,10 @@
 			children = (
 				76615EBF1B3D4E840064BCB0 /* CMPhotoPickerViewController.h */,
 				76615EC01B3D4E840064BCB0 /* CMPhotoPickerViewController.m */,
+				A1F484371B3D9BF500FD49A4 /* CMPhotoGroupPickerViewController.h */,
+				A1F484381B3D9BF500FD49A4 /* CMPhotoGroupPickerViewController.m */,
+				A147713A1B3F8BD100A3F60C /* CMPhotoPickerAssetsViewController.h */,
+				A147713B1B3F8BD100A3F60C /* CMPhotoPickerAssetsViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -492,6 +548,14 @@
 				76615EB31B3D41150064BCB0 /* CMPhotoPickButton.m */,
 			);
 			name = Compnents;
+			sourceTree = "<group>";
+		};
+		A147714C1B3F9D0B00A3F60C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A147714D1B3F9D4F00A3F60C /* Media.xcassets */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		A1CD5A411B38412F008BC36A /* Animations */ = {
@@ -602,6 +666,8 @@
 			files = (
 				7685EA7C1B3A761200AD1645 /* pass_ico.png in Resources */,
 				7658F47C1B325FFF00E41A0B /* Main.storyboard in Resources */,
+				A147714E1B3F9D4F00A3F60C /* Media.xcassets in Resources */,
+				A1F484441B3DAFC100FD49A4 /* CMPhotoPickerGroupTableViewCell.xib in Resources */,
 				7685EA7B1B3A761200AD1645 /* name_ico.png in Resources */,
 				7658F4811B325FFF00E41A0B /* LaunchScreen.xib in Resources */,
 				7658F47E1B325FFF00E41A0B /* Images.xcassets in Resources */,
@@ -658,28 +724,37 @@
 			files = (
 				A100F8701B35B5B100271B2E /* UIView+CMExpened.m in Sources */,
 				764C8CA81B39455200FF2F51 /* AddPOIViewController.m in Sources */,
+				A1F484391B3D9BF500FD49A4 /* CMPhotoGroupPickerViewController.m in Sources */,
 				A1CD5A471B384490008BC36A /* TestAnimationViewController.m in Sources */,
 				764C8C9B1B38E5FF00FF2F51 /* MainPOIListViewController.m in Sources */,
 				A1CB74781B3694C400EF062B /* CMSimpleTextView.m in Sources */,
 				A1CD5A401B37C27D008BC36A /* UIImage+Expanded.m in Sources */,
 				76615EB11B3CFF7E0064BCB0 /* UITableView+Expanded.m in Sources */,
+				A1F484431B3DAFC100FD49A4 /* CMPhotoPickerGroupTableViewCell.m in Sources */,
 				76615EC11B3D4E840064BCB0 /* CMPhotoPickerViewController.m in Sources */,
 				7658F4731B325FFF00E41A0B /* AppDelegate.m in Sources */,
 				A1CD5A4D1B384B4F008BC36A /* CMCustomPopAnimation.m in Sources */,
 				76E7CBFD1B3BC70C00D0BBED /* CMCustomWithButtonTextfield.m in Sources */,
+				A14771421B3F90B500A3F60C /* CMPhotoAssets.m in Sources */,
 				7658F4A31B3261EE00E41A0B /* BaseViewController.m in Sources */,
 				766CC7031B328DA800DCFFB4 /* CMThemeKit.m in Sources */,
 				7658F4701B325FFF00E41A0B /* main.m in Sources */,
+				A1F4843F1B3DAAD200FD49A4 /* CMPhotoPickerGroup.m in Sources */,
 				769BD68C1B3419660089FB39 /* RegisterView.m in Sources */,
 				7625BA6C1B3C01B600D53440 /* CMDropdownButton.m in Sources */,
 				766CC7061B329BB200DCFFB4 /* LoginViewController.m in Sources */,
 				764C8CA51B393C5200FF2F51 /* NSString+Expanded.m in Sources */,
 				76386F0A1B33A4B800E8A115 /* CMRoundSegmentedThumb.m in Sources */,
+				A147713F1B3F8F7F00A3F60C /* CMPhotoPickerConllectionView.m in Sources */,
+				A1F4843C1B3DA62A00FD49A4 /* CMPhotoPickerDatas.m in Sources */,
+				A14771481B3F9AD600A3F60C /* CMPhotoPickerCollectionViewCell.m in Sources */,
 				A100F86D1B35577400271B2E /* CMPageView.m in Sources */,
 				764C8CA21B3924DD00FF2F51 /* MainListTableViewCell.m in Sources */,
 				A1CD5A3D1B37B34B008BC36A /* CMSimpleButton.m in Sources */,
 				7685EA741B3A45BA00AD1645 /* CMCustomBaseAnimation.m in Sources */,
 				76615EAB1B3CDD190064BCB0 /* CMDropdownButtonArrowView.m in Sources */,
+				A147713C1B3F8BD100A3F60C /* CMPhotoPickerAssetsViewController.m in Sources */,
+				A14771451B3F949A00A3F60C /* CMPhotoPickerFooterCollectionReusableView.m in Sources */,
 				7658F4761B325FFF00E41A0B /* POICollect.xcdatamodeld in Sources */,
 				A1CD5A441B384155008BC36A /* CMCustomAnimation.m in Sources */,
 				76615EB41B3D41150064BCB0 /* CMPhotoPickButton.m in Sources */,
@@ -688,6 +763,7 @@
 				7685EA711B3A445B00AD1645 /* CMCustomCircleAnimation.m in Sources */,
 				76E7CBFA1B3B897A00D0BBED /* CMSimpleCheckBoxBtn.m in Sources */,
 				764C8C9E1B38E68D00FF2F51 /* CMRoundBtn.m in Sources */,
+				A147714B1B3F9C2F00A3F60C /* CMPhotoPickerImageView.m in Sources */,
 				769BD6891B34194F0089FB39 /* LoginView.m in Sources */,
 				7658F4A91B32698E00E41A0B /* UIColor+Expanded.m in Sources */,
 			);
