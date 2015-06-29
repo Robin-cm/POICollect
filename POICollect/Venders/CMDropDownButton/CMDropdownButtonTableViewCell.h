@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-static const float sDefaultCell_Height = 30.0;
+static const float sDefaultCell_Height = 44.0;
 
 @interface CMDropdownButtonTableViewCell : UITableViewCell
 

@@ -54,7 +54,7 @@ static CGFloat TOOLBAR_HEIGHT = 44;
     // Dispose of any resources that can be recreated.
 }
 
-- (void) dealloc
+- (void)dealloc
 {
     // 赋值给上一个控制器
     self.groupVc.selectAsstes = self.selectAssets;
@@ -95,7 +95,7 @@ static CGFloat TOOLBAR_HEIGHT = 44;
         _doneBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_doneBtn setTitleColor:kAppThemeSecondaryColor forState:UIControlStateNormal];
         [_doneBtn setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
-        _doneBtn.enabled = YES;
+        _doneBtn.enabled = NO;
         _doneBtn.titleLabel.font = [UIFont systemFontOfSize:17];
         _doneBtn.frame = CGRectMake(0, 0, 45, 45);
         [_doneBtn setTitle:@"完成" forState:UIControlStateNormal];
@@ -235,6 +235,12 @@ static CGFloat TOOLBAR_HEIGHT = 44;
 
 - (void)done:(id)sender
 {
+    if (!self.selectAssets || self.selectAssets.count < 1) {
+        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"提醒" message:@"没有选中的图片" delegate:self cancelButtonTitle:nil otherButtonTitles:@"好的", nil];
+        [alertView show];
+        self.doneBtn.enabled = NO;
+        return;
+    }
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [[NSNotificationCenter defaultCenter] postNotificationName:PICKER_TAKE_DONE object:nil userInfo:@{ @"selectAssets" : self.selectAssets }];
     });

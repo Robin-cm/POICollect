@@ -16,7 +16,7 @@
 static const CGFloat sDefaultBorderWidth = 4;
 static const CGFloat sDefaultCornerRadius = 5;
 
-@interface CMPhotoPickButton () <CMPhotoPickerViewControllerDelegate>
+@interface CMPhotoPickButton () <CMPhotoPickerViewControllerDelegate, UIActionSheetDelegate>
 
 @end
 
@@ -64,9 +64,15 @@ static const CGFloat sDefaultCornerRadius = 5;
 - (void)btnTaped:(id)sender
 {
     NSLog(@"我已经点击了!");
-    CMPhotoPickerViewController* photoPickVC = [[CMPhotoPickerViewController alloc] init];
-    photoPickVC.delegate = self;
-    [photoPickVC show];
+
+    UIActionSheet* actionSheet = [[UIActionSheet alloc]
+                 initWithTitle:nil
+                      delegate:self
+             cancelButtonTitle:@"取消"
+        destructiveButtonTitle:nil
+             otherButtonTitles:@"拍照", @"从相册选择", nil];
+    actionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+    [actionSheet showInView:self];
 }
 
 #pragma mark - 公共方法
@@ -133,6 +139,26 @@ static const CGFloat sDefaultCornerRadius = 5;
 
         [self setBackgroundImage:tmpImage forState:UIControlStateNormal];
         [self setBackgroundImage:tmpImage forState:UIControlStateHighlighted];
+    }
+}
+
+#pragma mark - UIActionSheetDelegate
+
+- (void)actionSheet:(UIActionSheet*)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (buttonIndex) {
+    case 0: {
+        //拍照
+    } break;
+    case 1: {
+        //相册
+        CMPhotoPickerViewController* photoPickVC = [[CMPhotoPickerViewController alloc] init];
+        photoPickVC.delegate = self;
+        [photoPickVC show];
+    } break;
+
+    default:
+        break;
     }
 }
 
