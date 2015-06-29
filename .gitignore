@@ -4,3 +4,5 @@ Build/
 Pods/
 
 POICollect.xcworkspace/
+
+Podfile.lock

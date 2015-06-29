@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		262FC9B91B40F2E1005C12F4 /* CMCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 262FC9B81B40F2E1005C12F4 /* CMCameraViewController.m */; };
+		263B851F1B40EC480043B605 /* CMCameraView.m in Sources */ = {isa = PBXBuildFile; fileRef = 263B851E1B40EC480043B605 /* CMCameraView.m */; };
+		26DA23701B412FBC00A26B86 /* CMCameraPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DA236F1B412FBC00A26B86 /* CMCameraPreviewView.m */; };
+		26DA23731B41329800A26B86 /* CMCameraPreviewImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DA23721B41329800A26B86 /* CMCameraPreviewImageScrollView.m */; };
+		26DA23761B4132C700A26B86 /* CMCameraPreviewTapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DA23751B4132C700A26B86 /* CMCameraPreviewTapView.m */; };
+		26DA23791B41368D00A26B86 /* CMCameraPreviewImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DA23781B41368D00A26B86 /* CMCameraPreviewImageView.m */; };
+		26E454151B40DDD4000C49CE /* CMCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E454141B40DDD4000C49CE /* CMCamera.m */; };
 		7625BA6C1B3C01B600D53440 /* CMDropdownButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7625BA6B1B3C01B600D53440 /* CMDropdownButton.m */; };
 		76386F0A1B33A4B800E8A115 /* CMRoundSegmentedThumb.m in Sources */ = {isa = PBXBuildFile; fileRef = 76386F091B33A4B800E8A115 /* CMRoundSegmentedThumb.m */; };
 		764C8C9B1B38E5FF00FF2F51 /* MainPOIListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 764C8C9A1B38E5FF00FF2F51 /* MainPOIListViewController.m */; };
@@ -74,6 +81,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		262FC9B71B40F2E1005C12F4 /* CMCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMCameraViewController.h; path = Venders/CMPhotoKit/CMPhotoCamera/Controllers/CMCameraViewController.h; sourceTree = "<group>"; };
+		262FC9B81B40F2E1005C12F4 /* CMCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMCameraViewController.m; path = Venders/CMPhotoKit/CMPhotoCamera/Controllers/CMCameraViewController.m; sourceTree = "<group>"; };
+		263B851D1B40EC480043B605 /* CMCameraView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMCameraView.h; path = Venders/CMPhotoKit/CMPhotoCamera/Views/CMCameraView.h; sourceTree = "<group>"; };
+		263B851E1B40EC480043B605 /* CMCameraView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMCameraView.m; path = Venders/CMPhotoKit/CMPhotoCamera/Views/CMCameraView.m; sourceTree = "<group>"; };
+		26DA236E1B412FBC00A26B86 /* CMCameraPreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMCameraPreviewView.h; path = Venders/CMPhotoKit/CMPhotoCamera/Views/CMCameraPreviewView.h; sourceTree = "<group>"; };
+		26DA236F1B412FBC00A26B86 /* CMCameraPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMCameraPreviewView.m; path = Venders/CMPhotoKit/CMPhotoCamera/Views/CMCameraPreviewView.m; sourceTree = "<group>"; };
+		26DA23711B41329800A26B86 /* CMCameraPreviewImageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMCameraPreviewImageScrollView.h; path = Venders/CMPhotoKit/CMPhotoCamera/Views/CMCameraPreviewImageScrollView.h; sourceTree = "<group>"; };
+		26DA23721B41329800A26B86 /* CMCameraPreviewImageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMCameraPreviewImageScrollView.m; path = Venders/CMPhotoKit/CMPhotoCamera/Views/CMCameraPreviewImageScrollView.m; sourceTree = "<group>"; };
+		26DA23741B4132C700A26B86 /* CMCameraPreviewTapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMCameraPreviewTapView.h; path = Venders/CMPhotoKit/CMPhotoCamera/Views/CMCameraPreviewTapView.h; sourceTree = "<group>"; };
+		26DA23751B4132C700A26B86 /* CMCameraPreviewTapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMCameraPreviewTapView.m; path = Venders/CMPhotoKit/CMPhotoCamera/Views/CMCameraPreviewTapView.m; sourceTree = "<group>"; };
+		26DA23771B41368D00A26B86 /* CMCameraPreviewImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMCameraPreviewImageView.h; path = Venders/CMPhotoKit/CMPhotoCamera/Views/CMCameraPreviewImageView.h; sourceTree = "<group>"; };
+		26DA23781B41368D00A26B86 /* CMCameraPreviewImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMCameraPreviewImageView.m; path = Venders/CMPhotoKit/CMPhotoCamera/Views/CMCameraPreviewImageView.m; sourceTree = "<group>"; };
+		26E454131B40DDD4000C49CE /* CMCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMCamera.h; path = Venders/CMPhotoKit/CMPhotoCamera/Models/CMCamera.h; sourceTree = "<group>"; };
+		26E454141B40DDD4000C49CE /* CMCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMCamera.m; path = Venders/CMPhotoKit/CMPhotoCamera/Models/CMCamera.m; sourceTree = "<group>"; };
 		3F88B26D608DC3CEEF691C2B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		6F54E2C1591D38029EA79878 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7625BA6A1B3C01B600D53440 /* CMDropdownButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMDropdownButton.h; path = Venders/CMDropDownButton/CMDropdownButton.h; sourceTree = "<group>"; };
@@ -199,6 +220,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		26E454101B40DD61000C49CE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				263B851D1B40EC480043B605 /* CMCameraView.h */,
+				263B851E1B40EC480043B605 /* CMCameraView.m */,
+				26DA236E1B412FBC00A26B86 /* CMCameraPreviewView.h */,
+				26DA236F1B412FBC00A26B86 /* CMCameraPreviewView.m */,
+				26DA23711B41329800A26B86 /* CMCameraPreviewImageScrollView.h */,
+				26DA23721B41329800A26B86 /* CMCameraPreviewImageScrollView.m */,
+				26DA23741B4132C700A26B86 /* CMCameraPreviewTapView.h */,
+				26DA23751B4132C700A26B86 /* CMCameraPreviewTapView.m */,
+				26DA23771B41368D00A26B86 /* CMCameraPreviewImageView.h */,
+				26DA23781B41368D00A26B86 /* CMCameraPreviewImageView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		26E454111B40DD69000C49CE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				26E454131B40DDD4000C49CE /* CMCamera.h */,
+				26E454141B40DDD4000C49CE /* CMCamera.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		26E454121B40DD6F000C49CE /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				262FC9B71B40F2E1005C12F4 /* CMCameraViewController.h */,
+				262FC9B81B40F2E1005C12F4 /* CMCameraViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		7625BA691B3C015C00D53440 /* CMDropDownButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -424,6 +480,9 @@
 		76615EBB1B3D4D650064BCB0 /* CMPhotoCamera */ = {
 			isa = PBXGroup;
 			children = (
+				26E454121B40DD6F000C49CE /* Controllers */,
+				26E454111B40DD69000C49CE /* Models */,
+				26E454101B40DD61000C49CE /* Views */,
 			);
 			name = CMPhotoCamera;
 			sourceTree = "<group>";
@@ -728,9 +787,11 @@
 				A1CD5A471B384490008BC36A /* TestAnimationViewController.m in Sources */,
 				764C8C9B1B38E5FF00FF2F51 /* MainPOIListViewController.m in Sources */,
 				A1CB74781B3694C400EF062B /* CMSimpleTextView.m in Sources */,
+				26DA23701B412FBC00A26B86 /* CMCameraPreviewView.m in Sources */,
 				A1CD5A401B37C27D008BC36A /* UIImage+Expanded.m in Sources */,
 				76615EB11B3CFF7E0064BCB0 /* UITableView+Expanded.m in Sources */,
 				A1F484431B3DAFC100FD49A4 /* CMPhotoPickerGroupTableViewCell.m in Sources */,
+				26DA23761B4132C700A26B86 /* CMCameraPreviewTapView.m in Sources */,
 				76615EC11B3D4E840064BCB0 /* CMPhotoPickerViewController.m in Sources */,
 				7658F4731B325FFF00E41A0B /* AppDelegate.m in Sources */,
 				A1CD5A4D1B384B4F008BC36A /* CMCustomPopAnimation.m in Sources */,
@@ -739,9 +800,11 @@
 				7658F4A31B3261EE00E41A0B /* BaseViewController.m in Sources */,
 				766CC7031B328DA800DCFFB4 /* CMThemeKit.m in Sources */,
 				7658F4701B325FFF00E41A0B /* main.m in Sources */,
+				263B851F1B40EC480043B605 /* CMCameraView.m in Sources */,
 				A1F4843F1B3DAAD200FD49A4 /* CMPhotoPickerGroup.m in Sources */,
 				769BD68C1B3419660089FB39 /* RegisterView.m in Sources */,
 				7625BA6C1B3C01B600D53440 /* CMDropdownButton.m in Sources */,
+				26DA23791B41368D00A26B86 /* CMCameraPreviewImageView.m in Sources */,
 				766CC7061B329BB200DCFFB4 /* LoginViewController.m in Sources */,
 				764C8CA51B393C5200FF2F51 /* NSString+Expanded.m in Sources */,
 				76386F0A1B33A4B800E8A115 /* CMRoundSegmentedThumb.m in Sources */,
@@ -752,8 +815,11 @@
 				764C8CA21B3924DD00FF2F51 /* MainListTableViewCell.m in Sources */,
 				A1CD5A3D1B37B34B008BC36A /* CMSimpleButton.m in Sources */,
 				7685EA741B3A45BA00AD1645 /* CMCustomBaseAnimation.m in Sources */,
+				26DA23731B41329800A26B86 /* CMCameraPreviewImageScrollView.m in Sources */,
+				262FC9B91B40F2E1005C12F4 /* CMCameraViewController.m in Sources */,
 				76615EAB1B3CDD190064BCB0 /* CMDropdownButtonArrowView.m in Sources */,
 				A147713C1B3F8BD100A3F60C /* CMPhotoPickerAssetsViewController.m in Sources */,
+				26E454151B40DDD4000C49CE /* CMCamera.m in Sources */,
 				A14771451B3F949A00A3F60C /* CMPhotoPickerFooterCollectionReusableView.m in Sources */,
 				7658F4761B325FFF00E41A0B /* POICollect.xcdatamodeld in Sources */,
 				A1CD5A441B384155008BC36A /* CMCustomAnimation.m in Sources */,

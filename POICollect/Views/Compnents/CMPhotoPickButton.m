@@ -149,6 +149,11 @@ static const CGFloat sDefaultCornerRadius = 5;
     switch (buttonIndex) {
     case 0: {
         //拍照
+        CMCameraViewController* cameraVC = [[CMCameraViewController alloc] init];
+        [cameraVC startCameraOrPhotoFileWithComplate:^(id obj) {
+            NSLog(@"毁掉函数调用了");
+        }];
+
     } break;
     case 1: {
         //相册
