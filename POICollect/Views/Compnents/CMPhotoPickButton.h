@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class CMPhotoAssets;
+@class CMPhoto;
 
 @interface CMPhotoPickButton : UIButton
 
@@ -18,6 +19,8 @@
 @property (nonatomic, strong) UIImage* highlightBgImage;
 
 @property (nonatomic, strong) CMPhotoAssets* currentPhotoAsset;
+
+@property (nonatomic, strong) CMPhoto* currentPhoto;
 
 #pragma mark - 初始化
 

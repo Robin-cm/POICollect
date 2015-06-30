@@ -8,6 +8,33 @@
 
 #import <UIKit/UIKit.h>
 
+@class CMCamera;
+@class CMCameraPreviewView;
+
+@protocol CMCameraPreviewViewDelegate <NSObject>
+
+@optional
+
+- (void)didCancalBtnTapedWithPreview:(CMCameraPreviewView*)preview;
+
+- (void)didDoneBtnTapedWithPreview:(CMCameraPreviewView*)preview currentPhoto:(CMCamera*)photo;
+
+@end
+
 @interface CMCameraPreviewView : UIView
+
+@property (nonatomic, strong) UIViewController* parentViewController;
+
+@property (nonatomic, weak) id<CMCameraPreviewViewDelegate> delegate;
+
+#pragma mark - 处事方法
+
+- (id)initWithParentViewController:(UIViewController*)parentViewController;
+
+#pragma mark - 公共方法
+
+- (void)showPreviewWithPhoto:(CMCamera*)photo;
+
+- (void)hidePreview;
 
 @end

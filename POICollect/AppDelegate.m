@@ -8,9 +8,9 @@
 
 #import "AppDelegate.h"
 #import "CMThemeKit.h"
-#import "LoginViewController.h"
-#import "LoginView.h"
-#import "RegisterView.h"
+//#import "LoginViewController.h"
+//#import "LoginView.h"
+//#import "RegisterView.h"
 #import "MainPOIListViewController.h"
 
 @interface AppDelegate ()
@@ -75,8 +75,8 @@
 
 - (void)showLoginController
 {
-    LoginViewController* mLoginViewController = [[LoginViewController alloc] initWithTitles:@[ @"登录", @"注册" ] andViewClasses:@[ [LoginView class], [RegisterView class] ]];
-    [self.window setRootViewController:[[UINavigationController alloc] initWithRootViewController:mLoginViewController]];
+    //    LoginViewController* mLoginViewController = [[LoginViewController alloc] initWithTitles:@[ @"登录", @"注册" ] andViewClasses:@[ [LoginView class], [RegisterView class] ]];
+    //    [self.window setRootViewController:[[UINavigationController alloc] initWithRootViewController:mLoginViewController]];
 }
 
 #pragma mark - Core Data stack

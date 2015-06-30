@@ -18,7 +18,7 @@ static const CGFloat sDefaultCornerRadius = 4.f;
 #define kDefaultBacgroudColor [UIColor whiteColor]
 #define kDefaultBorderColor [UIColor lightGrayColor].CGColor
 #define kDefaultFocusBorderColor kAppThemePrimaryColor.CGColor
-#define kDefaultErrorBorderColor [UIColor colorWithRed:0.561 green:0.157 blue:0.063 alpha:1]
+#define kDefaultErrorBorderColor kAppThemeThirdColor
 
 @interface CMSimpleTextView () <UITextFieldDelegate> {
     NSString* _error;
@@ -105,7 +105,7 @@ static const CGFloat sDefaultCornerRadius = 4.f;
 
 - (void)setError
 {
-    self.layer.borderColor = [UIColor colorWithRed:0.561 green:0.157 blue:0.063 alpha:1].CGColor;
+    self.layer.borderColor = _errorBorderColor.CGColor ? _errorBorderColor.CGColor : kDefaultErrorBorderColor.CGColor;
     self.layer.borderWidth = _foucsBorderWidth ? _foucsBorderWidth : sDefaultFoucsBorderWidth;
     if (!_toolTip) {
         _toolTip = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, self.frame.size.height)];

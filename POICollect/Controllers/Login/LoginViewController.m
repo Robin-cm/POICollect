@@ -13,6 +13,8 @@
 #import "CMCustomPopAnimation.h"
 #import "TestAnimationViewController.h"
 #import "CMRoundBtn.h"
+#import "LoginView.h"
+#import "RegisterView.h"
 
 @interface LoginViewController () <CMRoundSegmentControlDelegate, CMPageViewDelegate>
 
@@ -20,7 +22,7 @@
 
 @property (nonatomic, strong) NSArray* titles;
 
-@property (nonatomic, strong) NSMutableArray* views;
+@property (nonatomic, strong) NSArray* views;
 
 @property (nonatomic, strong) UIScrollView* mScrollView;
 
@@ -29,6 +31,15 @@
 @end
 
 @implementation LoginViewController
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        [self initializeData];
+    }
+    return self;
+}
 
 - (void)viewDidLoad
 {
@@ -45,23 +56,12 @@
 
 #pragma mark - 公共实例方法
 
-- (id)initWithTitles:(NSArray*)pTitles andViewClasses:(NSArray*)pViewClass
-{
-    self = [super init];
-    if (self) {
-        _titles = pTitles;
-        _views = [NSMutableArray arrayWithCapacity:pViewClass.count];
-        for (Class viewClass in pViewClass) {
-            [_views addObject:[viewClass new]];
-        }
-    }
-    return self;
-}
-
 #pragma mark - 自定义私有方法
 
 - (void)initializeData
 {
+    _titles = @[ @"登陆", @"注册" ];
+    _views = @[ [[LoginView alloc] init], [[RegisterView alloc] init] ];
 }
 
 - (void)initializeView
@@ -119,7 +119,7 @@
  */
 - (void)segmentControl:(CMRoundSegmentControl*)pSegmentControl didSelectIndex:(NSUInteger)pIndex
 {
-    NSLog(@"当前选中的序号是%lu", pIndex);
+    NSLog(@"当前选中的序号是%lu", (unsigned long)pIndex);
     [_pageView setCurrentViewIndex:pIndex withAnimation:YES];
 }
 

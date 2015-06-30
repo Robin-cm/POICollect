@@ -10,6 +10,4 @@
 
 @interface LoginViewController : BaseViewController
 
-- (id)initWithTitles:(NSArray*)pTitles andViewClasses:(NSArray*)pViewClass;
-
 @end

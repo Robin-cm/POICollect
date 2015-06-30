@@ -71,6 +71,7 @@
 {
     [self initializeTitle];
     [self initializeBody];
+    [self checkIslogin];
 }
 
 - (void)initializeTitle

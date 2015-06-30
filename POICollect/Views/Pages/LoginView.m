@@ -10,6 +10,7 @@
 #import "UIView+CMExpened.h"
 #import "CMSimpleTextView.h"
 #import "CMSimpleButton.h"
+#import "TPKeyboardAvoidingScrollView.h"
 
 static const CGFloat padding = 20;
 
@@ -22,7 +23,11 @@ static const CGFloat padding = 20;
 
 @property (nonatomic, strong) CMSimpleButton* loginBtn;
 
+@property (nonatomic, strong) TPKeyboardAvoidingScrollView* scrollView;
+
 @property (nonatomic, strong) UIView* whiteBg;
+
+@property (nonatomic, strong) UIView* contentView;
 
 @end
 
@@ -42,10 +47,26 @@ static const CGFloat padding = 20;
 {
     __weak typeof(self) weakSelf = self;
 
+    if (_scrollView) {
+        [_scrollView makeConstraints:^(MASConstraintMaker* make) {
+            make.edges.equalTo(weakSelf);
+        }];
+    }
+
+    if (_contentView) {
+        [_contentView makeConstraints:^(MASConstraintMaker* make) {
+            make.edges.equalTo(weakSelf.scrollView);
+            make.width.equalTo(weakSelf.scrollView);
+            make.height.equalTo(weakSelf.scrollView);
+            make.left.equalTo(weakSelf.scrollView.left);
+            make.top.equalTo(weakSelf.scrollView.top);
+        }];
+    }
+
     if (_whiteBg) {
         [_whiteBg makeConstraints:^(MASConstraintMaker* make) {
-            make.left.and.right.equalTo(weakSelf);
-            make.bottom.equalTo(weakSelf);
+            make.left.and.right.equalTo(weakSelf.contentView);
+            make.bottom.equalTo(weakSelf.contentView.bottom);
             make.top.equalTo(_loginNameTextView.top).offset(-padding);
         }];
     }
@@ -53,8 +74,8 @@ static const CGFloat padding = 20;
     if (_loginNameTextView) {
         [_loginNameTextView makeConstraints:^(MASConstraintMaker* make) {
             make.bottom.equalTo(weakSelf.loginPassTextView.top).offset(-padding);
-            make.left.equalTo(weakSelf.left).offset(padding);
-            make.right.equalTo(weakSelf.right).offset(-padding);
+            make.left.equalTo(weakSelf.whiteBg.left).offset(padding);
+            make.right.equalTo(weakSelf.whiteBg.right).offset(-padding);
             make.height.equalTo(@35);
         }];
     }
@@ -62,8 +83,8 @@ static const CGFloat padding = 20;
     if (_loginPassTextView) {
         [_loginPassTextView makeConstraints:^(MASConstraintMaker* make) {
             //            make.top.equalTo(_firstLine.bottom).offset(padding);
-            make.left.equalTo(weakSelf.left).offset(padding);
-            make.right.equalTo(weakSelf.right).offset(-padding);
+            make.left.equalTo(weakSelf.whiteBg.left).offset(padding);
+            make.right.equalTo(weakSelf.whiteBg.right).offset(-padding);
             make.bottom.equalTo(weakSelf.loginBtn.top).offset(-padding);
             make.height.equalTo(@35);
         }];
@@ -71,9 +92,9 @@ static const CGFloat padding = 20;
 
     if (_loginBtn) {
         [_loginBtn makeConstraints:^(MASConstraintMaker* make) {
-            make.left.equalTo(self.left).offset(padding);
-            make.right.equalTo(self.right).offset(-padding);
-            make.bottom.equalTo(self.bottom).offset(-padding);
+            make.left.equalTo(weakSelf.whiteBg.left).offset(padding);
+            make.right.equalTo(weakSelf.whiteBg.right).offset(-padding);
+            make.bottom.equalTo(weakSelf.whiteBg.bottom).offset(-padding);
             make.height.equalTo(@35);
         }];
     }
@@ -89,23 +110,35 @@ static const CGFloat padding = 20;
 
 - (void)configView
 {
+    if (!_scrollView) {
+        _scrollView = [[TPKeyboardAvoidingScrollView alloc] init];
+        [self addSubview:_scrollView];
+    }
+
+    if (!_contentView) {
+        _contentView = [[UIView alloc] init];
+        [_scrollView addSubview:_contentView];
+    }
+
     if (!_whiteBg) {
         _whiteBg = [[UIView alloc] init];
         _whiteBg.backgroundColor = [UIColor colorWithHexString:@"0xf7f7f7"];
-        [self addSubview:_whiteBg];
+        [_contentView addSubview:_whiteBg];
     }
 
     if (!_loginNameTextView) {
         _loginNameTextView = [[CMSimpleTextView alloc] initWithIcon:[UIImage imageNamed:@"name_ico"] andWithPlaceholder:@"用户名" andWithInputType:Email];
         _loginNameTextView.borderColor = kAppThemeLoginTextfieldBorderColor;
         _loginNameTextView.borderWidth = 2;
-        [self addSubview:_loginNameTextView];
+        _loginNameTextView.foucsBorderWidth = 2;
+        [_whiteBg addSubview:_loginNameTextView];
     }
     if (!_loginPassTextView) {
         _loginPassTextView = [[CMSimpleTextView alloc] initWithIcon:[UIImage imageNamed:@"pass_ico"] andWithPlaceholder:@"密码" andWithInputType:Password];
         _loginPassTextView.borderColor = kAppThemeLoginTextfieldBorderColor;
         _loginPassTextView.borderWidth = 2;
-        [self addSubview:_loginPassTextView];
+        _loginPassTextView.foucsBorderWidth = 2;
+        [_whiteBg addSubview:_loginPassTextView];
     }
     if (!_loginBtn) {
         _loginBtn = [[CMSimpleButton alloc] initSimpleButtonWithTitle:@"登陆"];
@@ -114,7 +147,7 @@ static const CGFloat padding = 20;
         _loginBtn.titleLabel.font = [UIFont systemFontOfSize:14];
         _loginBtn.normalBackgroundColor = kAppThemeThirdColor;
         _loginBtn.highlightBackgroundColor = [kAppThemeThirdColor darkenedColorWithBrightnessFloat:0.8];
-        [self addSubview:_loginBtn];
+        [_whiteBg addSubview:_loginBtn];
     }
 }
 

@@ -10,13 +10,14 @@
 #import "UIView+CMExpened.h"
 #import "CMPhotoKit.h"
 #import "UIImage+Expanded.h"
+#import "CMPhoto.h"
 
 #define kDefaultNormalBgColor [UIColor colorWithHexString:@"0xD1D1D1"]
 
 static const CGFloat sDefaultBorderWidth = 4;
 static const CGFloat sDefaultCornerRadius = 5;
 
-@interface CMPhotoPickButton () <CMPhotoPickerViewControllerDelegate, UIActionSheetDelegate>
+@interface CMPhotoPickButton () <CMPhotoPickerViewControllerDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @end
 
@@ -73,6 +74,21 @@ static const CGFloat sDefaultCornerRadius = 5;
              otherButtonTitles:@"拍照", @"从相册选择", nil];
     actionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
     [actionSheet showInView:self];
+}
+
+#pragma mark - Setter
+
+- (void)setCurrentPhoto:(CMPhoto*)currentPhoto
+{
+    if (!currentPhoto) {
+        return;
+    }
+    _currentPhoto = currentPhoto;
+    if ([_currentPhoto getImage]) {
+        UIImage* thumbImage = [[_currentPhoto getImage] scaleToSize:self.bounds.size];
+        [self setBackgroundImage:thumbImage forState:UIControlStateNormal];
+        [self setBackgroundImage:thumbImage forState:UIControlStateHighlighted];
+    }
 }
 
 #pragma mark - 公共方法
@@ -144,28 +160,70 @@ static const CGFloat sDefaultCornerRadius = 5;
 
 #pragma mark - UIActionSheetDelegate
 
-- (void)actionSheet:(UIActionSheet*)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+- (void)actionSheet:(UIActionSheet*)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
     switch (buttonIndex) {
     case 0: {
         //拍照
-        CMCameraViewController* cameraVC = [[CMCameraViewController alloc] init];
-        [cameraVC startCameraOrPhotoFileWithComplate:^(id obj) {
-            NSLog(@"毁掉函数调用了");
-        }];
+        //        __weak typeof(self) weakSelf = self;
+        //        CMCameraViewController* cameraVC = [[CMCameraViewController alloc] init];
+        //        [cameraVC startCameraOrPhotoFileWithComplate:^(id obj) {
+        //            NSLog(@"毁掉函数调用了");
+        //            if ([obj isKindOfClass:[CMCamera class]]) {
+        //                UIImage* img = ((CMCamera*)obj).thumbImage;
+        //                img = [img scaleToSize:self.frame.size];
+        //                [weakSelf setImage:img forState:UIControlStateNormal];
+        //                [weakSelf setImage:img forState:UIControlStateHighlighted];
+        //            }
+        //        }];
+
+        UIImagePickerController* imagePickerVC = [[UIImagePickerController alloc] init];
+        imagePickerVC.delegate = self;
+        imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
+        imagePickerVC.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        imagePickerVC.allowsEditing = NO;
+        [[[[UIApplication sharedApplication].windows firstObject] rootViewController] presentViewController:imagePickerVC animated:YES completion:nil];
 
     } break;
     case 1: {
         //相册
-        CMPhotoPickerViewController* photoPickVC = [[CMPhotoPickerViewController alloc] init];
-        photoPickVC.delegate = self;
-        [photoPickVC show];
+        //        CMPhotoPickerViewController* photoPickVC = [[CMPhotoPickerViewController alloc] init];
+        //        photoPickVC.delegate = self;
+        //        [photoPickVC show];
+        UIImagePickerController* imagePickerVC = [[UIImagePickerController alloc] init];
+        imagePickerVC.delegate = self;
+        imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        imagePickerVC.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        imagePickerVC.allowsEditing = NO;
+        [[[[UIApplication sharedApplication].windows firstObject] rootViewController] presentViewController:imagePickerVC animated:YES completion:nil];
     } break;
 
     default:
         break;
     }
 }
+
+#pragma mark - UIImagePickerControllerDelegate
+
+- (void)imagePickerController:(UIImagePickerController*)picker didFinishPickingMediaWithInfo:(NSDictionary*)info
+{
+    NSLog(@"当前的字典是 ：%@", info);
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    if (info) {
+        CMPhoto* photo = [[CMPhoto alloc] init];
+        if ([info objectForKey:@"UIImagePickerControllerReferenceURL"]) {
+            photo.localImage = YES;
+            photo.imageURLString = [info objectForKey:@"UIImagePickerControllerReferenceURL"];
+        }
+        else {
+            photo.localImage = NO;
+        }
+        photo.originalImage = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+        self.currentPhoto = photo;
+    }
+}
+
+#pragma MARK - UINavigationControllerDelegate
 
 /*
 // Only override drawRect: if you perform custom drawing.

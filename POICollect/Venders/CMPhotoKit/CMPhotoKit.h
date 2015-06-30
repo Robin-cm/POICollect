@@ -12,5 +12,6 @@
 #import "CMPhotoGroupPickerViewController.h"
 #import "CMPhotoAssets.h"
 #import "CMCameraViewController.h"
+#import "CMCamera.h"
 
 static NSString* PICKER_TAKE_DONE = @"PICKER_TAKE_DONE";

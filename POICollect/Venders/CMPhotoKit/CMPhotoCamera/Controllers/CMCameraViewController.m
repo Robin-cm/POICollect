@@ -11,10 +11,11 @@
 #import "CMCameraViewController.h"
 #import "CMCamera.h"
 #import "CMCameraView.h"
+#import "CMCameraPreviewView.h"
 
 static const CGFloat Toolbar_Bottom_Height = 60;
 
-@interface CMCameraViewController () <CMCameraViewDelegate>
+@interface CMCameraViewController () <CMCameraViewDelegate, CMCameraPreviewViewDelegate>
 
 //AVFoundation
 @property (nonatomic, strong) AVCaptureSession* session;
@@ -30,6 +31,7 @@ static const CGFloat Toolbar_Bottom_Height = 60;
 @property (nonatomic, strong) UIView* topView;
 @property (nonatomic, strong) UIView* controlView;
 @property (nonatomic, strong) CMCameraView* cameraView;
+@property (nonatomic, strong) CMCameraPreviewView* preview;
 
 @property (nonatomic, strong) CMCamera* currentCameraImage;
 
@@ -56,7 +58,7 @@ static const CGFloat Toolbar_Bottom_Height = 60;
 
 - (void)dealloc
 {
-    if (self.session) {
+    if (self.session && [self.session isRunning]) {
         [self.session stopRunning];
     }
 }
@@ -64,7 +66,7 @@ static const CGFloat Toolbar_Bottom_Height = 60;
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-    if (self.session) {
+    if (self.session && [self.session isRunning]) {
         [self.session stopRunning];
     }
 }
@@ -93,6 +95,7 @@ static const CGFloat Toolbar_Bottom_Height = 60;
 {
     [self configCameraView];
     [self configToolView];
+    [self configPreview];
 }
 
 - (void)configCameraView
@@ -151,6 +154,7 @@ static const CGFloat Toolbar_Bottom_Height = 60;
 
     UIButton* cancalBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     cancalBtn.frame = CGRectMake(btnMargin, 0, x, _controlView.frame.size.height);
+    [cancalBtn setTitleColor:kAppThemeSecondaryColor forState:UIControlStateNormal];
     [cancalBtn setTitle:@"取消" forState:UIControlStateNormal];
     [cancalBtn addTarget:self action:@selector(cancalBtnTaped:) forControlEvents:UIControlEventTouchUpInside];
     [_controlView addSubview:cancalBtn];
@@ -163,13 +167,22 @@ static const CGFloat Toolbar_Bottom_Height = 60;
     [camerabtn addTarget:self action:@selector(cameraBtnTaped:) forControlEvents:UIControlEventTouchUpInside];
     [_controlView addSubview:camerabtn];
 
-    UIButton* doneBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    doneBtn.frame = CGRectMake(CGRectGetWidth(self.view.frame) - 2 * btnMargin - btnWidth, 0, btnWidth, _controlView.frame.size.height);
-    [doneBtn setTitle:@"完成" forState:UIControlStateNormal];
-    [doneBtn addTarget:self action:@selector(doneBtnTaped:) forControlEvents:UIControlEventTouchUpInside];
-    [_controlView addSubview:doneBtn];
+    //    UIButton* doneBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    //    [doneBtn setTitleColor:kAppThemeSecondaryColor forState:UIControlStateNormal];
+    //    doneBtn.frame = CGRectMake(CGRectGetWidth(self.view.frame) - 2 * btnMargin - btnWidth, 0, btnWidth, _controlView.frame.size.height);
+    //    [doneBtn setTitle:@"完成" forState:UIControlStateNormal];
+    //    [doneBtn addTarget:self action:@selector(doneBtnTaped:) forControlEvents:UIControlEventTouchUpInside];
+    //    [_controlView addSubview:doneBtn];
 
     [self.view addSubview:_controlView];
+}
+
+- (void)configPreview
+{
+    if (!_preview) {
+        _preview = [[CMCameraPreviewView alloc] initWithParentViewController:self];
+        _preview.delegate = self;
+    }
 }
 
 - (UIButton*)getButtonWithImageName:(NSString*)imageName withPositionX:(CGFloat)positionX
@@ -195,10 +208,8 @@ static const CGFloat Toolbar_Bottom_Height = 60;
 
 - (UIImage*)fixOrientation:(UIImage*)srcImage
 {
-    if (srcImage.imageOrientation == UIImageOrientationUp) {
+    if (srcImage.imageOrientation == UIImageOrientationUp)
         return srcImage;
-    }
-
     CGAffineTransform transform = CGAffineTransformIdentity;
     switch (srcImage.imageOrientation) {
     case UIImageOrientationDown:
@@ -215,14 +226,11 @@ static const CGFloat Toolbar_Bottom_Height = 60;
 
     case UIImageOrientationRight:
     case UIImageOrientationRightMirrored:
-        transform = CGAffineTransformTranslate(transform, srcImage.size.width, 0);
+        transform = CGAffineTransformTranslate(transform, 0, srcImage.size.height);
         transform = CGAffineTransformRotate(transform, -M_PI_2);
         break;
-
     case UIImageOrientationUp:
     case UIImageOrientationUpMirrored:
-        transform = CGAffineTransformTranslate(transform, srcImage.size.width, 0);
-        transform = CGAffineTransformScale(transform, -1, 1);
         break;
     }
 
@@ -232,6 +240,7 @@ static const CGFloat Toolbar_Bottom_Height = 60;
         transform = CGAffineTransformTranslate(transform, srcImage.size.width, 0);
         transform = CGAffineTransformScale(transform, -1, 1);
         break;
+
     case UIImageOrientationLeftMirrored:
     case UIImageOrientationRightMirrored:
         transform = CGAffineTransformTranslate(transform, srcImage.size.height, 0);
@@ -244,15 +253,17 @@ static const CGFloat Toolbar_Bottom_Height = 60;
         break;
     }
 
-    CGContextRef ctx = CGBitmapContextCreate(NULL, srcImage.size.width, srcImage.size.height, CGImageGetBitsPerComponent(srcImage.CGImage), 0, CGImageGetColorSpace(srcImage.CGImage), CGImageGetBitmapInfo(srcImage.CGImage));
-
+    CGContextRef ctx = CGBitmapContextCreate(NULL, srcImage.size.width, srcImage.size.height,
+        CGImageGetBitsPerComponent(srcImage.CGImage), 0,
+        CGImageGetColorSpace(srcImage.CGImage),
+        CGImageGetBitmapInfo(srcImage.CGImage));
     CGContextConcatCTM(ctx, transform);
     switch (srcImage.imageOrientation) {
     case UIImageOrientationLeft:
     case UIImageOrientationLeftMirrored:
     case UIImageOrientationRight:
     case UIImageOrientationRightMirrored:
-        CGContextDrawImage(ctx, CGRectMake(0, 0, srcImage.size.width, srcImage.size.height), srcImage.CGImage);
+        CGContextDrawImage(ctx, CGRectMake(0, 0, srcImage.size.height, srcImage.size.width), srcImage.CGImage);
         break;
 
     default:
@@ -260,10 +271,10 @@ static const CGFloat Toolbar_Bottom_Height = 60;
         break;
     }
 
-    CGImageRef cgImage = CGBitmapContextCreateImage(ctx);
-    UIImage* img = [UIImage imageWithCGImage:cgImage];
+    CGImageRef cgimg = CGBitmapContextCreateImage(ctx);
+    UIImage* img = [UIImage imageWithCGImage:cgimg];
     CGContextRelease(ctx);
-    CGImageRelease(cgImage);
+    CGImageRelease(cgimg);
     return img;
 }
 
@@ -319,6 +330,8 @@ static const CGFloat Toolbar_Bottom_Height = 60;
                                                         _currentCameraImage.imagePath = path;
                                                         _currentCameraImage.thumbImage = [UIImage imageWithData:data];
 
+                                                        [self showCaptureImage];
+
                                                     }];
 }
 
@@ -339,7 +352,17 @@ static const CGFloat Toolbar_Bottom_Height = 60;
 
 - (void)showCaptureImage
 {
-    //    CMPhotoPreviewViewController* previewVC = [[CMPhotoPreviewViewController alloc] init];
+    [self stopCamera];
+    if (_preview) {
+        [_preview showPreviewWithPhoto:_currentCameraImage];
+    }
+}
+
+- (void)stopCamera
+{
+    if (self.session && [self.session isRunning]) {
+        [self.session stopRunning];
+    }
 }
 
 #pragma mark - 共有方法
@@ -422,14 +445,36 @@ static const CGFloat Toolbar_Bottom_Height = 60;
 {
     [self captureImage];
     [self captureAnimation];
+    //    [self stopCamera];
 }
 
 - (void)doneBtnTaped:(id)sender
 {
-    if (self.complete) {
-        self.complete(self.currentCameraImage);
+    //    if (self.complete) {
+    //        self.complete(self.currentCameraImage);
+    //    }
+    //    [self cancalBtnTaped:nil];
+}
+
+#pragma mark - CMCameraPreviewViewDelegate
+
+- (void)didCancalBtnTapedWithPreview:(CMCameraPreviewView*)preview
+{
+    NSLog(@"点击了取消了");
+    if (self.session && ![self.session isRunning]) {
+        [self.session startRunning];
     }
-    [self cancalBtnTaped:nil];
+}
+
+- (void)didDoneBtnTapedWithPreview:(CMCameraPreviewView*)preview currentPhoto:(CMCamera*)photo
+{
+    NSLog(@"点击了完成了");
+    if (photo) {
+        if (self.complete) {
+            self.complete(photo);
+        }
+        [self cancalBtnTaped:nil];
+    }
 }
 
 /*

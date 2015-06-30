@@ -23,13 +23,19 @@ static const CGFloat sDefaultPadding = 10;
 
 @property (nonatomic, strong) UIView* formBgView;
 
+@property (nonatomic, strong) UIView* imagePickerBgView;
+
 @property (nonatomic, strong) CMCustomWithButtonTextfield* poiNameTF;
 
 @property (nonatomic, strong) CMCustomWithButtonTextfield* poiAddressTF;
 
 @property (nonatomic, strong) CMDropdownButton* dropDownBtn;
 
-@property (nonatomic, strong) CMPhotoPickButton* pickBtn;
+@property (nonatomic, strong) CMPhotoPickButton* pickBtn1;
+
+@property (nonatomic, strong) CMPhotoPickButton* pickBtn2;
+
+@property (nonatomic, strong) CMPhotoPickButton* pickBtn3;
 
 @end
 
@@ -121,9 +127,26 @@ static const CGFloat sDefaultPadding = 10;
         [_formBgView addSubview:_dropDownBtn];
     }
 
-    if (!_pickBtn) {
-        _pickBtn = [[CMPhotoPickButton alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
-        [_scrollView addSubview:_pickBtn];
+    if (!_imagePickerBgView) {
+        _imagePickerBgView = [[UIView alloc] init];
+        _imagePickerBgView.backgroundColor = [UIColor colorWithHexString:@"0xCFDFE9"];
+        [_imagePickerBgView circleCornerWithRadius:4.f];
+        [_scrollView addSubview:_imagePickerBgView];
+    }
+
+    if (!_pickBtn1) {
+        _pickBtn1 = [[CMPhotoPickButton alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
+        [_imagePickerBgView addSubview:_pickBtn1];
+    }
+
+    if (!_pickBtn2) {
+        _pickBtn2 = [[CMPhotoPickButton alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
+        [_imagePickerBgView addSubview:_pickBtn2];
+    }
+
+    if (!_pickBtn3) {
+        _pickBtn3 = [[CMPhotoPickButton alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
+        [_imagePickerBgView addSubview:_pickBtn3];
     }
 
     //    [self relayoutSubviews];
@@ -188,10 +211,45 @@ static const CGFloat sDefaultPadding = 10;
         }];
     }
 
-    if (_pickBtn) {
-        [_pickBtn makeConstraints:^(MASConstraintMaker* make) {
+    if (_imagePickerBgView) {
+        [_imagePickerBgView makeConstraints:^(MASConstraintMaker* make) {
             make.top.equalTo(weakSelf.formBgView.bottom).offset(sDefaultPadding);
-            make.left.equalTo(weakSelf.scrollView.left).offset(sDefaultPadding * 2);
+            make.left.equalTo(weakSelf.scrollView.left).offset(sDefaultPadding);
+            make.right.equalTo(weakSelf.scrollView.right).offset(-sDefaultPadding);
+            //            make.bottom.equalTo(weakSelf.pickBtn3.bottom).offset(-sDefaultPadding);
+
+            //            make.height.equalTo(@100);
+        }];
+    }
+
+    if (_pickBtn1) {
+        [_pickBtn1 makeConstraints:^(MASConstraintMaker* make) {
+            make.top.equalTo(weakSelf.imagePickerBgView.top).offset(sDefaultPadding);
+            make.left.equalTo(weakSelf.imagePickerBgView.left).offset(sDefaultPadding);
+            make.right.equalTo(weakSelf.pickBtn2.left).offset(-sDefaultPadding);
+            make.bottom.equalTo(weakSelf.imagePickerBgView.bottom).offset(-sDefaultPadding);
+            make.width.and.height.equalTo(weakSelf.pickBtn2.width);
+        }];
+    }
+
+    if (_pickBtn2) {
+        [_pickBtn2 makeConstraints:^(MASConstraintMaker* make) {
+            make.top.equalTo(weakSelf.imagePickerBgView.top).offset(sDefaultPadding);
+            make.left.equalTo(weakSelf.pickBtn1.right).offset(sDefaultPadding);
+            make.right.equalTo(weakSelf.pickBtn3.left).offset(-sDefaultPadding);
+            make.bottom.equalTo(weakSelf.imagePickerBgView.bottom).offset(-sDefaultPadding);
+            make.width.and.height.equalTo(weakSelf.pickBtn3.width);
+        }];
+    }
+
+    if (_pickBtn3) {
+        [_pickBtn3 makeConstraints:^(MASConstraintMaker* make) {
+            make.top.equalTo(weakSelf.imagePickerBgView.top).offset(sDefaultPadding);
+            make.left.equalTo(weakSelf.pickBtn2.right).offset(sDefaultPadding);
+            make.right.equalTo(weakSelf.imagePickerBgView.right).offset(-sDefaultPadding);
+            //            make.width.equalTo(@[ weakSelf.pickBtn1.width, weakSelf.pickBtn2.width ]);
+            make.bottom.equalTo(weakSelf.imagePickerBgView.bottom).offset(-sDefaultPadding);
+            make.width.and.height.equalTo(weakSelf.pickBtn2.width);
         }];
     }
 }

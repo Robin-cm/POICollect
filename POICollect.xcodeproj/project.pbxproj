@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		262FC9B91B40F2E1005C12F4 /* CMCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 262FC9B81B40F2E1005C12F4 /* CMCameraViewController.m */; };
 		263B851F1B40EC480043B605 /* CMCameraView.m in Sources */ = {isa = PBXBuildFile; fileRef = 263B851E1B40EC480043B605 /* CMCameraView.m */; };
+		2695B4311B425C9C00CB34D0 /* CMPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 2695B4301B425C9C00CB34D0 /* CMPhoto.m */; };
+		2695B4341B42765400CB34D0 /* LoginModelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2695B4331B42765400CB34D0 /* LoginModelViewController.m */; };
+		2695B4411B428A9900CB34D0 /* TPKeyboardAvoidingCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2695B43A1B428A9900CB34D0 /* TPKeyboardAvoidingCollectionView.m */; };
+		2695B4421B428A9900CB34D0 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2695B43C1B428A9900CB34D0 /* TPKeyboardAvoidingScrollView.m */; };
+		2695B4431B428A9900CB34D0 /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2695B43E1B428A9900CB34D0 /* TPKeyboardAvoidingTableView.m */; };
+		2695B4441B428A9900CB34D0 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2695B4401B428A9900CB34D0 /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
 		26DA23701B412FBC00A26B86 /* CMCameraPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DA236F1B412FBC00A26B86 /* CMCameraPreviewView.m */; };
 		26DA23731B41329800A26B86 /* CMCameraPreviewImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DA23721B41329800A26B86 /* CMCameraPreviewImageScrollView.m */; };
 		26DA23761B4132C700A26B86 /* CMCameraPreviewTapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DA23751B4132C700A26B86 /* CMCameraPreviewTapView.m */; };
@@ -85,6 +91,18 @@
 		262FC9B81B40F2E1005C12F4 /* CMCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMCameraViewController.m; path = Venders/CMPhotoKit/CMPhotoCamera/Controllers/CMCameraViewController.m; sourceTree = "<group>"; };
 		263B851D1B40EC480043B605 /* CMCameraView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMCameraView.h; path = Venders/CMPhotoKit/CMPhotoCamera/Views/CMCameraView.h; sourceTree = "<group>"; };
 		263B851E1B40EC480043B605 /* CMCameraView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMCameraView.m; path = Venders/CMPhotoKit/CMPhotoCamera/Views/CMCameraView.m; sourceTree = "<group>"; };
+		2695B42F1B425C9C00CB34D0 /* CMPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMPhoto.h; path = Models/CMPhoto.h; sourceTree = "<group>"; };
+		2695B4301B425C9C00CB34D0 /* CMPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMPhoto.m; path = Models/CMPhoto.m; sourceTree = "<group>"; };
+		2695B4321B42765400CB34D0 /* LoginModelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginModelViewController.h; path = Controllers/Login/LoginModelViewController.h; sourceTree = "<group>"; };
+		2695B4331B42765400CB34D0 /* LoginModelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginModelViewController.m; path = Controllers/Login/LoginModelViewController.m; sourceTree = "<group>"; };
+		2695B4391B428A9900CB34D0 /* TPKeyboardAvoidingCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TPKeyboardAvoidingCollectionView.h; path = Venders/TPKeyboardAvoiding/TPKeyboardAvoidingCollectionView.h; sourceTree = "<group>"; };
+		2695B43A1B428A9900CB34D0 /* TPKeyboardAvoidingCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TPKeyboardAvoidingCollectionView.m; path = Venders/TPKeyboardAvoiding/TPKeyboardAvoidingCollectionView.m; sourceTree = "<group>"; };
+		2695B43B1B428A9900CB34D0 /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TPKeyboardAvoidingScrollView.h; path = Venders/TPKeyboardAvoiding/TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
+		2695B43C1B428A9900CB34D0 /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TPKeyboardAvoidingScrollView.m; path = Venders/TPKeyboardAvoiding/TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
+		2695B43D1B428A9900CB34D0 /* TPKeyboardAvoidingTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TPKeyboardAvoidingTableView.h; path = Venders/TPKeyboardAvoiding/TPKeyboardAvoidingTableView.h; sourceTree = "<group>"; };
+		2695B43E1B428A9900CB34D0 /* TPKeyboardAvoidingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TPKeyboardAvoidingTableView.m; path = Venders/TPKeyboardAvoiding/TPKeyboardAvoidingTableView.m; sourceTree = "<group>"; };
+		2695B43F1B428A9900CB34D0 /* UIScrollView+TPKeyboardAvoidingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+TPKeyboardAvoidingAdditions.h"; path = "Venders/TPKeyboardAvoiding/UIScrollView+TPKeyboardAvoidingAdditions.h"; sourceTree = "<group>"; };
+		2695B4401B428A9900CB34D0 /* UIScrollView+TPKeyboardAvoidingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+TPKeyboardAvoidingAdditions.m"; path = "Venders/TPKeyboardAvoiding/UIScrollView+TPKeyboardAvoidingAdditions.m"; sourceTree = "<group>"; };
 		26DA236E1B412FBC00A26B86 /* CMCameraPreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMCameraPreviewView.h; path = Venders/CMPhotoKit/CMPhotoCamera/Views/CMCameraPreviewView.h; sourceTree = "<group>"; };
 		26DA236F1B412FBC00A26B86 /* CMCameraPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMCameraPreviewView.m; path = Venders/CMPhotoKit/CMPhotoCamera/Views/CMCameraPreviewView.m; sourceTree = "<group>"; };
 		26DA23711B41329800A26B86 /* CMCameraPreviewImageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMCameraPreviewImageScrollView.h; path = Venders/CMPhotoKit/CMPhotoCamera/Views/CMCameraPreviewImageScrollView.h; sourceTree = "<group>"; };
@@ -220,6 +238,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2695B4351B428A2200CB34D0 /* TPKeyboardAvoiding */ = {
+			isa = PBXGroup;
+			children = (
+				2695B4391B428A9900CB34D0 /* TPKeyboardAvoidingCollectionView.h */,
+				2695B43A1B428A9900CB34D0 /* TPKeyboardAvoidingCollectionView.m */,
+				2695B43B1B428A9900CB34D0 /* TPKeyboardAvoidingScrollView.h */,
+				2695B43C1B428A9900CB34D0 /* TPKeyboardAvoidingScrollView.m */,
+				2695B43D1B428A9900CB34D0 /* TPKeyboardAvoidingTableView.h */,
+				2695B43E1B428A9900CB34D0 /* TPKeyboardAvoidingTableView.m */,
+				2695B43F1B428A9900CB34D0 /* UIScrollView+TPKeyboardAvoidingAdditions.h */,
+				2695B4401B428A9900CB34D0 /* UIScrollView+TPKeyboardAvoidingAdditions.m */,
+			);
+			name = TPKeyboardAvoiding;
+			sourceTree = "<group>";
+		};
 		26E454101B40DD61000C49CE /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -356,6 +389,8 @@
 		7658F4971B32607400E41A0B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				2695B42F1B425C9C00CB34D0 /* CMPhoto.h */,
+				2695B4301B425C9C00CB34D0 /* CMPhoto.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -372,6 +407,7 @@
 		7658F4991B32607F00E41A0B /* Venders */ = {
 			isa = PBXGroup;
 			children = (
+				2695B4351B428A2200CB34D0 /* TPKeyboardAvoiding */,
 				76615EB51B3D4C8E0064BCB0 /* CMPhotoKit */,
 				7625BA691B3C015C00D53440 /* CMDropDownButton */,
 				766CC7071B32A3A200DCFFB4 /* CMRoundSegmentControl */,
@@ -427,6 +463,8 @@
 				766CC7051B329BB200DCFFB4 /* LoginViewController.m */,
 				A1CD5A451B384490008BC36A /* TestAnimationViewController.h */,
 				A1CD5A461B384490008BC36A /* TestAnimationViewController.m */,
+				2695B4321B42765400CB34D0 /* LoginModelViewController.h */,
+				2695B4331B42765400CB34D0 /* LoginModelViewController.m */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -790,6 +828,7 @@
 				26DA23701B412FBC00A26B86 /* CMCameraPreviewView.m in Sources */,
 				A1CD5A401B37C27D008BC36A /* UIImage+Expanded.m in Sources */,
 				76615EB11B3CFF7E0064BCB0 /* UITableView+Expanded.m in Sources */,
+				2695B4431B428A9900CB34D0 /* TPKeyboardAvoidingTableView.m in Sources */,
 				A1F484431B3DAFC100FD49A4 /* CMPhotoPickerGroupTableViewCell.m in Sources */,
 				26DA23761B4132C700A26B86 /* CMCameraPreviewTapView.m in Sources */,
 				76615EC11B3D4E840064BCB0 /* CMPhotoPickerViewController.m in Sources */,
@@ -797,8 +836,10 @@
 				A1CD5A4D1B384B4F008BC36A /* CMCustomPopAnimation.m in Sources */,
 				76E7CBFD1B3BC70C00D0BBED /* CMCustomWithButtonTextfield.m in Sources */,
 				A14771421B3F90B500A3F60C /* CMPhotoAssets.m in Sources */,
+				2695B4421B428A9900CB34D0 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				7658F4A31B3261EE00E41A0B /* BaseViewController.m in Sources */,
 				766CC7031B328DA800DCFFB4 /* CMThemeKit.m in Sources */,
+				2695B4341B42765400CB34D0 /* LoginModelViewController.m in Sources */,
 				7658F4701B325FFF00E41A0B /* main.m in Sources */,
 				263B851F1B40EC480043B605 /* CMCameraView.m in Sources */,
 				A1F4843F1B3DAAD200FD49A4 /* CMPhotoPickerGroup.m in Sources */,
@@ -823,8 +864,11 @@
 				A14771451B3F949A00A3F60C /* CMPhotoPickerFooterCollectionReusableView.m in Sources */,
 				7658F4761B325FFF00E41A0B /* POICollect.xcdatamodeld in Sources */,
 				A1CD5A441B384155008BC36A /* CMCustomAnimation.m in Sources */,
+				2695B4311B425C9C00CB34D0 /* CMPhoto.m in Sources */,
+				2695B4441B428A9900CB34D0 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				76615EB41B3D41150064BCB0 /* CMPhotoPickButton.m in Sources */,
 				766CC70A1B32A3E000DCFFB4 /* CMRoundSegmentControl.m in Sources */,
+				2695B4411B428A9900CB34D0 /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				76615EAE1B3CFC6C0064BCB0 /* CMDropdownButtonTableViewCell.m in Sources */,
 				7685EA711B3A445B00AD1645 /* CMCustomCircleAnimation.m in Sources */,
 				76E7CBFA1B3B897A00D0BBED /* CMSimpleCheckBoxBtn.m in Sources */,

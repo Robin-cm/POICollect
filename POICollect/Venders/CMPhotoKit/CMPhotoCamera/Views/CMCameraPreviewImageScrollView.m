@@ -70,6 +70,7 @@
     if (_currentPhoto.fullScreenImage) {
         _previewImageView.image = _currentPhoto.fullScreenImage;
     }
+    //    _previewImageView.image = [UIImage imageNamed:@"main_bg"];
     [self displayImage];
 }
 
@@ -169,7 +170,7 @@
         self.contentOffset = CGPointMake((imageSize.width * self.zoomScale - boundsSize.width) / 2.0,
             (imageSize.height * self.zoomScale - boundsSize.height) / 2.0);
         // Disable scrolling initially until the first pinch to fix issues with swiping on an initally zoomed in photo
-        self.scrollEnabled = NO;
+        self.scrollEnabled = YES;
     }
 
     // Layout
@@ -194,6 +195,20 @@
     return zoomScale;
 }
 
+- (void)handleDoubleTap:(CGPoint)touchPoint
+{
+    if (self.zoomScale != self.minimumZoomScale && self.zoomScale != [self initialZoomScaleWithMinScale]) {
+        [self setZoomScale:self.minimumZoomScale animated:YES];
+        self.contentSize = CGSizeMake(self.frame.size.width, 0);
+    }
+    else {
+        CGFloat newZoomScale = ((self.maximumZoomScale + self.minimumZoomScale) / 2.f);
+        CGFloat xsize = self.bounds.size.width / newZoomScale;
+        CGFloat ysize = self.bounds.size.height / newZoomScale;
+        [self zoomToRect:CGRectMake(touchPoint.x - xsize / 2.0, touchPoint.y - ysize / 2.0, xsize, ysize) animated:YES];
+    }
+}
+
 #pragma mark - UIScrollViewDelegate
 
 - (UIView*)viewForZoomingInScrollView:(UIScrollView*)scrollView
@@ -205,6 +220,38 @@
 {
     [self setNeedsLayout];
     [self layoutIfNeeded];
+}
+
+#pragma mark - CMCameraPreviewTapViewDelegate
+
+/**
+ *  双击
+ *
+ *  @param view  视图
+ *  @param touch 点击事件对象
+ */
+- (void)view:(UIView*)view doubleTapDetected:(UITouch*)touch
+{
+    CGFloat touchX = [touch locationInView:view].x;
+    CGFloat touchY = [touch locationInView:view].y;
+    touchX *= 1 / self.zoomScale;
+    touchY *= 1 / self.zoomScale;
+    touchX += self.contentOffset.x;
+    touchY += self.contentOffset.y;
+    [self handleDoubleTap:CGPointMake(touchX, touchY)];
+}
+
+#pragma mark - CMCameraPreviewImageViewDelegate
+
+/**
+ *  双击
+ *
+ *  @param imageView 图片
+ *  @param touch     事件对象
+ */
+- (void)imageView:(UIImageView*)imageView doubleTapDetected:(UITouch*)touch
+{
+    [self handleDoubleTap:[touch locationInView:imageView]];
 }
 
 /*

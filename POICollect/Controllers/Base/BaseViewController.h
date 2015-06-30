@@ -34,4 +34,11 @@
 
 - (void)showBackgroundImage:(BOOL)isShow;
 
+- (void)checkIslogin;
+
+/**
+ *  去到登陆页面 
+ */
+- (void)sendToLogin;
+
 @end

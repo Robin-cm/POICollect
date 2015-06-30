@@ -7,6 +7,7 @@
 //
 
 #import "BaseViewController.h"
+#import "LoginModelViewController.h"
 
 #import "UIImage+Expanded.h"
 
@@ -101,6 +102,22 @@
  */
 - (void)popViewControllerAnimated:(BOOL)animation
 {
+}
+
+- (void)checkIslogin
+{
+    BOOL isLogin = NO;
+    if (!isLogin) {
+        [self sendToLogin];
+    }
+}
+
+/**
+ *  去到登陆页面
+ */
+- (void)sendToLogin
+{
+    [[[[UIApplication sharedApplication].windows firstObject] rootViewController] presentViewController:[[LoginModelViewController alloc] init] animated:YES completion:nil];
 }
 
 @end
