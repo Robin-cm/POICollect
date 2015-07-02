@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#define kDefaultDoneNotifacitionidentifier  @"closeLoginModel"
+
 @interface LoginView : UIView
 
 @end

@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+static const NSString *sDefaultDoneNotifacitionidentifier = @"closeLoginModel";
+
+
 @interface RegisterView : UIView
 
 @end

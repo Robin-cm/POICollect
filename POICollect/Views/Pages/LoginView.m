@@ -147,8 +147,15 @@ static const CGFloat padding = 20;
         _loginBtn.titleLabel.font = [UIFont systemFontOfSize:14];
         _loginBtn.normalBackgroundColor = kAppThemeThirdColor;
         _loginBtn.highlightBackgroundColor = [kAppThemeThirdColor darkenedColorWithBrightnessFloat:0.8];
+        [_loginBtn addTarget:self action:@selector(loginBtnTaped:) forControlEvents:UIControlEventTouchUpInside];
         [_whiteBg addSubview:_loginBtn];
     }
+}
+
+- (void) loginBtnTaped:(id)sender
+{
+    NSLog(@"点击登录了");
+    [[NSNotificationCenter defaultCenter] postNotificationName:kDefaultDoneNotifacitionidentifier object:nil];
 }
 
 /*

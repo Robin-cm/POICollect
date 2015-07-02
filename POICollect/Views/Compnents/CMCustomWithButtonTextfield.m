@@ -15,7 +15,7 @@
 #define kDefaultNormalForeColor [UIColor colorWithHexString:@"0xffffff"]
 
 static const CGFloat sDefaultCornerRadius = 4.0;
-static const CGFloat sDefaultBorderWidth = 1.0;
+//static const CGFloat sDefaultBorderWidth = 1.0;
 
 static const CGFloat sDefaultPadding = 10;
 

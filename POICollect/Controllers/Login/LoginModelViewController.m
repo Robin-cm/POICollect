@@ -8,6 +8,7 @@
 
 #import "LoginModelViewController.h"
 #import "LoginViewController.h"
+#import "LoginView.h"
 
 @interface LoginModelViewController ()
 
@@ -20,12 +21,18 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self configView];
+    [self configNotification];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - 初始化子视图
@@ -37,6 +44,17 @@
     navVC.view.frame = self.view.bounds;
     [self addChildViewController:navVC];
     [self.view addSubview:navVC.view];
+}
+
+
+- (void)configNotification
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(closeModel:) name:kDefaultDoneNotifacitionidentifier object:nil];
+}
+
+- (void) closeModel:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 /*

@@ -15,6 +15,22 @@
 		2695B4421B428A9900CB34D0 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2695B43C1B428A9900CB34D0 /* TPKeyboardAvoidingScrollView.m */; };
 		2695B4431B428A9900CB34D0 /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2695B43E1B428A9900CB34D0 /* TPKeyboardAvoidingTableView.m */; };
 		2695B4441B428A9900CB34D0 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2695B4401B428A9900CB34D0 /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
+		26B98D6B1B44CCB000FE83BB /* AIFService.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B98D6A1B44CCB000FE83BB /* AIFService.m */; };
+		26B98D6E1B44D0C000FE83BB /* AIFServiceFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B98D6D1B44D0C000FE83BB /* AIFServiceFactory.m */; };
+		26B98D741B44D6B900FE83BB /* RTAPIBaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B98D731B44D6B900FE83BB /* RTAPIBaseManager.m */; };
+		26B98D771B44F5D600FE83BB /* AIFURLResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B98D761B44F5D600FE83BB /* AIFURLResponse.m */; };
+		26B98D7A1B44FEA800FE83BB /* AIFApiProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B98D791B44FEA800FE83BB /* AIFApiProxy.m */; };
+		26B98D7E1B4507A300FE83BB /* AIFRequestGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B98D7D1B4507A300FE83BB /* AIFRequestGenerator.m */; };
+		26B98D811B450B5300FE83BB /* AIFCommonParamsGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B98D801B450B5300FE83BB /* AIFCommonParamsGenerator.m */; };
+		26B98D841B450C6300FE83BB /* AIFAppContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B98D831B450C6300FE83BB /* AIFAppContext.m */; };
+		26B98D971B452DC400FE83BB /* NSDictionary+AXNetworkingMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B98D901B452DC400FE83BB /* NSDictionary+AXNetworkingMethods.m */; };
+		26B98D981B452DC400FE83BB /* NSObject+AXNetworkingMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B98D921B452DC400FE83BB /* NSObject+AXNetworkingMethods.m */; };
+		26B98D991B452DC400FE83BB /* NSURLRequest+AIFNetworkingMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B98D941B452DC400FE83BB /* NSURLRequest+AIFNetworkingMethods.m */; };
+		26B98D9A1B452DC400FE83BB /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B98D961B452DC400FE83BB /* UIDevice+IdentifierAddition.m */; };
+		26B98D9E1B452E4900FE83BB /* AIFLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B98D9D1B452E4900FE83BB /* AIFLogger.m */; };
+		26B98DA11B4530E400FE83BB /* NSMutableString+AXNetworkingMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B98DA01B4530E400FE83BB /* NSMutableString+AXNetworkingMethods.m */; };
+		26B98DA41B453EB700FE83BB /* NSArray+AXNetworkingMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B98DA31B453EB700FE83BB /* NSArray+AXNetworkingMethods.m */; };
+		26B98DA71B453F1D00FE83BB /* NSString+AXNetworkingMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B98DA61B453F1D00FE83BB /* NSString+AXNetworkingMethods.m */; };
 		26DA23701B412FBC00A26B86 /* CMCameraPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DA236F1B412FBC00A26B86 /* CMCameraPreviewView.m */; };
 		26DA23731B41329800A26B86 /* CMCameraPreviewImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DA23721B41329800A26B86 /* CMCameraPreviewImageScrollView.m */; };
 		26DA23761B4132C700A26B86 /* CMCameraPreviewTapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DA23751B4132C700A26B86 /* CMCameraPreviewTapView.m */; };
@@ -103,6 +119,40 @@
 		2695B43E1B428A9900CB34D0 /* TPKeyboardAvoidingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TPKeyboardAvoidingTableView.m; path = Venders/TPKeyboardAvoiding/TPKeyboardAvoidingTableView.m; sourceTree = "<group>"; };
 		2695B43F1B428A9900CB34D0 /* UIScrollView+TPKeyboardAvoidingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+TPKeyboardAvoidingAdditions.h"; path = "Venders/TPKeyboardAvoiding/UIScrollView+TPKeyboardAvoidingAdditions.h"; sourceTree = "<group>"; };
 		2695B4401B428A9900CB34D0 /* UIScrollView+TPKeyboardAvoidingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+TPKeyboardAvoidingAdditions.m"; path = "Venders/TPKeyboardAvoiding/UIScrollView+TPKeyboardAvoidingAdditions.m"; sourceTree = "<group>"; };
+		26B98D691B44CCB000FE83BB /* AIFService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIFService.h; path = Networks/Services/AIFService.h; sourceTree = "<group>"; };
+		26B98D6A1B44CCB000FE83BB /* AIFService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIFService.m; path = Networks/Services/AIFService.m; sourceTree = "<group>"; };
+		26B98D6C1B44D0C000FE83BB /* AIFServiceFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIFServiceFactory.h; path = Networks/Services/AIFServiceFactory.h; sourceTree = "<group>"; };
+		26B98D6D1B44D0C000FE83BB /* AIFServiceFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIFServiceFactory.m; path = Networks/Services/AIFServiceFactory.m; sourceTree = "<group>"; };
+		26B98D6F1B44D41700FE83BB /* AIFNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AIFNetworking.h; path = Networks/AIFNetworking.h; sourceTree = "<group>"; };
+		26B98D701B44D48700FE83BB /* AIFNetworkingConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIFNetworkingConfiguration.h; path = Networks/AIFNetworkingConfiguration.h; sourceTree = "<group>"; };
+		26B98D721B44D6B900FE83BB /* RTAPIBaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RTAPIBaseManager.h; path = Networks/Components/RTAPIBaseManager.h; sourceTree = "<group>"; };
+		26B98D731B44D6B900FE83BB /* RTAPIBaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RTAPIBaseManager.m; path = Networks/Components/RTAPIBaseManager.m; sourceTree = "<group>"; };
+		26B98D751B44F5D600FE83BB /* AIFURLResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIFURLResponse.h; path = Networks/Components/AIFURLResponse.h; sourceTree = "<group>"; };
+		26B98D761B44F5D600FE83BB /* AIFURLResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIFURLResponse.m; path = Networks/Components/AIFURLResponse.m; sourceTree = "<group>"; };
+		26B98D781B44FEA800FE83BB /* AIFApiProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIFApiProxy.h; path = Networks/Components/AIFApiProxy.h; sourceTree = "<group>"; };
+		26B98D791B44FEA800FE83BB /* AIFApiProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIFApiProxy.m; path = Networks/Components/AIFApiProxy.m; sourceTree = "<group>"; };
+		26B98D7C1B4507A300FE83BB /* AIFRequestGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIFRequestGenerator.h; path = Networks/Assistants/AIFRequestGenerator.h; sourceTree = "<group>"; };
+		26B98D7D1B4507A300FE83BB /* AIFRequestGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIFRequestGenerator.m; path = Networks/Assistants/AIFRequestGenerator.m; sourceTree = "<group>"; };
+		26B98D7F1B450B5300FE83BB /* AIFCommonParamsGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIFCommonParamsGenerator.h; path = Networks/Assistants/AIFCommonParamsGenerator.h; sourceTree = "<group>"; };
+		26B98D801B450B5300FE83BB /* AIFCommonParamsGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIFCommonParamsGenerator.m; path = Networks/Assistants/AIFCommonParamsGenerator.m; sourceTree = "<group>"; };
+		26B98D821B450C6300FE83BB /* AIFAppContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIFAppContext.h; path = Networks/Components/AIFAppContext.h; sourceTree = "<group>"; };
+		26B98D831B450C6300FE83BB /* AIFAppContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIFAppContext.m; path = Networks/Components/AIFAppContext.m; sourceTree = "<group>"; };
+		26B98D8F1B452DC400FE83BB /* NSDictionary+AXNetworkingMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+AXNetworkingMethods.h"; path = "Utils/Categories/Networks/NSDictionary+AXNetworkingMethods.h"; sourceTree = "<group>"; };
+		26B98D901B452DC400FE83BB /* NSDictionary+AXNetworkingMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+AXNetworkingMethods.m"; path = "Utils/Categories/Networks/NSDictionary+AXNetworkingMethods.m"; sourceTree = "<group>"; };
+		26B98D911B452DC400FE83BB /* NSObject+AXNetworkingMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+AXNetworkingMethods.h"; path = "Utils/Categories/Networks/NSObject+AXNetworkingMethods.h"; sourceTree = "<group>"; };
+		26B98D921B452DC400FE83BB /* NSObject+AXNetworkingMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+AXNetworkingMethods.m"; path = "Utils/Categories/Networks/NSObject+AXNetworkingMethods.m"; sourceTree = "<group>"; };
+		26B98D931B452DC400FE83BB /* NSURLRequest+AIFNetworkingMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSURLRequest+AIFNetworkingMethods.h"; path = "Utils/Categories/Networks/NSURLRequest+AIFNetworkingMethods.h"; sourceTree = "<group>"; };
+		26B98D941B452DC400FE83BB /* NSURLRequest+AIFNetworkingMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSURLRequest+AIFNetworkingMethods.m"; path = "Utils/Categories/Networks/NSURLRequest+AIFNetworkingMethods.m"; sourceTree = "<group>"; };
+		26B98D951B452DC400FE83BB /* UIDevice+IdentifierAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIDevice+IdentifierAddition.h"; path = "Utils/Categories/Networks/UIDevice+IdentifierAddition.h"; sourceTree = "<group>"; };
+		26B98D961B452DC400FE83BB /* UIDevice+IdentifierAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIDevice+IdentifierAddition.m"; path = "Utils/Categories/Networks/UIDevice+IdentifierAddition.m"; sourceTree = "<group>"; };
+		26B98D9C1B452E4900FE83BB /* AIFLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIFLogger.h; path = Networks/LogComponents/AIFLogger.h; sourceTree = "<group>"; };
+		26B98D9D1B452E4900FE83BB /* AIFLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIFLogger.m; path = Networks/LogComponents/AIFLogger.m; sourceTree = "<group>"; };
+		26B98D9F1B4530E400FE83BB /* NSMutableString+AXNetworkingMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableString+AXNetworkingMethods.h"; path = "Utils/Categories/Networks/NSMutableString+AXNetworkingMethods.h"; sourceTree = "<group>"; };
+		26B98DA01B4530E400FE83BB /* NSMutableString+AXNetworkingMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableString+AXNetworkingMethods.m"; path = "Utils/Categories/Networks/NSMutableString+AXNetworkingMethods.m"; sourceTree = "<group>"; };
+		26B98DA21B453EB700FE83BB /* NSArray+AXNetworkingMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+AXNetworkingMethods.h"; path = "Utils/Categories/Networks/NSArray+AXNetworkingMethods.h"; sourceTree = "<group>"; };
+		26B98DA31B453EB700FE83BB /* NSArray+AXNetworkingMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+AXNetworkingMethods.m"; path = "Utils/Categories/Networks/NSArray+AXNetworkingMethods.m"; sourceTree = "<group>"; };
+		26B98DA51B453F1D00FE83BB /* NSString+AXNetworkingMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+AXNetworkingMethods.h"; path = "Utils/Categories/Networks/NSString+AXNetworkingMethods.h"; sourceTree = "<group>"; };
+		26B98DA61B453F1D00FE83BB /* NSString+AXNetworkingMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+AXNetworkingMethods.m"; path = "Utils/Categories/Networks/NSString+AXNetworkingMethods.m"; sourceTree = "<group>"; };
 		26DA236E1B412FBC00A26B86 /* CMCameraPreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMCameraPreviewView.h; path = Venders/CMPhotoKit/CMPhotoCamera/Views/CMCameraPreviewView.h; sourceTree = "<group>"; };
 		26DA236F1B412FBC00A26B86 /* CMCameraPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMCameraPreviewView.m; path = Venders/CMPhotoKit/CMPhotoCamera/Views/CMCameraPreviewView.m; sourceTree = "<group>"; };
 		26DA23711B41329800A26B86 /* CMCameraPreviewImageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMCameraPreviewImageScrollView.h; path = Venders/CMPhotoKit/CMPhotoCamera/Views/CMCameraPreviewImageScrollView.h; sourceTree = "<group>"; };
@@ -253,6 +303,86 @@
 			name = TPKeyboardAvoiding;
 			sourceTree = "<group>";
 		};
+		26B98D671B44CC2A00FE83BB /* Networks */ = {
+			isa = PBXGroup;
+			children = (
+				26B98D9B1B452E1200FE83BB /* LogComponents */,
+				26B98D7B1B45028700FE83BB /* Assistants */,
+				26B98D711B44D63900FE83BB /* Components */,
+				26B98D681B44CC5200FE83BB /* Services */,
+				26B98D6F1B44D41700FE83BB /* AIFNetworking.h */,
+				26B98D701B44D48700FE83BB /* AIFNetworkingConfiguration.h */,
+			);
+			name = Networks;
+			sourceTree = "<group>";
+		};
+		26B98D681B44CC5200FE83BB /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				26B98D691B44CCB000FE83BB /* AIFService.h */,
+				26B98D6A1B44CCB000FE83BB /* AIFService.m */,
+				26B98D6C1B44D0C000FE83BB /* AIFServiceFactory.h */,
+				26B98D6D1B44D0C000FE83BB /* AIFServiceFactory.m */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		26B98D711B44D63900FE83BB /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				26B98D721B44D6B900FE83BB /* RTAPIBaseManager.h */,
+				26B98D731B44D6B900FE83BB /* RTAPIBaseManager.m */,
+				26B98D751B44F5D600FE83BB /* AIFURLResponse.h */,
+				26B98D761B44F5D600FE83BB /* AIFURLResponse.m */,
+				26B98D781B44FEA800FE83BB /* AIFApiProxy.h */,
+				26B98D791B44FEA800FE83BB /* AIFApiProxy.m */,
+				26B98D821B450C6300FE83BB /* AIFAppContext.h */,
+				26B98D831B450C6300FE83BB /* AIFAppContext.m */,
+			);
+			name = Components;
+			sourceTree = "<group>";
+		};
+		26B98D7B1B45028700FE83BB /* Assistants */ = {
+			isa = PBXGroup;
+			children = (
+				26B98D7C1B4507A300FE83BB /* AIFRequestGenerator.h */,
+				26B98D7D1B4507A300FE83BB /* AIFRequestGenerator.m */,
+				26B98D7F1B450B5300FE83BB /* AIFCommonParamsGenerator.h */,
+				26B98D801B450B5300FE83BB /* AIFCommonParamsGenerator.m */,
+			);
+			name = Assistants;
+			sourceTree = "<group>";
+		};
+		26B98D8E1B452DAF00FE83BB /* Networks */ = {
+			isa = PBXGroup;
+			children = (
+				26B98DA51B453F1D00FE83BB /* NSString+AXNetworkingMethods.h */,
+				26B98DA61B453F1D00FE83BB /* NSString+AXNetworkingMethods.m */,
+				26B98DA21B453EB700FE83BB /* NSArray+AXNetworkingMethods.h */,
+				26B98DA31B453EB700FE83BB /* NSArray+AXNetworkingMethods.m */,
+				26B98D9F1B4530E400FE83BB /* NSMutableString+AXNetworkingMethods.h */,
+				26B98DA01B4530E400FE83BB /* NSMutableString+AXNetworkingMethods.m */,
+				26B98D8F1B452DC400FE83BB /* NSDictionary+AXNetworkingMethods.h */,
+				26B98D901B452DC400FE83BB /* NSDictionary+AXNetworkingMethods.m */,
+				26B98D911B452DC400FE83BB /* NSObject+AXNetworkingMethods.h */,
+				26B98D921B452DC400FE83BB /* NSObject+AXNetworkingMethods.m */,
+				26B98D931B452DC400FE83BB /* NSURLRequest+AIFNetworkingMethods.h */,
+				26B98D941B452DC400FE83BB /* NSURLRequest+AIFNetworkingMethods.m */,
+				26B98D951B452DC400FE83BB /* UIDevice+IdentifierAddition.h */,
+				26B98D961B452DC400FE83BB /* UIDevice+IdentifierAddition.m */,
+			);
+			name = Networks;
+			sourceTree = "<group>";
+		};
+		26B98D9B1B452E1200FE83BB /* LogComponents */ = {
+			isa = PBXGroup;
+			children = (
+				26B98D9C1B452E4900FE83BB /* AIFLogger.h */,
+				26B98D9D1B452E4900FE83BB /* AIFLogger.m */,
+			);
+			name = LogComponents;
+			sourceTree = "<group>";
+		};
 		26E454101B40DD61000C49CE /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -333,6 +463,7 @@
 		7658F46C1B325FFF00E41A0B /* POICollect */ = {
 			isa = PBXGroup;
 			children = (
+				26B98D671B44CC2A00FE83BB /* Networks */,
 				7658F49C1B32610700E41A0B /* Classes */,
 				7658F49B1B32609100E41A0B /* Resources */,
 				7658F49A1B32608600E41A0B /* Controllers */,
@@ -472,6 +603,7 @@
 		7658F4A61B32691D00E41A0B /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				26B98D8E1B452DAF00FE83BB /* Networks */,
 				7658F4A71B32698E00E41A0B /* UIColor+Expanded.h */,
 				7658F4A81B32698E00E41A0B /* UIColor+Expanded.m */,
 				A100F86E1B35B5B100271B2E /* UIView+CMExpened.h */,
@@ -825,7 +957,9 @@
 				A1CD5A471B384490008BC36A /* TestAnimationViewController.m in Sources */,
 				764C8C9B1B38E5FF00FF2F51 /* MainPOIListViewController.m in Sources */,
 				A1CB74781B3694C400EF062B /* CMSimpleTextView.m in Sources */,
+				26B98D7A1B44FEA800FE83BB /* AIFApiProxy.m in Sources */,
 				26DA23701B412FBC00A26B86 /* CMCameraPreviewView.m in Sources */,
+				26B98DA41B453EB700FE83BB /* NSArray+AXNetworkingMethods.m in Sources */,
 				A1CD5A401B37C27D008BC36A /* UIImage+Expanded.m in Sources */,
 				76615EB11B3CFF7E0064BCB0 /* UITableView+Expanded.m in Sources */,
 				2695B4431B428A9900CB34D0 /* TPKeyboardAvoidingTableView.m in Sources */,
@@ -833,11 +967,14 @@
 				26DA23761B4132C700A26B86 /* CMCameraPreviewTapView.m in Sources */,
 				76615EC11B3D4E840064BCB0 /* CMPhotoPickerViewController.m in Sources */,
 				7658F4731B325FFF00E41A0B /* AppDelegate.m in Sources */,
+				26B98D6B1B44CCB000FE83BB /* AIFService.m in Sources */,
 				A1CD5A4D1B384B4F008BC36A /* CMCustomPopAnimation.m in Sources */,
+				26B98DA11B4530E400FE83BB /* NSMutableString+AXNetworkingMethods.m in Sources */,
 				76E7CBFD1B3BC70C00D0BBED /* CMCustomWithButtonTextfield.m in Sources */,
 				A14771421B3F90B500A3F60C /* CMPhotoAssets.m in Sources */,
 				2695B4421B428A9900CB34D0 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				7658F4A31B3261EE00E41A0B /* BaseViewController.m in Sources */,
+				26B98D771B44F5D600FE83BB /* AIFURLResponse.m in Sources */,
 				766CC7031B328DA800DCFFB4 /* CMThemeKit.m in Sources */,
 				2695B4341B42765400CB34D0 /* LoginModelViewController.m in Sources */,
 				7658F4701B325FFF00E41A0B /* main.m in Sources */,
@@ -845,10 +982,14 @@
 				A1F4843F1B3DAAD200FD49A4 /* CMPhotoPickerGroup.m in Sources */,
 				769BD68C1B3419660089FB39 /* RegisterView.m in Sources */,
 				7625BA6C1B3C01B600D53440 /* CMDropdownButton.m in Sources */,
+				26B98DA71B453F1D00FE83BB /* NSString+AXNetworkingMethods.m in Sources */,
+				26B98D7E1B4507A300FE83BB /* AIFRequestGenerator.m in Sources */,
 				26DA23791B41368D00A26B86 /* CMCameraPreviewImageView.m in Sources */,
 				766CC7061B329BB200DCFFB4 /* LoginViewController.m in Sources */,
+				26B98D9E1B452E4900FE83BB /* AIFLogger.m in Sources */,
 				764C8CA51B393C5200FF2F51 /* NSString+Expanded.m in Sources */,
 				76386F0A1B33A4B800E8A115 /* CMRoundSegmentedThumb.m in Sources */,
+				26B98D741B44D6B900FE83BB /* RTAPIBaseManager.m in Sources */,
 				A147713F1B3F8F7F00A3F60C /* CMPhotoPickerConllectionView.m in Sources */,
 				A1F4843C1B3DA62A00FD49A4 /* CMPhotoPickerDatas.m in Sources */,
 				A14771481B3F9AD600A3F60C /* CMPhotoPickerCollectionViewCell.m in Sources */,
@@ -856,26 +997,33 @@
 				764C8CA21B3924DD00FF2F51 /* MainListTableViewCell.m in Sources */,
 				A1CD5A3D1B37B34B008BC36A /* CMSimpleButton.m in Sources */,
 				7685EA741B3A45BA00AD1645 /* CMCustomBaseAnimation.m in Sources */,
+				26B98D981B452DC400FE83BB /* NSObject+AXNetworkingMethods.m in Sources */,
+				26B98D6E1B44D0C000FE83BB /* AIFServiceFactory.m in Sources */,
 				26DA23731B41329800A26B86 /* CMCameraPreviewImageScrollView.m in Sources */,
 				262FC9B91B40F2E1005C12F4 /* CMCameraViewController.m in Sources */,
 				76615EAB1B3CDD190064BCB0 /* CMDropdownButtonArrowView.m in Sources */,
 				A147713C1B3F8BD100A3F60C /* CMPhotoPickerAssetsViewController.m in Sources */,
 				26E454151B40DDD4000C49CE /* CMCamera.m in Sources */,
 				A14771451B3F949A00A3F60C /* CMPhotoPickerFooterCollectionReusableView.m in Sources */,
+				26B98D991B452DC400FE83BB /* NSURLRequest+AIFNetworkingMethods.m in Sources */,
 				7658F4761B325FFF00E41A0B /* POICollect.xcdatamodeld in Sources */,
 				A1CD5A441B384155008BC36A /* CMCustomAnimation.m in Sources */,
+				26B98D841B450C6300FE83BB /* AIFAppContext.m in Sources */,
 				2695B4311B425C9C00CB34D0 /* CMPhoto.m in Sources */,
 				2695B4441B428A9900CB34D0 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				76615EB41B3D41150064BCB0 /* CMPhotoPickButton.m in Sources */,
 				766CC70A1B32A3E000DCFFB4 /* CMRoundSegmentControl.m in Sources */,
 				2695B4411B428A9900CB34D0 /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				76615EAE1B3CFC6C0064BCB0 /* CMDropdownButtonTableViewCell.m in Sources */,
+				26B98D811B450B5300FE83BB /* AIFCommonParamsGenerator.m in Sources */,
 				7685EA711B3A445B00AD1645 /* CMCustomCircleAnimation.m in Sources */,
 				76E7CBFA1B3B897A00D0BBED /* CMSimpleCheckBoxBtn.m in Sources */,
 				764C8C9E1B38E68D00FF2F51 /* CMRoundBtn.m in Sources */,
+				26B98D971B452DC400FE83BB /* NSDictionary+AXNetworkingMethods.m in Sources */,
 				A147714B1B3F9C2F00A3F60C /* CMPhotoPickerImageView.m in Sources */,
 				769BD6891B34194F0089FB39 /* LoginView.m in Sources */,
 				7658F4A91B32698E00E41A0B /* UIColor+Expanded.m in Sources */,
+				26B98D9A1B452DC400FE83BB /* UIDevice+IdentifierAddition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
