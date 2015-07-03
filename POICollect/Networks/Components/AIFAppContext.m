@@ -91,6 +91,11 @@
 
 #pragma mark - Getter
 
+- (NSString*)appName
+{
+    return @"POI上传";
+}
+
 - (UIDevice*)device
 {
     if (!_device) {

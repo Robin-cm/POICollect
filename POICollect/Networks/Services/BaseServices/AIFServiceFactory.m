@@ -7,6 +7,17 @@
 //
 
 #import "AIFServiceFactory.h"
+#import "TestService.h"
+#import "UserLoginService.h"
+#import "UserRegistService.h"
+
+#pragma mark - Service的名称
+
+NSString* const kAIFServiceTest = @"kAIFServiceTest";
+
+NSString* const kAIFServiceUserLogin = @"kAIFServiceUserLogin";
+
+NSString* const kAIFServiceUserRegist = @"kAIFServiceUserRegist";
 
 @interface AIFServiceFactory ()
 
@@ -60,6 +71,18 @@
 
 - (AIFService<AIFServiceProtocol>*)newServiceWithIdentifier:(NSString*)identifier
 {
+    if ([identifier isEqualToString:kAIFServiceTest]) {
+        return [[TestService alloc] init];
+    }
+
+    if ([identifier isEqualToString:kAIFServiceUserLogin]) {
+        return [[UserLoginService alloc] init];
+    }
+
+    if ([identifier isEqualToString:kAIFServiceUserRegist]) {
+        return [[UserRegistService alloc] init];
+    }
+
     return nil;
 }
 

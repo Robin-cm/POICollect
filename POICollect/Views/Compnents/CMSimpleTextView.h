@@ -7,10 +7,11 @@
 //
 
 typedef enum {
-    Email = 100,
-    Password = 101,
-    Number = 102,
-    EnglishOnly = 103
+    CMSimpleTextFieldTypeEmail = 100,
+    CMSimpleTextFieldTypePassword = 101,
+    CMSimpleTextFieldTypeNumber = 102,
+    CMSimpleTextFieldTypeEnglishOnly = 103,
+    CMSimpleTextFieldTypeUserName = 104
 } CMSimpleTextFieldType;
 
 @interface CMSimpleTextView : UITextField
@@ -39,6 +40,8 @@ typedef enum {
 
 @property (nonatomic, assign) UIImage* icon;
 
+@property (nonatomic, copy, readonly) NSString* error;
+
 #pragma mark - 初始化方法
 
 - (id)initWithPlaceholder:(NSString*)placeholder;
@@ -48,5 +51,7 @@ typedef enum {
 - (id)initWithPlaceholder:(NSString*)placeholder andWithInputType:(CMSimpleTextFieldType)inputType;
 
 - (id)initWithIcon:(UIImage*)icon andWithPlaceholder:(NSString*)placeholder andWithInputType:(CMSimpleTextFieldType)inputType;
+
+- (NSString*)validate;
 
 @end

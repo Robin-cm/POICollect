@@ -10,11 +10,18 @@
 #import "CMSimpleTextView.h"
 #import "CMSimpleButton.h"
 #import "TPKeyboardAvoidingScrollView.h"
+#import "AIFNetworking.h"
+#import "TestAPIManager.h"
+#import "LoginViewController.h"
+#import "UserRegistManager.h"
+#import "UIView+Toast.h"
+#import "UIDevice+IdentifierAddition.h"
 
 static const CGFloat padding = 20;
 
-@interface RegisterView () {
-}
+@interface RegisterView ()
+
+@property (nonatomic, strong) LoginViewController* parentViewController;
 
 @property (nonatomic, strong) CMSimpleTextView* registNameTextView;
 
@@ -30,14 +37,32 @@ static const CGFloat padding = 20;
 
 @property (nonatomic, strong) UIView* whiteBg;
 
+@property (nonatomic, strong) UserRegistManager* userRegistManager;
+
 @end
 
 @implementation RegisterView
 
-- (instancetype)init
+#pragma mark - Getter
+
+- (UserRegistManager*)userRegistManager
+{
+    if (!_userRegistManager) {
+        _userRegistManager = [[UserRegistManager alloc] init];
+        _userRegistManager.delegate = self;
+        _userRegistManager.paramSource = self;
+        _userRegistManager.validator = self;
+    }
+    return _userRegistManager;
+}
+
+#pragma mark - 生命周期
+
+- (instancetype)initWithParentViewController:(LoginViewController*)parentViewController
 {
     self = [super init];
     if (self) {
+        _parentViewController = parentViewController;
         self.backgroundColor = [UIColor clearColor];
         [self configView];
     }
@@ -77,7 +102,7 @@ static const CGFloat padding = 20;
             make.bottom.equalTo(weakSelf.registPassTextView.top).offset(-padding);
             make.left.equalTo(weakSelf.whiteBg.left).offset(padding);
             make.right.equalTo(weakSelf.whiteBg.right).offset(-padding);
-            make.height.equalTo(@35);
+            make.height.equalTo(@40);
         }];
     }
 
@@ -86,7 +111,7 @@ static const CGFloat padding = 20;
             make.bottom.equalTo(weakSelf.registPassCConfirmTextView.top).offset(-padding);
             make.left.equalTo(weakSelf.whiteBg.left).offset(padding);
             make.right.equalTo(weakSelf.whiteBg.right).offset(-padding);
-            make.height.equalTo(@35);
+            make.height.equalTo(@40);
         }];
     }
 
@@ -95,7 +120,7 @@ static const CGFloat padding = 20;
             make.bottom.equalTo(weakSelf.registBtn.top).offset(-padding);
             make.left.equalTo(weakSelf.whiteBg.left).offset(padding);
             make.right.equalTo(weakSelf.whiteBg.right).offset(-padding);
-            make.height.equalTo(@35);
+            make.height.equalTo(@40);
         }];
     }
 
@@ -104,7 +129,7 @@ static const CGFloat padding = 20;
             make.left.equalTo(weakSelf.whiteBg.left).offset(padding);
             make.right.equalTo(weakSelf.whiteBg.right).offset(-padding);
             make.bottom.equalTo(weakSelf.whiteBg.bottom).offset(-padding);
-            make.height.equalTo(@35);
+            make.height.equalTo(@40);
         }];
     }
 }
@@ -137,21 +162,21 @@ static const CGFloat padding = 20;
     }
 
     if (!_registNameTextView) {
-        _registNameTextView = [[CMSimpleTextView alloc] initWithIcon:[UIImage imageNamed:@"name_ico"] andWithPlaceholder:@"用户名" andWithInputType:Email];
+        _registNameTextView = [[CMSimpleTextView alloc] initWithIcon:[UIImage imageNamed:@"name_ico"] andWithPlaceholder:@"用户名" andWithInputType:CMSimpleTextFieldTypeUserName];
         _registNameTextView.borderColor = kAppThemeLoginTextfieldBorderColor;
         _registNameTextView.borderWidth = 2;
         [_whiteBg addSubview:_registNameTextView];
     }
 
     if (!_registPassTextView) {
-        _registPassTextView = [[CMSimpleTextView alloc] initWithIcon:[UIImage imageNamed:@"pass_ico"] andWithPlaceholder:@"密码" andWithInputType:Email];
+        _registPassTextView = [[CMSimpleTextView alloc] initWithIcon:[UIImage imageNamed:@"pass_ico"] andWithPlaceholder:@"密码" andWithInputType:CMSimpleTextFieldTypePassword];
         _registPassTextView.borderColor = kAppThemeLoginTextfieldBorderColor;
         _registPassTextView.borderWidth = 2;
         [_whiteBg addSubview:_registPassTextView];
     }
 
     if (!_registPassCConfirmTextView) {
-        _registPassCConfirmTextView = [[CMSimpleTextView alloc] initWithIcon:[UIImage imageNamed:@"pass_ico"] andWithPlaceholder:@"确认密码" andWithInputType:Email];
+        _registPassCConfirmTextView = [[CMSimpleTextView alloc] initWithIcon:[UIImage imageNamed:@"pass_ico"] andWithPlaceholder:@"确认密码" andWithInputType:CMSimpleTextFieldTypePassword];
         _registPassCConfirmTextView.borderColor = kAppThemeLoginTextfieldBorderColor;
         _registPassCConfirmTextView.borderWidth = 2;
         [_whiteBg addSubview:_registPassCConfirmTextView];
@@ -164,16 +189,47 @@ static const CGFloat padding = 20;
         _registBtn.titleLabel.font = [UIFont systemFontOfSize:14];
         _registBtn.normalBackgroundColor = kAppThemeThirdColor;
         _registBtn.highlightBackgroundColor = [kAppThemeThirdColor darkenedColorWithBrightnessFloat:0.8];
+        [_registBtn addTarget:self action:@selector(registBtnTaped:) forControlEvents:UIControlEventTouchUpInside];
         [_whiteBg addSubview:_registBtn];
     }
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+#pragma mark - 事件
+
+- (void)registBtnTaped:(id)sender
+{
+    [[TestAPIManager sharedInstance] loadData];
 }
-*/
+
+#pragma mark - RTAPIManagerValidator
+
+- (BOOL)manager:(RTAPIBaseManager*)manager isCorrectWithCallBackData:(NSDictionary*)data
+{
+    return YES;
+}
+
+- (BOOL)manager:(RTAPIBaseManager*)manager isCorrectWithParamsData:(NSDictionary*)data
+{
+    return YES;
+}
+
+#pragma mark - RTAPIManagerParamSourceDelegate
+
+- (NSDictionary*)paramsForAPI:(RTAPIBaseManager*)manager
+{
+    return @{};
+}
+
+#pragma mark - RTAPIManagerApiCallBackDelegate
+
+- (void)managerCallAPIDidSuccess:(RTAPIBaseManager*)manager
+{
+    NSLog(@"成功返回");
+}
+
+- (void)managerCallAPIDidFailed:(RTAPIBaseManager*)manager
+{
+    NSLog(@"请求失败");
+}
 
 @end

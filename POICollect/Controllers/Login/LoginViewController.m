@@ -61,7 +61,7 @@
 - (void)initializeData
 {
     _titles = @[ @"登陆", @"注册" ];
-    _views = @[ [[LoginView alloc] init], [[RegisterView alloc] init] ];
+    _views = @[ [[LoginView alloc] initWithParentViewController:self], [[RegisterView alloc] initWithParentViewController:self] ];
 }
 
 - (void)initializeView

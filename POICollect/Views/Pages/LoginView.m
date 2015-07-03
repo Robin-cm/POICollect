@@ -11,11 +11,17 @@
 #import "CMSimpleTextView.h"
 #import "CMSimpleButton.h"
 #import "TPKeyboardAvoidingScrollView.h"
+#import "LoginViewController.h"
+#import "LoginUser.h"
+#import "UserLoginManager.h"
+#import "UIView+Toast.h"
+#import "UIDevice+IdentifierAddition.h"
 
 static const CGFloat padding = 20;
 
-@interface LoginView () {
-}
+@interface LoginView ()
+
+@property (nonatomic, strong) LoginViewController* parentViewController;
 
 @property (nonatomic, strong) CMSimpleTextView* loginNameTextView;
 
@@ -29,14 +35,42 @@ static const CGFloat padding = 20;
 
 @property (nonatomic, strong) UIView* contentView;
 
+@property (nonatomic, strong) LoginUser* loginUser;
+
+@property (nonatomic, strong) UserLoginManager* userLoginManager;
+
 @end
 
 @implementation LoginView
 
-- (instancetype)init
+#pragma mark - Getter
+
+- (LoginUser*)loginUser
+{
+    if (!_loginUser) {
+        _loginUser = [[LoginUser alloc] init];
+    }
+    return _loginUser;
+}
+
+- (UserLoginManager*)userLoginManager
+{
+    if (!_userLoginManager) {
+        _userLoginManager = [[UserLoginManager alloc] init];
+        _userLoginManager.paramSource = self;
+        _userLoginManager.validator = self;
+        _userLoginManager.delegate = self;
+    }
+    return _userLoginManager;
+}
+
+#pragma mark - 生命周期
+
+- (instancetype)initWithParentViewController:(LoginViewController*)parentViewController
 {
     self = [super init];
     if (self) {
+        _parentViewController = parentViewController;
         self.backgroundColor = [UIColor clearColor];
         [self configView];
     }
@@ -76,7 +110,7 @@ static const CGFloat padding = 20;
             make.bottom.equalTo(weakSelf.loginPassTextView.top).offset(-padding);
             make.left.equalTo(weakSelf.whiteBg.left).offset(padding);
             make.right.equalTo(weakSelf.whiteBg.right).offset(-padding);
-            make.height.equalTo(@35);
+            make.height.equalTo(@40);
         }];
     }
 
@@ -86,7 +120,7 @@ static const CGFloat padding = 20;
             make.left.equalTo(weakSelf.whiteBg.left).offset(padding);
             make.right.equalTo(weakSelf.whiteBg.right).offset(-padding);
             make.bottom.equalTo(weakSelf.loginBtn.top).offset(-padding);
-            make.height.equalTo(@35);
+            make.height.equalTo(@40);
         }];
     }
 
@@ -95,7 +129,7 @@ static const CGFloat padding = 20;
             make.left.equalTo(weakSelf.whiteBg.left).offset(padding);
             make.right.equalTo(weakSelf.whiteBg.right).offset(-padding);
             make.bottom.equalTo(weakSelf.whiteBg.bottom).offset(-padding);
-            make.height.equalTo(@35);
+            make.height.equalTo(@40);
         }];
     }
 }
@@ -127,14 +161,14 @@ static const CGFloat padding = 20;
     }
 
     if (!_loginNameTextView) {
-        _loginNameTextView = [[CMSimpleTextView alloc] initWithIcon:[UIImage imageNamed:@"name_ico"] andWithPlaceholder:@"用户名" andWithInputType:Email];
+        _loginNameTextView = [[CMSimpleTextView alloc] initWithIcon:[UIImage imageNamed:@"name_ico"] andWithPlaceholder:@"用户名" andWithInputType:CMSimpleTextFieldTypeUserName];
         _loginNameTextView.borderColor = kAppThemeLoginTextfieldBorderColor;
         _loginNameTextView.borderWidth = 2;
         _loginNameTextView.foucsBorderWidth = 2;
         [_whiteBg addSubview:_loginNameTextView];
     }
     if (!_loginPassTextView) {
-        _loginPassTextView = [[CMSimpleTextView alloc] initWithIcon:[UIImage imageNamed:@"pass_ico"] andWithPlaceholder:@"密码" andWithInputType:Password];
+        _loginPassTextView = [[CMSimpleTextView alloc] initWithIcon:[UIImage imageNamed:@"pass_ico"] andWithPlaceholder:@"密码" andWithInputType:CMSimpleTextFieldTypePassword];
         _loginPassTextView.borderColor = kAppThemeLoginTextfieldBorderColor;
         _loginPassTextView.borderWidth = 2;
         _loginPassTextView.foucsBorderWidth = 2;
@@ -152,18 +186,80 @@ static const CGFloat padding = 20;
     }
 }
 
-- (void) loginBtnTaped:(id)sender
+- (void)loginBtnTaped:(id)sender
 {
     NSLog(@"点击登录了");
-    [[NSNotificationCenter defaultCenter] postNotificationName:kDefaultDoneNotifacitionidentifier object:nil];
+    //    [[NSNotificationCenter defaultCenter] postNotificationName:kDefaultDoneNotifacitionidentifier object:nil];
+
+    self.loginUser.loginName = _loginNameTextView.text;
+    self.loginUser.loginPass = _loginPassTextView.text;
+
+    if (![[_loginNameTextView validate] isEqualToString:@""] || ![[_loginPassTextView validate] isEqualToString:@""]) {
+        return;
+    }
+
+    //验证通过
+    _loginBtn.enabled = NO;
+    [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
+
+    [self.userLoginManager loadData];
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+#pragma mark - RTAPIManagerValidator
+
+- (BOOL)manager:(RTAPIBaseManager*)manager isCorrectWithCallBackData:(NSDictionary*)data
+{
+    return YES;
 }
-*/
+
+/**
+ *  验证请求的参数的方法。当调用API的参数是来自用户输入的时候，验证时必要的。
+ *  当调用API的参数不是来自用户输入的时候，这个方法可以写成直接返回true。
+ *
+ *  @param manager manager对象
+ *  @param data    参数的字典数据
+ *
+ *  @return 是否验证通过
+ */
+- (BOOL)manager:(RTAPIBaseManager*)manager isCorrectWithParamsData:(NSDictionary*)data
+{
+    return YES;
+}
+
+#pragma marl - RTAPIManagerParamSourceDelegate
+
+- (NSDictionary*)paramsForAPI:(RTAPIBaseManager*)manager
+{
+    return @{
+        @"loginName" : self.loginUser.loginName,
+        @"loginPwd" : self.loginUser.loginPass,
+        @"clientid" : [UIDevice identifierForVendor]
+    };
+}
+
+#pragma mark - RTAPIManagerApiCallBackDelegate
+
+- (void)managerCallAPIDidSuccess:(RTAPIBaseManager*)manager
+{
+
+    NSLog(@"成功返回数据");
+    _loginBtn.enabled = YES;
+    if ([manager isKindOfClass:[UserLoginManager class]]) {
+        NSDictionary* result = [manager fetchDataWithReformer:nil];
+        NSLog(@"成功返回了数据了: %@", result);
+        [self.parentViewController.view makeToast:[result objectForKey:@"msg"]];
+    }
+}
+
+/**
+ *  请求失败回调函数
+ *
+ *  @param manager manager对象
+ */
+- (void)managerCallAPIDidFailed:(RTAPIBaseManager*)manager
+{
+    _loginBtn.enabled = YES;
+    NSLog(@"请求失败 : %@", manager.errorMessage);
+}
 
 @end

@@ -55,7 +55,7 @@
     AIFService* service = [[AIFServiceFactory sharedInstance] serviceWithIdentifier:serviceIdentifier];
     NSMutableDictionary* allParams = [NSMutableDictionary dictionaryWithDictionary:[AIFCommonParamsGenerator commonParamsDictionary]];
     [allParams addEntriesFromDictionary:requestParams];
-    NSString* urlString = [NSString stringWithFormat:@"http://%@/%@?%@", service.apiBaseURL, methodName, [allParams AIF_urlParamsStringSignature:NO]];
+    NSString* urlString = [NSString stringWithFormat:@"%@/%@?%@", service.apiBaseURL, methodName, [allParams AIF_urlParamsStringSignature:NO]];
     NSMutableURLRequest* request = [self.httpRequestSerializer requestWithMethod:@"GET" URLString:urlString parameters:nil error:nil];
     request.timeoutInterval = kAIFNetworkingTimeoutSeconds;
     request.requestParams = requestParams;
@@ -66,7 +66,7 @@
 - (NSURLRequest*)generatePOSTRequestWithServiceIdentifier:(NSString*)serviceIdentifier requestParams:(NSDictionary*)requestParams methodName:(NSString*)methodName
 {
     AIFService* service = [[AIFServiceFactory sharedInstance] serviceWithIdentifier:serviceIdentifier];
-    NSString* urlString = [NSString stringWithFormat:@"http://%@/%@?%@", service.apiBaseURL, methodName, [[AIFCommonParamsGenerator commonParamsDictionary] AIF_urlParamsStringSignature:NO]];
+    NSString* urlString = [NSString stringWithFormat:@"%@/%@?%@", service.apiBaseURL, methodName, [[AIFCommonParamsGenerator commonParamsDictionary] AIF_urlParamsStringSignature:NO]];
     NSURLRequest* request = [self.httpRequestSerializer requestWithMethod:@"POST" URLString:urlString parameters:requestParams error:nil];
     request.requestParams = requestParams;
     [AIFLogger logDebugInfoWithRequest:request apiName:methodName service:service requestParams:requestParams httpMethod:@"POST"];

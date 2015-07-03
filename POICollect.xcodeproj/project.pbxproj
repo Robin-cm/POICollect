@@ -9,14 +9,26 @@
 /* Begin PBXBuildFile section */
 		262FC9B91B40F2E1005C12F4 /* CMCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 262FC9B81B40F2E1005C12F4 /* CMCameraViewController.m */; };
 		263B851F1B40EC480043B605 /* CMCameraView.m in Sources */ = {isa = PBXBuildFile; fileRef = 263B851E1B40EC480043B605 /* CMCameraView.m */; };
+		26782C841B46218000104330 /* AIFLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 26782C831B46218000104330 /* AIFLogger.m */; };
+		26782C871B46219100104330 /* AIFCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 26782C861B46219100104330 /* AIFCache.m */; };
+		26782C8A1B4637E100104330 /* AIFCachedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 26782C891B4637E100104330 /* AIFCachedObject.m */; };
+		26782C901B463F4A00104330 /* AIFService.m in Sources */ = {isa = PBXBuildFile; fileRef = 26782C8D1B463F4A00104330 /* AIFService.m */; };
+		26782C911B463F4A00104330 /* AIFServiceFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 26782C8F1B463F4A00104330 /* AIFServiceFactory.m */; };
+		26782C951B463FAC00104330 /* TestService.m in Sources */ = {isa = PBXBuildFile; fileRef = 26782C941B463FAC00104330 /* TestService.m */; };
+		26782C991B4641BF00104330 /* TestAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26782C981B4641BF00104330 /* TestAPIManager.m */; };
+		26782C9D1B46575500104330 /* UserLoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26782C9C1B46575500104330 /* UserLoginManager.m */; };
+		26782CA11B4657F000104330 /* UserLoginService.m in Sources */ = {isa = PBXBuildFile; fileRef = 26782CA01B4657F000104330 /* UserLoginService.m */; };
+		26782CA41B46581A00104330 /* UserRegistService.m in Sources */ = {isa = PBXBuildFile; fileRef = 26782CA31B46581A00104330 /* UserRegistService.m */; };
+		26782CA71B46596A00104330 /* UserRegistManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26782CA61B46596A00104330 /* UserRegistManager.m */; };
+		26782CAB1B46676700104330 /* LoginUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 26782CAA1B46676700104330 /* LoginUser.m */; };
+		26782CAE1B46690800104330 /* ViewModelClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 26782CAD1B46690800104330 /* ViewModelClass.m */; };
+		26782CB21B4685FE00104330 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 26782CB11B4685FE00104330 /* UIView+Toast.m */; };
 		2695B4311B425C9C00CB34D0 /* CMPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 2695B4301B425C9C00CB34D0 /* CMPhoto.m */; };
 		2695B4341B42765400CB34D0 /* LoginModelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2695B4331B42765400CB34D0 /* LoginModelViewController.m */; };
 		2695B4411B428A9900CB34D0 /* TPKeyboardAvoidingCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2695B43A1B428A9900CB34D0 /* TPKeyboardAvoidingCollectionView.m */; };
 		2695B4421B428A9900CB34D0 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2695B43C1B428A9900CB34D0 /* TPKeyboardAvoidingScrollView.m */; };
 		2695B4431B428A9900CB34D0 /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2695B43E1B428A9900CB34D0 /* TPKeyboardAvoidingTableView.m */; };
 		2695B4441B428A9900CB34D0 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2695B4401B428A9900CB34D0 /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
-		26B98D6B1B44CCB000FE83BB /* AIFService.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B98D6A1B44CCB000FE83BB /* AIFService.m */; };
-		26B98D6E1B44D0C000FE83BB /* AIFServiceFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B98D6D1B44D0C000FE83BB /* AIFServiceFactory.m */; };
 		26B98D741B44D6B900FE83BB /* RTAPIBaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B98D731B44D6B900FE83BB /* RTAPIBaseManager.m */; };
 		26B98D771B44F5D600FE83BB /* AIFURLResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B98D761B44F5D600FE83BB /* AIFURLResponse.m */; };
 		26B98D7A1B44FEA800FE83BB /* AIFApiProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B98D791B44FEA800FE83BB /* AIFApiProxy.m */; };
@@ -27,7 +39,6 @@
 		26B98D981B452DC400FE83BB /* NSObject+AXNetworkingMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B98D921B452DC400FE83BB /* NSObject+AXNetworkingMethods.m */; };
 		26B98D991B452DC400FE83BB /* NSURLRequest+AIFNetworkingMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B98D941B452DC400FE83BB /* NSURLRequest+AIFNetworkingMethods.m */; };
 		26B98D9A1B452DC400FE83BB /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B98D961B452DC400FE83BB /* UIDevice+IdentifierAddition.m */; };
-		26B98D9E1B452E4900FE83BB /* AIFLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B98D9D1B452E4900FE83BB /* AIFLogger.m */; };
 		26B98DA11B4530E400FE83BB /* NSMutableString+AXNetworkingMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B98DA01B4530E400FE83BB /* NSMutableString+AXNetworkingMethods.m */; };
 		26B98DA41B453EB700FE83BB /* NSArray+AXNetworkingMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B98DA31B453EB700FE83BB /* NSArray+AXNetworkingMethods.m */; };
 		26B98DA71B453F1D00FE83BB /* NSString+AXNetworkingMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B98DA61B453F1D00FE83BB /* NSString+AXNetworkingMethods.m */; };
@@ -107,6 +118,34 @@
 		262FC9B81B40F2E1005C12F4 /* CMCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMCameraViewController.m; path = Venders/CMPhotoKit/CMPhotoCamera/Controllers/CMCameraViewController.m; sourceTree = "<group>"; };
 		263B851D1B40EC480043B605 /* CMCameraView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMCameraView.h; path = Venders/CMPhotoKit/CMPhotoCamera/Views/CMCameraView.h; sourceTree = "<group>"; };
 		263B851E1B40EC480043B605 /* CMCameraView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMCameraView.m; path = Venders/CMPhotoKit/CMPhotoCamera/Views/CMCameraView.m; sourceTree = "<group>"; };
+		26782C821B46218000104330 /* AIFLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIFLogger.h; path = Networks/Components/LogComponents/AIFLogger.h; sourceTree = "<group>"; };
+		26782C831B46218000104330 /* AIFLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIFLogger.m; path = Networks/Components/LogComponents/AIFLogger.m; sourceTree = "<group>"; };
+		26782C851B46219100104330 /* AIFCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIFCache.h; path = Networks/Components/CacheComponents/AIFCache.h; sourceTree = "<group>"; };
+		26782C861B46219100104330 /* AIFCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIFCache.m; path = Networks/Components/CacheComponents/AIFCache.m; sourceTree = "<group>"; };
+		26782C881B4637E100104330 /* AIFCachedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIFCachedObject.h; path = Networks/Components/CacheComponents/AIFCachedObject.h; sourceTree = "<group>"; };
+		26782C891B4637E100104330 /* AIFCachedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIFCachedObject.m; path = Networks/Components/CacheComponents/AIFCachedObject.m; sourceTree = "<group>"; };
+		26782C8C1B463F4A00104330 /* AIFService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIFService.h; path = Networks/Services/BaseServices/AIFService.h; sourceTree = "<group>"; };
+		26782C8D1B463F4A00104330 /* AIFService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIFService.m; path = Networks/Services/BaseServices/AIFService.m; sourceTree = "<group>"; };
+		26782C8E1B463F4A00104330 /* AIFServiceFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIFServiceFactory.h; path = Networks/Services/BaseServices/AIFServiceFactory.h; sourceTree = "<group>"; };
+		26782C8F1B463F4A00104330 /* AIFServiceFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIFServiceFactory.m; path = Networks/Services/BaseServices/AIFServiceFactory.m; sourceTree = "<group>"; };
+		26782C931B463FAC00104330 /* TestService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestService.h; path = Networks/Services/TestServices/TestService.h; sourceTree = "<group>"; };
+		26782C941B463FAC00104330 /* TestService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestService.m; path = Networks/Services/TestServices/TestService.m; sourceTree = "<group>"; };
+		26782C971B4641BF00104330 /* TestAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestAPIManager.h; path = Networks/Components/TestComponents/TestAPIManager.h; sourceTree = "<group>"; };
+		26782C981B4641BF00104330 /* TestAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestAPIManager.m; path = Networks/Components/TestComponents/TestAPIManager.m; sourceTree = "<group>"; };
+		26782C9B1B46575500104330 /* UserLoginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserLoginManager.h; path = Networks/Components/UserComponents/UserLoginManager.h; sourceTree = "<group>"; };
+		26782C9C1B46575500104330 /* UserLoginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserLoginManager.m; path = Networks/Components/UserComponents/UserLoginManager.m; sourceTree = "<group>"; };
+		26782C9F1B4657F000104330 /* UserLoginService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserLoginService.h; path = Networks/Services/UserServices/UserLoginService.h; sourceTree = "<group>"; };
+		26782CA01B4657F000104330 /* UserLoginService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserLoginService.m; path = Networks/Services/UserServices/UserLoginService.m; sourceTree = "<group>"; };
+		26782CA21B46581A00104330 /* UserRegistService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserRegistService.h; path = Networks/Services/UserServices/UserRegistService.h; sourceTree = "<group>"; };
+		26782CA31B46581A00104330 /* UserRegistService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserRegistService.m; path = Networks/Services/UserServices/UserRegistService.m; sourceTree = "<group>"; };
+		26782CA51B46596A00104330 /* UserRegistManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserRegistManager.h; path = Networks/Components/UserComponents/UserRegistManager.h; sourceTree = "<group>"; };
+		26782CA61B46596A00104330 /* UserRegistManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserRegistManager.m; path = Networks/Components/UserComponents/UserRegistManager.m; sourceTree = "<group>"; };
+		26782CA91B46676700104330 /* LoginUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginUser.h; sourceTree = "<group>"; };
+		26782CAA1B46676700104330 /* LoginUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginUser.m; sourceTree = "<group>"; };
+		26782CAC1B46690800104330 /* ViewModelClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewModelClass.h; path = ViewModels/ViewModelClass.h; sourceTree = "<group>"; };
+		26782CAD1B46690800104330 /* ViewModelClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewModelClass.m; path = ViewModels/ViewModelClass.m; sourceTree = "<group>"; };
+		26782CB01B4685FE00104330 /* UIView+Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Toast.h"; path = "Utils/Categories/Toast/UIView+Toast.h"; sourceTree = "<group>"; };
+		26782CB11B4685FE00104330 /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Toast.m"; path = "Utils/Categories/Toast/UIView+Toast.m"; sourceTree = "<group>"; };
 		2695B42F1B425C9C00CB34D0 /* CMPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMPhoto.h; path = Models/CMPhoto.h; sourceTree = "<group>"; };
 		2695B4301B425C9C00CB34D0 /* CMPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMPhoto.m; path = Models/CMPhoto.m; sourceTree = "<group>"; };
 		2695B4321B42765400CB34D0 /* LoginModelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginModelViewController.h; path = Controllers/Login/LoginModelViewController.h; sourceTree = "<group>"; };
@@ -119,10 +158,6 @@
 		2695B43E1B428A9900CB34D0 /* TPKeyboardAvoidingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TPKeyboardAvoidingTableView.m; path = Venders/TPKeyboardAvoiding/TPKeyboardAvoidingTableView.m; sourceTree = "<group>"; };
 		2695B43F1B428A9900CB34D0 /* UIScrollView+TPKeyboardAvoidingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+TPKeyboardAvoidingAdditions.h"; path = "Venders/TPKeyboardAvoiding/UIScrollView+TPKeyboardAvoidingAdditions.h"; sourceTree = "<group>"; };
 		2695B4401B428A9900CB34D0 /* UIScrollView+TPKeyboardAvoidingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+TPKeyboardAvoidingAdditions.m"; path = "Venders/TPKeyboardAvoiding/UIScrollView+TPKeyboardAvoidingAdditions.m"; sourceTree = "<group>"; };
-		26B98D691B44CCB000FE83BB /* AIFService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIFService.h; path = Networks/Services/AIFService.h; sourceTree = "<group>"; };
-		26B98D6A1B44CCB000FE83BB /* AIFService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIFService.m; path = Networks/Services/AIFService.m; sourceTree = "<group>"; };
-		26B98D6C1B44D0C000FE83BB /* AIFServiceFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIFServiceFactory.h; path = Networks/Services/AIFServiceFactory.h; sourceTree = "<group>"; };
-		26B98D6D1B44D0C000FE83BB /* AIFServiceFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIFServiceFactory.m; path = Networks/Services/AIFServiceFactory.m; sourceTree = "<group>"; };
 		26B98D6F1B44D41700FE83BB /* AIFNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AIFNetworking.h; path = Networks/AIFNetworking.h; sourceTree = "<group>"; };
 		26B98D701B44D48700FE83BB /* AIFNetworkingConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIFNetworkingConfiguration.h; path = Networks/AIFNetworkingConfiguration.h; sourceTree = "<group>"; };
 		26B98D721B44D6B900FE83BB /* RTAPIBaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RTAPIBaseManager.h; path = Networks/Components/RTAPIBaseManager.h; sourceTree = "<group>"; };
@@ -145,8 +180,6 @@
 		26B98D941B452DC400FE83BB /* NSURLRequest+AIFNetworkingMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSURLRequest+AIFNetworkingMethods.m"; path = "Utils/Categories/Networks/NSURLRequest+AIFNetworkingMethods.m"; sourceTree = "<group>"; };
 		26B98D951B452DC400FE83BB /* UIDevice+IdentifierAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIDevice+IdentifierAddition.h"; path = "Utils/Categories/Networks/UIDevice+IdentifierAddition.h"; sourceTree = "<group>"; };
 		26B98D961B452DC400FE83BB /* UIDevice+IdentifierAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIDevice+IdentifierAddition.m"; path = "Utils/Categories/Networks/UIDevice+IdentifierAddition.m"; sourceTree = "<group>"; };
-		26B98D9C1B452E4900FE83BB /* AIFLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIFLogger.h; path = Networks/LogComponents/AIFLogger.h; sourceTree = "<group>"; };
-		26B98D9D1B452E4900FE83BB /* AIFLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIFLogger.m; path = Networks/LogComponents/AIFLogger.m; sourceTree = "<group>"; };
 		26B98D9F1B4530E400FE83BB /* NSMutableString+AXNetworkingMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableString+AXNetworkingMethods.h"; path = "Utils/Categories/Networks/NSMutableString+AXNetworkingMethods.h"; sourceTree = "<group>"; };
 		26B98DA01B4530E400FE83BB /* NSMutableString+AXNetworkingMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableString+AXNetworkingMethods.m"; path = "Utils/Categories/Networks/NSMutableString+AXNetworkingMethods.m"; sourceTree = "<group>"; };
 		26B98DA21B453EB700FE83BB /* NSArray+AXNetworkingMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+AXNetworkingMethods.h"; path = "Utils/Categories/Networks/NSArray+AXNetworkingMethods.h"; sourceTree = "<group>"; };
@@ -288,6 +321,86 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		26782C7E1B461FE700104330 /* CacheComponents */ = {
+			isa = PBXGroup;
+			children = (
+				26782C851B46219100104330 /* AIFCache.h */,
+				26782C861B46219100104330 /* AIFCache.m */,
+				26782C881B4637E100104330 /* AIFCachedObject.h */,
+				26782C891B4637E100104330 /* AIFCachedObject.m */,
+			);
+			name = CacheComponents;
+			sourceTree = "<group>";
+		};
+		26782C8B1B463F1200104330 /* BaseServices */ = {
+			isa = PBXGroup;
+			children = (
+				26782C8C1B463F4A00104330 /* AIFService.h */,
+				26782C8D1B463F4A00104330 /* AIFService.m */,
+				26782C8E1B463F4A00104330 /* AIFServiceFactory.h */,
+				26782C8F1B463F4A00104330 /* AIFServiceFactory.m */,
+			);
+			name = BaseServices;
+			sourceTree = "<group>";
+		};
+		26782C921B463F5500104330 /* TestServices */ = {
+			isa = PBXGroup;
+			children = (
+				26782C931B463FAC00104330 /* TestService.h */,
+				26782C941B463FAC00104330 /* TestService.m */,
+			);
+			name = TestServices;
+			sourceTree = "<group>";
+		};
+		26782C961B46414300104330 /* TestComponents */ = {
+			isa = PBXGroup;
+			children = (
+				26782C971B4641BF00104330 /* TestAPIManager.h */,
+				26782C981B4641BF00104330 /* TestAPIManager.m */,
+			);
+			name = TestComponents;
+			sourceTree = "<group>";
+		};
+		26782C9A1B46571900104330 /* UserComponents */ = {
+			isa = PBXGroup;
+			children = (
+				26782C9B1B46575500104330 /* UserLoginManager.h */,
+				26782C9C1B46575500104330 /* UserLoginManager.m */,
+				26782CA51B46596A00104330 /* UserRegistManager.h */,
+				26782CA61B46596A00104330 /* UserRegistManager.m */,
+			);
+			name = UserComponents;
+			sourceTree = "<group>";
+		};
+		26782C9E1B4657AC00104330 /* UserServices */ = {
+			isa = PBXGroup;
+			children = (
+				26782C9F1B4657F000104330 /* UserLoginService.h */,
+				26782CA01B4657F000104330 /* UserLoginService.m */,
+				26782CA21B46581A00104330 /* UserRegistService.h */,
+				26782CA31B46581A00104330 /* UserRegistService.m */,
+			);
+			name = UserServices;
+			sourceTree = "<group>";
+		};
+		26782CA81B4666D100104330 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				26782CAC1B46690800104330 /* ViewModelClass.h */,
+				26782CAD1B46690800104330 /* ViewModelClass.m */,
+			);
+			name = ViewModels;
+			sourceTree = "<group>";
+		};
+		26782CAF1B4685E400104330 /* Toast */ = {
+			isa = PBXGroup;
+			children = (
+				26782CB01B4685FE00104330 /* UIView+Toast.h */,
+				26782CB11B4685FE00104330 /* UIView+Toast.m */,
+			);
+			name = Toast;
+			sourceTree = "<group>";
+		};
 		2695B4351B428A2200CB34D0 /* TPKeyboardAvoiding */ = {
 			isa = PBXGroup;
 			children = (
@@ -306,7 +419,6 @@
 		26B98D671B44CC2A00FE83BB /* Networks */ = {
 			isa = PBXGroup;
 			children = (
-				26B98D9B1B452E1200FE83BB /* LogComponents */,
 				26B98D7B1B45028700FE83BB /* Assistants */,
 				26B98D711B44D63900FE83BB /* Components */,
 				26B98D681B44CC5200FE83BB /* Services */,
@@ -319,10 +431,9 @@
 		26B98D681B44CC5200FE83BB /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				26B98D691B44CCB000FE83BB /* AIFService.h */,
-				26B98D6A1B44CCB000FE83BB /* AIFService.m */,
-				26B98D6C1B44D0C000FE83BB /* AIFServiceFactory.h */,
-				26B98D6D1B44D0C000FE83BB /* AIFServiceFactory.m */,
+				26782C9E1B4657AC00104330 /* UserServices */,
+				26782C921B463F5500104330 /* TestServices */,
+				26782C8B1B463F1200104330 /* BaseServices */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -330,6 +441,10 @@
 		26B98D711B44D63900FE83BB /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				26782C9A1B46571900104330 /* UserComponents */,
+				26782C961B46414300104330 /* TestComponents */,
+				26B98D9B1B452E1200FE83BB /* LogComponents */,
+				26782C7E1B461FE700104330 /* CacheComponents */,
 				26B98D721B44D6B900FE83BB /* RTAPIBaseManager.h */,
 				26B98D731B44D6B900FE83BB /* RTAPIBaseManager.m */,
 				26B98D751B44F5D600FE83BB /* AIFURLResponse.h */,
@@ -377,8 +492,8 @@
 		26B98D9B1B452E1200FE83BB /* LogComponents */ = {
 			isa = PBXGroup;
 			children = (
-				26B98D9C1B452E4900FE83BB /* AIFLogger.h */,
-				26B98D9D1B452E4900FE83BB /* AIFLogger.m */,
+				26782C821B46218000104330 /* AIFLogger.h */,
+				26782C831B46218000104330 /* AIFLogger.m */,
 			);
 			name = LogComponents;
 			sourceTree = "<group>";
@@ -463,14 +578,15 @@
 		7658F46C1B325FFF00E41A0B /* POICollect */ = {
 			isa = PBXGroup;
 			children = (
-				26B98D671B44CC2A00FE83BB /* Networks */,
 				7658F49C1B32610700E41A0B /* Classes */,
-				7658F49B1B32609100E41A0B /* Resources */,
 				7658F49A1B32608600E41A0B /* Controllers */,
-				7658F4991B32607F00E41A0B /* Venders */,
-				7658F4981B32607900E41A0B /* Utils */,
 				7658F4971B32607400E41A0B /* Models */,
 				7658F4961B32606A00E41A0B /* Views */,
+				26782CA81B4666D100104330 /* ViewModels */,
+				26B98D671B44CC2A00FE83BB /* Networks */,
+				7658F4991B32607F00E41A0B /* Venders */,
+				7658F4981B32607900E41A0B /* Utils */,
+				7658F49B1B32609100E41A0B /* Resources */,
 				7658F46D1B325FFF00E41A0B /* Supporting Files */,
 			);
 			path = POICollect;
@@ -522,6 +638,8 @@
 			children = (
 				2695B42F1B425C9C00CB34D0 /* CMPhoto.h */,
 				2695B4301B425C9C00CB34D0 /* CMPhoto.m */,
+				26782CA91B46676700104330 /* LoginUser.h */,
+				26782CAA1B46676700104330 /* LoginUser.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -603,6 +721,7 @@
 		7658F4A61B32691D00E41A0B /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				26782CAF1B4685E400104330 /* Toast */,
 				26B98D8E1B452DAF00FE83BB /* Networks */,
 				7658F4A71B32698E00E41A0B /* UIColor+Expanded.h */,
 				7658F4A81B32698E00E41A0B /* UIColor+Expanded.m */,
@@ -956,10 +1075,12 @@
 				A1F484391B3D9BF500FD49A4 /* CMPhotoGroupPickerViewController.m in Sources */,
 				A1CD5A471B384490008BC36A /* TestAnimationViewController.m in Sources */,
 				764C8C9B1B38E5FF00FF2F51 /* MainPOIListViewController.m in Sources */,
+				26782CA71B46596A00104330 /* UserRegistManager.m in Sources */,
 				A1CB74781B3694C400EF062B /* CMSimpleTextView.m in Sources */,
 				26B98D7A1B44FEA800FE83BB /* AIFApiProxy.m in Sources */,
 				26DA23701B412FBC00A26B86 /* CMCameraPreviewView.m in Sources */,
 				26B98DA41B453EB700FE83BB /* NSArray+AXNetworkingMethods.m in Sources */,
+				26782C991B4641BF00104330 /* TestAPIManager.m in Sources */,
 				A1CD5A401B37C27D008BC36A /* UIImage+Expanded.m in Sources */,
 				76615EB11B3CFF7E0064BCB0 /* UITableView+Expanded.m in Sources */,
 				2695B4431B428A9900CB34D0 /* TPKeyboardAvoidingTableView.m in Sources */,
@@ -967,14 +1088,16 @@
 				26DA23761B4132C700A26B86 /* CMCameraPreviewTapView.m in Sources */,
 				76615EC11B3D4E840064BCB0 /* CMPhotoPickerViewController.m in Sources */,
 				7658F4731B325FFF00E41A0B /* AppDelegate.m in Sources */,
-				26B98D6B1B44CCB000FE83BB /* AIFService.m in Sources */,
 				A1CD5A4D1B384B4F008BC36A /* CMCustomPopAnimation.m in Sources */,
 				26B98DA11B4530E400FE83BB /* NSMutableString+AXNetworkingMethods.m in Sources */,
+				26782CAB1B46676700104330 /* LoginUser.m in Sources */,
 				76E7CBFD1B3BC70C00D0BBED /* CMCustomWithButtonTextfield.m in Sources */,
 				A14771421B3F90B500A3F60C /* CMPhotoAssets.m in Sources */,
 				2695B4421B428A9900CB34D0 /* TPKeyboardAvoidingScrollView.m in Sources */,
+				26782CA11B4657F000104330 /* UserLoginService.m in Sources */,
 				7658F4A31B3261EE00E41A0B /* BaseViewController.m in Sources */,
 				26B98D771B44F5D600FE83BB /* AIFURLResponse.m in Sources */,
+				26782C9D1B46575500104330 /* UserLoginManager.m in Sources */,
 				766CC7031B328DA800DCFFB4 /* CMThemeKit.m in Sources */,
 				2695B4341B42765400CB34D0 /* LoginModelViewController.m in Sources */,
 				7658F4701B325FFF00E41A0B /* main.m in Sources */,
@@ -986,24 +1109,28 @@
 				26B98D7E1B4507A300FE83BB /* AIFRequestGenerator.m in Sources */,
 				26DA23791B41368D00A26B86 /* CMCameraPreviewImageView.m in Sources */,
 				766CC7061B329BB200DCFFB4 /* LoginViewController.m in Sources */,
-				26B98D9E1B452E4900FE83BB /* AIFLogger.m in Sources */,
+				26782C871B46219100104330 /* AIFCache.m in Sources */,
 				764C8CA51B393C5200FF2F51 /* NSString+Expanded.m in Sources */,
 				76386F0A1B33A4B800E8A115 /* CMRoundSegmentedThumb.m in Sources */,
 				26B98D741B44D6B900FE83BB /* RTAPIBaseManager.m in Sources */,
 				A147713F1B3F8F7F00A3F60C /* CMPhotoPickerConllectionView.m in Sources */,
 				A1F4843C1B3DA62A00FD49A4 /* CMPhotoPickerDatas.m in Sources */,
+				26782C901B463F4A00104330 /* AIFService.m in Sources */,
+				26782CAE1B46690800104330 /* ViewModelClass.m in Sources */,
+				26782CA41B46581A00104330 /* UserRegistService.m in Sources */,
 				A14771481B3F9AD600A3F60C /* CMPhotoPickerCollectionViewCell.m in Sources */,
 				A100F86D1B35577400271B2E /* CMPageView.m in Sources */,
 				764C8CA21B3924DD00FF2F51 /* MainListTableViewCell.m in Sources */,
 				A1CD5A3D1B37B34B008BC36A /* CMSimpleButton.m in Sources */,
 				7685EA741B3A45BA00AD1645 /* CMCustomBaseAnimation.m in Sources */,
 				26B98D981B452DC400FE83BB /* NSObject+AXNetworkingMethods.m in Sources */,
-				26B98D6E1B44D0C000FE83BB /* AIFServiceFactory.m in Sources */,
 				26DA23731B41329800A26B86 /* CMCameraPreviewImageScrollView.m in Sources */,
 				262FC9B91B40F2E1005C12F4 /* CMCameraViewController.m in Sources */,
 				76615EAB1B3CDD190064BCB0 /* CMDropdownButtonArrowView.m in Sources */,
+				26782C841B46218000104330 /* AIFLogger.m in Sources */,
 				A147713C1B3F8BD100A3F60C /* CMPhotoPickerAssetsViewController.m in Sources */,
 				26E454151B40DDD4000C49CE /* CMCamera.m in Sources */,
+				26782CB21B4685FE00104330 /* UIView+Toast.m in Sources */,
 				A14771451B3F949A00A3F60C /* CMPhotoPickerFooterCollectionReusableView.m in Sources */,
 				26B98D991B452DC400FE83BB /* NSURLRequest+AIFNetworkingMethods.m in Sources */,
 				7658F4761B325FFF00E41A0B /* POICollect.xcdatamodeld in Sources */,
@@ -1016,14 +1143,17 @@
 				2695B4411B428A9900CB34D0 /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				76615EAE1B3CFC6C0064BCB0 /* CMDropdownButtonTableViewCell.m in Sources */,
 				26B98D811B450B5300FE83BB /* AIFCommonParamsGenerator.m in Sources */,
+				26782C951B463FAC00104330 /* TestService.m in Sources */,
 				7685EA711B3A445B00AD1645 /* CMCustomCircleAnimation.m in Sources */,
 				76E7CBFA1B3B897A00D0BBED /* CMSimpleCheckBoxBtn.m in Sources */,
 				764C8C9E1B38E68D00FF2F51 /* CMRoundBtn.m in Sources */,
+				26782C8A1B4637E100104330 /* AIFCachedObject.m in Sources */,
 				26B98D971B452DC400FE83BB /* NSDictionary+AXNetworkingMethods.m in Sources */,
 				A147714B1B3F9C2F00A3F60C /* CMPhotoPickerImageView.m in Sources */,
 				769BD6891B34194F0089FB39 /* LoginView.m in Sources */,
 				7658F4A91B32698E00E41A0B /* UIColor+Expanded.m in Sources */,
 				26B98D9A1B452DC400FE83BB /* UIDevice+IdentifierAddition.m in Sources */,
+				26782C911B463F4A00104330 /* AIFServiceFactory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -236,7 +236,7 @@ typedef NS_ENUM(NSUInteger, RTAPIManagerRequestType) {
 - (void)manager:(RTAPIBaseManager*)manager beforePreformFailWithResponse:(AIFURLResponse*)response;
 - (void)manager:(RTAPIBaseManager*)manager afterPreformFailWithResponse:(AIFURLResponse*)response;
 
-- (void)manager:(RTAPIBaseManager*)manager shouldCallAPIWithParams:(NSDictionary*)params;
+- (BOOL)manager:(RTAPIBaseManager*)manager shouldCallAPIWithParams:(NSDictionary*)params;
 - (void)manager:(RTAPIBaseManager*)manager afterCallingAPIWithParams:(NSDictionary*)params;
 
 @end
@@ -286,7 +286,7 @@ typedef NS_ENUM(NSUInteger, RTAPIManagerRequestType) {
 /**
  *  错误类型
  */
-@property (nonatomic, readonly) RTAPIManagerErrorType errType;
+@property (nonatomic, readonly) RTAPIManagerErrorType errorType;
 
 /**
  *  网络是不是畅通
@@ -300,7 +300,7 @@ typedef NS_ENUM(NSUInteger, RTAPIManagerRequestType) {
 
 #pragma mark - 公共实例方法
 
-- (void)fetchDataWithReformer:(id<RTAPIManagerCallBackDataReformer>)reformer;
+- (id)fetchDataWithReformer:(id<RTAPIManagerCallBackDataReformer>)reformer;
 
 /**
  *  开始加载数据，尽量使用这个方法，这个方法会通过param source来获取参数，这使得参数的生成逻辑位于controller中的固定位置 
@@ -329,7 +329,7 @@ typedef NS_ENUM(NSUInteger, RTAPIManagerRequestType) {
 - (void)beforePreformFailWithResponse:(AIFURLResponse*)response;
 - (void)afterPreformFailWithResponse:(AIFURLResponse*)response;
 
-- (void)shouldCallAPIWithParams:(NSDictionary*)params;
+- (BOOL)shouldCallAPIWithParams:(NSDictionary*)params;
 - (void)afterCallingAPIWithParams:(NSDictionary*)params;
 
 /**

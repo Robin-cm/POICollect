@@ -258,4 +258,9 @@
     return self.AIF_createUUID;
 }
 
++ (NSString*)identifierForVendor
+{
+    return [[UIDevice currentDevice].identifierForVendor UUIDString];
+}
+
 @end

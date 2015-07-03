@@ -21,8 +21,6 @@ static const CGFloat sDefaultCornerRadius = 4.f;
 #define kDefaultErrorBorderColor kAppThemeThirdColor
 
 @interface CMSimpleTextView () <UITextFieldDelegate> {
-    NSString* _error;
-
     BOOL _active;
 }
 
@@ -57,7 +55,7 @@ static const CGFloat sDefaultCornerRadius = 4.f;
 
 - (id)initWithPlaceholder:(NSString*)placeholder
 {
-    return [self initWithPlaceholder:placeholder andWithInputType:EnglishOnly];
+    return [self initWithPlaceholder:placeholder andWithInputType:CMSimpleTextFieldTypeEnglishOnly];
 }
 
 - (id)initWithInputType:(CMSimpleTextFieldType)inputType
@@ -125,7 +123,7 @@ static const CGFloat sDefaultCornerRadius = 4.f;
                      animations:^{
                          weakSelf.rightView.alpha = 1.0;
                      }];
-    self.rightViewMode = UITextFieldViewModeUnlessEditing;
+    self.rightViewMode = UITextFieldViewModeAlways;
 }
 
 - (void)setErrorBorderColor:(UIColor*)errorBorderColor
@@ -187,7 +185,7 @@ static const CGFloat sDefaultCornerRadius = 4.f;
     self.layer.borderWidth = sDefaultBorderWidth;
     self.backgroundColor = [UIColor whiteColor];
     self.delegate = self;
-    self.keyboardAppearance = UIKeyboardAppearanceDark;
+    self.keyboardAppearance = UIKeyboardAppearanceDefault;
     self.autocorrectionType = UITextAutocorrectionTypeNo;
     self.autocapitalizationType = UITextAutocapitalizationTypeNone;
     self.font = [UIFont systemFontOfSize:15];
@@ -217,48 +215,61 @@ static const CGFloat sDefaultCornerRadius = 4.f;
 - (void)configInputType
 {
     switch (_cType) {
-    case Email:
+    case CMSimpleTextFieldTypeEmail:
         self.placeholder = _placeHolder ? _placeHolder : @"请输入邮箱...";
         self.keyboardType = UIKeyboardTypeEmailAddress;
         break;
-    case Number:
+    case CMSimpleTextFieldTypeNumber:
         self.placeholder = _placeHolder ? _placeHolder : @"请输入数字...";
         self.keyboardType = UIKeyboardTypeNumberPad;
         break;
-    case Password:
+    case CMSimpleTextFieldTypePassword:
         self.placeholder = _placeHolder ? _placeHolder : @"请输入密码...";
         self.secureTextEntry = YES;
+        self.keyboardType = UIKeyboardTypeDefault;
         break;
-    case EnglishOnly:
+    case CMSimpleTextFieldTypeEnglishOnly:
         self.placeholder = _placeHolder ? _placeHolder : @"请输入...";
         self.keyboardType = UIKeyboardTypeURL;
+        break;
+    case CMSimpleTextFieldTypeUserName:
+        self.placeholder = _placeHolder ? _placeHolder : @"用户名";
+        self.keyboardType = UIKeyboardTypeDefault;
         break;
     default:
         break;
     }
 }
 
-- (void)validate
+- (NSString*)validate
 {
     _error = @"";
     switch (_cType) {
-    case Email:
+    case CMSimpleTextFieldTypeEmail:
         _error = ([self validateEmail:self.text] && ![self.text isEqualToString:@""]) ? @"" : @"邮箱格式不正确";
         break;
-    case Number:
-        _error = (![self.text isEqualToString:@""]) ? @"" : @"只能为数字";
+    case CMSimpleTextFieldTypeNumber:
+        _error = (![self validateNumber:self.text]) ? @"" : @"只能为数字";
         break;
-    case Password:
+    case CMSimpleTextFieldTypePassword:
         _error = self.text.length < 6 ? @"最少为6位" : @"";
         break;
-    case EnglishOnly:
-        _error = (![self.text isEqualToString:@""]) ? @"" : @"不能有汉字";
+    case CMSimpleTextFieldTypeEnglishOnly:
+        _error = (![self validateEn:self.text]) ? @"" : @"只能有英文";
+        break;
+    case CMSimpleTextFieldTypeUserName:
+        if (self.text.length < 1) {
+            _error = @"用户名不能为空";
+        }
+        else if (![self validateUserName:self.text]) {
+            _error = @"用户名不能有特殊字符";
+        }
         break;
     }
     if (![_error isEqualToString:@""]) {
         [self setError];
     }
-    //    return err;
+    return _error;
 }
 
 - (BOOL)validateEmail:(NSString*)email
@@ -266,6 +277,27 @@ static const CGFloat sDefaultCornerRadius = 4.f;
     NSString* emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}";
     NSPredicate* emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
     return [emailTest evaluateWithObject:email];
+}
+
+- (BOOL)validateNumber:(NSString*)numberStr
+{
+    NSString* regex = @"(/^[0-9]*$/)";
+    NSPredicate* numberPred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+    return [numberPred evaluateWithObject:numberStr];
+}
+
+- (BOOL)validateEn:(NSString*)enStr
+{
+    NSString* regex = @"(/^[A-Za-z]*$/)";
+    NSPredicate* enPred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+    return [enPred evaluateWithObject:enStr];
+}
+
+- (BOOL)validateUserName:(NSString*)usernameStr
+{
+    NSString* regex = @"[^%&',;=?$\x22]+";
+    NSPredicate* enPred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+    return [enPred evaluateWithObject:usernameStr];
 }
 
 - (void)extendHelp

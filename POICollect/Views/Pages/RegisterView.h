@@ -5,12 +5,15 @@
 //  Created by 常敏 on 15-6-19.
 //  Copyright (c) 2015年 cm. All rights reserved.
 //
+#import "AIFNetworking.h"
+@class LoginViewController;
 
-#import <UIKit/UIKit.h>
+static const NSString* sDefaultDoneNotifacitionidentifier = @"closeLoginModel";
 
-static const NSString *sDefaultDoneNotifacitionidentifier = @"closeLoginModel";
+@interface RegisterView : UIView <RTAPIManagerValidator, RTAPIManagerParamSourceDelegate, RTAPIManagerApiCallBackDelegate>
 
+#pragma mark - parentViewController
 
-@interface RegisterView : UIView
+- (instancetype)initWithParentViewController:(LoginViewController*)parentViewController;
 
 @end

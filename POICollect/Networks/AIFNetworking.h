@@ -12,5 +12,6 @@
 #import "AIFService.h"
 #import "AIFServiceFactory.h"
 #import "AIFNetworkingConfiguration.h"
+#import "RTAPIBaseManager.h"
 
 #endif

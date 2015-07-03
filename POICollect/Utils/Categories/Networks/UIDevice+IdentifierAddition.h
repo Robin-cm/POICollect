@@ -32,4 +32,11 @@
 - (NSString*)machineType;
 - (NSString*)ostype; //显示“ios6，ios5”，只显示大版本号
 - (NSString*)createUUID;
+
+/**
+ *  对供应商来说是唯一的一个值，也就是说，由同一个公司发行的的app在相同的设备上运行的时候都会有这个相同的标识符。然而，如果用户删除了这个供应商的app然后再重新安装的话，这个标识符就
+ *  不一致。
+ **/
++ (NSString*)identifierForVendor;
+
 @end

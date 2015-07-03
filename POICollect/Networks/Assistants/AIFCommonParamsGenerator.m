@@ -25,7 +25,7 @@
         @"bversion" : context.bundleVersion,
         @"from" : context.from,
         @"m" : context.mName,
-        @"macid" : context.macid,
+        //        @"macid" : context.macid,
         @"o" : context.osName,
         @"qtime" : context.qTime,
         @"ov" : context.osVersion
