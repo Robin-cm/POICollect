@@ -135,17 +135,17 @@ static const CGFloat sDefaultPadding = 10;
     }
 
     if (!_pickBtn1) {
-        _pickBtn1 = [[CMPhotoPickButton alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
+        _pickBtn1 = [[CMPhotoPickButton alloc] init];
         [_imagePickerBgView addSubview:_pickBtn1];
     }
 
     if (!_pickBtn2) {
-        _pickBtn2 = [[CMPhotoPickButton alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
+        _pickBtn2 = [[CMPhotoPickButton alloc] init];
         [_imagePickerBgView addSubview:_pickBtn2];
     }
 
     if (!_pickBtn3) {
-        _pickBtn3 = [[CMPhotoPickButton alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
+        _pickBtn3 = [[CMPhotoPickButton alloc] init];
         [_imagePickerBgView addSubview:_pickBtn3];
     }
 

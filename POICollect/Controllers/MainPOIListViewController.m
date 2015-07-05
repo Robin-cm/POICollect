@@ -12,6 +12,8 @@
 #import "CMCustomCircleAnimation.h"
 #import "CMCustomPopAnimation.h"
 #import "AddPOIViewController.h"
+#import "POIPoint.h"
+#import "CMActionSheetView.h"
 
 #define kMainListCellIdentifine @"MainListCellIdentifine"
 
@@ -26,6 +28,10 @@
 //@property (nonatomic, strong) CMCustomPopAnimation* mPopAnimation;
 
 @property (nonatomic, strong) AddPOIViewController* addPoiViewController;
+
+@property (nonatomic, assign) BOOL mEdit;
+
+@property (nonatomic, strong) NSMutableArray* datas;
 
 @end
 
@@ -56,15 +62,33 @@
     return _addPoiViewController;
 }
 
+- (NSMutableArray*)datas
+{
+    if (!_datas) {
+        _datas = [[NSMutableArray alloc] init];
+    }
+    return _datas;
+}
+
 #pragma mark - 自定义实例方法
 
 - (void)initializeData
 {
     _mAnimation = [[CMCustomCircleAnimation alloc] init];
     _mAnimation.delegate = self;
+    _mEdit = NO;
     //    _mPopAnimation = [[CMCustomPopAnimation alloc] init];
     self.navigationController.delegate = self;
     self.transitioningDelegate = self;
+
+    for (int i = 0; i < 100; i++) {
+        POIPoint* poiPoint = [[POIPoint alloc] init];
+        poiPoint.poiName = [NSString stringWithFormat:@"第%i个POI点", i];
+        poiPoint.poiAddress = [NSString stringWithFormat:@"第%i个POI点的地址", i];
+        poiPoint.images = @[];
+        poiPoint.poiSelected = NO;
+        [self.datas addObject:poiPoint];
+    }
 }
 
 - (void)initializeView
@@ -79,6 +103,10 @@
     self.title = @"未上传";
     [self setNavigationBarTranslucent:YES];
     [self showBackgroundImage:YES];
+
+    UIBarButtonItem* editBtn = [[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStylePlain target:self action:@selector(editBtnTaped:)];
+
+    self.navigationItem.leftBarButtonItem = editBtn;
 }
 
 - (void)initializeBody
@@ -172,17 +200,68 @@
     [self.navigationController pushViewController:self.addPoiViewController animated:YES];
 }
 
+- (void)editBtnTaped:(id)sender
+{
+    NSLog(@"编辑按钮点击");
+    //    [self.tableView setEditing:!self.tableView.editing animated:YES];
+    _mEdit = !_mEdit;
+    [self.tableView reloadData];
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 100;
+    NSLog(@"数据的数量是：%lu", (unsigned long)self.datas.count);
+    return self.datas.count;
 }
 
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
+
+    NSLog(@"/////////////////////////////////\n重新刷新了数据了-------->>>> %lu\n/////////////////////////////////////", indexPath.row);
+
     MainListTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:kMainListCellIdentifine];
-    [cell setTitle:@"名称" andSubTitle:@"华苑产业技术园兰苑路5号"];
+    POIPoint* point = [self.datas objectAtIndex:indexPath.row];
+    NSLog(@"点的名称是：%@   点的地址是：%@", point.poiName, point.poiAddress);
+    [cell setTitle:point.poiName andSubTitle:point.poiAddress];
+    cell.mSeledted = point.poiSelected;
+    cell.selectBlock = ^(id obj, BOOL selected) {
+        NSLog(@"当前的选中状态是--->:%d", selected);
+        point.poiSelected = selected;
+    };
+    cell.moreTapBlock = ^(id obj) {
+        NSLog(@"点击了更多按钮");
+        CMActionSheetView* actionSheetView = [[CMActionSheetView alloc] initWithCancelBtn:@"取消" andOtherButtonTitles:@[ @"上传", @"编辑", @"删除" ]];
+        actionSheetView.selectRowBlock = ^(CMActionSheetView* cmActionView, NSInteger selectIndex) {
+
+            NSLog(@"我点击了%ld", (long)selectIndex);
+
+            switch (selectIndex) {
+            case 0:
+
+                break;
+            case 1:
+
+                break;
+            case 2:
+                NSLog(@"删除操作%lu", [indexPath row]);
+                [self.tableView beginUpdates];
+                [self.datas removeObjectAtIndex:indexPath.row];
+                [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+                [self.tableView endUpdates];
+                [self.tableView reloadData];
+                //                [self.datas removeObjectAtIndex:indexPath.row];
+                break;
+
+            default:
+                break;
+            }
+
+        };
+        [actionSheetView show];
+    };
+    cell.mEdit = _mEdit;
     return cell;
 }
 

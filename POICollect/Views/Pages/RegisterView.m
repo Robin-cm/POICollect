@@ -65,11 +65,72 @@ static const CGFloat padding = 20;
         _parentViewController = parentViewController;
         self.backgroundColor = [UIColor clearColor];
         [self configView];
+        [self layoutView];
     }
     return self;
 }
 
-- (void)layoutSubviews
+- (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event
+{
+    [_registNameTextView resignFirstResponder];
+    [_registPassTextView resignFirstResponder];
+    [_registPassCConfirmTextView resignFirstResponder];
+}
+
+#pragma mark - 自定义方法
+
+- (void)configView
+{
+    if (!_scrollView) {
+        _scrollView = [[TPKeyboardAvoidingScrollView alloc] init];
+        [self addSubview:_scrollView];
+    }
+
+    if (!_contentView) {
+        _contentView = [[UIView alloc] init];
+        [_scrollView addSubview:_contentView];
+    }
+
+    if (!_whiteBg) {
+        _whiteBg = [[UIView alloc] init];
+        _whiteBg.backgroundColor = [UIColor colorWithHexString:@"0xf7f7f7"];
+        [_contentView addSubview:_whiteBg];
+    }
+
+    if (!_registNameTextView) {
+        _registNameTextView = [[CMSimpleTextView alloc] initWithIcon:[UIImage imageNamed:@"name_ico"] andWithPlaceholder:@"用户名" andWithInputType:CMSimpleTextFieldTypeUserName];
+        _registNameTextView.borderColor = kAppThemeLoginTextfieldBorderColor;
+        _registNameTextView.borderWidth = 2;
+        [_whiteBg addSubview:_registNameTextView];
+    }
+
+    if (!_registPassTextView) {
+        _registPassTextView = [[CMSimpleTextView alloc] initWithIcon:[UIImage imageNamed:@"pass_ico"] andWithPlaceholder:@"密码" andWithInputType:CMSimpleTextFieldTypePassword];
+        _registPassTextView.borderColor = kAppThemeLoginTextfieldBorderColor;
+        _registPassTextView.borderWidth = 2;
+        [_whiteBg addSubview:_registPassTextView];
+    }
+
+    if (!_registPassCConfirmTextView) {
+        _registPassCConfirmTextView = [[CMSimpleTextView alloc] initWithIcon:[UIImage imageNamed:@"pass_ico"] andWithPlaceholder:@"确认密码" andWithInputType:CMSimpleTextFieldTypePassword];
+        _registPassCConfirmTextView.borderColor = kAppThemeLoginTextfieldBorderColor;
+        _registPassCConfirmTextView.borderWidth = 2;
+        [_whiteBg addSubview:_registPassCConfirmTextView];
+    }
+
+    if (!_registBtn) {
+        _registBtn = [[CMSimpleButton alloc] initSimpleButtonWithTitle:@"注册"];
+        _registBtn.normalBorderColor = kAppThemeThirdColor;
+        _registBtn.normalForegroundColor = [UIColor whiteColor];
+        _registBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+        _registBtn.normalBackgroundColor = kAppThemeThirdColor;
+        _registBtn.highlightBackgroundColor = [kAppThemeThirdColor darkenedColorWithBrightnessFloat:0.8];
+        [_registBtn addTarget:self action:@selector(registBtnTaped:) forControlEvents:UIControlEventTouchUpInside];
+        [_whiteBg addSubview:_registBtn];
+    }
+}
+
+- (void)layoutView
 {
     __weak typeof(self) weakSelf = self;
 
@@ -131,66 +192,6 @@ static const CGFloat padding = 20;
             make.bottom.equalTo(weakSelf.whiteBg.bottom).offset(-padding);
             make.height.equalTo(@40);
         }];
-    }
-}
-
-- (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event
-{
-    [_registNameTextView resignFirstResponder];
-    [_registPassTextView resignFirstResponder];
-    [_registPassCConfirmTextView resignFirstResponder];
-}
-
-#pragma mark - 自定义方法
-
-- (void)configView
-{
-    if (!_scrollView) {
-        _scrollView = [[TPKeyboardAvoidingScrollView alloc] init];
-        [self addSubview:_scrollView];
-    }
-
-    if (!_contentView) {
-        _contentView = [[UIView alloc] init];
-        [_scrollView addSubview:_contentView];
-    }
-
-    if (!_whiteBg) {
-        _whiteBg = [[UIView alloc] init];
-        _whiteBg.backgroundColor = [UIColor colorWithHexString:@"0xf7f7f7"];
-        [_contentView addSubview:_whiteBg];
-    }
-
-    if (!_registNameTextView) {
-        _registNameTextView = [[CMSimpleTextView alloc] initWithIcon:[UIImage imageNamed:@"name_ico"] andWithPlaceholder:@"用户名" andWithInputType:CMSimpleTextFieldTypeUserName];
-        _registNameTextView.borderColor = kAppThemeLoginTextfieldBorderColor;
-        _registNameTextView.borderWidth = 2;
-        [_whiteBg addSubview:_registNameTextView];
-    }
-
-    if (!_registPassTextView) {
-        _registPassTextView = [[CMSimpleTextView alloc] initWithIcon:[UIImage imageNamed:@"pass_ico"] andWithPlaceholder:@"密码" andWithInputType:CMSimpleTextFieldTypePassword];
-        _registPassTextView.borderColor = kAppThemeLoginTextfieldBorderColor;
-        _registPassTextView.borderWidth = 2;
-        [_whiteBg addSubview:_registPassTextView];
-    }
-
-    if (!_registPassCConfirmTextView) {
-        _registPassCConfirmTextView = [[CMSimpleTextView alloc] initWithIcon:[UIImage imageNamed:@"pass_ico"] andWithPlaceholder:@"确认密码" andWithInputType:CMSimpleTextFieldTypePassword];
-        _registPassCConfirmTextView.borderColor = kAppThemeLoginTextfieldBorderColor;
-        _registPassCConfirmTextView.borderWidth = 2;
-        [_whiteBg addSubview:_registPassCConfirmTextView];
-    }
-
-    if (!_registBtn) {
-        _registBtn = [[CMSimpleButton alloc] initSimpleButtonWithTitle:@"注册"];
-        _registBtn.normalBorderColor = kAppThemeThirdColor;
-        _registBtn.normalForegroundColor = [UIColor whiteColor];
-        _registBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-        _registBtn.normalBackgroundColor = kAppThemeThirdColor;
-        _registBtn.highlightBackgroundColor = [kAppThemeThirdColor darkenedColorWithBrightnessFloat:0.8];
-        [_registBtn addTarget:self action:@selector(registBtnTaped:) forControlEvents:UIControlEventTouchUpInside];
-        [_whiteBg addSubview:_registBtn];
     }
 }
 

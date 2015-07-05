@@ -37,9 +37,15 @@ static const CGFloat sDefaultPadding = 10;
 
 @property (nonatomic, strong) CMSimpleCheckBoxBtn* selectBtn;
 
+@property (nonatomic, strong) NSMutableArray* subContentConstraints;
+
 @end
 
 @implementation MainListTableViewCell
+
+@synthesize mEdit = _mEdit;
+
+@synthesize mSeledted = _mSeledted;
 
 #pragma mark - 初始化
 
@@ -90,9 +96,28 @@ static const CGFloat sDefaultPadding = 10;
     self.whiteBg.backgroundColor = highlighted ? [[UIColor colorWithHexString:@"0xD0E0E8"] darkenedColorWithBrightnessFloat:0.95] : [UIColor colorWithHexString:@"0xD0E0E8"];
 }
 
-- (void)layoutSubviews
+- (void)updateConstraints
 {
     __weak typeof(self) weakSelf = self;
+    if (_subContainerView) {
+        [_subContainerView updateConstraints:^(MASConstraintMaker* make) {
+            make.top.and.bottom.and.right.equalTo(weakSelf.whiteBg).offset(0);
+            make.left.equalTo(weakSelf.whiteBg.left).offset(_mEdit ? @(30) : @(0));
+        }];
+    }
+    [super updateConstraints];
+}
+
++ (BOOL)requiresConstraintBasedLayout
+{
+    return YES;
+}
+
+- (void)layoutView
+{
+    __weak typeof(self) weakSelf = self;
+
+    //    self.selectBtn.hidden = _mEdit;
 
     if (_whiteBg) {
         [_whiteBg makeConstraints:^(MASConstraintMaker* make) {
@@ -114,7 +139,7 @@ static const CGFloat sDefaultPadding = 10;
     if (_subContainerView) {
         [_subContainerView makeConstraints:^(MASConstraintMaker* make) {
             make.top.and.bottom.and.right.equalTo(weakSelf.whiteBg).offset(0);
-            make.left.equalTo(weakSelf.selectBtn.right).offset(0);
+            make.left.equalTo(weakSelf.whiteBg.left).offset(0);
             //            make.edges.equalTo(weakSelf.whiteBg);
         }];
     }
@@ -144,7 +169,9 @@ static const CGFloat sDefaultPadding = 10;
             make.top.equalTo(weakSelf.poiNameLabel.bottom).offset(ceil(sDefaultPadding / 4.0));
             make.right.equalTo(weakSelf.subContainerView.right).offset(-sDefaultPadding);
             make.width.lessThanOrEqualTo(weakSelf.subContainerView.width);
-            make.height.equalTo([weakSelf.subTitle getHeightWithFont:[UIFont systemFontOfSize:12] constrainedToSize:CGSizeMake(kScreenWidth - sDefaultPadding * 2, 20)]);
+            //            make.height.equalTo([weakSelf.subTitle getHeightWithFont:[UIFont systemFontOfSize:12] constrainedToSize:CGSizeMake(kScreenWidth - sDefaultPadding * 2, 30)]);
+
+            make.height.equalTo(@(25));
         }];
     }
 
@@ -199,7 +226,9 @@ static const CGFloat sDefaultPadding = 10;
 
     if (!_selectBtn) {
         _selectBtn = [[CMSimpleCheckBoxBtn alloc] initBoxButtonWithSize:CMSimpleCheckBoxBtnSize_Tint];
-        _selectBtn.selected = YES;
+        _selectBtn.selected = NO;
+        _selectBtn.hidden = YES;
+        [_selectBtn addTarget:self action:@selector(selectBtnTaped:) forControlEvents:UIControlEventTouchUpInside];
         [_whiteBg addSubview:_selectBtn];
     }
 
@@ -225,6 +254,7 @@ static const CGFloat sDefaultPadding = 10;
         //        _moreBtn.layer.borderColor = [UIColor blackColor].CGColor;
         //        _moreBtn.layer.borderWidth = 1;
         [_moreBtn setTitle:@"···" forState:UIControlStateNormal];
+        [_moreBtn addTarget:self action:@selector(moreBtnTaped:) forControlEvents:UIControlEventTouchUpInside];
         [_subContainerView addSubview:_moreBtn];
     }
 
@@ -264,6 +294,61 @@ static const CGFloat sDefaultPadding = 10;
         //        [_deleteBtn setImageEdgeInsets:UIEdgeInsetsMake(2, 0, 2, 0)];
         [_subContainerView addSubview:_deleteBtn];
     }
+
+    [self layoutView];
+}
+
+#pragma mark - Setter
+
+- (void)setMEdit:(BOOL)mEdit
+{
+    if (_mEdit == mEdit)
+        return;
+    [self changeEditStatu:mEdit];
+}
+
+- (void)setMSeledted:(BOOL)mSeledted
+{
+    if (_mSeledted != mSeledted) {
+        _mSeledted = mSeledted;
+        [self changeSelectedStatu:_mSeledted];
+    }
+}
+
+#pragma mark - Getter
+
+- (BOOL)mEdit
+{
+    return _mEdit;
+}
+
+- (BOOL)mSeledted
+{
+    return _mSeledted;
+}
+
+- (NSMutableArray*)subContentConstraints
+{
+    if (!_subContentConstraints) {
+        _subContentConstraints = [[NSMutableArray alloc] init];
+    }
+    return _subContentConstraints;
+}
+
+#pragma mark - 事件
+
+- (void)selectBtnTaped:(id)sender
+{
+    if (self.selectBlock) {
+        self.selectBlock(self, _mSeledted);
+    }
+}
+
+- (void)moreBtnTaped:(id)sender
+{
+    if (self.moreTapBlock) {
+        self.moreTapBlock(self);
+    }
 }
 
 #pragma mark - 自定义公共方法
@@ -276,6 +361,37 @@ static const CGFloat sDefaultPadding = 10;
     _poiAddressLabel.text = _subTitle;
 }
 
+- (void)changeEditStatu:(BOOL)isEdit
+{
+    _mEdit = isEdit;
+
+    [self setNeedsUpdateConstraints];
+
+    [self updateConstraintsIfNeeded];
+
+    if (isEdit) {
+        [UIView animateWithDuration:0.4
+            animations:^{
+                [self layoutIfNeeded];
+            }
+            completion:^(BOOL finished) {
+                self.selectBtn.hidden = !_mEdit;
+            }];
+    }
+    else {
+        self.selectBtn.hidden = !_mEdit;
+        [UIView animateWithDuration:0.4
+                         animations:^{
+                             [self layoutIfNeeded];
+                         }];
+    }
+}
+
+- (void)changeSelectedStatu:(BOOL)isSelected
+{
+    _selectBtn.selected = isSelected;
+}
+
 #pragma mark - 类方法
 
 + (CGFloat)getSubtitleHeightWithTitle:(NSString*)subTitle
@@ -285,7 +401,7 @@ static const CGFloat sDefaultPadding = 10;
 
 + (CGFloat)getCellHeightWithTitle:(NSString*)title andSubTitle:(NSString*)subTitle
 {
-    return sDefaultPadding * 2 + ceilf(sDefaultPadding / 4) + 20 + [subTitle getHeightWithFont:[UIFont systemFontOfSize:12] constrainedToSize:CGSizeMake(kScreenWidth - sDefaultPadding * 2, 20)] + 20 + 11 + 30;
+    return sDefaultPadding * 2 + ceilf(sDefaultPadding / 4) + 20 + 25 + 20 + 11 + 30;
 }
 
 @end

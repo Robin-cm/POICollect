@@ -6,9 +6,23 @@
 //  Copyright (c) 2015年 cm. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+typedef void (^SelectBlock)(id obj, BOOL selected);
+
+typedef void (^MoreBlock)(id obj);
 
 @interface MainListTableViewCell : UITableViewCell
+
+#pragma mark - 属性
+
+@property (nonatomic, assign) BOOL mEdit;
+
+@property (nonatomic, assign) BOOL mSeledted;
+
+@property (nonatomic, copy) SelectBlock selectBlock;
+
+@property (nonatomic, copy) MoreBlock moreTapBlock;
+
+#pragma 实例方法
 
 - (void)setTitle:(NSString*)title andSubTitle:(NSString*)subTitle;
 

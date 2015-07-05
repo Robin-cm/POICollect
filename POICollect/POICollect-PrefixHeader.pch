@@ -125,4 +125,11 @@
  */
 #define RADIANS_TO_DEGREES(radians) ((radians)*(180.0/M_PI))
 
+
+#pragma mark - 公共方法
+
+#define ShowModelViewController(MODEL_VC){\
+    [[[[UIApplication sharedApplication].windows firstObject] rootViewController] presentViewController:MODEL_VC animated:YES completion:nil];\
+}
+
 #endif

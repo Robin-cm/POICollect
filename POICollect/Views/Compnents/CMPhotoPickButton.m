@@ -11,13 +11,14 @@
 #import "CMPhotoKit.h"
 #import "UIImage+Expanded.h"
 #import "CMPhoto.h"
+#import "CMActionSheetView.h"
 
 #define kDefaultNormalBgColor [UIColor colorWithHexString:@"0xD1D1D1"]
 
 static const CGFloat sDefaultBorderWidth = 4;
 static const CGFloat sDefaultCornerRadius = 5;
 
-@interface CMPhotoPickButton () <CMPhotoPickerViewControllerDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface CMPhotoPickButton () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @end
 
@@ -27,7 +28,7 @@ static const CGFloat sDefaultCornerRadius = 5;
 {
     self = [super init];
     if (self) {
-        self.frame = CGRectMake(0, 0, 50, 50);
+        //        self.frame = CGRectMake(0, 0, 50, 50);
         [self configView];
     }
     return self;
@@ -49,11 +50,7 @@ static const CGFloat sDefaultCornerRadius = 5;
 
     [self circleCornerWithRadius:sDefaultBorderWidth];
 
-    _normalBgImage = [self getDefaultImageWithFrame:self.bounds andWithBgColor:kDefaultNormalBgColor];
-    _highlightBgImage = [self getDefaultImageWithFrame:self.bounds andWithBgColor:[kDefaultNormalBgColor darkenedColorWithBrightnessFloat:0.8]];
-
-    [self setBackgroundImage:_normalBgImage forState:UIControlStateNormal];
-    [self setBackgroundImage:_highlightBgImage forState:UIControlStateHighlighted];
+    self.currentPhoto = nil;
 
     if (![[self allTargets] containsObject:self]) {
         [self addTarget:self action:@selector(btnTaped:) forControlEvents:UIControlEventTouchUpInside];
@@ -65,29 +62,64 @@ static const CGFloat sDefaultCornerRadius = 5;
 - (void)btnTaped:(id)sender
 {
     NSLog(@"我已经点击了!");
+    CMActionSheetView* actionSheetView = [[CMActionSheetView alloc] initWithCancelBtn:@"取消" andOtherButtonTitles:@[ @"拍照", @"从相册选择", @"删除图片" ]];
+    actionSheetView.selectRowBlock = ^(CMActionSheetView* cmActionView, NSInteger selectIndex) {
+        switch (selectIndex) {
+        case 0: {
+            if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+                UIImagePickerController* imagePickerVC = [[UIImagePickerController alloc] init];
+                imagePickerVC.delegate = self;
+                imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
+                imagePickerVC.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+                imagePickerVC.allowsEditing = NO;
+                ShowModelViewController(imagePickerVC);
+                //                [[[[UIApplication sharedApplication].windows firstObject] rootViewController] presentViewController:imagePickerVC animated:YES completion:nil];
+            }
+            else {
+                NSLog(@"模拟器，不能打开摄像头");
+            }
+            break;
+        }
+        case 1: {
+            UIImagePickerController* imagePickerVC = [[UIImagePickerController alloc] init];
+            imagePickerVC.delegate = self;
+            imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            imagePickerVC.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+            imagePickerVC.allowsEditing = NO;
+            ShowModelViewController(imagePickerVC);
+            break;
+        }
+        case 2: {
+            self.currentPhoto = nil;
+            break;
+        }
 
-    UIActionSheet* actionSheet = [[UIActionSheet alloc]
-                 initWithTitle:nil
-                      delegate:self
-             cancelButtonTitle:@"取消"
-        destructiveButtonTitle:nil
-             otherButtonTitles:@"拍照", @"从相册选择", nil];
-    actionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
-    [actionSheet showInView:self];
+        default:
+            break;
+        }
+    };
+    [actionSheetView show];
 }
 
 #pragma mark - Setter
 
 - (void)setCurrentPhoto:(CMPhoto*)currentPhoto
 {
-    if (!currentPhoto) {
-        return;
-    }
     _currentPhoto = currentPhoto;
-    if ([_currentPhoto getImage]) {
-        UIImage* thumbImage = [[_currentPhoto getImage] scaleToSize:self.bounds.size];
-        [self setBackgroundImage:thumbImage forState:UIControlStateNormal];
-        [self setBackgroundImage:thumbImage forState:UIControlStateHighlighted];
+    if (!_currentPhoto) {
+        _normalBgImage = [self getDefaultImageWithFrame:CGRectMake(0, 0, 80, 80) andWithBgColor:kDefaultNormalBgColor];
+        _highlightBgImage = [self getDefaultImageWithFrame:CGRectMake(0, 0, 80, 80) andWithBgColor:[kDefaultNormalBgColor darkenedColorWithBrightnessFloat:0.8]];
+
+        [self setBackgroundImage:_normalBgImage forState:UIControlStateNormal];
+        [self setBackgroundImage:_highlightBgImage forState:UIControlStateHighlighted];
+    }
+    else {
+        if ([_currentPhoto getImage]) {
+            UIImage* thumbImage = [[_currentPhoto getImage] scaleToSize:self.bounds.size];
+            _normalBgImage = _highlightBgImage = thumbImage;
+            [self setBackgroundImage:_normalBgImage forState:UIControlStateNormal];
+            [self setBackgroundImage:_highlightBgImage forState:UIControlStateHighlighted];
+        }
     }
 }
 
@@ -95,6 +127,8 @@ static const CGFloat sDefaultCornerRadius = 5;
 
 - (UIImage*)getDefaultImageWithFrame:(CGRect)frame andWithBgColor:(UIColor*)bgColor
 {
+    NSLog(@"按钮的大小：w---> %f    h---> %f", self.frame.size.width, self.frame.size.height);
+
     CGRect rect = CGRectMake(0.0, 0.0, CGRectGetWidth(frame), CGRectGetHeight(frame));
     CGContextRef context = UIGraphicsGetCurrentContext();
     UIGraphicsPushContext(context);
@@ -127,81 +161,38 @@ static const CGFloat sDefaultCornerRadius = 5;
     return image;
 }
 
-#pragma mark - CMPhotoPickerViewControllerDelegate
-
-/**
- *  返回所有的Asstes对象
- */
-- (void)pickerViewControllerDoneAsstes:(NSArray*)assets
-{
-    if (assets && assets.count > 0) {
-        UIImage* tmpImage = nil;
-        // 判断类型来获取Image
-        _currentPhotoAsset = assets[0];
-        if ([_currentPhotoAsset isKindOfClass:[CMPhotoAssets class]]) {
-            tmpImage = _currentPhotoAsset.thumbImage;
-        }
-        else if ([_currentPhotoAsset isKindOfClass:[NSString class]]) {
-            tmpImage = [UIImage imageWithURL:[NSURL URLWithString:(NSString*)_currentPhotoAsset]];
-            //            [cell.imageview1 sd_setImageWithURL:[NSURL URLWithString:(NSString*)asset] placeholderImage:[UIImage imageNamed:@"wallpaper_placeholder"]];
-        }
-        else if ([_currentPhotoAsset isKindOfClass:[UIImage class]]) {
-            tmpImage = (UIImage*)_currentPhotoAsset;
-        }
-
-        if (tmpImage) {
-            tmpImage = [tmpImage scaleToSize:self.frame.size];
-        }
-
-        [self setBackgroundImage:tmpImage forState:UIControlStateNormal];
-        [self setBackgroundImage:tmpImage forState:UIControlStateHighlighted];
-    }
-}
-
-#pragma mark - UIActionSheetDelegate
-
-- (void)actionSheet:(UIActionSheet*)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
-{
-    switch (buttonIndex) {
-    case 0: {
-        //拍照
-        //        __weak typeof(self) weakSelf = self;
-        //        CMCameraViewController* cameraVC = [[CMCameraViewController alloc] init];
-        //        [cameraVC startCameraOrPhotoFileWithComplate:^(id obj) {
-        //            NSLog(@"毁掉函数调用了");
-        //            if ([obj isKindOfClass:[CMCamera class]]) {
-        //                UIImage* img = ((CMCamera*)obj).thumbImage;
-        //                img = [img scaleToSize:self.frame.size];
-        //                [weakSelf setImage:img forState:UIControlStateNormal];
-        //                [weakSelf setImage:img forState:UIControlStateHighlighted];
-        //            }
-        //        }];
-
-        UIImagePickerController* imagePickerVC = [[UIImagePickerController alloc] init];
-        imagePickerVC.delegate = self;
-        imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
-        imagePickerVC.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-        imagePickerVC.allowsEditing = NO;
-        [[[[UIApplication sharedApplication].windows firstObject] rootViewController] presentViewController:imagePickerVC animated:YES completion:nil];
-
-    } break;
-    case 1: {
-        //相册
-        //        CMPhotoPickerViewController* photoPickVC = [[CMPhotoPickerViewController alloc] init];
-        //        photoPickVC.delegate = self;
-        //        [photoPickVC show];
-        UIImagePickerController* imagePickerVC = [[UIImagePickerController alloc] init];
-        imagePickerVC.delegate = self;
-        imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        imagePickerVC.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-        imagePickerVC.allowsEditing = NO;
-        [[[[UIApplication sharedApplication].windows firstObject] rootViewController] presentViewController:imagePickerVC animated:YES completion:nil];
-    } break;
-
-    default:
-        break;
-    }
-}
+//#pragma mark - CMPhotoPickerViewControllerDelegate
+//
+///**
+// *  返回所有的Asstes对象
+// */
+//- (void)pickerViewControllerDoneAsstes:(NSArray*)assets
+//{
+//    if (assets && assets.count > 0) {
+//        UIImage* tmpImage = nil;
+//        // 判断类型来获取Image
+//        _currentPhotoAsset = assets[0];
+//        if ([_currentPhotoAsset isKindOfClass:[CMPhotoAssets class]]) {
+//            tmpImage = _currentPhotoAsset.thumbImage;
+//        }
+//        else if ([_currentPhotoAsset isKindOfClass:[NSString class]]) {
+//            tmpImage = [UIImage imageWithURL:[NSURL URLWithString:(NSString*)_currentPhotoAsset]];
+//            //            [cell.imageview1 sd_setImageWithURL:[NSURL URLWithString:(NSString*)asset] placeholderImage:[UIImage imageNamed:@"wallpaper_placeholder"]];
+//        }
+//        else if ([_currentPhotoAsset isKindOfClass:[UIImage class]]) {
+//            tmpImage = (UIImage*)_currentPhotoAsset;
+//        }
+//
+//        if (tmpImage) {
+//            tmpImage = [tmpImage scaleToSize:self.frame.size];
+//        }
+//
+//        _normalBgImage = _highlightBgImage = tmpImage;
+//
+//        [self setBackgroundImage:_normalBgImage forState:UIControlStateNormal];
+//        [self setBackgroundImage:_highlightBgImage forState:UIControlStateHighlighted];
+//    }
+//}
 
 #pragma mark - UIImagePickerControllerDelegate
 

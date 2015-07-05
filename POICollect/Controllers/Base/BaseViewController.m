@@ -104,9 +104,12 @@
 {
 }
 
+/**
+ *  检查是不是登陆了
+ */
 - (void)checkIslogin
 {
-    BOOL isLogin = NO;
+    BOOL isLogin = YES;
     if (!isLogin) {
         [self sendToLogin];
     }
@@ -117,7 +120,8 @@
  */
 - (void)sendToLogin
 {
-    [[[[UIApplication sharedApplication].windows firstObject] rootViewController] presentViewController:[[LoginModelViewController alloc] init] animated:YES completion:nil];
+    //    [[[[UIApplication sharedApplication].windows firstObject] rootViewController] presentViewController:[[LoginModelViewController alloc] init] animated:YES completion:nil];
+    ShowModelViewController([[LoginModelViewController alloc] init]);
 }
 
 @end

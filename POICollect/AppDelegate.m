@@ -8,9 +8,6 @@
 
 #import "AppDelegate.h"
 #import "CMThemeKit.h"
-//#import "LoginViewController.h"
-//#import "LoginView.h"
-//#import "RegisterView.h"
 #import "MainPOIListViewController.h"
 
 @interface AppDelegate ()
