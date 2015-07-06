@@ -91,6 +91,10 @@ typedef NS_ENUM(NSUInteger, RTAPIManagerRequestType) {
  */
 - (void)managerCallAPIDidFailed:(RTAPIBaseManager*)manager;
 
+@optional
+
+- (void)managerCallAPIProgress:(RTAPIBaseManager*)manager andPersent:(CGFloat)persent;
+
 @end
 
 /****************************************************************************
@@ -242,6 +246,16 @@ typedef NS_ENUM(NSUInteger, RTAPIManagerRequestType) {
 @end
 
 /****************************************************************************
+ *                              RTAPIManagerFilesSourcedelegate
+ ****************************************************************************/
+
+@protocol RTAPIManagerUploadFilesSourcedelegate <NSObject>
+
+- (NSArray*)uploadSourceForAPI:(RTAPIBaseManager*)manager;
+
+@end
+
+/****************************************************************************
  *                              RTAPIBaseManager
  ****************************************************************************/
 
@@ -261,6 +275,11 @@ typedef NS_ENUM(NSUInteger, RTAPIManagerRequestType) {
  *  参数的数据源
  */
 @property (nonatomic, weak) id<RTAPIManagerParamSourceDelegate> paramSource;
+
+/**
+ *  上传文件的数据源
+ */
+@property (nonatomic, weak) id<RTAPIManagerUploadFilesSourcedelegate> filesSource;
 
 /**
  *  验证器
@@ -308,6 +327,13 @@ typedef NS_ENUM(NSUInteger, RTAPIManagerRequestType) {
  *  @return 返回的是 NSInteger 的 requestId
  */
 - (NSInteger)loadData;
+
+/**
+ *  上传文件
+ *
+ *  @return 返回的时requestid
+ */
+- (NSInteger)uploadData;
 
 /**
  *  取消所有的请求 

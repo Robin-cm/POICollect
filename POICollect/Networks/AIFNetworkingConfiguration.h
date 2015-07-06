@@ -40,4 +40,9 @@ extern NSString* const kAIFServiceUserLogin;
  */
 extern NSString* const kAIFServiceUserRegist;
 
+/**
+ *  POI点上传
+ */
+extern NSString* const kAIFServicePOIUpdate;
+
 #endif

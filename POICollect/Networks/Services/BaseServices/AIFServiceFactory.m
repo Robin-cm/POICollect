@@ -19,6 +19,8 @@ NSString* const kAIFServiceUserLogin = @"kAIFServiceUserLogin";
 
 NSString* const kAIFServiceUserRegist = @"kAIFServiceUserRegist";
 
+NSString* const kAIFServicePOIUpdate = @"kAIFServicePOIUpdate";
+
 @interface AIFServiceFactory ()
 
 /**

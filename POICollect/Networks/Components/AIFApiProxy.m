@@ -12,6 +12,9 @@
 #import "AIFURLResponse.h"
 #import "AIFRequestGenerator.h"
 #import "AIFLogger.h"
+#import "AIFRequestURLGenerator.h"
+#import "CMPhoto.h"
+#import "NSString+AXNetworkingMethods.h"
 
 @interface AIFApiProxy ()
 
@@ -58,7 +61,17 @@
 
 #pragma mark - 实例方法
 
-- (NSInteger)callGETWithParams:(NSDictionary*)params serviceIdentifier:(NSString*)serviceIdentifier methodName:(NSString*)methodName success:(AXCallback)success fail:(AXCallback)fail
+- (NSInteger)uploadPostWithParams:(NSDictionary*)params photos:(NSArray*)photos serviceIdentifier:(NSString*)serviceIdentifiler methodName:(NSString*)methodName success:(AXCallback)success fail:(AXCallback)fail progress:(ProgressBlock)progress
+{
+    NSString* uploadURL = [[AIFRequestURLGenerator sharedInstance] generateUploadRequestURLWithServiceIdentifier:serviceIdentifiler methodName:methodName];
+
+    NSNumber* requestId = [self uploadDataWithRequestURL:uploadURL photos:photos params:params success:success fail:fail progress:progress];
+    return [requestId integerValue];
+}
+
+- (NSInteger)callGETWithParams:(NSDictionary*)params serviceIdentifier:(NSString*)serviceIdentifier methodName:(NSString*)methodName
+                       success:(AXCallback)success
+                          fail:(AXCallback)fail
 {
     NSURLRequest* request = [[AIFRequestGenerator sharedInstance] generateGETRequestWithServiceIdentifier:serviceIdentifier requestParams:params methodName:methodName];
     NSNumber* requestId = [self callApiWithRequest:request success:success fail:fail];
@@ -148,6 +161,73 @@
 
     self.dispatchTable[requestId] = httpRequestOperation;
     [[self.operationManager operationQueue] addOperation:httpRequestOperation];
+    return requestId;
+}
+
+- (NSNumber*)uploadDataWithRequestURL:(NSString*)url photos:(NSArray*)photos params:(NSDictionary*)params success:(AXCallback)success fail:(AXCallback)fail progress:(ProgressBlock)progress
+{
+    NSNumber* requestId = [self generateRequestId];
+
+    AFHTTPRequestOperation* httpUploadOperation = [self.operationManager POST:url
+        parameters:params
+        constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+            if (photos && photos.count > 0) {
+                NSObject* firstObj = [photos objectAtIndex:0];
+                if ([firstObj isKindOfClass:[CMPhoto class]]) {
+                    //数组中是CMPhoto类型
+                    for (CMPhoto* photo in photos) {
+                        [formData appendPartWithFileURL:[NSURL URLWithString:photo.imageURLString] name:@"image" error:nil];
+                    }
+                }
+                else if ([firstObj isKindOfClass:[NSString class]]) {
+                    //数组中是字符串类型
+                    for (NSString* urlStr in photos) {
+                        [formData appendPartWithFileURL:[NSURL URLWithString:urlStr] name:@"image" error:nil];
+                    }
+                }
+                else if ([firstObj isKindOfClass:[UIImage class]]) {
+                    //数组中是UIImage类型
+                    for (UIImage* img in photos) {
+                        [formData appendPartWithFileData:UIImageJPEGRepresentation(img, 0.5f) name:@"image" fileName:[NSString stringWithFormat:@"image_%@", [NSString currentDateStr]] mimeType:@"image/jpeg"];
+                    }
+                }
+            }
+        }
+        success:^(AFHTTPRequestOperation* operation, id responseObject) {
+            AFHTTPRequestOperation* storedOperation = self.dispatchTable[requestId];
+            if (!storedOperation) {
+                return;
+            }
+            else {
+                [self.dispatchTable removeObjectForKey:requestId];
+            }
+
+            [AIFLogger logDebugInfoWithResponse:operation.response resposeString:operation.responseString request:operation.request error:nil];
+
+            AIFURLResponse* response = [[AIFURLResponse alloc] initWithResponseString:operation.responseString requestId:requestId request:operation.request responseData:operation.responseData status:AIFURLResponseStatusSuccess];
+
+            success ? success(response) : nil;
+        }
+        failure:^(AFHTTPRequestOperation* operation, NSError* error) {
+            AFHTTPRequestOperation* storedOperation = self.dispatchTable[requestId];
+            if (!storedOperation) {
+                return;
+            }
+            else {
+                [self.dispatchTable removeObjectForKey:requestId];
+            }
+
+            [AIFLogger logDebugInfoWithResponse:operation.response resposeString:operation.responseString request:operation.request error:nil];
+
+            AIFURLResponse* response = [[AIFURLResponse alloc] initWithResponseString:operation.responseString requestId:requestId request:operation.request responseData:operation.responseData error:error];
+
+            fail ? fail(response) : nil;
+
+        }];
+
+    [httpUploadOperation setUploadProgressBlock:progress];
+    self.dispatchTable[requestId] = httpUploadOperation;
+    [[self.operationManager operationQueue] addOperation:httpUploadOperation];
     return requestId;
 }
 

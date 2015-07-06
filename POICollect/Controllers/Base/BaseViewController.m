@@ -102,6 +102,9 @@
  */
 - (void)popViewControllerAnimated:(BOOL)animation
 {
+    if (self.navigationController) {
+        [self.navigationController popViewControllerAnimated:animation];
+    }
 }
 
 /**

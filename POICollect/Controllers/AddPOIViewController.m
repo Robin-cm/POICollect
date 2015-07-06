@@ -12,6 +12,7 @@
 #import "CMDropdownButton.h"
 #import "CMPhotoPickButton.h"
 #import "CMPhotoKit.h"
+#import "UIView+Toast.h"
 
 static const CGFloat sDefaultPadding = 10;
 
@@ -78,6 +79,9 @@ static const CGFloat sDefaultPadding = 10;
 {
     [self setNavigationBarTranslucent:YES];
     [self showBackgroundImage:YES];
+
+    UIBarButtonItem* addBtn = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStyleDone target:self action:@selector(addBtnTaped:)];
+    self.navigationItem.rightBarButtonItem = addBtn;
 }
 
 - (void)initializeBody
@@ -109,7 +113,7 @@ static const CGFloat sDefaultPadding = 10;
     }
 
     if (!_poiAddressTF) {
-        _poiAddressTF = [[CMCustomWithButtonTextfield alloc] initButtonTextfieldWithPlaceholder:@"地址" andWithButtonImage:[UIImage imageNamed:@"name_ico"] andWithSelectedButtonImage:[UIImage imageNamed:@"name_ico"]];
+        _poiAddressTF = [[CMCustomWithButtonTextfield alloc] initButtonTextfieldWithPlaceholder:@"地址" andWithButtonImage:[UIImage imageNamed:@"location_btn"] andWithSelectedButtonImage:[UIImage imageNamed:@"name_ico"]];
         //        _poiAddressTF.borderStyle = UITextBorderStyleLine;
         //        _poiAddressTF.placeholder = @"asdasds";
         //        _poiAddressTF.rightView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"pass_ico"]];
@@ -121,8 +125,22 @@ static const CGFloat sDefaultPadding = 10;
         _dropDownBtn = [[CMDropdownButton alloc] initDropdownButtonWithTitle:@"分类"];
         //        [_dropDownBtn setTitle:@"分类啊啊啊啊" forState:UIControlStateNormal];
         _dropDownBtn.datas = @[
-            @"分类一",
-            @"分类二"
+            @"餐饮美食",
+            @"汽车及非四轮车服务",
+            @"运动休闲",
+            @"地产小区",
+            @"购物",
+            @"生活服务",
+            @"医疗卫生",
+            @"宾馆酒店",
+            @"旅游景点",
+            @"政府机构",
+            @"文化教育",
+            @"交通设施",
+            @"金融行业",
+            @"地名地址",
+            @"公司企业",
+            @"公共设施"
         ];
         [_formBgView addSubview:_dropDownBtn];
     }
@@ -216,42 +234,58 @@ static const CGFloat sDefaultPadding = 10;
             make.top.equalTo(weakSelf.formBgView.bottom).offset(sDefaultPadding);
             make.left.equalTo(weakSelf.scrollView.left).offset(sDefaultPadding);
             make.right.equalTo(weakSelf.scrollView.right).offset(-sDefaultPadding);
-            //            make.bottom.equalTo(weakSelf.pickBtn3.bottom).offset(-sDefaultPadding);
-
-            //            make.height.equalTo(@100);
         }];
     }
 
     if (_pickBtn1) {
         [_pickBtn1 makeConstraints:^(MASConstraintMaker* make) {
-            make.top.equalTo(weakSelf.imagePickerBgView.top).offset(sDefaultPadding);
-            make.left.equalTo(weakSelf.imagePickerBgView.left).offset(sDefaultPadding);
-            make.right.equalTo(weakSelf.pickBtn2.left).offset(-sDefaultPadding);
-            make.bottom.equalTo(weakSelf.imagePickerBgView.bottom).offset(-sDefaultPadding);
+            make.top.equalTo(weakSelf.imagePickerBgView.top).offset(sDefaultPadding * 1.5);
+            make.left.equalTo(weakSelf.imagePickerBgView.left).offset(sDefaultPadding * 1.5);
+            make.right.equalTo(weakSelf.pickBtn2.left).offset(-sDefaultPadding * 1.5);
+            make.bottom.equalTo(weakSelf.imagePickerBgView.bottom).offset(-sDefaultPadding * 1.5);
             make.width.and.height.equalTo(weakSelf.pickBtn2.width);
         }];
     }
 
     if (_pickBtn2) {
         [_pickBtn2 makeConstraints:^(MASConstraintMaker* make) {
-            make.top.equalTo(weakSelf.imagePickerBgView.top).offset(sDefaultPadding);
-            make.left.equalTo(weakSelf.pickBtn1.right).offset(sDefaultPadding);
-            make.right.equalTo(weakSelf.pickBtn3.left).offset(-sDefaultPadding);
-            make.bottom.equalTo(weakSelf.imagePickerBgView.bottom).offset(-sDefaultPadding);
+            make.top.equalTo(weakSelf.imagePickerBgView.top).offset(sDefaultPadding * 1.5);
+            make.left.equalTo(weakSelf.pickBtn1.right).offset(sDefaultPadding * 1.5);
+            make.right.equalTo(weakSelf.pickBtn3.left).offset(-sDefaultPadding * 1.5);
+            make.bottom.equalTo(weakSelf.imagePickerBgView.bottom).offset(-sDefaultPadding * 1.5);
             make.width.and.height.equalTo(weakSelf.pickBtn3.width);
         }];
     }
 
     if (_pickBtn3) {
         [_pickBtn3 makeConstraints:^(MASConstraintMaker* make) {
-            make.top.equalTo(weakSelf.imagePickerBgView.top).offset(sDefaultPadding);
-            make.left.equalTo(weakSelf.pickBtn2.right).offset(sDefaultPadding);
-            make.right.equalTo(weakSelf.imagePickerBgView.right).offset(-sDefaultPadding);
+            make.top.equalTo(weakSelf.imagePickerBgView.top).offset(sDefaultPadding * 1.5);
+            make.left.equalTo(weakSelf.pickBtn2.right).offset(sDefaultPadding * 1.5);
+            make.right.equalTo(weakSelf.imagePickerBgView.right).offset(-sDefaultPadding * 1.5);
             //            make.width.equalTo(@[ weakSelf.pickBtn1.width, weakSelf.pickBtn2.width ]);
-            make.bottom.equalTo(weakSelf.imagePickerBgView.bottom).offset(-sDefaultPadding);
+            make.bottom.equalTo(weakSelf.imagePickerBgView.bottom).offset(-sDefaultPadding * 1.5);
             make.width.and.height.equalTo(weakSelf.pickBtn2.width);
         }];
     }
+}
+
+#pragma mark - 事件
+
+- (void)addBtnTaped:(id)sender
+{
+    if ([self.poiNameTF.text isEqualToString:@""]) {
+        [self.view makeToast:@"名称不能为空"];
+        return;
+    }
+    if ([self.poiAddressTF.text isEqualToString:@""]) {
+        [self.view makeToast:@"地址不能为空"];
+        return;
+    }
+    if (self.dropDownBtn.currentIndex == -1) {
+        [self.view makeToast:@"请选择分类"];
+        return;
+    }
+    [self popViewControllerAnimated:YES];
 }
 
 /*

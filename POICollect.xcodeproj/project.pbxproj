@@ -23,6 +23,14 @@
 		26782CAB1B46676700104330 /* LoginUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 26782CAA1B46676700104330 /* LoginUser.m */; };
 		26782CAE1B46690800104330 /* ViewModelClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 26782CAD1B46690800104330 /* ViewModelClass.m */; };
 		26782CB21B4685FE00104330 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 26782CB11B4685FE00104330 /* UIView+Toast.m */; };
+		26911FC71B4A08BD004307B1 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 26911FC61B4A08BD004307B1 /* User.m */; };
+		26911FCA1B4A1417004307B1 /* RegistUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 26911FC91B4A1417004307B1 /* RegistUser.m */; };
+		26911FCD1B4A1B32004307B1 /* AIFRequestURLGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 26911FCC1B4A1B32004307B1 /* AIFRequestURLGenerator.m */; };
+		26911FD11B4A27D3004307B1 /* POIUploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26911FD01B4A27D3004307B1 /* POIUploadManager.m */; };
+		26911FD81B4A28EF004307B1 /* POIUploadService.m in Sources */ = {isa = PBXBuildFile; fileRef = 26911FD71B4A28EF004307B1 /* POIUploadService.m */; };
+		26911FDE1B4A321F004307B1 /* POIDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26911FDD1B4A321F004307B1 /* POIDataManager.m */; };
+		26911FE51B4A66A1004307B1 /* POIObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 26911FE41B4A66A1004307B1 /* POIObj.m */; };
+		26911FE81B4A84BF004307B1 /* location_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26911FE71B4A84BF004307B1 /* location_btn@2x.png */; };
 		2695B4311B425C9C00CB34D0 /* CMPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 2695B4301B425C9C00CB34D0 /* CMPhoto.m */; };
 		2695B4341B42765400CB34D0 /* LoginModelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2695B4331B42765400CB34D0 /* LoginModelViewController.m */; };
 		2695B4411B428A9900CB34D0 /* TPKeyboardAvoidingCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2695B43A1B428A9900CB34D0 /* TPKeyboardAvoidingCollectionView.m */; };
@@ -148,6 +156,21 @@
 		26782CAD1B46690800104330 /* ViewModelClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewModelClass.m; path = ViewModels/ViewModelClass.m; sourceTree = "<group>"; };
 		26782CB01B4685FE00104330 /* UIView+Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Toast.h"; path = "Utils/Categories/Toast/UIView+Toast.h"; sourceTree = "<group>"; };
 		26782CB11B4685FE00104330 /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Toast.m"; path = "Utils/Categories/Toast/UIView+Toast.m"; sourceTree = "<group>"; };
+		26911FC51B4A08BD004307B1 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = Models/User.h; sourceTree = "<group>"; };
+		26911FC61B4A08BD004307B1 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = Models/User.m; sourceTree = "<group>"; };
+		26911FC81B4A1417004307B1 /* RegistUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegistUser.h; path = Models/RegistUser.h; sourceTree = "<group>"; };
+		26911FC91B4A1417004307B1 /* RegistUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegistUser.m; path = Models/RegistUser.m; sourceTree = "<group>"; };
+		26911FCB1B4A1B32004307B1 /* AIFRequestURLGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIFRequestURLGenerator.h; path = Networks/Assistants/AIFRequestURLGenerator.h; sourceTree = "<group>"; };
+		26911FCC1B4A1B32004307B1 /* AIFRequestURLGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIFRequestURLGenerator.m; path = Networks/Assistants/AIFRequestURLGenerator.m; sourceTree = "<group>"; };
+		26911FCF1B4A27D3004307B1 /* POIUploadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = POIUploadManager.h; path = Networks/Components/POIComponents/POIUploadManager.h; sourceTree = "<group>"; };
+		26911FD01B4A27D3004307B1 /* POIUploadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = POIUploadManager.m; path = Networks/Components/POIComponents/POIUploadManager.m; sourceTree = "<group>"; };
+		26911FD61B4A28EF004307B1 /* POIUploadService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = POIUploadService.h; path = Networks/Services/POIServices/POIUploadService.h; sourceTree = "<group>"; };
+		26911FD71B4A28EF004307B1 /* POIUploadService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = POIUploadService.m; path = Networks/Services/POIServices/POIUploadService.m; sourceTree = "<group>"; };
+		26911FDC1B4A321F004307B1 /* POIDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = POIDataManager.h; path = Networks/Components/POIComponents/POIDataManager.h; sourceTree = "<group>"; };
+		26911FDD1B4A321F004307B1 /* POIDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = POIDataManager.m; path = Networks/Components/POIComponents/POIDataManager.m; sourceTree = "<group>"; };
+		26911FE31B4A66A1004307B1 /* POIObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = POIObj.h; path = Models/CoreDataModels/POIObj.h; sourceTree = "<group>"; };
+		26911FE41B4A66A1004307B1 /* POIObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = POIObj.m; path = Models/CoreDataModels/POIObj.m; sourceTree = "<group>"; };
+		26911FE71B4A84BF004307B1 /* location_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "location_btn@2x.png"; path = "Resources/Locations/location_btn@2x.png"; sourceTree = "<group>"; };
 		2695B42F1B425C9C00CB34D0 /* CMPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMPhoto.h; path = Models/CMPhoto.h; sourceTree = "<group>"; };
 		2695B4301B425C9C00CB34D0 /* CMPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMPhoto.m; path = Models/CMPhoto.m; sourceTree = "<group>"; };
 		2695B4321B42765400CB34D0 /* LoginModelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginModelViewController.h; path = Controllers/Login/LoginModelViewController.h; sourceTree = "<group>"; };
@@ -407,6 +430,43 @@
 			name = Toast;
 			sourceTree = "<group>";
 		};
+		26911FCE1B4A279D004307B1 /* POIComponents */ = {
+			isa = PBXGroup;
+			children = (
+				26911FCF1B4A27D3004307B1 /* POIUploadManager.h */,
+				26911FD01B4A27D3004307B1 /* POIUploadManager.m */,
+				26911FDC1B4A321F004307B1 /* POIDataManager.h */,
+				26911FDD1B4A321F004307B1 /* POIDataManager.m */,
+			);
+			name = POIComponents;
+			sourceTree = "<group>";
+		};
+		26911FD21B4A2888004307B1 /* POIServices */ = {
+			isa = PBXGroup;
+			children = (
+				26911FD61B4A28EF004307B1 /* POIUploadService.h */,
+				26911FD71B4A28EF004307B1 /* POIUploadService.m */,
+			);
+			name = POIServices;
+			sourceTree = "<group>";
+		};
+		26911FDF1B4A48D2004307B1 /* CoreDataModels */ = {
+			isa = PBXGroup;
+			children = (
+				26911FE31B4A66A1004307B1 /* POIObj.h */,
+				26911FE41B4A66A1004307B1 /* POIObj.m */,
+			);
+			name = CoreDataModels;
+			sourceTree = "<group>";
+		};
+		26911FE61B4A845B004307B1 /* Locations */ = {
+			isa = PBXGroup;
+			children = (
+				26911FE71B4A84BF004307B1 /* location_btn@2x.png */,
+			);
+			name = Locations;
+			sourceTree = "<group>";
+		};
 		2695B4351B428A2200CB34D0 /* TPKeyboardAvoiding */ = {
 			isa = PBXGroup;
 			children = (
@@ -437,6 +497,7 @@
 		26B98D681B44CC5200FE83BB /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				26911FD21B4A2888004307B1 /* POIServices */,
 				26782C9E1B4657AC00104330 /* UserServices */,
 				26782C921B463F5500104330 /* TestServices */,
 				26782C8B1B463F1200104330 /* BaseServices */,
@@ -447,6 +508,7 @@
 		26B98D711B44D63900FE83BB /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				26911FCE1B4A279D004307B1 /* POIComponents */,
 				26782C9A1B46571900104330 /* UserComponents */,
 				26782C961B46414300104330 /* TestComponents */,
 				26B98D9B1B452E1200FE83BB /* LogComponents */,
@@ -470,6 +532,8 @@
 				26B98D7D1B4507A300FE83BB /* AIFRequestGenerator.m */,
 				26B98D7F1B450B5300FE83BB /* AIFCommonParamsGenerator.h */,
 				26B98D801B450B5300FE83BB /* AIFCommonParamsGenerator.m */,
+				26911FCB1B4A1B32004307B1 /* AIFRequestURLGenerator.h */,
+				26911FCC1B4A1B32004307B1 /* AIFRequestURLGenerator.m */,
 			);
 			name = Assistants;
 			sourceTree = "<group>";
@@ -642,12 +706,17 @@
 		7658F4971B32607400E41A0B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				26911FDF1B4A48D2004307B1 /* CoreDataModels */,
 				2695B42F1B425C9C00CB34D0 /* CMPhoto.h */,
 				2695B4301B425C9C00CB34D0 /* CMPhoto.m */,
 				26782CA91B46676700104330 /* LoginUser.h */,
 				26782CAA1B46676700104330 /* LoginUser.m */,
 				A14822551B476DF300271FAC /* POIPoint.h */,
 				A14822561B476DF300271FAC /* POIPoint.m */,
+				26911FC51B4A08BD004307B1 /* User.h */,
+				26911FC61B4A08BD004307B1 /* User.m */,
+				26911FC81B4A1417004307B1 /* RegistUser.h */,
+				26911FC91B4A1417004307B1 /* RegistUser.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -689,6 +758,7 @@
 		7658F49B1B32609100E41A0B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				26911FE61B4A845B004307B1 /* Locations */,
 				7685EA781B3A75CA00AD1645 /* Logins */,
 				7685EA751B3A5DB400AD1645 /* Backgrounds */,
 			);
@@ -1022,6 +1092,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26911FE81B4A84BF004307B1 /* location_btn@2x.png in Resources */,
 				7685EA7C1B3A761200AD1645 /* pass_ico.png in Resources */,
 				7658F47C1B325FFF00E41A0B /* Main.storyboard in Resources */,
 				A147714E1B3F9D4F00A3F60C /* Media.xcassets in Resources */,
@@ -1092,6 +1163,7 @@
 				26B98DA41B453EB700FE83BB /* NSArray+AXNetworkingMethods.m in Sources */,
 				26782C991B4641BF00104330 /* TestAPIManager.m in Sources */,
 				A1CD5A401B37C27D008BC36A /* UIImage+Expanded.m in Sources */,
+				26911FCA1B4A1417004307B1 /* RegistUser.m in Sources */,
 				76615EB11B3CFF7E0064BCB0 /* UITableView+Expanded.m in Sources */,
 				2695B4431B428A9900CB34D0 /* TPKeyboardAvoidingTableView.m in Sources */,
 				A1F484431B3DAFC100FD49A4 /* CMPhotoPickerGroupTableViewCell.m in Sources */,
@@ -1106,9 +1178,12 @@
 				A14771421B3F90B500A3F60C /* CMPhotoAssets.m in Sources */,
 				2695B4421B428A9900CB34D0 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				26782CA11B4657F000104330 /* UserLoginService.m in Sources */,
+				26911FE51B4A66A1004307B1 /* POIObj.m in Sources */,
 				7658F4A31B3261EE00E41A0B /* BaseViewController.m in Sources */,
 				26B98D771B44F5D600FE83BB /* AIFURLResponse.m in Sources */,
+				26911FD11B4A27D3004307B1 /* POIUploadManager.m in Sources */,
 				26782C9D1B46575500104330 /* UserLoginManager.m in Sources */,
+				26911FD81B4A28EF004307B1 /* POIUploadService.m in Sources */,
 				766CC7031B328DA800DCFFB4 /* CMThemeKit.m in Sources */,
 				2695B4341B42765400CB34D0 /* LoginModelViewController.m in Sources */,
 				7658F4701B325FFF00E41A0B /* main.m in Sources */,
@@ -1116,7 +1191,9 @@
 				A1F4843F1B3DAAD200FD49A4 /* CMPhotoPickerGroup.m in Sources */,
 				769BD68C1B3419660089FB39 /* RegisterView.m in Sources */,
 				7625BA6C1B3C01B600D53440 /* CMDropdownButton.m in Sources */,
+				26911FCD1B4A1B32004307B1 /* AIFRequestURLGenerator.m in Sources */,
 				26B98DA71B453F1D00FE83BB /* NSString+AXNetworkingMethods.m in Sources */,
+				26911FDE1B4A321F004307B1 /* POIDataManager.m in Sources */,
 				26B98D7E1B4507A300FE83BB /* AIFRequestGenerator.m in Sources */,
 				26DA23791B41368D00A26B86 /* CMCameraPreviewImageView.m in Sources */,
 				766CC7061B329BB200DCFFB4 /* LoginViewController.m in Sources */,
@@ -1133,6 +1210,7 @@
 				A100F86D1B35577400271B2E /* CMPageView.m in Sources */,
 				764C8CA21B3924DD00FF2F51 /* MainListTableViewCell.m in Sources */,
 				A1CD5A3D1B37B34B008BC36A /* CMSimpleButton.m in Sources */,
+				26911FC71B4A08BD004307B1 /* User.m in Sources */,
 				7685EA741B3A45BA00AD1645 /* CMCustomBaseAnimation.m in Sources */,
 				26B98D981B452DC400FE83BB /* NSObject+AXNetworkingMethods.m in Sources */,
 				26DA23731B41329800A26B86 /* CMCameraPreviewImageScrollView.m in Sources */,

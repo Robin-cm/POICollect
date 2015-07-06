@@ -16,6 +16,8 @@
 
 + (UIImage*)imageWithURL:(NSURL*)url;
 
-- (UIImage *)scaleToSize:(CGSize)size;
+- (UIImage*)scaleToSize:(CGSize)size;
+
+- (NSString*)saveImageToDocument;
 
 @end

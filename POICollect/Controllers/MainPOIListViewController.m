@@ -14,6 +14,7 @@
 #import "AddPOIViewController.h"
 #import "POIPoint.h"
 #import "CMActionSheetView.h"
+#import "POIDataManager.h"
 
 #define kMainListCellIdentifine @"MainListCellIdentifine"
 
@@ -27,7 +28,7 @@
 
 //@property (nonatomic, strong) CMCustomPopAnimation* mPopAnimation;
 
-@property (nonatomic, strong) AddPOIViewController* addPoiViewController;
+//@property (nonatomic, strong) AddPOIViewController* addPoiViewController;
 
 @property (nonatomic, assign) BOOL mEdit;
 
@@ -53,14 +54,14 @@
 
 #pragma mark Getter
 
-- (AddPOIViewController*)addPoiViewController
-{
-    if (!_addPoiViewController) {
-        _addPoiViewController = [[AddPOIViewController alloc] init];
-        //        _addPoiViewController.transitioningDelegate = self;
-    }
-    return _addPoiViewController;
-}
+//- (AddPOIViewController*)addPoiViewController
+//{
+//    if (!_addPoiViewController) {
+//        _addPoiViewController = [[AddPOIViewController alloc] init];
+//        //        _addPoiViewController.transitioningDelegate = self;
+//    }
+//    return _addPoiViewController;
+//}
 
 - (NSMutableArray*)datas
 {
@@ -81,14 +82,23 @@
     self.navigationController.delegate = self;
     self.transitioningDelegate = self;
 
-    for (int i = 0; i < 100; i++) {
-        POIPoint* poiPoint = [[POIPoint alloc] init];
-        poiPoint.poiName = [NSString stringWithFormat:@"第%i个POI点", i];
-        poiPoint.poiAddress = [NSString stringWithFormat:@"第%i个POI点的地址", i];
-        poiPoint.images = @[];
-        poiPoint.poiSelected = NO;
-        [self.datas addObject:poiPoint];
-    }
+    //    for (int i = 0; i < 5; i++) {
+    //        POIPoint* poiPoint = [[POIPoint alloc] init];
+    //        poiPoint.poiName = [NSString stringWithFormat:@"第%i个POI点", i];
+    //        poiPoint.poiAddress = [NSString stringWithFormat:@"第%i个POI点的地址", i];
+    //        poiPoint.images = @[];
+    //        poiPoint.isUploaded = NO;
+    //        poiPoint.poiLat = [NSNumber numberWithFloat:37.0000];
+    //        poiPoint.poiLon = [NSNumber numberWithFloat:117.0000];
+    //        poiPoint.poiCategory = [NSNumber numberWithInteger:0];
+    //        poiPoint.poiId = arc4random_uniform(1000000);
+    //        poiPoint.poiSelected = NO;
+    //
+    //        [[POIDataManager sharedManager] insertNewPOI:poiPoint];
+    //        //        [self.datas addObject:poiPoint];
+    //    }
+
+    _datas = [[POIDataManager sharedManager] queryAllPOIIsUploaded:NO];
 }
 
 - (void)initializeView
@@ -197,7 +207,8 @@
 - (void)addPOIBtnTaped:(id)sender
 {
     NSLog(@"添加按钮点击");
-    [self.navigationController pushViewController:self.addPoiViewController animated:YES];
+    AddPOIViewController* addPoiViewController = [[AddPOIViewController alloc] init];
+    [self.navigationController pushViewController:addPoiViewController animated:YES];
 }
 
 - (void)editBtnTaped:(id)sender
@@ -224,7 +235,7 @@
     MainListTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:kMainListCellIdentifine];
     POIPoint* point = [self.datas objectAtIndex:indexPath.row];
     NSLog(@"点的名称是：%@   点的地址是：%@", point.poiName, point.poiAddress);
-    [cell setTitle:point.poiName andSubTitle:point.poiAddress];
+    cell.poiPoint = point;
     cell.mSeledted = point.poiSelected;
     cell.selectBlock = ^(id obj, BOOL selected) {
         NSLog(@"当前的选中状态是--->:%d", selected);

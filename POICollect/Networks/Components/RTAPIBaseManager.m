@@ -196,6 +196,19 @@
     return requestId;
 }
 
+/**
+ *  上传文件
+ *
+ *  @return 返回的时requestid
+ */
+- (NSInteger)uploadData
+{
+    NSDictionary* params = [self.paramSource paramsForAPI:self];
+    NSArray* files = [self.filesSource uploadSourceForAPI:self];
+    NSInteger requestId = [self uploadDataWithParams:params andWithFiles:files];
+    return requestId;
+}
+
 #pragma mark - 私有方法,call API
 
 - (NSInteger)loadDataWithParams:(NSDictionary*)params
@@ -203,10 +216,10 @@
     NSInteger requestId = 0;
     NSDictionary* apiParams = [self reformParams:params];
 
-    if ([self shouldCallAPIWithParams:params]) {
-        if ([self.validator manager:self isCorrectWithParamsData:params]) {
+    if ([self shouldCallAPIWithParams:apiParams]) {
+        if ([self.validator manager:self isCorrectWithParamsData:apiParams]) {
 
-            if ([self shouldCache] && [self hasCacheWithParams:params]) {
+            if ([self shouldCache] && [self hasCacheWithParams:apiParams]) {
                 return 0;
             }
 
@@ -231,6 +244,51 @@
                 default:
                     break;
                 }
+
+                NSMutableDictionary* params = [apiParams mutableCopy];
+                params[kRTAPIBaseManagerRequestID] = @(requestId);
+                [self afterCallingAPIWithParams:params];
+                return requestId;
+            }
+            else {
+                [self failedOnCallingAPI:nil withErrorType:RTAPIManagerErrorTypeNoNetwork];
+            }
+        }
+        else {
+            [self failedOnCallingAPI:nil withErrorType:RTAPIManagerErrorTypeParamsError];
+            return requestId;
+        }
+    }
+    return requestId;
+}
+
+- (NSInteger)uploadDataWithParams:(NSDictionary*)params andWithFiles:(NSArray*)files
+{
+    NSInteger requestId = 0;
+    NSDictionary* apiParams = [self reformParams:params];
+    if ([self shouldCallAPIWithParams:apiParams]) {
+        if ([self.validator manager:self isCorrectWithParamsData:apiParams]) {
+            if ([self isReachable]) {
+                requestId = [[AIFApiProxy sharedInstance] uploadPostWithParams:apiParams
+                    photos:files
+                    serviceIdentifier:self.child.serviceType
+                    methodName:self.child.methodName
+                    success:^(AIFURLResponse* response) {
+                        if (self.delegate && [self.delegate respondsToSelector:@selector(managerCallAPIDidSuccess:)]) {
+                            [self.delegate managerCallAPIDidSuccess:self];
+                        }
+                    }
+                    fail:^(AIFURLResponse* response) {
+                        if (self.delegate && [self.delegate respondsToSelector:@selector(managerCallAPIDidFailed:)]) {
+                            [self.delegate managerCallAPIDidFailed:self];
+                        }
+
+                    }
+                    progress:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
+                        if (self.delegate && [self.delegate respondsToSelector:@selector(managerCallAPIProgress:andPersent:)]) {
+                            [self.delegate managerCallAPIProgress:self andPersent:totalBytesWritten * 1.0 / totalBytesExpectedToWrite];
+                        }
+                    }];
 
                 NSMutableDictionary* params = [apiParams mutableCopy];
                 params[kRTAPIBaseManagerRequestID] = @(requestId);

@@ -20,7 +20,7 @@ static const CGFloat CSToastMaxHeight = 0.8; // 80% of parent view height
 static const CGFloat CSToastHorizontalPadding = 10.0;
 static const CGFloat CSToastVerticalPadding = 10.0;
 static const CGFloat CSToastCornerRadius = 5.0;
-static const CGFloat CSToastOpacity = 0.7;
+static const CGFloat CSToastOpacity = 0.5;
 static const CGFloat CSToastFontSize = 14.0;
 static const CGFloat CSToastMaxTitleLines = 0;
 static const CGFloat CSToastMaxMessageLines = 0;
@@ -201,6 +201,8 @@ NSString* const CSToastPositionBottom = @"bottom";
     }
 
     UIActivityIndicatorView* activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    activityIndicatorView.color = kAppThemeSecondaryColor;
+    activityIndicatorView.tintColor = kAppThemeSecondaryColor;
     activityIndicatorView.center = CGPointMake(activityView.bounds.size.width / 2, activityView.bounds.size.height / 2);
     [activityView addSubview:activityIndicatorView];
     [activityIndicatorView startAnimating];
@@ -209,6 +211,7 @@ NSString* const CSToastPositionBottom = @"bottom";
     objc_setAssociatedObject(self, &CSToastActivityViewKey, activityView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 
     [self addSubview:activityView];
+    self.userInteractionEnabled = NO;
 
     [UIView animateWithDuration:CSToastFadeDuration
                           delay:0.0
@@ -221,6 +224,7 @@ NSString* const CSToastPositionBottom = @"bottom";
 
 - (void)hideToastActivity
 {
+    self.userInteractionEnabled = YES;
     UIView* existingActivityView = (UIView*)objc_getAssociatedObject(self, &CSToastActivityViewKey);
     if (existingActivityView != nil) {
         [UIView animateWithDuration:CSToastFadeDuration

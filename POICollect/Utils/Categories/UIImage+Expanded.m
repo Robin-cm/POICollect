@@ -58,4 +58,19 @@
     return scaledImage;
 }
 
+/**
+ *  保存图片 
+ *
+ *  @return 返回图片的路径 
+ */
+- (NSString*)saveImageToDocument
+{
+    NSDateFormatter* formater = [[NSDateFormatter alloc] init];
+    formater.dateFormat = @"yyyyMMddHHmmss";
+    NSString* currentTimeStr = [[formater stringFromDate:[NSDate date]] stringByAppendingFormat:@"_%d", arc4random_uniform(10000)];
+    NSString* path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:currentTimeStr];
+    [UIImagePNGRepresentation(self) writeToFile:path atomically:YES];
+    return path;
+}
+
 @end

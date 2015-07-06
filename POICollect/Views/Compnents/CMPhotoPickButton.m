@@ -12,6 +12,7 @@
 #import "UIImage+Expanded.h"
 #import "CMPhoto.h"
 #import "CMActionSheetView.h"
+#import "UIImage+Expanded.h"
 
 #define kDefaultNormalBgColor [UIColor colorWithHexString:@"0xD1D1D1"]
 
@@ -114,8 +115,8 @@ static const CGFloat sDefaultCornerRadius = 5;
         [self setBackgroundImage:_highlightBgImage forState:UIControlStateHighlighted];
     }
     else {
-        if ([_currentPhoto getImage]) {
-            UIImage* thumbImage = [[_currentPhoto getImage] scaleToSize:self.bounds.size];
+        if ([_currentPhoto thumbImage]) {
+            UIImage* thumbImage = [_currentPhoto thumbImage];
             _normalBgImage = _highlightBgImage = thumbImage;
             [self setBackgroundImage:_normalBgImage forState:UIControlStateNormal];
             [self setBackgroundImage:_highlightBgImage forState:UIControlStateHighlighted];
@@ -208,8 +209,10 @@ static const CGFloat sDefaultCornerRadius = 5;
         }
         else {
             photo.localImage = NO;
+            UIImage* cameraImage = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+            NSString* savePath = [cameraImage saveImageToDocument];
+            photo.imageURLString = savePath;
         }
-        photo.originalImage = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
         self.currentPhoto = photo;
     }
 }

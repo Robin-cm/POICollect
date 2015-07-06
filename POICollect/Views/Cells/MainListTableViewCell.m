@@ -31,13 +31,15 @@ static const CGFloat sDefaultPadding = 10;
 
 @property (nonatomic, strong) UIProgressView* progressView;
 
-@property (nonatomic, strong) UIButton* editBtn;
-
-@property (nonatomic, strong) UIButton* deleteBtn;
-
 @property (nonatomic, strong) CMSimpleCheckBoxBtn* selectBtn;
 
 @property (nonatomic, strong) NSMutableArray* subContentConstraints;
+
+@property (nonatomic, strong) UIImageView* firstImageView;
+
+@property (nonatomic, strong) UIImageView* secondImageView;
+
+@property (nonatomic, strong) UIImageView* thirdImageView;
 
 @end
 
@@ -74,6 +76,14 @@ static const CGFloat sDefaultPadding = 10;
         [self initialization];
     }
     return self;
+}
+
+- (void)setPoiPoint:(POIPoint*)poiPoint
+{
+    _mainTitle = poiPoint.poiName;
+    _subTitle = poiPoint.poiAddress;
+    _poiNameLabel.text = _mainTitle;
+    _poiAddressLabel.text = _subTitle;
 }
 
 #pragma 生命周期
@@ -184,23 +194,32 @@ static const CGFloat sDefaultPadding = 10;
         }];
     }
 
-    if (_editBtn) {
-        [_editBtn makeConstraints:^(MASConstraintMaker* make) {
+    if (_firstImageView) {
+        [_firstImageView makeConstraints:^(MASConstraintMaker* make) {
             make.top.equalTo(weakSelf.progressView.bottom).offset(sDefaultPadding);
-            make.left.equalTo(weakSelf.subContainerView.left);
-            make.right.equalTo(weakSelf.deleteBtn.left);
-            make.width.equalTo(weakSelf.deleteBtn);
-            make.height.equalTo(@20);
+            make.left.equalTo(weakSelf.subContainerView.left).offset(sDefaultPadding);
+            make.right.equalTo(weakSelf.secondImageView.left).offset(-sDefaultPadding);
+            make.width.and.height.equalTo(@(50));
         }];
     }
 
-    if (_deleteBtn) {
-        [_deleteBtn makeConstraints:^(MASConstraintMaker* make) {
+    if (_secondImageView) {
+        [_secondImageView makeConstraints:^(MASConstraintMaker* make) {
             make.top.equalTo(weakSelf.progressView.bottom).offset(sDefaultPadding);
-            make.right.equalTo(weakSelf.subContainerView.right);
-            make.left.equalTo(weakSelf.editBtn.right);
-            make.width.equalTo(weakSelf.editBtn);
-            make.height.equalTo(@20);
+            make.left.equalTo(weakSelf.firstImageView.right).offset(sDefaultPadding);
+            make.right.equalTo(weakSelf.thirdImageView.left).offset(-sDefaultPadding);
+            make.width.and.height.equalTo(@(50));
+
+        }];
+    }
+
+    if (_thirdImageView) {
+        [_thirdImageView makeConstraints:^(MASConstraintMaker* make) {
+            make.top.equalTo(weakSelf.progressView.bottom).offset(sDefaultPadding);
+            make.left.equalTo(weakSelf.secondImageView.right).offset(sDefaultPadding);
+            make.right.equalTo(weakSelf.secondImageView.left).offset(-sDefaultPadding);
+            make.width.and.height.equalTo(@(50));
+
         }];
     }
 }
@@ -276,23 +295,22 @@ static const CGFloat sDefaultPadding = 10;
         [_subContainerView addSubview:_progressView];
     }
 
-    if (!_editBtn) {
-        _editBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_editBtn setTitle:@"编辑" forState:UIControlStateNormal];
-        _editBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-        [_subContainerView addSubview:_editBtn];
+    if (!_firstImageView) {
+        _firstImageView = [[UIImageView alloc] init];
+        _firstImageView.image = [UIImage imageNamed:@"main_bg"];
+        [_subContainerView addSubview:_firstImageView];
     }
 
-    if (!_deleteBtn) {
-        _deleteBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_deleteBtn setTitle:@"删除" forState:UIControlStateNormal];
-        _deleteBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-        //        [_deleteBtn setImage:[UIImage imageNamed:@"name_ico"] forState:UIControlStateNormal];
-        //        [_deleteBtn setImageEdgeInsets:UIEdgeInsetsMake(4, 0, 4, 0)];
-        //        _deleteBtn.imageEdgeInsets = UIEdgeInsetsMake(3.0, 20.0, 3.0, 15.0);
-        //        _deleteBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
-        //        [_deleteBtn setImageEdgeInsets:UIEdgeInsetsMake(2, 0, 2, 0)];
-        [_subContainerView addSubview:_deleteBtn];
+    if (!_secondImageView) {
+        _secondImageView = [[UIImageView alloc] init];
+        _secondImageView.image = [UIImage imageNamed:@"main_bg"];
+        [_subContainerView addSubview:_secondImageView];
+    }
+
+    if (!_thirdImageView) {
+        _thirdImageView = [[UIImageView alloc] init];
+        _thirdImageView.image = [UIImage imageNamed:@"main_bg"];
+        [_subContainerView addSubview:_thirdImageView];
     }
 
     [self layoutView];
@@ -401,7 +419,7 @@ static const CGFloat sDefaultPadding = 10;
 
 + (CGFloat)getCellHeightWithTitle:(NSString*)title andSubTitle:(NSString*)subTitle
 {
-    return sDefaultPadding * 2 + ceilf(sDefaultPadding / 4) + 20 + 25 + 20 + 11 + 30;
+    return sDefaultPadding * 2 + ceilf(sDefaultPadding / 4) + 20 + 25 + 20 + 11 + 60;
 }
 
 @end

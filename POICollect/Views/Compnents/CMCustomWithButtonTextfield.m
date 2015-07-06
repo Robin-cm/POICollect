@@ -15,7 +15,7 @@
 #define kDefaultNormalForeColor [UIColor colorWithHexString:@"0xffffff"]
 
 static const CGFloat sDefaultCornerRadius = 4.0;
-//static const CGFloat sDefaultBorderWidth = 1.0;
+static const CGFloat sDefaultBorderWidth = 1.0;
 
 static const CGFloat sDefaultPadding = 10;
 
@@ -99,15 +99,17 @@ static const CGFloat sDefaultPadding = 10;
 {
     self.borderStyle = UITextBorderStyleRoundedRect;
     self.layer.cornerRadius = _cornerRadius ? _cornerRadius : sDefaultCornerRadius;
+    self.layer.masksToBounds = YES;
     //    self.layer.borderColor = _borderColor ? _borderColor.CGColor : kDefaultBorderColor.CGColor;
     //    self.layer.borderWidth = _borderWidth ? _borderWidth : sDefaultBorderWidth;
     self.font = _textFont ? _textFont : [UIFont systemFontOfSize:15];
     //    self.backgroundColor = _normalBackgroundColor ?: kDefaultNormalBgColor;
-    self.backgroundColor = [UIColor lightGrayColor];
+    self.backgroundColor = _normalBackgroundColor ?: kDefaultNormalBgColor;
     _normalForegroundColor = _normalForegroundColor ?: kDefaultNormalForeColor;
 
     [self setTextColor:_normalForegroundColor];
     [self setTintColor:_normalForegroundColor];
+    [self setValue:_normalForegroundColor forKeyPath:@"_placeholderLabel.textColor"];
 
     _rightBtnSelectedImage = _rightBtnSelectedImage ?: _rightBtnImage;
 

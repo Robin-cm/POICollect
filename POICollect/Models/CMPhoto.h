@@ -13,7 +13,12 @@
 /**
  *  原始图片
  */
-@property (nonatomic, strong) UIImage* originalImage;
+@property (nonatomic, strong, readonly) UIImage* originalImage;
+
+/**
+ *  缩略图
+ */
+@property (nonatomic, strong, readonly) UIImage* thumbImage;
 
 /**
  *  路径
@@ -24,13 +29,5 @@
  *  是不是本地的图片，false是拍照来的图片 
  */
 @property (nonatomic, assign) BOOL localImage;
-
-#pragma mark - 方法
-
-- (void)saveImage;
-
-- (UIImage*)getImage;
-
-- (void)deleteImage;
 
 @end

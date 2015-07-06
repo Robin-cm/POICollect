@@ -6,6 +6,8 @@
 //  Copyright (c) 2015年 cm. All rights reserved.
 //
 
+#import "POIPoint.h"
+
 typedef void (^SelectBlock)(id obj, BOOL selected);
 
 typedef void (^MoreBlock)(id obj);
@@ -21,6 +23,8 @@ typedef void (^MoreBlock)(id obj);
 @property (nonatomic, copy) SelectBlock selectBlock;
 
 @property (nonatomic, copy) MoreBlock moreTapBlock;
+
+@property (nonatomic, strong) POIPoint* poiPoint;
 
 #pragma 实例方法
 

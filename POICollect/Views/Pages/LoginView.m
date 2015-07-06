@@ -187,6 +187,8 @@ static const CGFloat padding = 20;
     }
 }
 
+#pragma mark - 事件
+
 - (void)loginBtnTaped:(id)sender
 {
     NSLog(@"点击登录了");
@@ -201,8 +203,10 @@ static const CGFloat padding = 20;
 
     //验证通过
     _loginBtn.enabled = NO;
-    [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
+    //关闭键盘
+    CloseKeyBoard;
 
+    [self.parentViewController.view makeToastActivity];
     [self.userLoginManager loadData];
 }
 
@@ -224,6 +228,11 @@ static const CGFloat padding = 20;
  */
 - (BOOL)manager:(RTAPIBaseManager*)manager isCorrectWithParamsData:(NSDictionary*)data
 {
+
+    if ([[data objectForKey:@"loginName"] isEqualToString:@""] || [[data objectForKey:@"loginPass"] isEqualToString:@""]) {
+        [self.parentViewController.view makeToast:@"用户名密码不能为空"];
+        return NO;
+    }
     return YES;
 }
 
@@ -245,6 +254,7 @@ static const CGFloat padding = 20;
 
     NSLog(@"成功返回数据");
     _loginBtn.enabled = YES;
+    [self.parentViewController.view hideToastActivity];
     if ([manager isKindOfClass:[UserLoginManager class]]) {
         NSDictionary* result = [manager fetchDataWithReformer:nil];
         NSLog(@"成功返回了数据了: %@", result);
@@ -260,6 +270,8 @@ static const CGFloat padding = 20;
 - (void)managerCallAPIDidFailed:(RTAPIBaseManager*)manager
 {
     _loginBtn.enabled = YES;
+    [self.parentViewController.view hideToastActivity];
+    [self.parentViewController.view makeToast:@"manager.errorMessage"];
     NSLog(@"请求失败 : %@", manager.errorMessage);
 }
 

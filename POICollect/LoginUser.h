@@ -6,16 +6,35 @@
 //  Copyright (c) 2015年 cm. All rights reserved.
 //
 
+@class User;
+
 @interface LoginUser : NSObject
 
 /**
  *  登录名
  */
-@property (nonnull, copy) NSString* loginName;
+@property (nonatomic, copy) NSString* loginName;
 
 /**
  *  登录密码
  */
-@property (nonnull, copy) NSString* loginPass;
+@property (nonatomic, copy) NSString* loginPass;
+
+#pragma mark - 类方法
+
+/**
+ *  是否已经登录
+ *
+ *  @return 登录状态 
+ */
++ (BOOL)isLogin;
+
++ (void)doLogin:(NSDictionary*)loginCallData;
+
++ (void)doLogout;
+
++ (User*)currentLoginUser;
+
+#pragma mark - 实例方法
 
 @end

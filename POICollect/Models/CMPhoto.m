@@ -7,28 +7,27 @@
 //
 
 #import "CMPhoto.h"
+#import "UIImage+Expanded.h"
+
+@interface CMPhoto ()
+
+/**
+ *  原始图片
+ */
+@property (nonatomic, strong, readwrite) UIImage* originalImage;
+
+/**
+ *  缩略图
+ */
+@property (nonatomic, strong, readwrite) UIImage* thumbImage;
+
+@end
 
 @implementation CMPhoto
 
-- (void)saveImage
-{
-    if (!_localImage) {
-        //拍照的图片能保存
-        if (_originalImage) {
-            NSData* imageData = UIImagePNGRepresentation(_originalImage);
-            NSDateFormatter* formater = [[NSDateFormatter alloc] init];
-            formater.dateFormat = @"yyyyMMddHHmmss";
-            NSString* currentTimeStr = [[formater stringFromDate:[NSDate date]] stringByAppendingFormat:@"_%d", arc4random_uniform(10000)];
-            NSString* path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:currentTimeStr];
-            BOOL res = [imageData writeToFile:path atomically:YES];
-            if (res) {
-                _imageURLString = path;
-            }
-        }
-    }
-}
+#pragma mark - Getter
 
-- (UIImage*)getImage
+- (UIImage*)originalImage
 {
     if (!_originalImage) {
         if (self.imageURLString) {
@@ -38,8 +37,14 @@
     return _originalImage;
 }
 
-- (void)deleteImage
+- (UIImage*)thumbImage
 {
+    if (!_thumbImage) {
+        if (self.originalImage) {
+            _thumbImage = [self.originalImage scaleToSize:CGSizeMake(80, 80)];
+        }
+    }
+    return _thumbImage;
 }
 
 @end

@@ -85,7 +85,7 @@ static const CGFloat sDefaultBorderWidth = 1.f;
 
     _normalBorderColor = _normalBorderColor ? _normalBorderColor : kDefaultNormalBorderColor;
     _highlightBorderColor = _highlightBorderColor ? _highlightBorderColor : _normalBorderColor;
-    _disableBorderColor = _disableBorderColor ? _disableBorderColor : _normalBorderColor;
+    _disableBorderColor = _disableBorderColor ? _disableBorderColor : kDefaultDisableBackgroundColor;
     self.layer.borderColor = _normalBorderColor.CGColor;
 
     _cornerRadius = _cornerRadius ? _cornerRadius : sDefaultCornerRadius;

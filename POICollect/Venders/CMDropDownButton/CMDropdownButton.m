@@ -167,6 +167,7 @@ static const CGFloat sDefaultAnimationShowDuration = 0.3;
 
     self.tintColor = _normalFgColor;
     self.titleLabel.textColor = _normalFgColor;
+    [self setTitleColor:_normalFgColor forState:UIControlStateNormal];
 }
 
 #pragma mark - 事件

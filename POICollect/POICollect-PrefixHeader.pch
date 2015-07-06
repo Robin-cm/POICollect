@@ -132,4 +132,9 @@
     [[[[UIApplication sharedApplication].windows firstObject] rootViewController] presentViewController:MODEL_VC animated:YES completion:nil];\
 }
 
+/**
+ *  关闭键盘
+ */
+#define CloseKeyBoard [[[UIApplication sharedApplication] keyWindow] endEditing:YES]
+
 #endif

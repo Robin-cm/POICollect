@@ -10,7 +10,8 @@
 
 @interface NSString (AXNetworkingMethods)
 
-- (NSString *)AX_md5;
+- (NSString*)AX_md5;
 
++ (NSString*)currentDateStr;
 
 @end

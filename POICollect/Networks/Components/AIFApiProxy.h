@@ -11,9 +11,11 @@
 /**
  *  回调block
  *
- *  @param response <#response description#>
+ *  @param response 
  */
 typedef void (^AXCallback)(AIFURLResponse* response);
+
+typedef void (^ProgressBlock)(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite);
 
 @interface AIFApiProxy : NSObject
 
@@ -23,9 +25,25 @@ typedef void (^AXCallback)(AIFURLResponse* response);
 
 #pragma mark - 实例方法
 
-- (NSInteger)callGETWithParams:(NSDictionary*)params serviceIdentifier:(NSString*)serviceIdentifier methodName:(NSString*)methodName success:(AXCallback)success fail:(AXCallback)fail;
+- (NSInteger)uploadPostWithParams:(NSDictionary*)params
+                           photos:(NSArray*)photos
+                serviceIdentifier:(NSString*)serviceIdentifiler
+                       methodName:(NSString*)methodName
+                          success:(AXCallback)success
+                             fail:(AXCallback)fail
+                         progress:(ProgressBlock)progress;
 
-- (NSInteger)callPOSTWithParams:(NSDictionary*)params serviceIdentifier:(NSString*)serviceIdentifier methodName:(NSString*)methodName success:(AXCallback)success fail:(AXCallback)fail;
+- (NSInteger)callGETWithParams:(NSDictionary*)params
+             serviceIdentifier:(NSString*)serviceIdentifier
+                    methodName:(NSString*)methodName
+                       success:(AXCallback)success
+                          fail:(AXCallback)fail;
+
+- (NSInteger)callPOSTWithParams:(NSDictionary*)params
+              serviceIdentifier:(NSString*)serviceIdentifier
+                     methodName:(NSString*)methodName
+                        success:(AXCallback)success
+                           fail:(AXCallback)fail;
 
 /**
  *  取消requestID对应的请求
