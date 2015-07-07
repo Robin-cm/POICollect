@@ -91,7 +91,7 @@ static NSString* const poiTableName = @"POIObj";
         point.poiLon = poi.poiLon;
         point.images = [POIPoint getImagesByString:poi.poiImages];
         point.poiId = poi.poiId.integerValue;
-        point.isUploaded = poi.isUploaded;
+        point.isUploaded = poi.isUploaded.boolValue;
         [resultArray addObject:point];
     }
 

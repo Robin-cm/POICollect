@@ -6,7 +6,7 @@
 //  Copyright (c) 2015年 cm. All rights reserved.
 //
 
-@class User;
+#import "User.h"
 
 @interface LoginUser : NSObject
 
@@ -19,6 +19,10 @@
  *  登录密码
  */
 @property (nonatomic, copy) NSString* loginPass;
+
+#pragma mark - 实例方法
+
+- (NSString*)validateForm;
 
 #pragma mark - 类方法
 

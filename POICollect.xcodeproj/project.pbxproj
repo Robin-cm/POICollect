@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		262FC9B91B40F2E1005C12F4 /* CMCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 262FC9B81B40F2E1005C12F4 /* CMCameraViewController.m */; };
 		263B851F1B40EC480043B605 /* CMCameraView.m in Sources */ = {isa = PBXBuildFile; fileRef = 263B851E1B40EC480043B605 /* CMCameraView.m */; };
+		265C95AE1B4B5A910047BC34 /* NSObject+ObjectMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 265C95AD1B4B5A910047BC34 /* NSObject+ObjectMap.m */; };
+		265C95B11B4B640D0047BC34 /* UserLogoutManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 265C95B01B4B640D0047BC34 /* UserLogoutManager.m */; };
+		265C95B41B4B64970047BC34 /* UserLogoutService.m in Sources */ = {isa = PBXBuildFile; fileRef = 265C95B31B4B64970047BC34 /* UserLogoutService.m */; };
+		265C95B81B4B77D40047BC34 /* NSString+validator.m in Sources */ = {isa = PBXBuildFile; fileRef = 265C95B71B4B77D40047BC34 /* NSString+validator.m */; };
+		265C95BB1B4B806C0047BC34 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 265C95BA1B4B806C0047BC34 /* LocationManager.m */; };
 		26782C841B46218000104330 /* AIFLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 26782C831B46218000104330 /* AIFLogger.m */; };
 		26782C871B46219100104330 /* AIFCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 26782C861B46219100104330 /* AIFCache.m */; };
 		26782C8A1B4637E100104330 /* AIFCachedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 26782C891B4637E100104330 /* AIFCachedObject.m */; };
@@ -128,6 +133,17 @@
 		262FC9B81B40F2E1005C12F4 /* CMCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMCameraViewController.m; path = Venders/CMPhotoKit/CMPhotoCamera/Controllers/CMCameraViewController.m; sourceTree = "<group>"; };
 		263B851D1B40EC480043B605 /* CMCameraView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMCameraView.h; path = Venders/CMPhotoKit/CMPhotoCamera/Views/CMCameraView.h; sourceTree = "<group>"; };
 		263B851E1B40EC480043B605 /* CMCameraView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMCameraView.m; path = Venders/CMPhotoKit/CMPhotoCamera/Views/CMCameraView.m; sourceTree = "<group>"; };
+		265C95AC1B4B5A910047BC34 /* NSObject+ObjectMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+ObjectMap.h"; path = "Utils/Categories/NSObject+ObjectMap.h"; sourceTree = "<group>"; };
+		265C95AD1B4B5A910047BC34 /* NSObject+ObjectMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+ObjectMap.m"; path = "Utils/Categories/NSObject+ObjectMap.m"; sourceTree = "<group>"; };
+		265C95AF1B4B640D0047BC34 /* UserLogoutManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserLogoutManager.h; path = Networks/Components/UserComponents/UserLogoutManager.h; sourceTree = "<group>"; };
+		265C95B01B4B640D0047BC34 /* UserLogoutManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserLogoutManager.m; path = Networks/Components/UserComponents/UserLogoutManager.m; sourceTree = "<group>"; };
+		265C95B21B4B64970047BC34 /* UserLogoutService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserLogoutService.h; path = Networks/Services/UserServices/UserLogoutService.h; sourceTree = "<group>"; };
+		265C95B31B4B64970047BC34 /* UserLogoutService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserLogoutService.m; path = Networks/Services/UserServices/UserLogoutService.m; sourceTree = "<group>"; };
+		265C95B61B4B77D40047BC34 /* NSString+validator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+validator.h"; path = "Utils/Categories/NSString+validator.h"; sourceTree = "<group>"; };
+		265C95B71B4B77D40047BC34 /* NSString+validator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+validator.m"; path = "Utils/Categories/NSString+validator.m"; sourceTree = "<group>"; };
+		265C95B91B4B806C0047BC34 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationManager.h; path = Networks/Components/LocationComponents/LocationManager.h; sourceTree = "<group>"; };
+		265C95BA1B4B806C0047BC34 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationManager.m; path = Networks/Components/LocationComponents/LocationManager.m; sourceTree = "<group>"; };
+		265C95BC1B4B9EBA0047BC34 /* POICollect1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = POICollect1.xcdatamodel; sourceTree = "<group>"; };
 		26782C821B46218000104330 /* AIFLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIFLogger.h; path = Networks/Components/LogComponents/AIFLogger.h; sourceTree = "<group>"; };
 		26782C831B46218000104330 /* AIFLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIFLogger.m; path = Networks/Components/LogComponents/AIFLogger.m; sourceTree = "<group>"; };
 		26782C851B46219100104330 /* AIFCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIFCache.h; path = Networks/Components/CacheComponents/AIFCache.h; sourceTree = "<group>"; };
@@ -242,7 +258,7 @@
 		7658F46F1B325FFF00E41A0B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7658F4711B325FFF00E41A0B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7658F4721B325FFF00E41A0B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		7658F4751B325FFF00E41A0B /* POICollect.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = POICollect.xcdatamodel; sourceTree = "<group>"; };
+		7658F4751B325FFF00E41A0B /* POICollect.xcdatamodel */ = {isa = PBXFileReference; explicitFileType = wrapper.xcdatamodeld; path = POICollect.xcdatamodel; sourceTree = "<group>"; };
 		7658F47B1B325FFF00E41A0B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7658F47D1B325FFF00E41A0B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7658F4801B325FFF00E41A0B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -350,6 +366,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		265C95B51B4B72A00047BC34 /* LocationComponents */ = {
+			isa = PBXGroup;
+			children = (
+				265C95B91B4B806C0047BC34 /* LocationManager.h */,
+				265C95BA1B4B806C0047BC34 /* LocationManager.m */,
+			);
+			name = LocationComponents;
+			sourceTree = "<group>";
+		};
 		26782C7E1B461FE700104330 /* CacheComponents */ = {
 			isa = PBXGroup;
 			children = (
@@ -397,6 +422,8 @@
 				26782C9C1B46575500104330 /* UserLoginManager.m */,
 				26782CA51B46596A00104330 /* UserRegistManager.h */,
 				26782CA61B46596A00104330 /* UserRegistManager.m */,
+				265C95AF1B4B640D0047BC34 /* UserLogoutManager.h */,
+				265C95B01B4B640D0047BC34 /* UserLogoutManager.m */,
 			);
 			name = UserComponents;
 			sourceTree = "<group>";
@@ -408,6 +435,8 @@
 				26782CA01B4657F000104330 /* UserLoginService.m */,
 				26782CA21B46581A00104330 /* UserRegistService.h */,
 				26782CA31B46581A00104330 /* UserRegistService.m */,
+				265C95B21B4B64970047BC34 /* UserLogoutService.h */,
+				265C95B31B4B64970047BC34 /* UserLogoutService.m */,
 			);
 			name = UserServices;
 			sourceTree = "<group>";
@@ -508,6 +537,7 @@
 		26B98D711B44D63900FE83BB /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				265C95B51B4B72A00047BC34 /* LocationComponents */,
 				26911FCE1B4A279D004307B1 /* POIComponents */,
 				26782C9A1B46571900104330 /* UserComponents */,
 				26782C961B46414300104330 /* TestComponents */,
@@ -799,8 +829,10 @@
 		7658F4A61B32691D00E41A0B /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				26782CAF1B4685E400104330 /* Toast */,
 				26B98D8E1B452DAF00FE83BB /* Networks */,
+				26782CAF1B4685E400104330 /* Toast */,
+				265C95AC1B4B5A910047BC34 /* NSObject+ObjectMap.h */,
+				265C95AD1B4B5A910047BC34 /* NSObject+ObjectMap.m */,
 				7658F4A71B32698E00E41A0B /* UIColor+Expanded.h */,
 				7658F4A81B32698E00E41A0B /* UIColor+Expanded.m */,
 				A100F86E1B35B5B100271B2E /* UIView+CMExpened.h */,
@@ -811,6 +843,8 @@
 				764C8CA41B393C5200FF2F51 /* NSString+Expanded.m */,
 				76615EAF1B3CFF7E0064BCB0 /* UITableView+Expanded.h */,
 				76615EB01B3CFF7E0064BCB0 /* UITableView+Expanded.m */,
+				265C95B61B4B77D40047BC34 /* NSString+validator.h */,
+				265C95B71B4B77D40047BC34 /* NSString+validator.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -1159,6 +1193,7 @@
 				26782CA71B46596A00104330 /* UserRegistManager.m in Sources */,
 				A1CB74781B3694C400EF062B /* CMSimpleTextView.m in Sources */,
 				26B98D7A1B44FEA800FE83BB /* AIFApiProxy.m in Sources */,
+				265C95BB1B4B806C0047BC34 /* LocationManager.m in Sources */,
 				26DA23701B412FBC00A26B86 /* CMCameraPreviewView.m in Sources */,
 				26B98DA41B453EB700FE83BB /* NSArray+AXNetworkingMethods.m in Sources */,
 				26782C991B4641BF00104330 /* TestAPIManager.m in Sources */,
@@ -1218,10 +1253,12 @@
 				76615EAB1B3CDD190064BCB0 /* CMDropdownButtonArrowView.m in Sources */,
 				26782C841B46218000104330 /* AIFLogger.m in Sources */,
 				A147713C1B3F8BD100A3F60C /* CMPhotoPickerAssetsViewController.m in Sources */,
+				265C95B81B4B77D40047BC34 /* NSString+validator.m in Sources */,
 				26E454151B40DDD4000C49CE /* CMCamera.m in Sources */,
 				26782CB21B4685FE00104330 /* UIView+Toast.m in Sources */,
 				A14771451B3F949A00A3F60C /* CMPhotoPickerFooterCollectionReusableView.m in Sources */,
 				26B98D991B452DC400FE83BB /* NSURLRequest+AIFNetworkingMethods.m in Sources */,
+				265C95B11B4B640D0047BC34 /* UserLogoutManager.m in Sources */,
 				7658F4761B325FFF00E41A0B /* POICollect.xcdatamodeld in Sources */,
 				A1CD5A441B384155008BC36A /* CMCustomAnimation.m in Sources */,
 				26B98D841B450C6300FE83BB /* AIFAppContext.m in Sources */,
@@ -1238,12 +1275,14 @@
 				76E7CBFA1B3B897A00D0BBED /* CMSimpleCheckBoxBtn.m in Sources */,
 				764C8C9E1B38E68D00FF2F51 /* CMRoundBtn.m in Sources */,
 				26782C8A1B4637E100104330 /* AIFCachedObject.m in Sources */,
+				265C95B41B4B64970047BC34 /* UserLogoutService.m in Sources */,
 				26B98D971B452DC400FE83BB /* NSDictionary+AXNetworkingMethods.m in Sources */,
 				A147714B1B3F9C2F00A3F60C /* CMPhotoPickerImageView.m in Sources */,
 				769BD6891B34194F0089FB39 /* LoginView.m in Sources */,
 				7658F4A91B32698E00E41A0B /* UIColor+Expanded.m in Sources */,
 				26B98D9A1B452DC400FE83BB /* UIDevice+IdentifierAddition.m in Sources */,
 				26782C911B463F4A00104330 /* AIFServiceFactory.m in Sources */,
+				265C95AE1B4B5A910047BC34 /* NSObject+ObjectMap.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1459,9 +1498,10 @@
 		7658F4741B325FFF00E41A0B /* POICollect.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				265C95BC1B4B9EBA0047BC34 /* POICollect1.xcdatamodel */,
 				7658F4751B325FFF00E41A0B /* POICollect.xcdatamodel */,
 			);
-			currentVersion = 7658F4751B325FFF00E41A0B /* POICollect.xcdatamodel */;
+			currentVersion = 265C95BC1B4B9EBA0047BC34 /* POICollect1.xcdatamodel */;
 			path = POICollect.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

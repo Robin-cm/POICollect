@@ -15,7 +15,9 @@
 #define kDefaultNormalForeColor [UIColor colorWithHexString:@"0xffffff"]
 
 static const CGFloat sDefaultCornerRadius = 4.0;
-static const CGFloat sDefaultBorderWidth = 1.0;
+//static const CGFloat sDefaultBorderWidth = 1.0;
+
+static const CGFloat sDefaultRightIcoSize = 25;
 
 static const CGFloat sDefaultPadding = 10;
 
@@ -65,17 +67,17 @@ static const CGFloat sDefaultPadding = 10;
 
 - (CGRect)textRectForBounds:(CGRect)bounds
 {
-    return CGRectMake(bounds.origin.x + sDefaultPadding, bounds.origin.y, bounds.size.width - sDefaultPadding, bounds.size.height);
+    return CGRectMake(bounds.origin.x + sDefaultPadding, bounds.origin.y, bounds.size.width - sDefaultPadding - sDefaultRightIcoSize, bounds.size.height);
 }
 
 - (CGRect)placeholderRectForBounds:(CGRect)bounds
 {
-    return CGRectMake(bounds.origin.x + sDefaultPadding, bounds.origin.y, bounds.size.width - sDefaultPadding, bounds.size.height);
+    return CGRectMake(bounds.origin.x + sDefaultPadding, bounds.origin.y, bounds.size.width - sDefaultPadding - sDefaultRightIcoSize, bounds.size.height);
 }
 
 - (CGRect)editingRectForBounds:(CGRect)bounds
 {
-    return CGRectMake(bounds.origin.x + sDefaultPadding, bounds.origin.y, bounds.size.width - sDefaultPadding, bounds.size.height);
+    return CGRectMake(bounds.origin.x + sDefaultPadding, bounds.origin.y, bounds.size.width - sDefaultPadding - sDefaultRightIcoSize, bounds.size.height);
 }
 
 #pragma mark - 自定义方法
@@ -116,7 +118,7 @@ static const CGFloat sDefaultPadding = 10;
     if (_rightBtnImage && _rightBtnSelectedImage) {
         if (!_rightBtn) {
             _rightBtn = [[UIButton alloc] init];
-            _rightBtn.frame = CGRectMake(0, 5, 30, 25);
+            _rightBtn.frame = CGRectMake(0, 5, sDefaultRightIcoSize, sDefaultRightIcoSize);
             [_rightBtn setBackgroundImage:_rightBtnImage forState:UIControlStateNormal];
             //            _rightBtn.imageEdgeInsets = UIEdgeInsetsMake(15, 5, 15, 15);
             [_rightBtn setBackgroundImage:_rightBtnSelectedImage forState:UIControlStateHighlighted];

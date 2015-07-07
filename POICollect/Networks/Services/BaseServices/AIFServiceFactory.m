@@ -10,6 +10,7 @@
 #import "TestService.h"
 #import "UserLoginService.h"
 #import "UserRegistService.h"
+#import "UserLogoutService.h"
 
 #pragma mark - Service的名称
 
@@ -20,6 +21,8 @@ NSString* const kAIFServiceUserLogin = @"kAIFServiceUserLogin";
 NSString* const kAIFServiceUserRegist = @"kAIFServiceUserRegist";
 
 NSString* const kAIFServicePOIUpdate = @"kAIFServicePOIUpdate";
+
+NSString* const kAIFServiceUserLogout = @"kAIFServiceUserLogout";
 
 @interface AIFServiceFactory ()
 
@@ -83,6 +86,10 @@ NSString* const kAIFServicePOIUpdate = @"kAIFServicePOIUpdate";
 
     if ([identifier isEqualToString:kAIFServiceUserRegist]) {
         return [[UserRegistService alloc] init];
+    }
+
+    if ([identifier isEqualToString:kAIFServiceUserLogout]) {
+        return [[UserLogoutService alloc] init];
     }
 
     return nil;

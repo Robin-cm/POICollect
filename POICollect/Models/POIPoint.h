@@ -6,6 +6,8 @@
 //  Copyright (c) 2015年 cm. All rights reserved.
 //
 
+@class CLLocation;
+
 @interface POIPoint : NSObject
 
 #pragma mark - 属性
@@ -45,5 +47,7 @@
 - (NSString*)getImagesString;
 
 + (NSArray*)getImagesByString:(NSString*)str;
+
+- (CLLocation*)getLocation;
 
 @end

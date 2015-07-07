@@ -203,16 +203,16 @@ static const CGFloat sDefaultCornerRadius = 5;
     [picker dismissViewControllerAnimated:YES completion:nil];
     if (info) {
         CMPhoto* photo = [[CMPhoto alloc] init];
-        if ([info objectForKey:@"UIImagePickerControllerReferenceURL"]) {
-            photo.localImage = YES;
-            photo.imageURLString = [info objectForKey:@"UIImagePickerControllerReferenceURL"];
-        }
-        else {
-            photo.localImage = NO;
-            UIImage* cameraImage = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
-            NSString* savePath = [cameraImage saveImageToDocument];
-            photo.imageURLString = savePath;
-        }
+        //        if ([info objectForKey:@"UIImagePickerControllerReferenceURL"]) {
+        //            photo.localImage = YES;
+        //            photo.imageURLString = [info objectForKey:@"UIImagePickerControllerReferenceURL"];
+        //        }
+        //        else {
+        photo.localImage = NO;
+        UIImage* cameraImage = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+        NSString* savePath = [cameraImage saveImageToDocument];
+        photo.imageURLString = savePath;
+        //        }
         self.currentPhoto = photo;
     }
 }

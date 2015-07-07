@@ -10,6 +10,7 @@
 #import "NSString+Expanded.h"
 #import "UIView+CMExpened.h"
 #import "CMSimpleCheckBoxBtn.h"
+#import "CMPhoto.h"
 
 static const CGFloat sDefaultPadding = 10;
 
@@ -40,6 +41,8 @@ static const CGFloat sDefaultPadding = 10;
 @property (nonatomic, strong) UIImageView* secondImageView;
 
 @property (nonatomic, strong) UIImageView* thirdImageView;
+
+@property (nonatomic, strong) NSArray* imageViewsArray;
 
 @end
 
@@ -84,6 +87,16 @@ static const CGFloat sDefaultPadding = 10;
     _subTitle = poiPoint.poiAddress;
     _poiNameLabel.text = _mainTitle;
     _poiAddressLabel.text = _subTitle;
+
+    for (UIImageView* imageView in _imageViewsArray) {
+        imageView.image = [UIImage imageNamed:@"main_bg"];
+    }
+
+    if (poiPoint.images && poiPoint.images.count > 0 && _imageViewsArray && _imageViewsArray.count > 0) {
+        for (int i = 0; i < poiPoint.images.count; i++) {
+            ((UIImageView*)[_imageViewsArray objectAtIndex:i]).image = ((CMPhoto*)[poiPoint.images objectAtIndex:i]).thumbImage;
+        }
+    }
 }
 
 #pragma 生命周期
@@ -312,6 +325,8 @@ static const CGFloat sDefaultPadding = 10;
         _thirdImageView.image = [UIImage imageNamed:@"main_bg"];
         [_subContainerView addSubview:_thirdImageView];
     }
+
+    _imageViewsArray = @[ _firstImageView, _secondImageView, _thirdImageView ];
 
     [self layoutView];
 }

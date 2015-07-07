@@ -8,6 +8,7 @@
 
 #import "POIPoint.h"
 #import "CMPhoto.h"
+#import <CoreLocation/CoreLocation.h>
 
 @implementation POIPoint
 
@@ -24,9 +25,9 @@
             NSString* appendStr = [NSString stringWithFormat:@"%@;", photo.imageURLString];
             [imgStr appendString:appendStr];
         }
-        [imgStr deleteCharactersInRange:NSMakeRange(imgStr.length - 1, imgStr.length)];
+        //        [imgStr deleteCharactersInRange:NSMakeRange(imgStr.length - 2, imgStr.length - 1)];
     }
-    return imgStr;
+    return [imgStr substringToIndex:(imgStr.length - 1)];
 }
 
 + (NSArray*)getImagesByString:(NSString*)str
@@ -41,6 +42,11 @@
         }
     }
     return [results mutableCopy];
+}
+
+- (CLLocation*)getLocation
+{
+    return [[CLLocation alloc] initWithLatitude:self.poiLat.doubleValue longitude:self.poiLon.doubleValue];
 }
 
 @end

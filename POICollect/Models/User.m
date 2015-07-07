@@ -7,7 +7,15 @@
 //
 
 #import "User.h"
+#import "NSObject+ObjectMap.h"
 
 @implementation User
+
+#pragma mark - 类方法
+
++ (User*)userFromJson:(NSDictionary*)userDic
+{
+    return [NSObject objectOfClass:@"User" fromJSON:userDic];
+}
 
 @end

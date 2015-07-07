@@ -1,26 +1,24 @@
 //
-//  UserRegistManager.m
+//  UserLogoutManager.m
 //  POICollect
-//  用户注册
-//  Created by 常敏 on 15/7/3.
+//  用户注销
+//  Created by 常敏 on 15/7/7.
 //  Copyright (c) 2015年 cm. All rights reserved.
 //
 
-#import "UserRegistManager.h"
+#import "UserLogoutManager.h"
 #import "AIFNetworking.h"
 
-@implementation UserRegistManager
-
-#pragma mark - RTAPIManager
+@implementation UserLogoutManager
 
 - (NSString*)methodName
 {
-    return @"user!mobile_reg.tdt";
+    return @"user!mobile_logout.tdt";
 }
 
 - (NSString*)serviceType
 {
-    return kAIFServiceUserRegist;
+    return kAIFServiceUserLogout;
 }
 
 - (RTAPIManagerRequestType)requestType

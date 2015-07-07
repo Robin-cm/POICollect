@@ -45,4 +45,9 @@ extern NSString* const kAIFServiceUserRegist;
  */
 extern NSString* const kAIFServicePOIUpdate;
 
+/**
+ *  用户注销
+ */
+extern NSString* const kAIFServiceUserLogout;
+
 #endif

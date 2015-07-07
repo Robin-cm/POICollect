@@ -8,7 +8,7 @@
 
 #import "BaseViewController.h"
 #import "LoginModelViewController.h"
-
+#import "LoginUser.h"
 #import "UIImage+Expanded.h"
 
 @interface BaseViewController ()
@@ -112,10 +112,9 @@
  */
 - (void)checkIslogin
 {
-    BOOL isLogin = YES;
-    if (!isLogin) {
-        [self sendToLogin];
-    }
+    //    if (![LoginUser isLogin]) {
+    //        [self sendToLogin];
+    //    }
 }
 
 /**

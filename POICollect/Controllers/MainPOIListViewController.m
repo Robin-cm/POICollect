@@ -15,10 +15,15 @@
 #import "POIPoint.h"
 #import "CMActionSheetView.h"
 #import "POIDataManager.h"
+#import "LoginUser.h"
+#import "UserLogoutManager.h"
+#import "LoginUser.h"
+#import "UIView+Toast.h"
+#import "LocationManager.h"
 
 #define kMainListCellIdentifine @"MainListCellIdentifine"
 
-@interface MainPOIListViewController () <UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegate, UINavigationControllerDelegate, CMCustomCircleAnimationProtocol>
+@interface MainPOIListViewController () <UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegate, UINavigationControllerDelegate, CMCustomCircleAnimationProtocol, RTAPIManagerApiCallBackDelegate, RTAPIManagerParamSourceDelegate, RTAPIManagerValidator, AddPOIViewControllerProtocol>
 
 @property (nonatomic, strong) UITableView* tableView;
 
@@ -34,6 +39,10 @@
 
 @property (nonatomic, strong) NSMutableArray* datas;
 
+@property (nonatomic, strong) UILabel* emptyLabel;
+
+@property (nonatomic, strong) UserLogoutManager* userLogoutManager;
+
 @end
 
 @implementation MainPOIListViewController
@@ -42,8 +51,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self initializeData];
     [self initializeView];
+    [self initializeData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -69,6 +78,32 @@
         _datas = [[NSMutableArray alloc] init];
     }
     return _datas;
+}
+
+- (UserLogoutManager*)userLogoutManager
+{
+    if (!_userLogoutManager) {
+        _userLogoutManager = [[UserLogoutManager alloc] init];
+        _userLogoutManager.delegate = self;
+        _userLogoutManager.paramSource = self;
+        _userLogoutManager.validator = self;
+    }
+    return _userLogoutManager;
+}
+
+- (UILabel*)emptyLabel
+{
+    if (!_emptyLabel) {
+        _emptyLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 25)];
+        _emptyLabel.textAlignment = NSTextAlignmentCenter;
+        _emptyLabel.font = [UIFont systemFontOfSize:20 weight:10];
+        _emptyLabel.textColor = kAppThemeSecondaryColor;
+        _emptyLabel.text = @"还没有记录，快去添加一个吧!";
+        [self.view addSubview:_emptyLabel];
+        _emptyLabel.center = self.view.center;
+        _emptyLabel.hidden = YES;
+    }
+    return _emptyLabel;
 }
 
 #pragma mark - 自定义实例方法
@@ -97,8 +132,19 @@
     //        [[POIDataManager sharedManager] insertNewPOI:poiPoint];
     //        //        [self.datas addObject:poiPoint];
     //    }
+    [self refreshData];
+}
 
+- (void)refreshData
+{
     _datas = [[POIDataManager sharedManager] queryAllPOIIsUploaded:NO];
+    [self.tableView reloadData];
+    if (_datas.count < 1) {
+        self.emptyLabel.hidden = NO;
+    }
+    else {
+        self.emptyLabel.hidden = YES;
+    }
 }
 
 - (void)initializeView
@@ -117,6 +163,11 @@
     UIBarButtonItem* editBtn = [[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStylePlain target:self action:@selector(editBtnTaped:)];
 
     self.navigationItem.leftBarButtonItem = editBtn;
+
+    UIBarButtonItem* logoutBtn = [[UIBarButtonItem alloc] initWithTitle:@"注销" style:UIBarButtonItemStylePlain target:self action:@selector(logoutBtnTaped:)];
+    UIBarButtonItem* historyBtn = [[UIBarButtonItem alloc] initWithTitle:@"历史" style:UIBarButtonItemStylePlain target:self action:@selector(historyBtnTaped:)];
+
+    self.navigationItem.rightBarButtonItems = @[ logoutBtn, historyBtn ];
 }
 
 - (void)initializeBody
@@ -208,6 +259,8 @@
 {
     NSLog(@"添加按钮点击");
     AddPOIViewController* addPoiViewController = [[AddPOIViewController alloc] init];
+    addPoiViewController.currentPoipoint = nil;
+    addPoiViewController.delegate = self;
     [self.navigationController pushViewController:addPoiViewController animated:YES];
 }
 
@@ -217,6 +270,23 @@
     //    [self.tableView setEditing:!self.tableView.editing animated:YES];
     _mEdit = !_mEdit;
     [self.tableView reloadData];
+}
+
+- (void)logoutBtnTaped:(id)sender
+{
+    NSLog(@"注销用户");
+    if (![self.userLogoutManager isLoading]) {
+        [self.view makeToastActivity];
+        [self.userLogoutManager loadData];
+    }
+}
+
+- (void)historyBtnTaped:(id)sender
+{
+    NSLog(@"历史点击");
+
+    [[LocationManager sharedManager] checkLocationAndShowingAlert:YES];
+    [[LocationManager sharedManager] startLocation];
 }
 
 #pragma mark - UITableViewDataSource
@@ -230,7 +300,7 @@
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
 
-    NSLog(@"/////////////////////////////////\n重新刷新了数据了-------->>>> %lu\n/////////////////////////////////////", indexPath.row);
+    NSLog(@"/////////////////////////////////\n重新刷新了数据了-------->>>> %lu\n/////////////////////////////////////", (long)indexPath.row);
 
     MainListTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:kMainListCellIdentifine];
     POIPoint* point = [self.datas objectAtIndex:indexPath.row];
@@ -256,7 +326,7 @@
 
                 break;
             case 2:
-                NSLog(@"删除操作%lu", [indexPath row]);
+                NSLog(@"删除操作%lu", (long)[indexPath row]);
                 [self.tableView beginUpdates];
                 [self.datas removeObjectAtIndex:indexPath.row];
                 [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
@@ -325,6 +395,92 @@
     else {
         [self showAddPoiBtnWithAnimate:YES];
     }
+}
+
+#pragma mark - RTAPIManagerApiCallBackDelegate
+
+/**
+ *  请求成功回调函数
+ *
+ *  @param manager manager对象
+ */
+- (void)managerCallAPIDidSuccess:(RTAPIBaseManager*)manager
+{
+    NSLog(@"注销成功返回数据");
+    [self.view hideToastActivity];
+    if ([manager isKindOfClass:[UserLogoutManager class]]) {
+        NSDictionary* result = [manager fetchDataWithReformer:nil];
+        NSLog(@"成功返回了数据了: %@", result);
+        if ([[result objectForKey:@"success"] boolValue]) {
+            //注销成功
+            [LoginUser doLogout];
+            [self checkIslogin];
+        }
+        else {
+            //注销失败
+            [self.view makeToast:[result objectForKey:@"msg"]];
+        }
+    }
+}
+
+/**
+ *  请求失败回调函数
+ *
+ *  @param manager manager对象
+ */
+- (void)managerCallAPIDidFailed:(RTAPIBaseManager*)manager
+{
+    [self.view hideToastActivity];
+    [self.view makeToast:[NSString stringWithFormat:@"请求错误：%@", manager.errorMessage]];
+    NSLog(@"请求失败 : %@", manager.errorMessage);
+}
+
+#pragma mark - RTAPIManagerParamSourceDelegate
+
+/**
+ *  获取请求的参数字典
+ *
+ *  @param manager manager对象
+ *
+ *  @return 返回的参数的字典
+ */
+- (NSDictionary*)paramsForAPI:(RTAPIBaseManager*)manager
+{
+    User* currentUser = [LoginUser currentLoginUser];
+    return @{
+        @"userId" : currentUser.userId,
+        @"token" : currentUser.toKen
+    };
+}
+
+#pragma mark - RTAPIManagerValidator
+
+- (BOOL)manager:(RTAPIBaseManager*)manager isCorrectWithCallBackData:(NSDictionary*)data
+{
+
+    return YES;
+}
+
+/**
+ *  验证请求的参数的方法。当调用API的参数是来自用户输入的时候，验证时必要的。
+ *  当调用API的参数不是来自用户输入的时候，这个方法可以写成直接返回true。
+ *
+ *  @param manager manager对象
+ *  @param data    参数的字典数据
+ *
+ *  @return 是否验证通过
+ */
+- (BOOL)manager:(RTAPIBaseManager*)manager isCorrectWithParamsData:(NSDictionary*)data
+{
+    return YES;
+}
+
+#pragma mark - AddPOIViewControllerProtocol
+
+- (void)addPoiViewControllerDidSavedPOI:(AddPOIViewController*)addPoiViewController
+{
+    NSLog(@"保存完成了");
+    [self refreshData];
 }
 
 /*

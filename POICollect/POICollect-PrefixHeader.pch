@@ -110,6 +110,9 @@
 #define kScreen_Scale [UIScreen mainScreen].scale
 
 
+/**
+ *  导航条的高度
+ */
 #define kNavBarHeight 44.0f
 
 

@@ -17,7 +17,7 @@
 
 - (NSString*)methodName
 {
-    return @"user!doNotNeedSessionAndSecurity_login.tdt";
+    return @"user!mobile_login.tdt";
 }
 
 - (NSString*)serviceType

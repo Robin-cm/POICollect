@@ -5,9 +5,8 @@
 //  Created by 常敏 on 15/7/3.
 //  Copyright (c) 2015年 cm. All rights reserved.
 //
-
+#import "NSString+validator.h"
 #import "LoginUser.h"
-#import "User.h"
 
 static NSString* const sLoginStatus = @"sLoginStatus";
 static NSString* const sLoginUserDict = @"sLoginUserDict";
@@ -15,6 +14,27 @@ static NSString* const sLoginUserDict = @"sLoginUserDict";
 static User* CurrentLoginUser;
 
 @implementation LoginUser
+
+#pragma mark - 实例方法
+
+- (NSString*)validateForm
+{
+    NSString* errorStr = @"";
+    if ([_loginName isBlankString]) {
+        errorStr = @"用户名不能为空";
+        return errorStr;
+    }
+    if ([_loginPass isBlankString]) {
+        errorStr = @"密码不能为空";
+        return errorStr;
+    }
+    if ([_loginPass length] < 6) {
+        errorStr = @"密码不能小于6位";
+        return errorStr;
+    }
+
+    return errorStr;
+}
 
 /**
  *  是否已经登录

@@ -10,4 +10,12 @@
 
 @interface RegistUser : NSObject
 
+@property (nonatomic, copy) NSString* registName;
+
+@property (nonatomic, copy) NSString* registPass;
+
+@property (nonatomic, copy) NSString* registConformPass;
+
+- (NSString*)validateForm;
+
 @end

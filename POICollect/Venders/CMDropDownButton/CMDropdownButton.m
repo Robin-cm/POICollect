@@ -119,9 +119,14 @@ static const CGFloat sDefaultAnimationShowDuration = 0.3;
     }
     if (_currentIndex != currentIndex) {
         _currentIndex = currentIndex;
-        NSLog(@"新的标题是：%@", [_datas objectAtIndex:_currentIndex]);
-        //        [self setBtnTitle:((NSString*)[_datas objectAtIndex:_currentIndex])];
-        [self setTitle:[_datas objectAtIndex:_currentIndex] forState:UIControlStateNormal];
+        if (_currentIndex == -1) {
+            [self setTitle:@"分类" forState:UIControlStateNormal];
+        }
+        else {
+            NSLog(@"新的标题是：%@", [_datas objectAtIndex:_currentIndex]);
+            //        [self setBtnTitle:((NSString*)[_datas objectAtIndex:_currentIndex])];
+            [self setTitle:[_datas objectAtIndex:_currentIndex] forState:UIControlStateNormal];
+        }
         [_tableView reloadData];
     }
 }
@@ -182,7 +187,7 @@ static const CGFloat sDefaultAnimationShowDuration = 0.3;
 
         _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, kScreenHeight - tableHeight, kScreenWidth, tableHeight) style:UITableViewStylePlain];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLineEtched;
-        _tableView.bounces = YES;
+        _tableView.bounces = NO;
         _tableView.backgroundColor = [UIColor colorWithHexString:@"0xffffff" andAlpha:0.0];
         [_tableView registerClass:[CMDropdownButtonTableViewCell class] forCellReuseIdentifier:kDefaultDropdownCellIdentifier];
         _tableView.dataSource = self;

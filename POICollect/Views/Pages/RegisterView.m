@@ -11,11 +11,14 @@
 #import "CMSimpleButton.h"
 #import "TPKeyboardAvoidingScrollView.h"
 #import "AIFNetworking.h"
-#import "TestAPIManager.h"
 #import "LoginViewController.h"
 #import "UserRegistManager.h"
 #import "UIView+Toast.h"
 #import "UIDevice+IdentifierAddition.h"
+#import "User.h"
+#import "LoginUser.h"
+#import "RegistUser.h"
+#import "NSString+validator.h"
 
 static const CGFloat padding = 20;
 
@@ -39,6 +42,8 @@ static const CGFloat padding = 20;
 
 @property (nonatomic, strong) UserRegistManager* userRegistManager;
 
+@property (nonatomic, strong) RegistUser* registUser;
+
 @end
 
 @implementation RegisterView
@@ -54,6 +59,14 @@ static const CGFloat padding = 20;
         _userRegistManager.validator = self;
     }
     return _userRegistManager;
+}
+
+- (RegistUser*)registUser
+{
+    if (!_registUser) {
+        _registUser = [[RegistUser alloc] init];
+    }
+    return _registUser;
 }
 
 #pragma mark - 生命周期
@@ -199,7 +212,24 @@ static const CGFloat padding = 20;
 
 - (void)registBtnTaped:(id)sender
 {
-    [[TestAPIManager sharedInstance] loadData];
+    self.registUser.registName = _registNameTextView.text;
+    self.registUser.registPass = _registPassTextView.text;
+    self.registUser.registConformPass = _registPassCConfirmTextView.text;
+
+    [_registNameTextView validate];
+    [_registPassTextView validate];
+    [_registPassCConfirmTextView validate];
+
+    NSString* errStr = [self.registUser validateForm];
+    if (![errStr isEqualToString:@""]) {
+        [self.parentViewController.view makeToast:errStr];
+        return;
+    }
+
+    if (!self.userRegistManager.isLoading) {
+        _registBtn.enabled = NO;
+        [self.userRegistManager loadData];
+    }
 }
 
 #pragma mark - RTAPIManagerValidator
@@ -211,6 +241,14 @@ static const CGFloat padding = 20;
 
 - (BOOL)manager:(RTAPIBaseManager*)manager isCorrectWithParamsData:(NSDictionary*)data
 {
+    if (![[data objectForKey:@"loginPwd"] isEqualToString:self.registUser.registConformPass]) {
+        [self.parentViewController.view makeToast:@"密码不一致"];
+        return NO;
+    }
+    if ([[data objectForKey:@"loginPwd"] isBlankString] || [[data objectForKey:@"loginName"] isBlankString]) {
+        [self.parentViewController.view makeToast:@"用户名密码不能为空"];
+        return NO;
+    }
     return YES;
 }
 
@@ -218,19 +256,43 @@ static const CGFloat padding = 20;
 
 - (NSDictionary*)paramsForAPI:(RTAPIBaseManager*)manager
 {
-    return @{};
+    return @{
+        @"loginName" : self.registUser.registName,
+        @"loginPwd" : self.registUser.registPass
+    };
 }
 
 #pragma mark - RTAPIManagerApiCallBackDelegate
 
 - (void)managerCallAPIDidSuccess:(RTAPIBaseManager*)manager
 {
-    NSLog(@"成功返回");
+    NSLog(@"成功返回数据");
+    _registBtn.enabled = YES;
+    [self.parentViewController.view hideToastActivity];
+    if ([manager isKindOfClass:[UserRegistManager class]]) {
+        NSDictionary* result = [manager fetchDataWithReformer:nil];
+        NSLog(@"成功返回了数据了: %@", result);
+        if ([[result objectForKey:@"success"] boolValue]) {
+            //注册成功
+            User* currentUser = [User userFromJson:[result objectForKey:@"obj"]];
+            if (currentUser) {
+                [LoginUser doLogin:[result objectForKey:@"obj"]];
+            }
+            [self.parentViewController dismissViewControllerAnimated:YES completion:nil];
+        }
+        else {
+            //注册失败
+            [self.parentViewController.view makeToast:[result objectForKey:@"msg"]];
+        }
+    }
 }
 
 - (void)managerCallAPIDidFailed:(RTAPIBaseManager*)manager
 {
-    NSLog(@"请求失败");
+    _registBtn.enabled = YES;
+    [self.parentViewController.view hideToastActivity];
+    [self.parentViewController.view makeToast:[NSString stringWithFormat:@"请求错误：%@", manager.errorMessage]];
+    NSLog(@"请求失败 : %@", manager.errorMessage);
 }
 
 @end

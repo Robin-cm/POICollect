@@ -40,7 +40,7 @@
 - (UIImage*)thumbImage
 {
     if (!_thumbImage) {
-        if (self.originalImage) {
+        if (self.imageURLString) {
             _thumbImage = [self.originalImage scaleToSize:CGSizeMake(80, 80)];
         }
     }

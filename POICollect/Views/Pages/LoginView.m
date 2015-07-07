@@ -16,6 +16,7 @@
 #import "UserLoginManager.h"
 #import "UIView+Toast.h"
 #import "UIDevice+IdentifierAddition.h"
+#import "User.h"
 
 static const CGFloat padding = 20;
 
@@ -197,7 +198,13 @@ static const CGFloat padding = 20;
     self.loginUser.loginName = _loginNameTextView.text;
     self.loginUser.loginPass = _loginPassTextView.text;
 
-    if (![[_loginNameTextView validate] isEqualToString:@""] || ![[_loginPassTextView validate] isEqualToString:@""]) {
+    [_loginNameTextView validate];
+    [_loginPassTextView validate];
+
+    NSString* errStr
+        = [self.loginUser validateForm];
+    if (![errStr isEqualToString:@""]) {
+        [self.parentViewController.view makeToast:errStr];
         return;
     }
 
@@ -258,7 +265,18 @@ static const CGFloat padding = 20;
     if ([manager isKindOfClass:[UserLoginManager class]]) {
         NSDictionary* result = [manager fetchDataWithReformer:nil];
         NSLog(@"成功返回了数据了: %@", result);
-        [self.parentViewController.view makeToast:[result objectForKey:@"msg"]];
+        if ([[result objectForKey:@"success"] boolValue]) {
+            //登录成功
+            User* currentUser = [User userFromJson:[result objectForKey:@"obj"]];
+            if (currentUser) {
+                [LoginUser doLogin:[result objectForKey:@"obj"]];
+            }
+            [self.parentViewController dismissViewControllerAnimated:YES completion:nil];
+        }
+        else {
+            //登录失败
+            [self.parentViewController.view makeToast:[result objectForKey:@"msg"]];
+        }
     }
 }
 
@@ -271,7 +289,7 @@ static const CGFloat padding = 20;
 {
     _loginBtn.enabled = YES;
     [self.parentViewController.view hideToastActivity];
-    [self.parentViewController.view makeToast:@"manager.errorMessage"];
+    [self.parentViewController.view makeToast:[NSString stringWithFormat:@"请求错误：%@", manager.errorMessage]];
     NSLog(@"请求失败 : %@", manager.errorMessage);
 }
 

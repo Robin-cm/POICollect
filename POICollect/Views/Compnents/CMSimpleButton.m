@@ -14,13 +14,13 @@
 #define kDefaultDisableBackgroundColor [UIColor grayColor]
 #define kDefaultNormalForegroundColor kAppThemeSecondaryColor
 //#define kDefaultHighlightForegroundColor
-#define kDefaultDisableForegroundColor [UIColor darkTextColor]
+#define kDefaultDisableForegroundColor [UIColor lightGrayColor]
 #define kDefaultNormalBorderColor [UIColor whiteColor]
 //#define kDefaultHighlightBorderColor
 //#define kDefaultDisableBorderColor
 
 static const CGFloat sDefaultCornerRadius = 4.f;
-static const CGFloat sDefaultBorderWidth = 1.f;
+static const CGFloat sDefaultBorderWidth = 0.f;
 
 @implementation CMSimpleButton
 
@@ -83,10 +83,10 @@ static const CGFloat sDefaultBorderWidth = 1.f;
     [self setTitleColor:_highlightForegroundColor forState:UIControlStateHighlighted];
     [self setTitleColor:_disableForegroundColor forState:UIControlStateDisabled];
 
-    _normalBorderColor = _normalBorderColor ? _normalBorderColor : kDefaultNormalBorderColor;
-    _highlightBorderColor = _highlightBorderColor ? _highlightBorderColor : _normalBorderColor;
-    _disableBorderColor = _disableBorderColor ? _disableBorderColor : kDefaultDisableBackgroundColor;
-    self.layer.borderColor = _normalBorderColor.CGColor;
+    //    _normalBorderColor = _normalBorderColor ? _normalBorderColor : kDefaultNormalBorderColor;
+    //    _highlightBorderColor = _highlightBorderColor ? _highlightBorderColor : _normalBorderColor;
+    //    _disableBorderColor = _disableBorderColor ? _disableBorderColor : kDefaultDisableBackgroundColor;
+    //    self.layer.borderColor = _normalBorderColor.CGColor;
 
     _cornerRadius = _cornerRadius ? _cornerRadius : sDefaultCornerRadius;
     _borderWidth = _borderWidth ? _borderWidth : sDefaultBorderWidth;
@@ -127,7 +127,7 @@ static const CGFloat sDefaultBorderWidth = 1.f;
 {
     [super setEnabled:enabled];
     //    self.backgroundColor = enabled ? _normalBackgroundColor : _disableBackgroundColor;
-    self.layer.borderColor = enabled ? _normalBorderColor.CGColor : _disableBorderColor.CGColor;
+    self.layer.borderColor = enabled ? _normalBorderColor.CGColor : kDefaultDisableBackgroundColor.CGColor;
     [self setNeedsDisplay];
 }
 

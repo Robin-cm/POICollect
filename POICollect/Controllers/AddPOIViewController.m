@@ -13,10 +13,16 @@
 #import "CMPhotoPickButton.h"
 #import "CMPhotoKit.h"
 #import "UIView+Toast.h"
+#import "LocationManager.h"
+#import <CoreLocation/CoreLocation.h>
+#import "NSString+AXNetworkingMethods.h"
+#import "POIDataManager.h"
 
 static const CGFloat sDefaultPadding = 10;
 
 @interface AddPOIViewController ()
+
+@property (nonatomic, strong) CLLocation* currentLocation;
 
 @property (nonatomic, strong) UIView* mainBgView;
 
@@ -38,6 +44,8 @@ static const CGFloat sDefaultPadding = 10;
 
 @property (nonatomic, strong) CMPhotoPickButton* pickBtn3;
 
+@property (nonatomic, strong) NSArray* pickBtnsArray;
+
 @end
 
 @implementation AddPOIViewController
@@ -56,6 +64,17 @@ static const CGFloat sDefaultPadding = 10;
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Setter
+
+- (void)setCurrentPoipoint:(POIPoint*)currentPoipoint
+{
+    if (_currentPoipoint == currentPoipoint) {
+        return;
+    }
+
+    [self updateView];
+}
+
 #pragma mark - 继承
 
 - (void)viewWillLayoutSubviews
@@ -63,10 +82,62 @@ static const CGFloat sDefaultPadding = 10;
     [self relayoutSubviews];
 }
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event
+{
+    CloseKeyBoard;
+}
+
 #pragma mark - 自定义方法
+
+- (void)updateView
+{
+    if (!_pickBtn3) {
+        return;
+    }
+
+    if (!_currentPoipoint) {
+        _poiNameTF.text = @"";
+        _dropDownBtn.currentIndex = -1;
+        _pickBtn1.currentPhoto = nil;
+        _pickBtn2.currentPhoto = nil;
+        _pickBtn3.currentPhoto = nil;
+        if ([[LocationManager sharedManager] checkLocationAndShowingAlert:YES]) {
+            [[LocationManager sharedManager] startLocation];
+        }
+        else {
+            _poiAddressTF.text = @"定位失败，请手动输入";
+        }
+    }
+    else {
+        _poiNameTF.text = _currentPoipoint.poiName;
+        _poiAddressTF.text = _currentPoipoint.poiAddress;
+        _dropDownBtn.currentIndex = _currentPoipoint.poiCategory.integerValue;
+
+        _pickBtn1.currentPhoto = nil;
+        _pickBtn2.currentPhoto = nil;
+        _pickBtn3.currentPhoto = nil;
+
+        for (int i = 0; i < _currentPoipoint.images.count; i++) {
+            ((CMPhotoPickButton*)[_pickBtnsArray objectAtIndex:i]).currentPhoto = (CMPhoto*)[_currentPoipoint.images objectAtIndex:i];
+        }
+    }
+}
 
 - (void)initializeData
 {
+    [self initializeNotifications];
+}
+
+- (void)initializeNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationManagerDidFailedLocated) name:LocationManagerDidFailedLocateNotification object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationManagerDidSuccessedLocated) name:LocationManagerDidSuccessedLocateNotification object:nil];
 }
 
 - (void)initializeView
@@ -167,7 +238,9 @@ static const CGFloat sDefaultPadding = 10;
         [_imagePickerBgView addSubview:_pickBtn3];
     }
 
-    //    [self relayoutSubviews];
+    _pickBtnsArray = @[ _pickBtn1, _pickBtn2, _pickBtn3 ];
+
+    [self updateView];
 }
 
 - (void)relayoutSubviews
@@ -285,7 +358,64 @@ static const CGFloat sDefaultPadding = 10;
         [self.view makeToast:@"请选择分类"];
         return;
     }
+    if (!_currentLocation) {
+        [self.view makeToast:@"没有位置信息"];
+    }
+
+    [self generateCurrentPoipoint];
+
+    [[POIDataManager sharedManager] insertNewPOI:_currentPoipoint];
+
     [self popViewControllerAnimated:YES];
+
+    if (self.delegate && [self.delegate respondsToSelector:@selector(addPoiViewControllerDidSavedPOI:)]) {
+        [self.delegate addPoiViewControllerDidSavedPOI:self];
+    }
+}
+
+#pragma mark - Notifications
+
+- (void)locationManagerDidSuccessedLocated
+{
+    NSString* addressName = [LocationManager sharedManager].currentLocationAddress;
+    _currentLocation = [LocationManager sharedManager].currentLocation;
+    _poiAddressTF.text = addressName;
+}
+
+- (void)locationManagerDidFailedLocated
+{
+    _currentLocation = nil;
+    _poiAddressTF.text = @"定位失败，请手动输入";
+}
+
+#pragma mark - 工具方法
+
+- (void)generateCurrentPoipoint
+{
+    if (!_currentPoipoint) {
+        _currentPoipoint = [[POIPoint alloc] init];
+    }
+    _currentPoipoint.poiName = _poiNameTF.text;
+    _currentPoipoint.poiAddress = _poiAddressTF.text;
+    _currentPoipoint.poiCategory = [NSNumber numberWithInteger:_dropDownBtn.currentIndex];
+    _currentPoipoint.poiLon = [NSNumber numberWithDouble:_currentLocation.coordinate.longitude];
+    _currentPoipoint.poiLat = [NSNumber numberWithDouble:_currentLocation.coordinate.latitude];
+    _currentPoipoint.isUploaded = NO;
+    _currentPoipoint.poiId = [[NSString currentDateStr] integerValue];
+
+    NSMutableArray* imageArray = [[NSMutableArray alloc] init];
+
+    if (_pickBtn1.currentPhoto) {
+        [imageArray addObject:_pickBtn1.currentPhoto];
+    }
+    if (_pickBtn2.currentPhoto) {
+        [imageArray addObject:_pickBtn2.currentPhoto];
+    }
+    if (_pickBtn3.currentPhoto) {
+        [imageArray addObject:_pickBtn3.currentPhoto];
+    }
+
+    _currentPoipoint.images = imageArray;
 }
 
 /*
