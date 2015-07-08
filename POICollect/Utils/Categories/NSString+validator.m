@@ -31,4 +31,15 @@
     return NO;
 }
 
++ (NSString*)stringFromNumber:(NSNumber*)number
+{
+    //    NSInteger* intNum = number.integerValue;
+    if (number.intValue < 10) {
+        return [NSString stringWithFormat:@"0%@", number];
+    }
+    else {
+        return [NSString stringWithFormat:@"%@", number];
+    }
+}
+
 @end

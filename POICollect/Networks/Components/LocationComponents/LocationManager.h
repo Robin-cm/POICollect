@@ -12,6 +12,12 @@ extern NSString* const LocationManagerDidSuccessedLocateNotification;
 
 extern NSString* const LocationManagerDidFailedLocateNotification;
 
+extern NSString* const locationManagerDidSuccessFetchAddressInfoNotification;
+
+extern NSString* const locationManagerDidFailedFetchAddressInfoNotification;
+
+extern NSString* const locationManagerAddressInfoKey;
+
 /**
  *  定位结果
  */
@@ -145,5 +151,7 @@ typedef NS_ENUM(NSUInteger, LocationManagerLocationServiceStatus) {
  *  @param geocoder geocoder
  */
 - (void)fetchAddressInfoWithLocation:(CLLocation*)location geocoder:(CLGeocoder*)geocoder;
+
+- (void)fetchAddressInfoWithLocation:(CLLocation*)location;
 
 @end

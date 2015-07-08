@@ -93,6 +93,9 @@
  */
 - (void)pushVC:(UIViewController*)targetVC andParams:(id)params
 {
+    if (self.navigationController) {
+        [self.navigationController pushViewController:targetVC animated:YES];
+    }
 }
 
 /**
@@ -112,9 +115,9 @@
  */
 - (void)checkIslogin
 {
-    //    if (![LoginUser isLogin]) {
-    //        [self sendToLogin];
-    //    }
+    if (![LoginUser isLogin]) {
+        [self sendToLogin];
+    }
 }
 
 /**

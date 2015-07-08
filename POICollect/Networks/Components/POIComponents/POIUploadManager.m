@@ -13,12 +13,12 @@
 
 - (NSString*)methodName
 {
-    return @"uploadPoi.tdt";
+    return @"mobile_uploadPoi.tdt";
 }
 
 - (NSString*)serviceType
 {
-    return kAIFServiceUserLogin;
+    return kAIFServicePOIUpdate;
 }
 
 - (RTAPIManagerRequestType)requestType

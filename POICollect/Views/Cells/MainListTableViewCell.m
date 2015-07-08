@@ -425,6 +425,13 @@ static const CGFloat sDefaultPadding = 10;
     _selectBtn.selected = isSelected;
 }
 
+- (void)setProgressPersent:(CGFloat)persent
+{
+    if (_progressView) {
+        [_progressView setProgress:persent];
+    }
+}
+
 #pragma mark - 类方法
 
 + (CGFloat)getSubtitleHeightWithTitle:(NSString*)subTitle

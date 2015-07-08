@@ -176,7 +176,17 @@
                 if ([firstObj isKindOfClass:[CMPhoto class]]) {
                     //数组中是CMPhoto类型
                     for (CMPhoto* photo in photos) {
-                        [formData appendPartWithFileURL:[NSURL URLWithString:photo.imageURLString] name:@"image" error:nil];
+                        //                        NSData* data = UIImageJPEGRepresentation([UIImage imageNamed:@"AssetsPickerChecked"], 1);
+
+                        NSLog(@"图片的地址是: %@", [photo getImageName]);
+
+                        NSData* data = [[NSData alloc] initWithContentsOfFile:photo.imageURLString];
+                        if (data) {
+                            //                            [formData appendPartWithFormData:data name:@"img"];
+                            [formData appendPartWithFileData:data name:@"img" fileName:[photo getImageName] mimeType:@"image/jpeg"];
+                        }
+
+                        //                        [formData appendPartWithFileURL:[NSURL URLWithString:photo.imageURLString] name:@"img" error:nil];
                     }
                 }
                 else if ([firstObj isKindOfClass:[NSString class]]) {
@@ -188,7 +198,7 @@
                 else if ([firstObj isKindOfClass:[UIImage class]]) {
                     //数组中是UIImage类型
                     for (UIImage* img in photos) {
-                        [formData appendPartWithFileData:UIImageJPEGRepresentation(img, 0.5f) name:@"image" fileName:[NSString stringWithFormat:@"image_%@", [NSString currentDateStr]] mimeType:@"image/jpeg"];
+                        [formData appendPartWithFileData:UIImageJPEGRepresentation(img, 0.5f) name:@"img" fileName:[NSString stringWithFormat:@"image_%@", [NSString currentDateStr]] mimeType:@"image/jpeg"];
                     }
                 }
             }
@@ -227,7 +237,7 @@
 
     [httpUploadOperation setUploadProgressBlock:progress];
     self.dispatchTable[requestId] = httpUploadOperation;
-    [[self.operationManager operationQueue] addOperation:httpUploadOperation];
+    //    [[self.operationManager operationQueue] addOperation:httpUploadOperation];
     return requestId;
 }
 

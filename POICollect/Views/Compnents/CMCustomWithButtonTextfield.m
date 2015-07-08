@@ -136,6 +136,9 @@ static const CGFloat sDefaultPadding = 10;
 - (void)rightBtnTaped:(id)sender
 {
     NSLog(@"点击了按钮了！！！！！");
+    if (self.rightBtnDelegate && [self.rightBtnDelegate respondsToSelector:@selector(textfieldDidRightBtnTaped:)]) {
+        [self.rightBtnDelegate textfieldDidRightBtnTaped:self];
+    }
 }
 
 #pragma mark - UITextFieldDelegate

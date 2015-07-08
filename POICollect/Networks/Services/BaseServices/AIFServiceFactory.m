@@ -11,6 +11,7 @@
 #import "UserLoginService.h"
 #import "UserRegistService.h"
 #import "UserLogoutService.h"
+#import "POIUploadService.h"
 
 #pragma mark - Service的名称
 
@@ -90,6 +91,10 @@ NSString* const kAIFServiceUserLogout = @"kAIFServiceUserLogout";
 
     if ([identifier isEqualToString:kAIFServiceUserLogout]) {
         return [[UserLogoutService alloc] init];
+    }
+
+    if ([identifier isEqualToString:kAIFServicePOIUpdate]) {
+        return [[POIUploadService alloc] init];
     }
 
     return nil;

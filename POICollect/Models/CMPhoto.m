@@ -8,6 +8,7 @@
 
 #import "CMPhoto.h"
 #import "UIImage+Expanded.h"
+#import "NSString+validator.h"
 
 @interface CMPhoto ()
 
@@ -30,7 +31,7 @@
 - (UIImage*)originalImage
 {
     if (!_originalImage) {
-        if (self.imageURLString) {
+        if (![self.imageURLString isBlankString]) {
             _originalImage = [UIImage imageWithContentsOfFile:self.imageURLString];
         }
     }
@@ -40,11 +41,44 @@
 - (UIImage*)thumbImage
 {
     if (!_thumbImage) {
-        if (self.imageURLString) {
+        if (![self.imageURLString isBlankString]) {
             _thumbImage = [self.originalImage scaleToSize:CGSizeMake(80, 80)];
         }
     }
     return _thumbImage;
+}
+
+/**
+ *  删除图片文件
+ */
+- (void)deleteImageFile
+{
+    if ([self.imageURLString isBlankString]) {
+        return;
+    }
+    NSFileManager* fileManager = [NSFileManager defaultManager];
+    if ([fileManager fileExistsAtPath:self.imageURLString]) {
+        NSError* err;
+        [fileManager removeItemAtPath:self.imageURLString error:&err];
+    }
+}
+
+- (NSString*)getImageName
+{
+    if (![self.imageURLString isBlankString]) {
+        NSArray* pathArray = [self.imageURLString componentsSeparatedByString:@"/"];
+        if (pathArray && pathArray.count > 0) {
+            NSString* imageName = [pathArray objectAtIndex:pathArray.count - 1];
+            imageName = [imageName stringByAppendingString:@".jpg"];
+            return imageName;
+        }
+        else {
+            return @"";
+        }
+    }
+    else {
+        return @"";
+    }
 }
 
 @end

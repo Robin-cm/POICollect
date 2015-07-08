@@ -21,8 +21,8 @@
 
 - (NSMutableArray*)queryAllPOIIsUploaded:(BOOL)isUploaded;
 
-- (void)updateByNewPOI:(POIObj*)poi;
+- (void)updateByNewPOI:(POIPoint*)poi;
 
-- (void)deleteByPOI:(POIObj*)poi;
+- (void)deleteByPOI:(POIPoint*)poi;
 
 @end

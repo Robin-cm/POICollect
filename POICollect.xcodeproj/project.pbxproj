@@ -9,11 +9,22 @@
 /* Begin PBXBuildFile section */
 		262FC9B91B40F2E1005C12F4 /* CMCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 262FC9B81B40F2E1005C12F4 /* CMCameraViewController.m */; };
 		263B851F1B40EC480043B605 /* CMCameraView.m in Sources */ = {isa = PBXBuildFile; fileRef = 263B851E1B40EC480043B605 /* CMCameraView.m */; };
+		265AF6531B4CD9E700789C58 /* SelectLocationModelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 265AF6521B4CD9E700789C58 /* SelectLocationModelViewController.m */; };
+		265AF6561B4CFB0600789C58 /* CMTouchScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 265AF6551B4CFB0600789C58 /* CMTouchScrollView.m */; };
 		265C95AE1B4B5A910047BC34 /* NSObject+ObjectMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 265C95AD1B4B5A910047BC34 /* NSObject+ObjectMap.m */; };
 		265C95B11B4B640D0047BC34 /* UserLogoutManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 265C95B01B4B640D0047BC34 /* UserLogoutManager.m */; };
 		265C95B41B4B64970047BC34 /* UserLogoutService.m in Sources */ = {isa = PBXBuildFile; fileRef = 265C95B31B4B64970047BC34 /* UserLogoutService.m */; };
 		265C95B81B4B77D40047BC34 /* NSString+validator.m in Sources */ = {isa = PBXBuildFile; fileRef = 265C95B71B4B77D40047BC34 /* NSString+validator.m */; };
 		265C95BB1B4B806C0047BC34 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 265C95BA1B4B806C0047BC34 /* LocationManager.m */; };
+		265EE6D11B4CB893003DA89A /* HistoryPOIListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 265EE6D01B4CB893003DA89A /* HistoryPOIListViewController.m */; };
+		265EE6D41B4CC055003DA89A /* SelectLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 265EE6D31B4CC055003DA89A /* SelectLocationViewController.m */; };
+		265EE6D71B4CC1D6003DA89A /* TMapKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 265EE6D61B4CC1D6003DA89A /* TMapKit.a */; };
+		265EE6F41B4CC217003DA89A /* TMapKitBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 265EE6F31B4CC217003DA89A /* TMapKitBundle.bundle */; };
+		265EE6F61B4CC33B003DA89A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 265EE6F51B4CC33B003DA89A /* CFNetwork.framework */; };
+		265EE6F81B4CC347003DA89A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 265EE6F71B4CC347003DA89A /* CoreLocation.framework */; };
+		265EE6FA1B4CC350003DA89A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 265EE6F91B4CC350003DA89A /* UIKit.framework */; };
+		265EE6FC1B4CC35C003DA89A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 265EE6FB1B4CC35C003DA89A /* CoreGraphics.framework */; };
+		265EE6FE1B4CC36C003DA89A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 265EE6FD1B4CC36B003DA89A /* libz.dylib */; };
 		26782C841B46218000104330 /* AIFLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 26782C831B46218000104330 /* AIFLogger.m */; };
 		26782C871B46219100104330 /* AIFCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 26782C861B46219100104330 /* AIFCache.m */; };
 		26782C8A1B4637E100104330 /* AIFCachedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 26782C891B4637E100104330 /* AIFCachedObject.m */; };
@@ -133,6 +144,10 @@
 		262FC9B81B40F2E1005C12F4 /* CMCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMCameraViewController.m; path = Venders/CMPhotoKit/CMPhotoCamera/Controllers/CMCameraViewController.m; sourceTree = "<group>"; };
 		263B851D1B40EC480043B605 /* CMCameraView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMCameraView.h; path = Venders/CMPhotoKit/CMPhotoCamera/Views/CMCameraView.h; sourceTree = "<group>"; };
 		263B851E1B40EC480043B605 /* CMCameraView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMCameraView.m; path = Venders/CMPhotoKit/CMPhotoCamera/Views/CMCameraView.m; sourceTree = "<group>"; };
+		265AF6511B4CD9E700789C58 /* SelectLocationModelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectLocationModelViewController.h; path = Controllers/SelectLocationModelViewController.h; sourceTree = "<group>"; };
+		265AF6521B4CD9E700789C58 /* SelectLocationModelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectLocationModelViewController.m; path = Controllers/SelectLocationModelViewController.m; sourceTree = "<group>"; };
+		265AF6541B4CFB0600789C58 /* CMTouchScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMTouchScrollView.h; path = Views/Compnents/CMTouchScrollView.h; sourceTree = "<group>"; };
+		265AF6551B4CFB0600789C58 /* CMTouchScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMTouchScrollView.m; path = Views/Compnents/CMTouchScrollView.m; sourceTree = "<group>"; };
 		265C95AC1B4B5A910047BC34 /* NSObject+ObjectMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+ObjectMap.h"; path = "Utils/Categories/NSObject+ObjectMap.h"; sourceTree = "<group>"; };
 		265C95AD1B4B5A910047BC34 /* NSObject+ObjectMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+ObjectMap.m"; path = "Utils/Categories/NSObject+ObjectMap.m"; sourceTree = "<group>"; };
 		265C95AF1B4B640D0047BC34 /* UserLogoutManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserLogoutManager.h; path = Networks/Components/UserComponents/UserLogoutManager.h; sourceTree = "<group>"; };
@@ -144,6 +159,42 @@
 		265C95B91B4B806C0047BC34 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationManager.h; path = Networks/Components/LocationComponents/LocationManager.h; sourceTree = "<group>"; };
 		265C95BA1B4B806C0047BC34 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationManager.m; path = Networks/Components/LocationComponents/LocationManager.m; sourceTree = "<group>"; };
 		265C95BC1B4B9EBA0047BC34 /* POICollect1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = POICollect1.xcdatamodel; sourceTree = "<group>"; };
+		265EE6CF1B4CB893003DA89A /* HistoryPOIListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HistoryPOIListViewController.h; path = Controllers/HistoryPOIListViewController.h; sourceTree = "<group>"; };
+		265EE6D01B4CB893003DA89A /* HistoryPOIListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HistoryPOIListViewController.m; path = Controllers/HistoryPOIListViewController.m; sourceTree = "<group>"; };
+		265EE6D21B4CC055003DA89A /* SelectLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectLocationViewController.h; path = Controllers/SelectLocationViewController.h; sourceTree = "<group>"; };
+		265EE6D31B4CC055003DA89A /* SelectLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectLocationViewController.m; path = Controllers/SelectLocationViewController.m; sourceTree = "<group>"; };
+		265EE6D61B4CC1D6003DA89A /* TMapKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = TMapKit.a; path = TdtMaps/TMapKit.a; sourceTree = "<group>"; };
+		265EE6D91B4CC1F1003DA89A /* TAddressComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TAddressComponent.h; path = TdtMaps/Headers/TAddressComponent.h; sourceTree = "<group>"; };
+		265EE6DA1B4CC1F1003DA89A /* TAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TAnnotation.h; path = TdtMaps/Headers/TAnnotation.h; sourceTree = "<group>"; };
+		265EE6DB1B4CC1F1003DA89A /* TAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TAnnotationView.h; path = TdtMaps/Headers/TAnnotationView.h; sourceTree = "<group>"; };
+		265EE6DC1B4CC1F1003DA89A /* TBusLineSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TBusLineSearch.h; path = TdtMaps/Headers/TBusLineSearch.h; sourceTree = "<group>"; };
+		265EE6DD1B4CC1F1003DA89A /* TBusStationSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TBusStationSearch.h; path = TdtMaps/Headers/TBusStationSearch.h; sourceTree = "<group>"; };
+		265EE6DE1B4CC1F1003DA89A /* TCityInfor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TCityInfor.h; path = TdtMaps/Headers/TCityInfor.h; sourceTree = "<group>"; };
+		265EE6DF1B4CC1F1003DA89A /* TDownLoadingCity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDownLoadingCity.h; path = TdtMaps/Headers/TDownLoadingCity.h; sourceTree = "<group>"; };
+		265EE6E01B4CC1F1003DA89A /* TDrivingRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDrivingRoute.h; path = TdtMaps/Headers/TDrivingRoute.h; sourceTree = "<group>"; };
+		265EE6E11B4CC1F1003DA89A /* TGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TGeometry.h; path = TdtMaps/Headers/TGeometry.h; sourceTree = "<group>"; };
+		265EE6E21B4CC1F1003DA89A /* TMapLayerInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TMapLayerInfo.h; path = TdtMaps/Headers/TMapLayerInfo.h; sourceTree = "<group>"; };
+		265EE6E31B4CC1F1003DA89A /* TMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TMapView.h; path = TdtMaps/Headers/TMapView.h; sourceTree = "<group>"; };
+		265EE6E41B4CC1F1003DA89A /* TMultiPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TMultiPoint.h; path = TdtMaps/Headers/TMultiPoint.h; sourceTree = "<group>"; };
+		265EE6E51B4CC1F1003DA89A /* TOffLineManger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TOffLineManger.h; path = TdtMaps/Headers/TOffLineManger.h; sourceTree = "<group>"; };
+		265EE6E61B4CC1F1003DA89A /* TOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TOverlay.h; path = TdtMaps/Headers/TOverlay.h; sourceTree = "<group>"; };
+		265EE6E71B4CC1F1003DA89A /* TOverlayPathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TOverlayPathView.h; path = TdtMaps/Headers/TOverlayPathView.h; sourceTree = "<group>"; };
+		265EE6E81B4CC1F1003DA89A /* TOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TOverlayView.h; path = TdtMaps/Headers/TOverlayView.h; sourceTree = "<group>"; };
+		265EE6E91B4CC1F1003DA89A /* TPoiSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TPoiSearch.h; path = TdtMaps/Headers/TPoiSearch.h; sourceTree = "<group>"; };
+		265EE6EA1B4CC1F1003DA89A /* TPolygon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TPolygon.h; path = TdtMaps/Headers/TPolygon.h; sourceTree = "<group>"; };
+		265EE6EB1B4CC1F1003DA89A /* TPolygonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TPolygonView.h; path = TdtMaps/Headers/TPolygonView.h; sourceTree = "<group>"; };
+		265EE6EC1B4CC1F1003DA89A /* TPolyline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TPolyline.h; path = TdtMaps/Headers/TPolyline.h; sourceTree = "<group>"; };
+		265EE6ED1B4CC1F1003DA89A /* TPolylineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TPolylineView.h; path = TdtMaps/Headers/TPolylineView.h; sourceTree = "<group>"; };
+		265EE6EE1B4CC1F1003DA89A /* TSearchResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSearchResult.h; path = TdtMaps/Headers/TSearchResult.h; sourceTree = "<group>"; };
+		265EE6EF1B4CC1F1003DA89A /* TTransitRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTransitRoute.h; path = TdtMaps/Headers/TTransitRoute.h; sourceTree = "<group>"; };
+		265EE6F01B4CC1F1003DA89A /* TUserLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TUserLocation.h; path = TdtMaps/Headers/TUserLocation.h; sourceTree = "<group>"; };
+		265EE6F11B4CC1F1003DA89A /* TUserLocationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TUserLocationView.h; path = TdtMaps/Headers/TUserLocationView.h; sourceTree = "<group>"; };
+		265EE6F31B4CC217003DA89A /* TMapKitBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TMapKitBundle.bundle; path = Resources/Map/TMapKitBundle.bundle; sourceTree = "<group>"; };
+		265EE6F51B4CC33B003DA89A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		265EE6F71B4CC347003DA89A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		265EE6F91B4CC350003DA89A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		265EE6FB1B4CC35C003DA89A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		265EE6FD1B4CC36B003DA89A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		26782C821B46218000104330 /* AIFLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIFLogger.h; path = Networks/Components/LogComponents/AIFLogger.h; sourceTree = "<group>"; };
 		26782C831B46218000104330 /* AIFLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIFLogger.m; path = Networks/Components/LogComponents/AIFLogger.m; sourceTree = "<group>"; };
 		26782C851B46219100104330 /* AIFCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIFCache.h; path = Networks/Components/CacheComponents/AIFCache.h; sourceTree = "<group>"; };
@@ -352,6 +403,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				265EE6FE1B4CC36C003DA89A /* libz.dylib in Frameworks */,
+				265EE6FC1B4CC35C003DA89A /* CoreGraphics.framework in Frameworks */,
+				265EE6FA1B4CC350003DA89A /* UIKit.framework in Frameworks */,
+				265EE6F81B4CC347003DA89A /* CoreLocation.framework in Frameworks */,
+				265EE6F61B4CC33B003DA89A /* CFNetwork.framework in Frameworks */,
+				265EE6D71B4CC1D6003DA89A /* TMapKit.a in Frameworks */,
 				FCA9D93553FE54FD075523F3 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -373,6 +430,55 @@
 				265C95BA1B4B806C0047BC34 /* LocationManager.m */,
 			);
 			name = LocationComponents;
+			sourceTree = "<group>";
+		};
+		265EE6D51B4CC1B8003DA89A /* TdtMaps */ = {
+			isa = PBXGroup;
+			children = (
+				265EE6D81B4CC1D9003DA89A /* Headers */,
+				265EE6D61B4CC1D6003DA89A /* TMapKit.a */,
+			);
+			name = TdtMaps;
+			sourceTree = "<group>";
+		};
+		265EE6D81B4CC1D9003DA89A /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				265EE6D91B4CC1F1003DA89A /* TAddressComponent.h */,
+				265EE6DA1B4CC1F1003DA89A /* TAnnotation.h */,
+				265EE6DB1B4CC1F1003DA89A /* TAnnotationView.h */,
+				265EE6DC1B4CC1F1003DA89A /* TBusLineSearch.h */,
+				265EE6DD1B4CC1F1003DA89A /* TBusStationSearch.h */,
+				265EE6DE1B4CC1F1003DA89A /* TCityInfor.h */,
+				265EE6DF1B4CC1F1003DA89A /* TDownLoadingCity.h */,
+				265EE6E01B4CC1F1003DA89A /* TDrivingRoute.h */,
+				265EE6E11B4CC1F1003DA89A /* TGeometry.h */,
+				265EE6E21B4CC1F1003DA89A /* TMapLayerInfo.h */,
+				265EE6E31B4CC1F1003DA89A /* TMapView.h */,
+				265EE6E41B4CC1F1003DA89A /* TMultiPoint.h */,
+				265EE6E51B4CC1F1003DA89A /* TOffLineManger.h */,
+				265EE6E61B4CC1F1003DA89A /* TOverlay.h */,
+				265EE6E71B4CC1F1003DA89A /* TOverlayPathView.h */,
+				265EE6E81B4CC1F1003DA89A /* TOverlayView.h */,
+				265EE6E91B4CC1F1003DA89A /* TPoiSearch.h */,
+				265EE6EA1B4CC1F1003DA89A /* TPolygon.h */,
+				265EE6EB1B4CC1F1003DA89A /* TPolygonView.h */,
+				265EE6EC1B4CC1F1003DA89A /* TPolyline.h */,
+				265EE6ED1B4CC1F1003DA89A /* TPolylineView.h */,
+				265EE6EE1B4CC1F1003DA89A /* TSearchResult.h */,
+				265EE6EF1B4CC1F1003DA89A /* TTransitRoute.h */,
+				265EE6F01B4CC1F1003DA89A /* TUserLocation.h */,
+				265EE6F11B4CC1F1003DA89A /* TUserLocationView.h */,
+			);
+			name = Headers;
+			sourceTree = "<group>";
+		};
+		265EE6F21B4CC1FC003DA89A /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				265EE6F31B4CC217003DA89A /* TMapKitBundle.bundle */,
+			);
+			name = Map;
 			sourceTree = "<group>";
 		};
 		26782C7E1B461FE700104330 /* CacheComponents */ = {
@@ -678,6 +784,7 @@
 		7658F46C1B325FFF00E41A0B /* POICollect */ = {
 			isa = PBXGroup;
 			children = (
+				265EE6D51B4CC1B8003DA89A /* TdtMaps */,
 				7658F49C1B32610700E41A0B /* Classes */,
 				7658F49A1B32608600E41A0B /* Controllers */,
 				7658F4971B32607400E41A0B /* Models */,
@@ -781,6 +888,12 @@
 				764C8C9A1B38E5FF00FF2F51 /* MainPOIListViewController.m */,
 				764C8CA61B39455200FF2F51 /* AddPOIViewController.h */,
 				764C8CA71B39455200FF2F51 /* AddPOIViewController.m */,
+				265EE6CF1B4CB893003DA89A /* HistoryPOIListViewController.h */,
+				265EE6D01B4CB893003DA89A /* HistoryPOIListViewController.m */,
+				265EE6D21B4CC055003DA89A /* SelectLocationViewController.h */,
+				265EE6D31B4CC055003DA89A /* SelectLocationViewController.m */,
+				265AF6511B4CD9E700789C58 /* SelectLocationModelViewController.h */,
+				265AF6521B4CD9E700789C58 /* SelectLocationModelViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -788,6 +901,7 @@
 		7658F49B1B32609100E41A0B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				265EE6F21B4CC1FC003DA89A /* Map */,
 				26911FE61B4A845B004307B1 /* Locations */,
 				7685EA781B3A75CA00AD1645 /* Logins */,
 				7685EA751B3A5DB400AD1645 /* Backgrounds */,
@@ -1008,6 +1122,8 @@
 				76615EB31B3D41150064BCB0 /* CMPhotoPickButton.m */,
 				A11A50FE1B48FDBB00E8136F /* CMActionSheetView.h */,
 				A11A50FF1B48FDBB00E8136F /* CMActionSheetView.m */,
+				265AF6541B4CFB0600789C58 /* CMTouchScrollView.h */,
+				265AF6551B4CFB0600789C58 /* CMTouchScrollView.m */,
 			);
 			name = Compnents;
 			sourceTree = "<group>";
@@ -1038,6 +1154,11 @@
 		A3903ACEC749488EDA56C839 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				265EE6FD1B4CC36B003DA89A /* libz.dylib */,
+				265EE6FB1B4CC35C003DA89A /* CoreGraphics.framework */,
+				265EE6F91B4CC350003DA89A /* UIKit.framework */,
+				265EE6F71B4CC347003DA89A /* CoreLocation.framework */,
+				265EE6F51B4CC33B003DA89A /* CFNetwork.framework */,
 				6F54E2C1591D38029EA79878 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -1130,6 +1251,7 @@
 				7685EA7C1B3A761200AD1645 /* pass_ico.png in Resources */,
 				7658F47C1B325FFF00E41A0B /* Main.storyboard in Resources */,
 				A147714E1B3F9D4F00A3F60C /* Media.xcassets in Resources */,
+				265EE6F41B4CC217003DA89A /* TMapKitBundle.bundle in Resources */,
 				A1F484441B3DAFC100FD49A4 /* CMPhotoPickerGroupTableViewCell.xib in Resources */,
 				7685EA7B1B3A761200AD1645 /* name_ico.png in Resources */,
 				7658F4811B325FFF00E41A0B /* LaunchScreen.xib in Resources */,
@@ -1207,6 +1329,7 @@
 				7658F4731B325FFF00E41A0B /* AppDelegate.m in Sources */,
 				A1CD5A4D1B384B4F008BC36A /* CMCustomPopAnimation.m in Sources */,
 				26B98DA11B4530E400FE83BB /* NSMutableString+AXNetworkingMethods.m in Sources */,
+				265AF6531B4CD9E700789C58 /* SelectLocationModelViewController.m in Sources */,
 				A14822571B476DF300271FAC /* POIPoint.m in Sources */,
 				26782CAB1B46676700104330 /* LoginUser.m in Sources */,
 				76E7CBFD1B3BC70C00D0BBED /* CMCustomWithButtonTextfield.m in Sources */,
@@ -1214,6 +1337,8 @@
 				2695B4421B428A9900CB34D0 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				26782CA11B4657F000104330 /* UserLoginService.m in Sources */,
 				26911FE51B4A66A1004307B1 /* POIObj.m in Sources */,
+				265EE6D41B4CC055003DA89A /* SelectLocationViewController.m in Sources */,
+				265AF6561B4CFB0600789C58 /* CMTouchScrollView.m in Sources */,
 				7658F4A31B3261EE00E41A0B /* BaseViewController.m in Sources */,
 				26B98D771B44F5D600FE83BB /* AIFURLResponse.m in Sources */,
 				26911FD11B4A27D3004307B1 /* POIUploadManager.m in Sources */,
@@ -1279,6 +1404,7 @@
 				26B98D971B452DC400FE83BB /* NSDictionary+AXNetworkingMethods.m in Sources */,
 				A147714B1B3F9C2F00A3F60C /* CMPhotoPickerImageView.m in Sources */,
 				769BD6891B34194F0089FB39 /* LoginView.m in Sources */,
+				265EE6D11B4CB893003DA89A /* HistoryPOIListViewController.m in Sources */,
 				7658F4A91B32698E00E41A0B /* UIColor+Expanded.m in Sources */,
 				26B98D9A1B452DC400FE83BB /* UIDevice+IdentifierAddition.m in Sources */,
 				26782C911B463F4A00104330 /* AIFServiceFactory.m in Sources */,
@@ -1361,6 +1487,11 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-Objc",
+				);
+				OTHER_LIBTOOLFLAGS = "-Objc -all_load";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1395,6 +1526,11 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-Objc",
+				);
+				OTHER_LIBTOOLFLAGS = "-Objc -all_load";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1410,6 +1546,10 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/POICollect/POICollect-PrefixHeader.pch";
 				INFOPLIST_FILE = POICollect/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/POICollect/TdtMaps",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -1424,6 +1564,10 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/POICollect/POICollect-PrefixHeader.pch";
 				INFOPLIST_FILE = POICollect/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/POICollect/TdtMaps",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

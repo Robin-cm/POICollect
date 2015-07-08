@@ -26,8 +26,9 @@
             [imgStr appendString:appendStr];
         }
         //        [imgStr deleteCharactersInRange:NSMakeRange(imgStr.length - 2, imgStr.length - 1)];
+        return [imgStr substringToIndex:(imgStr.length - 1)];
     }
-    return [imgStr substringToIndex:(imgStr.length - 1)];
+    return @"";
 }
 
 + (NSArray*)getImagesByString:(NSString*)str
@@ -47,6 +48,15 @@
 - (CLLocation*)getLocation
 {
     return [[CLLocation alloc] initWithLatitude:self.poiLat.doubleValue longitude:self.poiLon.doubleValue];
+}
+
+- (void)cleanAllImages
+{
+    if (self.images && self.images.count > 0) {
+        for (CMPhoto* photo in self.images) {
+            [photo deleteImageFile];
+        }
+    }
 }
 
 @end

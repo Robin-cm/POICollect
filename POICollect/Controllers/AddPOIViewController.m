@@ -17,16 +17,18 @@
 #import <CoreLocation/CoreLocation.h>
 #import "NSString+AXNetworkingMethods.h"
 #import "POIDataManager.h"
+#import "SelectLocationModelViewController.h"
+#import "CMTouchScrollView.h"
 
 static const CGFloat sDefaultPadding = 10;
 
-@interface AddPOIViewController ()
+@interface AddPOIViewController () <CMCustomWithButtonTextfieldProtocol, SelectLocationModelViewControllerProtocol>
 
 @property (nonatomic, strong) CLLocation* currentLocation;
 
 @property (nonatomic, strong) UIView* mainBgView;
 
-@property (nonatomic, strong) UIScrollView* scrollView;
+@property (nonatomic, strong) CMTouchScrollView* scrollView;
 
 @property (nonatomic, strong) UIView* formBgView;
 
@@ -46,6 +48,10 @@ static const CGFloat sDefaultPadding = 10;
 
 @property (nonatomic, strong) NSArray* pickBtnsArray;
 
+@property (nonatomic, strong) SelectLocationModelViewController* selectVC;
+
+@property (nonatomic, strong) NSArray* categoryArray;
+
 @end
 
 @implementation AddPOIViewController
@@ -64,6 +70,11 @@ static const CGFloat sDefaultPadding = 10;
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+}
+
 #pragma mark - Setter
 
 - (void)setCurrentPoipoint:(POIPoint*)currentPoipoint
@@ -73,6 +84,43 @@ static const CGFloat sDefaultPadding = 10;
     }
 
     [self updateView];
+}
+
+- (SelectLocationModelViewController*)selectVC
+{
+    if (!_selectVC) {
+        _selectVC = [[SelectLocationModelViewController alloc] init];
+        _selectVC.delegate = self;
+    }
+    return _selectVC;
+}
+
+#pragma mark - Getter
+
+- (NSArray*)categoryArray
+{
+    if (!_categoryArray) {
+        _categoryArray = @[
+            @"餐饮美食",
+            @"汽车及非四轮车服务",
+            @"运动休闲",
+            @"地产小区",
+            @"购物",
+            @"生活服务",
+            @"医疗卫生",
+            @"宾馆酒店",
+            @"旅游景点",
+            @"政府机构",
+            @"文化教育",
+            @"交通设施",
+            @"金融行业",
+            @"地名地址",
+            @"公司企业",
+            @"公共设施"
+
+        ];
+    }
+    return _categoryArray;
 }
 
 #pragma mark - 继承
@@ -89,6 +137,7 @@ static const CGFloat sDefaultPadding = 10;
 
 - (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event
 {
+    NSLog(@"点击页面>>>>>>>>>>>>>>>>>>>>>>>>>>>");
     CloseKeyBoard;
 }
 
@@ -164,8 +213,7 @@ static const CGFloat sDefaultPadding = 10;
     }
 
     if (!_scrollView) {
-        _scrollView = [[UIScrollView alloc] init];
-        //        _scrollView.backgroundColor = [UIColor blueColor];
+        _scrollView = [[CMTouchScrollView alloc] init];
         _scrollView.contentSize = CGSizeMake(kScreenWidth, kScreenHeight * 4);
         [self.view addSubview:_scrollView];
     }
@@ -185,6 +233,7 @@ static const CGFloat sDefaultPadding = 10;
 
     if (!_poiAddressTF) {
         _poiAddressTF = [[CMCustomWithButtonTextfield alloc] initButtonTextfieldWithPlaceholder:@"地址" andWithButtonImage:[UIImage imageNamed:@"location_btn"] andWithSelectedButtonImage:[UIImage imageNamed:@"name_ico"]];
+        _poiAddressTF.rightBtnDelegate = self;
         //        _poiAddressTF.borderStyle = UITextBorderStyleLine;
         //        _poiAddressTF.placeholder = @"asdasds";
         //        _poiAddressTF.rightView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"pass_ico"]];
@@ -195,24 +244,7 @@ static const CGFloat sDefaultPadding = 10;
     if (!_dropDownBtn) {
         _dropDownBtn = [[CMDropdownButton alloc] initDropdownButtonWithTitle:@"分类"];
         //        [_dropDownBtn setTitle:@"分类啊啊啊啊" forState:UIControlStateNormal];
-        _dropDownBtn.datas = @[
-            @"餐饮美食",
-            @"汽车及非四轮车服务",
-            @"运动休闲",
-            @"地产小区",
-            @"购物",
-            @"生活服务",
-            @"医疗卫生",
-            @"宾馆酒店",
-            @"旅游景点",
-            @"政府机构",
-            @"文化教育",
-            @"交通设施",
-            @"金融行业",
-            @"地名地址",
-            @"公司企业",
-            @"公共设施"
-        ];
+        _dropDownBtn.datas = self.categoryArray;
         [_formBgView addSubview:_dropDownBtn];
     }
 
@@ -380,6 +412,7 @@ static const CGFloat sDefaultPadding = 10;
     NSString* addressName = [LocationManager sharedManager].currentLocationAddress;
     _currentLocation = [LocationManager sharedManager].currentLocation;
     _poiAddressTF.text = addressName;
+    [[LocationManager sharedManager] stopLocation];
 }
 
 - (void)locationManagerDidFailedLocated
@@ -416,6 +449,29 @@ static const CGFloat sDefaultPadding = 10;
     }
 
     _currentPoipoint.images = imageArray;
+}
+
+#pragma mark - CMCustomWithButtonTextfieldProtocol
+
+- (void)textfieldDidRightBtnTaped:(CMCustomWithButtonTextfield*)tf
+{
+    if (self.currentLocation) {
+        self.selectVC.currentLocation = self.currentLocation;
+    }
+    [self.navigationController presentViewController:self.selectVC animated:YES completion:nil];
+}
+
+#pragma mark - SelectLocationModelViewControllerProtocol
+
+- (void)selectVC:(SelectLocationModelViewController*)selectVC didSelectLocation:(NSDictionary*)locationIf
+{
+    NSLog(@"得到了选点的信息了");
+    if (locationIf) {
+        NSString* addressName = [locationIf objectForKey:@"selectedLocationAddress"];
+        CLLocation* locatoin = [locationIf objectForKey:@"selectedLocation"];
+        _currentLocation = locatoin;
+        _poiAddressTF.text = addressName;
+    }
 }
 
 /*

@@ -30,6 +30,8 @@ typedef void (^MoreBlock)(id obj);
 
 - (void)setTitle:(NSString*)title andSubTitle:(NSString*)subTitle;
 
+- (void)setProgressPersent:(CGFloat)persent;
+
 #pragma mark - 类方法
 
 + (CGFloat)getSubtitleHeightWithTitle:(NSString*)subTitle;

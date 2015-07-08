@@ -81,8 +81,7 @@ static const CGFloat padding = 20;
 
 - (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event
 {
-    [_loginNameTextView resignFirstResponder];
-    [_loginPassTextView resignFirstResponder];
+    CloseKeyBoard;
 }
 
 #pragma mark - 自定义方法

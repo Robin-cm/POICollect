@@ -10,6 +10,12 @@ NSString* const LocationManagerDidSuccessedLocateNotification = @"LocationManage
 
 NSString* const LocationManagerDidFailedLocateNotification = @"LocationManagerDidFailedLocateNotification";
 
+NSString* const locationManagerDidSuccessFetchAddressInfoNotification = @"locationManagerDidSuccessFetchAddressInfoNotification";
+
+NSString* const locationManagerDidFailedFetchAddressInfoNotification = @"locationManagerDidFailedFetchAddressInfoNotification";
+
+NSString* const locationManagerAddressInfoKey = @"locationManagerAddressInfoKey";
+
 #import "LocationManager.h"
 
 @interface LocationManager ()
@@ -160,6 +166,30 @@ NSString* const LocationManagerDidFailedLocateNotification = @"LocationManagerDi
 {
     [self stopLocation];
     [self startLocation];
+}
+
+- (void)fetchAddressInfoWithLocation:(CLLocation*)location
+{
+    [self.geoCoder reverseGeocodeLocation:location
+                        completionHandler:^(NSArray* placemarks, NSError* error) {
+                            CLPlacemark* placemark = [placemarks lastObject];
+                            if (placemark) {
+                                NSDictionary* addressDictionary = placemark.addressDictionary;
+
+                                NSString* currentAddress = [addressDictionary objectForKey:@"Name"];
+
+                                if (!currentAddress) {
+                                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                                        [[NSNotificationCenter defaultCenter] postNotificationName:locationManagerDidFailedFetchAddressInfoNotification object:self userInfo:nil];
+                                    });
+                                    return;
+                                }
+
+                                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                                    [[NSNotificationCenter defaultCenter] postNotificationName:locationManagerDidSuccessFetchAddressInfoNotification object:self userInfo:@{ locationManagerAddressInfoKey : currentAddress }];
+                                });
+                            }
+                        }];
 }
 
 /**

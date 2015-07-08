@@ -19,4 +19,7 @@
  */
 - (BOOL)isBlankString;
 
+
++ (NSString*)stringFromNumber:(NSNumber*)number;
+
 @end

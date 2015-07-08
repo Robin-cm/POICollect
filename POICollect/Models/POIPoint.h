@@ -50,4 +50,9 @@
 
 - (CLLocation*)getLocation;
 
+/**
+ *  删除所有的图片
+ */
+- (void)cleanAllImages;
+
 @end

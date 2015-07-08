@@ -6,9 +6,19 @@
 //  Copyright (c) 2015年 cm. All rights reserved.
 //
 
+@class CMCustomWithButtonTextfield;
+
+@protocol CMCustomWithButtonTextfieldProtocol <NSObject>
+
+- (void)textfieldDidRightBtnTaped:(CMCustomWithButtonTextfield*)tf;
+
+@end
+
 @interface CMCustomWithButtonTextfield : UITextField
 
 #pragma mark - 属性
+
+@property (nonatomic, weak) id<CMCustomWithButtonTextfieldProtocol> rightBtnDelegate;
 
 @property (nonatomic, strong) UIColor* normalBackgroundColor;
 @property (nonatomic, strong) UIColor* highlightBackgroundColor;

@@ -30,4 +30,11 @@
  */
 @property (nonatomic, assign) BOOL localImage;
 
+/**
+ *  删除图片文件 
+ */
+- (void)deleteImageFile;
+
+- (NSString*)getImageName;
+
 @end

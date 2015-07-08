@@ -20,20 +20,19 @@
 #import "LoginUser.h"
 #import "UIView+Toast.h"
 #import "LocationManager.h"
+#import "HistoryPOIListViewController.h"
+#import "POIUploadManager.h"
+#import "NSString+validator.h"
 
 #define kMainListCellIdentifine @"MainListCellIdentifine"
 
-@interface MainPOIListViewController () <UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegate, UINavigationControllerDelegate, CMCustomCircleAnimationProtocol, RTAPIManagerApiCallBackDelegate, RTAPIManagerParamSourceDelegate, RTAPIManagerValidator, AddPOIViewControllerProtocol>
+@interface MainPOIListViewController () <UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegate, UINavigationControllerDelegate, CMCustomCircleAnimationProtocol, RTAPIManagerApiCallBackDelegate, RTAPIManagerParamSourceDelegate, RTAPIManagerValidator, AddPOIViewControllerProtocol, RTAPIManagerUploadFilesSourcedelegate>
 
 @property (nonatomic, strong) UITableView* tableView;
 
 @property (nonatomic, strong, readwrite) CMRoundBtn* addPOIBtn;
 
 @property (nonatomic, strong) CMCustomCircleAnimation* mAnimation;
-
-//@property (nonatomic, strong) CMCustomPopAnimation* mPopAnimation;
-
-//@property (nonatomic, strong) AddPOIViewController* addPoiViewController;
 
 @property (nonatomic, assign) BOOL mEdit;
 
@@ -42,6 +41,14 @@
 @property (nonatomic, strong) UILabel* emptyLabel;
 
 @property (nonatomic, strong) UserLogoutManager* userLogoutManager;
+
+@property (nonatomic, strong) POIUploadManager* poiUploadManager;
+
+@property (nonatomic, strong) POIPoint* uploadingPOIpoint;
+
+@property (nonatomic, assign) CGFloat currentPersent;
+
+@property (nonatomic, assign) NSInteger currentUpdateRowIndex;
 
 @end
 
@@ -106,6 +113,18 @@
     return _emptyLabel;
 }
 
+- (POIUploadManager*)poiUploadManager
+{
+    if (!_poiUploadManager) {
+        _poiUploadManager = [[POIUploadManager alloc] init];
+        _poiUploadManager.delegate = self;
+        _poiUploadManager.paramSource = self;
+        _poiUploadManager.filesSource = self;
+        _poiUploadManager.validator = self;
+    }
+    return _poiUploadManager;
+}
+
 #pragma mark - 自定义实例方法
 
 - (void)initializeData
@@ -113,9 +132,8 @@
     _mAnimation = [[CMCustomCircleAnimation alloc] init];
     _mAnimation.delegate = self;
     _mEdit = NO;
-    //    _mPopAnimation = [[CMCustomPopAnimation alloc] init];
     self.navigationController.delegate = self;
-    self.transitioningDelegate = self;
+    //    _mPopAnimation = [[CMCustomPopAnimation alloc] init];
 
     //    for (int i = 0; i < 5; i++) {
     //        POIPoint* poiPoint = [[POIPoint alloc] init];
@@ -253,11 +271,28 @@
     }
 }
 
+- (void)uploadPOIInfoWithPOIpoint:(POIPoint*)point andRowIndex:(NSInteger)rowIndex
+{
+    NSLog(@"更新POI点： %ld", (long)point.poiId);
+    _currentUpdateRowIndex = rowIndex;
+    _uploadingPOIpoint = point;
+    //    [self.poiUploadManager uploadData];
+    for (int i = 0; i < 100; i++) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(i * NSEC_PER_SEC)), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self managerCallAPIProgress:nil andPersent:(i / 100.0)];
+            });
+        });
+    }
+}
+
 #pragma mark - 事件
 
 - (void)addPOIBtnTaped:(id)sender
 {
     NSLog(@"添加按钮点击");
+
+    self.transitioningDelegate = self;
     AddPOIViewController* addPoiViewController = [[AddPOIViewController alloc] init];
     addPoiViewController.currentPoipoint = nil;
     addPoiViewController.delegate = self;
@@ -284,9 +319,10 @@
 - (void)historyBtnTaped:(id)sender
 {
     NSLog(@"历史点击");
-
-    [[LocationManager sharedManager] checkLocationAndShowingAlert:YES];
-    [[LocationManager sharedManager] startLocation];
+    //    self.navigationController.delegate = nil;
+    self.transitioningDelegate = nil;
+    HistoryPOIListViewController* historyVC = [[HistoryPOIListViewController alloc] init];
+    [self pushVC:historyVC andParams:nil];
 }
 
 #pragma mark - UITableViewDataSource
@@ -306,6 +342,13 @@
     POIPoint* point = [self.datas objectAtIndex:indexPath.row];
     NSLog(@"点的名称是：%@   点的地址是：%@", point.poiName, point.poiAddress);
     cell.poiPoint = point;
+    NSLog(@"要更新的POIID是：%ld", (long)_uploadingPOIpoint.poiId);
+    if (point.poiId == _uploadingPOIpoint.poiId && indexPath.row == _currentUpdateRowIndex) {
+        //当前正在上传
+        //更新进度条
+        [cell setProgressPersent:_currentPersent];
+    }
+
     cell.mSeledted = point.poiSelected;
     cell.selectBlock = ^(id obj, BOOL selected) {
         NSLog(@"当前的选中状态是--->:%d", selected);
@@ -319,21 +362,31 @@
             NSLog(@"我点击了%ld", (long)selectIndex);
 
             switch (selectIndex) {
-            case 0:
-
+            case 0: {
+                //上传
+                [self uploadPOIInfoWithPOIpoint:point andRowIndex:indexPath.row];
                 break;
+            }
             case 1:
 
                 break;
-            case 2:
+            case 2: {
                 NSLog(@"删除操作%lu", (long)[indexPath row]);
                 [self.tableView beginUpdates];
-                [self.datas removeObjectAtIndex:indexPath.row];
-                [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-                [self.tableView endUpdates];
-                [self.tableView reloadData];
                 //                [self.datas removeObjectAtIndex:indexPath.row];
+                POIPoint* point = [self.datas objectAtIndex:indexPath.row];
+                [point cleanAllImages];
+
+                [[POIDataManager sharedManager] deleteByPOI:point];
+                [self.datas removeObjectAtIndex:indexPath.row];
+
+                [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                                      withRowAnimation:UITableViewRowAnimationFade];
+                [self.tableView endUpdates];
+                [self refreshData];
+
                 break;
+            }
 
             default:
                 break;
@@ -421,6 +474,9 @@
             [self.view makeToast:[result objectForKey:@"msg"]];
         }
     }
+    else if ([manager isKindOfClass:[POIUploadManager class]]) {
+        //上传文件回调
+    }
 }
 
 /**
@@ -435,6 +491,13 @@
     NSLog(@"请求失败 : %@", manager.errorMessage);
 }
 
+- (void)managerCallAPIProgress:(RTAPIBaseManager*)manager andPersent:(CGFloat)persent
+{
+    NSLog(@"上传的进度：--->> %f", persent);
+    _currentPersent = persent;
+    [self.tableView reloadData];
+}
+
 #pragma mark - RTAPIManagerParamSourceDelegate
 
 /**
@@ -446,11 +509,44 @@
  */
 - (NSDictionary*)paramsForAPI:(RTAPIBaseManager*)manager
 {
-    User* currentUser = [LoginUser currentLoginUser];
-    return @{
-        @"userId" : currentUser.userId,
-        @"token" : currentUser.toKen
-    };
+    if ([manager isKindOfClass:[UserLogoutManager class]]) {
+        User* currentUser = [LoginUser currentLoginUser];
+        return @{
+            @"userId" : currentUser.userId,
+            @"token" : currentUser.toKen
+        };
+    }
+    else if ([manager isKindOfClass:[POIUploadManager class]]) {
+
+        NSLog(@"名称：%@", _uploadingPOIpoint.poiName);
+        NSLog(@"类别：%@", _uploadingPOIpoint.poiCategory);
+        NSLog(@"纬度：%@", _uploadingPOIpoint.poiLon);
+        NSLog(@"经度：%@", _uploadingPOIpoint.poiLat);
+        NSLog(@"编号：%@", [LoginUser currentLoginUser].userId);
+        NSLog(@"token：%@", [LoginUser currentLoginUser].toKen);
+        return @{
+            @"poiName" : _uploadingPOIpoint.poiName,
+            @"typeCode" : [NSString stringFromNumber:[NSNumber numberWithInt:(_uploadingPOIpoint.poiCategory.intValue + 1)]],
+            @"lng" : _uploadingPOIpoint.poiLon,
+            @"lat" : _uploadingPOIpoint.poiLat,
+            @"userId" : [LoginUser currentLoginUser].userId,
+            @"address" : _uploadingPOIpoint.poiAddress,
+            @"token" : [LoginUser currentLoginUser].toKen
+        };
+    }
+    else {
+        return @{};
+    }
+}
+
+#pragma mark - RTAPIManagerUploadFilesSourcedelegate
+
+- (NSArray*)uploadSourceForAPI:(RTAPIBaseManager*)manager
+{
+    if ([manager isKindOfClass:[POIUploadManager class]]) {
+        return _uploadingPOIpoint.images;
+    }
+    return nil;
 }
 
 #pragma mark - RTAPIManagerValidator
