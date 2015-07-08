@@ -32,7 +32,12 @@
 {
     if (!_originalImage) {
         if (![self.imageURLString isBlankString]) {
-            _originalImage = [UIImage imageWithContentsOfFile:self.imageURLString];
+            NSLog(@"当前的图片地址是： %@", self.imageURLString);
+            //            NSData* imageData = [[NSData alloc] initWithContentsOfFile:self.imageURLString];
+            NSString* picCacheDirPath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:self.imageURLString];
+            NSData* imageData = [NSData dataWithContentsOfFile:picCacheDirPath];
+            _originalImage = [UIImage imageWithData:imageData];
+            //            _originalImage = [UIImage imageWithContentsOfFile:self.imageURLString];
         }
     }
     return _originalImage;

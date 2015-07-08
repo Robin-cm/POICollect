@@ -115,9 +115,9 @@
  */
 - (void)checkIslogin
 {
-    if (![LoginUser isLogin]) {
-        [self sendToLogin];
-    }
+    //    if (![LoginUser isLogin]) {
+    //        [self sendToLogin];
+    //    }
 }
 
 /**

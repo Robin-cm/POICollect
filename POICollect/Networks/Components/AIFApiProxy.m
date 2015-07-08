@@ -179,8 +179,9 @@
                         //                        NSData* data = UIImageJPEGRepresentation([UIImage imageNamed:@"AssetsPickerChecked"], 1);
 
                         NSLog(@"图片的地址是: %@", [photo getImageName]);
+                        NSString* picCacheDirPath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:photo.imageURLString];
 
-                        NSData* data = [[NSData alloc] initWithContentsOfFile:photo.imageURLString];
+                        NSData* data = [[NSData alloc] initWithContentsOfFile:picCacheDirPath];
                         if (data) {
                             //                            [formData appendPartWithFormData:data name:@"img"];
                             [formData appendPartWithFileData:data name:@"img" fileName:[photo getImageName] mimeType:@"image/jpeg"];

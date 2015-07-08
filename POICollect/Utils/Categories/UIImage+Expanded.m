@@ -66,11 +66,22 @@
 - (NSString*)saveImageToDocument
 {
     NSDateFormatter* formater = [[NSDateFormatter alloc] init];
-    formater.dateFormat = @"yyyyMMddHHmmss";
-    NSString* currentTimeStr = [[formater stringFromDate:[NSDate date]] stringByAppendingFormat:@"_%d", arc4random_uniform(10000)];
-    NSString* path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:currentTimeStr];
-    [UIImagePNGRepresentation(self) writeToFile:path atomically:YES];
-    return path;
+    formater.dateFormat = @"yyMMddHHmmss";
+    NSString* currentTimeStr = [[formater stringFromDate:[NSDate date]] stringByAppendingFormat:@"_%d.jpg", arc4random_uniform(10000)];
+
+    NSString* picCacheDirPath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"PicCache/"];
+
+    BOOL isDir;
+    if (![[NSFileManager defaultManager] fileExistsAtPath:picCacheDirPath isDirectory:&isDir]) {
+        [[NSFileManager defaultManager] createDirectoryAtPath:picCacheDirPath withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+
+    NSString* imagePath = [picCacheDirPath stringByAppendingPathComponent:currentTimeStr];
+    NSString* imageAbsPath = [NSString stringWithFormat:@"PicCache/%@", currentTimeStr];
+    NSLog(@"保存的路径是：%@", imageAbsPath);
+    [UIImageJPEGRepresentation(self, 1) writeToFile:imagePath atomically:YES];
+    //    [UIImagePNGRepresentation(self) writeToFile:imagePath atomically:YES];
+    return imageAbsPath;
 }
 
 @end

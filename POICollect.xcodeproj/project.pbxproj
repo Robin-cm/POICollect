@@ -45,7 +45,6 @@
 		26911FD11B4A27D3004307B1 /* POIUploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26911FD01B4A27D3004307B1 /* POIUploadManager.m */; };
 		26911FD81B4A28EF004307B1 /* POIUploadService.m in Sources */ = {isa = PBXBuildFile; fileRef = 26911FD71B4A28EF004307B1 /* POIUploadService.m */; };
 		26911FDE1B4A321F004307B1 /* POIDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26911FDD1B4A321F004307B1 /* POIDataManager.m */; };
-		26911FE51B4A66A1004307B1 /* POIObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 26911FE41B4A66A1004307B1 /* POIObj.m */; };
 		26911FE81B4A84BF004307B1 /* location_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26911FE71B4A84BF004307B1 /* location_btn@2x.png */; };
 		2695B4311B425C9C00CB34D0 /* CMPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 2695B4301B425C9C00CB34D0 /* CMPhoto.m */; };
 		2695B4341B42765400CB34D0 /* LoginModelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2695B4331B42765400CB34D0 /* LoginModelViewController.m */; };
@@ -107,6 +106,7 @@
 		A100F86D1B35577400271B2E /* CMPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A100F86C1B35577400271B2E /* CMPageView.m */; };
 		A100F8701B35B5B100271B2E /* UIView+CMExpened.m in Sources */ = {isa = PBXBuildFile; fileRef = A100F86F1B35B5B100271B2E /* UIView+CMExpened.m */; };
 		A11A51001B48FDBB00E8136F /* CMActionSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = A11A50FF1B48FDBB00E8136F /* CMActionSheetView.m */; };
+		A13AC74D1B4D768A00DC67E8 /* POIObj.m in Sources */ = {isa = PBXBuildFile; fileRef = A13AC74C1B4D768A00DC67E8 /* POIObj.m */; };
 		A147713C1B3F8BD100A3F60C /* CMPhotoPickerAssetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A147713B1B3F8BD100A3F60C /* CMPhotoPickerAssetsViewController.m */; };
 		A147713F1B3F8F7F00A3F60C /* CMPhotoPickerConllectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = A147713E1B3F8F7F00A3F60C /* CMPhotoPickerConllectionView.m */; };
 		A14771421B3F90B500A3F60C /* CMPhotoAssets.m in Sources */ = {isa = PBXBuildFile; fileRef = A14771411B3F90B500A3F60C /* CMPhotoAssets.m */; };
@@ -235,8 +235,6 @@
 		26911FD71B4A28EF004307B1 /* POIUploadService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = POIUploadService.m; path = Networks/Services/POIServices/POIUploadService.m; sourceTree = "<group>"; };
 		26911FDC1B4A321F004307B1 /* POIDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = POIDataManager.h; path = Networks/Components/POIComponents/POIDataManager.h; sourceTree = "<group>"; };
 		26911FDD1B4A321F004307B1 /* POIDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = POIDataManager.m; path = Networks/Components/POIComponents/POIDataManager.m; sourceTree = "<group>"; };
-		26911FE31B4A66A1004307B1 /* POIObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = POIObj.h; path = Models/CoreDataModels/POIObj.h; sourceTree = "<group>"; };
-		26911FE41B4A66A1004307B1 /* POIObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = POIObj.m; path = Models/CoreDataModels/POIObj.m; sourceTree = "<group>"; };
 		26911FE71B4A84BF004307B1 /* location_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "location_btn@2x.png"; path = "Resources/Locations/location_btn@2x.png"; sourceTree = "<group>"; };
 		2695B42F1B425C9C00CB34D0 /* CMPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMPhoto.h; path = Models/CMPhoto.h; sourceTree = "<group>"; };
 		2695B4301B425C9C00CB34D0 /* CMPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMPhoto.m; path = Models/CMPhoto.m; sourceTree = "<group>"; };
@@ -359,6 +357,8 @@
 		A100F86F1B35B5B100271B2E /* UIView+CMExpened.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+CMExpened.m"; path = "Utils/Categories/UIView+CMExpened.m"; sourceTree = "<group>"; };
 		A11A50FE1B48FDBB00E8136F /* CMActionSheetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMActionSheetView.h; path = Views/Compnents/CMActionSheetView.h; sourceTree = "<group>"; };
 		A11A50FF1B48FDBB00E8136F /* CMActionSheetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMActionSheetView.m; path = Views/Compnents/CMActionSheetView.m; sourceTree = "<group>"; };
+		A13AC74B1B4D768A00DC67E8 /* POIObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = POIObj.h; path = Models/CoreDataModels/POIObj.h; sourceTree = "<group>"; };
+		A13AC74C1B4D768A00DC67E8 /* POIObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = POIObj.m; path = Models/CoreDataModels/POIObj.m; sourceTree = "<group>"; };
 		A147713A1B3F8BD100A3F60C /* CMPhotoPickerAssetsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMPhotoPickerAssetsViewController.h; path = Venders/CMPhotoKit/CMPhotoPicker/Controllers/CMPhotoPickerAssetsViewController.h; sourceTree = "<group>"; };
 		A147713B1B3F8BD100A3F60C /* CMPhotoPickerAssetsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMPhotoPickerAssetsViewController.m; path = Venders/CMPhotoKit/CMPhotoPicker/Controllers/CMPhotoPickerAssetsViewController.m; sourceTree = "<group>"; };
 		A147713D1B3F8F7F00A3F60C /* CMPhotoPickerConllectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMPhotoPickerConllectionView.h; path = Venders/CMPhotoKit/CMPhotoPicker/Views/CMPhotoPickerConllectionView.h; sourceTree = "<group>"; };
@@ -588,8 +588,8 @@
 		26911FDF1B4A48D2004307B1 /* CoreDataModels */ = {
 			isa = PBXGroup;
 			children = (
-				26911FE31B4A66A1004307B1 /* POIObj.h */,
-				26911FE41B4A66A1004307B1 /* POIObj.m */,
+				A13AC74B1B4D768A00DC67E8 /* POIObj.h */,
+				A13AC74C1B4D768A00DC67E8 /* POIObj.m */,
 			);
 			name = CoreDataModels;
 			sourceTree = "<group>";
@@ -1336,7 +1336,6 @@
 				A14771421B3F90B500A3F60C /* CMPhotoAssets.m in Sources */,
 				2695B4421B428A9900CB34D0 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				26782CA11B4657F000104330 /* UserLoginService.m in Sources */,
-				26911FE51B4A66A1004307B1 /* POIObj.m in Sources */,
 				265EE6D41B4CC055003DA89A /* SelectLocationViewController.m in Sources */,
 				265AF6561B4CFB0600789C58 /* CMTouchScrollView.m in Sources */,
 				7658F4A31B3261EE00E41A0B /* BaseViewController.m in Sources */,
@@ -1386,6 +1385,7 @@
 				265C95B11B4B640D0047BC34 /* UserLogoutManager.m in Sources */,
 				7658F4761B325FFF00E41A0B /* POICollect.xcdatamodeld in Sources */,
 				A1CD5A441B384155008BC36A /* CMCustomAnimation.m in Sources */,
+				A13AC74D1B4D768A00DC67E8 /* POIObj.m in Sources */,
 				26B98D841B450C6300FE83BB /* AIFAppContext.m in Sources */,
 				2695B4311B425C9C00CB34D0 /* CMPhoto.m in Sources */,
 				2695B4441B428A9900CB34D0 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,

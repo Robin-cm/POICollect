@@ -29,8 +29,8 @@
 + (NSString*)currentDateStr
 {
     NSDateFormatter* formater = [[NSDateFormatter alloc] init];
-    [formater setDateFormat:@"yyyyMMddHHmmss"];
-    NSString* currentTimeStr = [[formater stringFromDate:[NSDate date]] stringByAppendingFormat:@"_%d", arc4random_uniform(10000)];
+    [formater setDateFormat:@"yyMMddHHmmssSSS"];
+    NSString* currentTimeStr = [[formater stringFromDate:[NSDate date]] stringByAppendingFormat:@"%d", arc4random_uniform(100)];
     return currentTimeStr;
 }
 

@@ -12,7 +12,7 @@
 
 #pragma mark - 属性
 
-@property (nonatomic, assign) NSInteger poiId;
+@property (nonatomic, copy) NSString* poiId;
 
 @property (nonatomic, copy) NSString* poiName;
 

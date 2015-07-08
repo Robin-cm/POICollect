@@ -434,7 +434,8 @@ static const CGFloat sDefaultPadding = 10;
     _currentPoipoint.poiLon = [NSNumber numberWithDouble:_currentLocation.coordinate.longitude];
     _currentPoipoint.poiLat = [NSNumber numberWithDouble:_currentLocation.coordinate.latitude];
     _currentPoipoint.isUploaded = NO;
-    _currentPoipoint.poiId = [[NSString currentDateStr] integerValue];
+    _currentPoipoint.poiId = [NSString currentDateStr];
+    NSLog(@"保存的ID是-------------------------》\n %@ \n----------------------->", _currentPoipoint.poiId);
 
     NSMutableArray* imageArray = [[NSMutableArray alloc] init];
 

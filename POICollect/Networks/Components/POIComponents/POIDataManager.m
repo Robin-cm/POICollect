@@ -53,7 +53,7 @@ static NSString* const poiTableName = @"POIObj";
     NSManagedObjectContext* context = self.appDelegate.managedObjectContext;
     POIObj* newPOI = [NSEntityDescription insertNewObjectForEntityForName:@"POIObj" inManagedObjectContext:context];
     newPOI.poiName = poi.poiName;
-    newPOI.poiId = [NSNumber numberWithInteger:poi.poiId];
+    newPOI.poiId = poi.poiId;
     newPOI.poiAddress = poi.poiAddress;
     newPOI.poiLon = poi.poiLon;
     newPOI.poiLat = poi.poiLat;
@@ -90,7 +90,7 @@ static NSString* const poiTableName = @"POIObj";
         point.poiLat = poi.poiLat;
         point.poiLon = poi.poiLon;
         point.images = [POIPoint getImagesByString:poi.poiImages];
-        point.poiId = poi.poiId.integerValue;
+        point.poiId = poi.poiId;
         point.isUploaded = poi.isUploaded.boolValue;
         [resultArray addObject:point];
     }
@@ -101,7 +101,7 @@ static NSString* const poiTableName = @"POIObj";
 - (void)updateByNewPOI:(POIPoint*)poi
 {
     NSManagedObjectContext* context = self.appDelegate.managedObjectContext;
-    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"poiId == %@", [NSNumber numberWithInteger:poi.poiId]];
+    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"poiId == %@", poi.poiId];
     NSFetchRequest* request = [[NSFetchRequest alloc] init];
     [request setEntity:[NSEntityDescription entityForName:poiTableName inManagedObjectContext:context]];
     [request setPredicate:predicate];
@@ -110,7 +110,7 @@ static NSString* const poiTableName = @"POIObj";
     NSArray* result = [context executeFetchRequest:request error:&error];
     for (POIObj* poiObj in result) {
         poiObj.poiName = poi.poiName;
-        poiObj.poiId = [NSNumber numberWithInteger:poi.poiId];
+        poiObj.poiId = poi.poiId;
         poiObj.poiAddress = poi.poiAddress;
         poiObj.poiLon = poi.poiLon;
         poiObj.poiLat = poi.poiLat;
@@ -130,7 +130,7 @@ static NSString* const poiTableName = @"POIObj";
 - (void)deleteByPOI:(POIPoint*)poi
 {
     NSManagedObjectContext* context = self.appDelegate.managedObjectContext;
-    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"poiId==%@", [NSNumber numberWithInteger:poi.poiId]];
+    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"poiId==%@", poi.poiId];
     NSFetchRequest* request = [[NSFetchRequest alloc] init];
     [request setEntity:[NSEntityDescription entityForName:poiTableName inManagedObjectContext:context]];
     [request setPredicate:predicate];
