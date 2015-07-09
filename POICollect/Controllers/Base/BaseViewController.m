@@ -115,9 +115,9 @@
  */
 - (void)checkIslogin
 {
-    //    if (![LoginUser isLogin]) {
-    //        [self sendToLogin];
-    //    }
+    if (![LoginUser isLogin]) {
+        [self sendToLogin];
+    }
 }
 
 /**
@@ -125,7 +125,6 @@
  */
 - (void)sendToLogin
 {
-    //    [[[[UIApplication sharedApplication].windows firstObject] rootViewController] presentViewController:[[LoginModelViewController alloc] init] animated:YES completion:nil];
     ShowModelViewController([[LoginModelViewController alloc] init]);
 }
 

@@ -88,9 +88,10 @@
     [self setNavigationBarTranslucent:NO];
     [self showBackgroundImage:NO];
 
-    UIBarButtonItem* cancelBtn = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(cancelBtnTaped:)];
+    UIBarButtonItem* cancelBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_cancel"] style:UIBarButtonItemStylePlain target:self action:@selector(cancelBtnTaped:)];
 
-    UIBarButtonItem* okBtn = [[UIBarButtonItem alloc] initWithTitle:@"确定" style:UIBarButtonItemStylePlain target:self action:@selector(okBtnTaped:)];
+    UIBarButtonItem* okBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_ok"] style:UIBarButtonItemStylePlain target:self action:@selector(okBtnTaped:)];
+    //    UIBarButtonItem* okBtn = [[UIBarButtonItem alloc] initWithTitle:@"确定" style:UIBarButtonItemStylePlain target:self action:@selector(okBtnTaped:)];
 
     self.navigationItem.leftBarButtonItem = cancelBtn;
     self.navigationItem.rightBarButtonItem = okBtn;

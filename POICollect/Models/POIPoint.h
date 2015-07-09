@@ -39,6 +39,11 @@
  */
 @property (nonatomic, strong) NSNumber* poiCategory;
 
+///**
+// *  数据对应的当前的视图
+// */
+//@property (nonatomic, assign) MainListTableViewCell* currentCell;
+
 /**
  *  得到所有的图片的地址拼接的字符串
  *

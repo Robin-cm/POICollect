@@ -101,7 +101,7 @@ static NSString* const poiTableName = @"POIObj";
 - (void)updateByNewPOI:(POIPoint*)poi
 {
     NSManagedObjectContext* context = self.appDelegate.managedObjectContext;
-    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"poiId == %@", poi.poiId];
+    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"poiId==%@", poi.poiId];
     NSFetchRequest* request = [[NSFetchRequest alloc] init];
     [request setEntity:[NSEntityDescription entityForName:poiTableName inManagedObjectContext:context]];
     [request setPredicate:predicate];

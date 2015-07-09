@@ -29,6 +29,17 @@
 
 #define IOS_SYSTEM_VERSION_8_OR_ABOVE [UIDevice currentDevice].systemVersion.floatValue >= 8.0
 
+/**
+ *  是不是大于6.1系统
+ */
+#define kHigher_iOS_6_1 (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1)
+
+
+#define kHigher_iOS_6_1_DIS(_X_) ([[NSNumber numberWithBool:kHigher_iOS_6_1] intValue] * _X_)
+
+
+#define kNotHigher_iOS_6_1_DIS(_X_) (-([[NSNumber numberWithBool:kHigher_iOS_6_1] intValue]-1) * _X_)
+
 //define this constant if you want to use Masonry without the 'mas_' prefix
 #define MAS_SHORTHAND
 

@@ -22,6 +22,11 @@
 
 static const CGFloat sDefaultPadding = 10;
 
+typedef NS_ENUM(NSInteger, AddPOIViewCommitType) {
+    AddPOIViewCommitTypeInsert,
+    AddPOIViewCommitTypeUpdate
+};
+
 @interface AddPOIViewController () <CMCustomWithButtonTextfieldProtocol, SelectLocationModelViewControllerProtocol>
 
 @property (nonatomic, strong) CLLocation* currentLocation;
@@ -51,6 +56,8 @@ static const CGFloat sDefaultPadding = 10;
 @property (nonatomic, strong) SelectLocationModelViewController* selectVC;
 
 @property (nonatomic, strong) NSArray* categoryArray;
+
+@property (nonatomic, assign) AddPOIViewCommitType commitType;
 
 @end
 
@@ -82,6 +89,7 @@ static const CGFloat sDefaultPadding = 10;
     if (_currentPoipoint == currentPoipoint) {
         return;
     }
+    _currentPoipoint = currentPoipoint;
 
     [self updateView];
 }
@@ -200,7 +208,7 @@ static const CGFloat sDefaultPadding = 10;
     [self setNavigationBarTranslucent:YES];
     [self showBackgroundImage:YES];
 
-    UIBarButtonItem* addBtn = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStyleDone target:self action:@selector(addBtnTaped:)];
+    UIBarButtonItem* addBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_ok"] style:UIBarButtonItemStylePlain target:self action:@selector(addBtnTaped:)];
     self.navigationItem.rightBarButtonItem = addBtn;
 }
 
@@ -396,7 +404,14 @@ static const CGFloat sDefaultPadding = 10;
 
     [self generateCurrentPoipoint];
 
-    [[POIDataManager sharedManager] insertNewPOI:_currentPoipoint];
+    switch (_commitType) {
+    case AddPOIViewCommitTypeInsert:
+        [[POIDataManager sharedManager] insertNewPOI:_currentPoipoint];
+        break;
+    case AddPOIViewCommitTypeUpdate:
+        [[POIDataManager sharedManager] updateByNewPOI:_currentPoipoint];
+        break;
+    }
 
     [self popViewControllerAnimated:YES];
 
@@ -425,8 +440,10 @@ static const CGFloat sDefaultPadding = 10;
 
 - (void)generateCurrentPoipoint
 {
+    _commitType = AddPOIViewCommitTypeUpdate;
     if (!_currentPoipoint) {
         _currentPoipoint = [[POIPoint alloc] init];
+        _commitType = AddPOIViewCommitTypeInsert;
     }
     _currentPoipoint.poiName = _poiNameTF.text;
     _currentPoipoint.poiAddress = _poiAddressTF.text;
@@ -434,7 +451,10 @@ static const CGFloat sDefaultPadding = 10;
     _currentPoipoint.poiLon = [NSNumber numberWithDouble:_currentLocation.coordinate.longitude];
     _currentPoipoint.poiLat = [NSNumber numberWithDouble:_currentLocation.coordinate.latitude];
     _currentPoipoint.isUploaded = NO;
-    _currentPoipoint.poiId = [NSString currentDateStr];
+    if (_commitType == AddPOIViewCommitTypeInsert) {
+        _currentPoipoint.poiId = [NSString currentDateStr];
+    }
+
     NSLog(@"保存的ID是-------------------------》\n %@ \n----------------------->", _currentPoipoint.poiId);
 
     NSMutableArray* imageArray = [[NSMutableArray alloc] init];

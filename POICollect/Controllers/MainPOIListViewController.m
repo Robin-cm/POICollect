@@ -23,6 +23,8 @@
 #import "HistoryPOIListViewController.h"
 #import "POIUploadManager.h"
 #import "NSString+validator.h"
+#import "POIListCellViewModel.h"
+#import "UIView+Toast.h"
 
 #define kMainListCellIdentifine @"MainListCellIdentifine"
 
@@ -48,7 +50,7 @@
 
 @property (nonatomic, assign) CGFloat currentPersent;
 
-@property (nonatomic, assign) NSInteger currentUpdateRowIndex;
+@property (nonatomic, strong) NSMutableArray* cellViewModelsArray;
 
 @end
 
@@ -78,6 +80,14 @@
 //    }
 //    return _addPoiViewController;
 //}
+
+- (NSMutableArray*)cellViewModelsArray
+{
+    if (!_cellViewModelsArray) {
+        _cellViewModelsArray = [[NSMutableArray alloc] init];
+    }
+    return _cellViewModelsArray;
+}
 
 - (NSMutableArray*)datas
 {
@@ -132,30 +142,20 @@
     _mAnimation = [[CMCustomCircleAnimation alloc] init];
     _mAnimation.delegate = self;
     _mEdit = NO;
-    self.navigationController.delegate = self;
-    //    _mPopAnimation = [[CMCustomPopAnimation alloc] init];
-
-    //    for (int i = 0; i < 5; i++) {
-    //        POIPoint* poiPoint = [[POIPoint alloc] init];
-    //        poiPoint.poiName = [NSString stringWithFormat:@"第%i个POI点", i];
-    //        poiPoint.poiAddress = [NSString stringWithFormat:@"第%i个POI点的地址", i];
-    //        poiPoint.images = @[];
-    //        poiPoint.isUploaded = NO;
-    //        poiPoint.poiLat = [NSNumber numberWithFloat:37.0000];
-    //        poiPoint.poiLon = [NSNumber numberWithFloat:117.0000];
-    //        poiPoint.poiCategory = [NSNumber numberWithInteger:0];
-    //        poiPoint.poiId = arc4random_uniform(1000000);
-    //        poiPoint.poiSelected = NO;
-    //
-    //        [[POIDataManager sharedManager] insertNewPOI:poiPoint];
-    //        //        [self.datas addObject:poiPoint];
-    //    }
     [self refreshData];
 }
 
 - (void)refreshData
 {
     _datas = [[POIDataManager sharedManager] queryAllPOIIsUploaded:NO];
+    [self.cellViewModelsArray removeAllObjects];
+    if (_datas && _datas.count > 0) {
+        for (POIPoint* point in _datas) {
+            POIListCellViewModel* cellViewModel = [[POIListCellViewModel alloc] initListCellViewModelWith:point];
+            [self.cellViewModelsArray addObject:cellViewModel];
+        }
+    }
+
     [self.tableView reloadData];
     if (_datas.count < 1) {
         self.emptyLabel.hidden = NO;
@@ -178,12 +178,12 @@
     [self setNavigationBarTranslucent:YES];
     [self showBackgroundImage:YES];
 
-    UIBarButtonItem* editBtn = [[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStylePlain target:self action:@selector(editBtnTaped:)];
+    //    UIBarButtonItem* editBtn = [[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStylePlain target:self action:@selector(editBtnTaped:)];
+    //
+    //    self.navigationItem.leftBarButtonItem = editBtn;
 
-    self.navigationItem.leftBarButtonItem = editBtn;
-
-    UIBarButtonItem* logoutBtn = [[UIBarButtonItem alloc] initWithTitle:@"注销" style:UIBarButtonItemStylePlain target:self action:@selector(logoutBtnTaped:)];
-    UIBarButtonItem* historyBtn = [[UIBarButtonItem alloc] initWithTitle:@"历史" style:UIBarButtonItemStylePlain target:self action:@selector(historyBtnTaped:)];
+    UIBarButtonItem* logoutBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_logout"] style:UIBarButtonItemStylePlain target:self action:@selector(logoutBtnTaped:)];
+    UIBarButtonItem* historyBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_his"] style:UIBarButtonItemStylePlain target:self action:@selector(historyBtnTaped:)];
 
     self.navigationItem.rightBarButtonItems = @[ logoutBtn, historyBtn ];
 }
@@ -220,6 +220,29 @@
             make.centerX.equalTo(self.view.centerX);
         }];
     }
+}
+
+- (void)setupCellView:(MainListTableViewCell*)cell withPoipoint:(POIPoint*)point
+{
+    POIListCellViewModel* cellViewModel = [self findViewModelByPoipoint:point];
+    if (cellViewModel) {
+        cellViewModel.cellView = cell;
+    }
+    else {
+        NSLog(@"没有找到对应的ViewModel");
+    }
+}
+
+- (POIListCellViewModel*)findViewModelByPoipoint:(POIPoint*)point
+{
+    if (_cellViewModelsArray && _cellViewModelsArray.count > 0) {
+        for (POIListCellViewModel* cellViewModel in _cellViewModelsArray) {
+            if ([cellViewModel equalsToPoipoint:point]) {
+                return cellViewModel;
+            }
+        }
+    }
+    return nil;
 }
 
 #pragma mark - 自定义公共方法
@@ -271,19 +294,32 @@
     }
 }
 
-- (void)uploadPOIInfoWithPOIpoint:(POIPoint*)point andRowIndex:(NSInteger)rowIndex
+- (void)uploadPOIInfoWithPOIpoint:(POIPoint*)point
 {
     NSLog(@"更新POI点： %ld", (long)point.poiId);
-    _currentUpdateRowIndex = rowIndex;
-    _uploadingPOIpoint = point;
-    //    [self.poiUploadManager uploadData];
-    for (int i = 0; i < 100; i++) {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(i * NSEC_PER_SEC)), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self managerCallAPIProgress:nil andPersent:(i / 100.0)];
-            });
-        });
+    if (_uploadingPOIpoint) {
+        [self.view makeToast:@"正在上传，请稍等..."];
+        return;
     }
+    _uploadingPOIpoint = point;
+    [self.poiUploadManager uploadData];
+    //    for (int i = 0; i < 100; i++) {
+    //        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(i * NSEC_PER_SEC)), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    //            dispatch_async(dispatch_get_main_queue(), ^{
+    //                [self managerCallAPIProgress:nil andPersent:(i / 100.0)];
+    //            });
+    //        });
+    //    }
+}
+
+- (void)gotoEditPOIWithPoipoint:(POIPoint*)point
+{
+    self.navigationController.delegate = nil;
+    self.transitioningDelegate = nil;
+    AddPOIViewController* addPoiViewController = [[AddPOIViewController alloc] init];
+    addPoiViewController.currentPoipoint = point;
+    addPoiViewController.delegate = self;
+    [self.navigationController pushViewController:addPoiViewController animated:YES];
 }
 
 #pragma mark - 事件
@@ -291,7 +327,7 @@
 - (void)addPOIBtnTaped:(id)sender
 {
     NSLog(@"添加按钮点击");
-
+    self.navigationController.delegate = self;
     self.transitioningDelegate = self;
     AddPOIViewController* addPoiViewController = [[AddPOIViewController alloc] init];
     addPoiViewController.currentPoipoint = nil;
@@ -319,7 +355,7 @@
 - (void)historyBtnTaped:(id)sender
 {
     NSLog(@"历史点击");
-    //    self.navigationController.delegate = nil;
+    self.navigationController.delegate = nil;
     self.transitioningDelegate = nil;
     HistoryPOIListViewController* historyVC = [[HistoryPOIListViewController alloc] init];
     [self pushVC:historyVC andParams:nil];
@@ -340,14 +376,17 @@
 
     MainListTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:kMainListCellIdentifine];
     POIPoint* point = [self.datas objectAtIndex:indexPath.row];
+
+    [self setupCellView:cell withPoipoint:point];
+
     NSLog(@"点的名称是：%@   点的地址是：%@", point.poiName, point.poiAddress);
     cell.poiPoint = point;
     NSLog(@"要更新的POIID是：%ld", (long)_uploadingPOIpoint.poiId);
-    if (point.poiId == _uploadingPOIpoint.poiId && indexPath.row == _currentUpdateRowIndex) {
-        //当前正在上传
-        //更新进度条
-        [cell setProgressPersent:_currentPersent];
-    }
+    //    if (point.poiId == _uploadingPOIpoint.poiId && indexPath.row == _currentUpdateRowIndex) {
+    //        //当前正在上传
+    //        //更新进度条
+    //        [cell setProgressPersent:_currentPersent];
+    //    }
 
     cell.mSeledted = point.poiSelected;
     cell.selectBlock = ^(id obj, BOOL selected) {
@@ -364,12 +403,14 @@
             switch (selectIndex) {
             case 0: {
                 //上传
-                [self uploadPOIInfoWithPOIpoint:point andRowIndex:indexPath.row];
+                [self uploadPOIInfoWithPOIpoint:point];
                 break;
             }
-            case 1:
-
+            case 1: {
+                //编辑
+                [self gotoEditPOIWithPoipoint:point];
                 break;
+            }
             case 2: {
                 NSLog(@"删除操作%lu", (long)[indexPath row]);
                 [self.tableView beginUpdates];
@@ -459,7 +500,7 @@
  */
 - (void)managerCallAPIDidSuccess:(RTAPIBaseManager*)manager
 {
-    NSLog(@"注销成功返回数据");
+    NSLog(@"成功返回数据");
     [self.view hideToastActivity];
     if ([manager isKindOfClass:[UserLogoutManager class]]) {
         NSDictionary* result = [manager fetchDataWithReformer:nil];
@@ -476,6 +517,15 @@
     }
     else if ([manager isKindOfClass:[POIUploadManager class]]) {
         //上传文件回调
+        NSLog(@"上传文件完成");
+        if (_uploadingPOIpoint) {
+            //上传完成后续操作，更新点的信息
+            [[self findViewModelByPoipoint:_uploadingPOIpoint].cellView setProgressPersent:0.f];
+            _uploadingPOIpoint.isUploaded = YES;
+            [[POIDataManager sharedManager] updateByNewPOI:_uploadingPOIpoint];
+            _uploadingPOIpoint = nil;
+            [self refreshData];
+        }
     }
 }
 
@@ -495,7 +545,13 @@
 {
     NSLog(@"上传的进度：--->> %f", persent);
     _currentPersent = persent;
-    [self.tableView reloadData];
+    if (_uploadingPOIpoint) {
+        POIListCellViewModel* cellViewModel = [self findViewModelByPoipoint:_uploadingPOIpoint];
+        if (cellViewModel.cellView) {
+            [cellViewModel.cellView setProgressPersent:_currentPersent];
+        }
+    }
+    //    [self.tableView reloadData];
 }
 
 #pragma mark - RTAPIManagerParamSourceDelegate
