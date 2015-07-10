@@ -746,10 +746,10 @@
 			isa = PBXGroup;
 			children = (
 				265C95B51B4B72A00047BC34 /* LocationComponents */,
+				26B98D9B1B452E1200FE83BB /* LogComponents */,
 				26911FCE1B4A279D004307B1 /* POIComponents */,
 				26782C9A1B46571900104330 /* UserComponents */,
 				26782C961B46414300104330 /* TestComponents */,
-				26B98D9B1B452E1200FE83BB /* LogComponents */,
 				26782C7E1B461FE700104330 /* CacheComponents */,
 				26B98D721B44D6B900FE83BB /* RTAPIBaseManager.h */,
 				26B98D731B44D6B900FE83BB /* RTAPIBaseManager.m */,

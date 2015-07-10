@@ -95,7 +95,7 @@ static NSString* const poiTableName = @"POIObj";
         [resultArray addObject:point];
     }
 
-    return [resultArray mutableCopy];
+    return resultArray;
 }
 
 - (void)updateByNewPOI:(POIPoint*)poi

@@ -42,7 +42,7 @@
             [results addObject:photo];
         }
     }
-    return [results mutableCopy];
+    return results;
 }
 
 - (CLLocation*)getLocation
