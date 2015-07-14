@@ -21,7 +21,15 @@ static BOOL kAIFShouldCache = YES;
 static NSTimeInterval kAIFCacheOutdateTimeSeconds = 300; // 5分钟的cache过期时间
 static NSUInteger kAIFCacheCountLimit = 1000; // 最多1000条cache
 
-static NSString* kAPPBaseOnlineURL = @"http://192.168.0.112:8888/POITool/app";
+/**
+ *  线上地址
+ */
+static NSString* kAPPBaseOnlineURL = @"http://60.28.33.74:7001/POITool/app";
+
+/**
+ *  线下地址
+ */
+static NSString* kAPPBaseOfflineURL = @"http://192.168.0.112:8888/POITool/app";
 
 #pragma mark - Service名称
 

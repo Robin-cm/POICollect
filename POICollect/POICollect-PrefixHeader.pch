@@ -83,6 +83,10 @@
 
 #pragma mark - 公用的常量
 
+#define kTianditu_Website_URL @"官网：http://www.tianditu.com"
+
+#define tdt_about_url @"http://tdtgzpt.sinaapp.com/app/aboutus.html"
+
 /**
  *  文字的字体名字
  */

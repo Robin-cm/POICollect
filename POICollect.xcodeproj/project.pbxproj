@@ -39,6 +39,12 @@
 		26782CAB1B46676700104330 /* LoginUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 26782CAA1B46676700104330 /* LoginUser.m */; };
 		26782CAE1B46690800104330 /* ViewModelClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 26782CAD1B46690800104330 /* ViewModelClass.m */; };
 		26782CB21B4685FE00104330 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 26782CB11B4685FE00104330 /* UIView+Toast.m */; };
+		2679885C1B534F64000F8CD6 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2679885B1B534F64000F8CD6 /* SettingViewController.m */; };
+		2679885F1B535100000F8CD6 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 2679885E1B535100000F8CD6 /* UIImage+ImageEffects.m */; };
+		267988631B5363A7000F8CD6 /* CMImageHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 267988621B5363A7000F8CD6 /* CMImageHeaderView.m */; };
+		267988661B539F4F000F8CD6 /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 267988651B539F4F000F8CD6 /* AboutUsViewController.m */; };
+		2679886D1B53A565000F8CD6 /* app@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2679886C1B53A565000F8CD6 /* app@2x.png */; };
+		267988701B53AA3E000F8CD6 /* TdtWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2679886F1B53AA3E000F8CD6 /* TdtWebViewController.m */; };
 		26800A561B4E7007001C668C /* nav_cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = 26800A4D1B4E7007001C668C /* nav_cancel.png */; };
 		26800A571B4E7007001C668C /* nav_cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26800A4E1B4E7007001C668C /* nav_cancel@2x.png */; };
 		26800A581B4E7007001C668C /* nav_cancel@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26800A4F1B4E7007001C668C /* nav_cancel@3x.png */; };
@@ -112,7 +118,6 @@
 		7658F4761B325FFF00E41A0B /* POICollect.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7658F4741B325FFF00E41A0B /* POICollect.xcdatamodeld */; };
 		7658F47C1B325FFF00E41A0B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7658F47A1B325FFF00E41A0B /* Main.storyboard */; };
 		7658F47E1B325FFF00E41A0B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7658F47D1B325FFF00E41A0B /* Images.xcassets */; };
-		7658F4811B325FFF00E41A0B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7658F47F1B325FFF00E41A0B /* LaunchScreen.xib */; };
 		7658F48D1B325FFF00E41A0B /* POICollectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7658F48C1B325FFF00E41A0B /* POICollectTests.m */; };
 		7658F4A31B3261EE00E41A0B /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7658F4A21B3261EE00E41A0B /* BaseViewController.m */; };
 		7658F4A91B32698E00E41A0B /* UIColor+Expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = 7658F4A81B32698E00E41A0B /* UIColor+Expanded.m */; };
@@ -253,6 +258,17 @@
 		26782CAD1B46690800104330 /* ViewModelClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewModelClass.m; path = ViewModels/ViewModelClass.m; sourceTree = "<group>"; };
 		26782CB01B4685FE00104330 /* UIView+Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Toast.h"; path = "Utils/Categories/Toast/UIView+Toast.h"; sourceTree = "<group>"; };
 		26782CB11B4685FE00104330 /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Toast.m"; path = "Utils/Categories/Toast/UIView+Toast.m"; sourceTree = "<group>"; };
+		2679885A1B534F64000F8CD6 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingViewController.h; path = Controllers/SettingViewController.h; sourceTree = "<group>"; };
+		2679885B1B534F64000F8CD6 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingViewController.m; path = Controllers/SettingViewController.m; sourceTree = "<group>"; };
+		2679885D1B535100000F8CD6 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+ImageEffects.h"; path = "Utils/Categories/UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		2679885E1B535100000F8CD6 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ImageEffects.m"; path = "Utils/Categories/UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		267988611B5363A7000F8CD6 /* CMImageHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMImageHeaderView.h; path = Venders/CMImageHeaderView/CMImageHeaderView.h; sourceTree = "<group>"; };
+		267988621B5363A7000F8CD6 /* CMImageHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMImageHeaderView.m; path = Venders/CMImageHeaderView/CMImageHeaderView.m; sourceTree = "<group>"; };
+		267988641B539F4F000F8CD6 /* AboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AboutUsViewController.h; path = Controllers/AboutUsViewController.h; sourceTree = "<group>"; };
+		267988651B539F4F000F8CD6 /* AboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AboutUsViewController.m; path = Controllers/AboutUsViewController.m; sourceTree = "<group>"; };
+		2679886C1B53A565000F8CD6 /* app@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "app@2x.png"; path = "Resources/AboutUs/app@2x.png"; sourceTree = "<group>"; };
+		2679886E1B53AA3E000F8CD6 /* TdtWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TdtWebViewController.h; path = Controllers/TdtWebViewController.h; sourceTree = "<group>"; };
+		2679886F1B53AA3E000F8CD6 /* TdtWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TdtWebViewController.m; path = Controllers/TdtWebViewController.m; sourceTree = "<group>"; };
 		26800A4D1B4E7007001C668C /* nav_cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = nav_cancel.png; path = Resources/Navs/nav_cancel.png; sourceTree = "<group>"; };
 		26800A4E1B4E7007001C668C /* nav_cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "nav_cancel@2x.png"; path = "Resources/Navs/nav_cancel@2x.png"; sourceTree = "<group>"; };
 		26800A4F1B4E7007001C668C /* nav_cancel@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "nav_cancel@3x.png"; path = "Resources/Navs/nav_cancel@3x.png"; sourceTree = "<group>"; };
@@ -373,7 +389,6 @@
 		7658F4751B325FFF00E41A0B /* POICollect.xcdatamodel */ = {isa = PBXFileReference; explicitFileType = wrapper.xcdatamodeld; path = POICollect.xcdatamodel; sourceTree = "<group>"; };
 		7658F47B1B325FFF00E41A0B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7658F47D1B325FFF00E41A0B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		7658F4801B325FFF00E41A0B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		7658F4861B325FFF00E41A0B /* POICollectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = POICollectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7658F48B1B325FFF00E41A0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7658F48C1B325FFF00E41A0B /* POICollectTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = POICollectTests.m; sourceTree = "<group>"; };
@@ -626,6 +641,23 @@
 				26782CB11B4685FE00104330 /* UIView+Toast.m */,
 			);
 			name = Toast;
+			sourceTree = "<group>";
+		};
+		267988601B536369000F8CD6 /* CMImageHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				267988611B5363A7000F8CD6 /* CMImageHeaderView.h */,
+				267988621B5363A7000F8CD6 /* CMImageHeaderView.m */,
+			);
+			name = CMImageHeaderView;
+			sourceTree = "<group>";
+		};
+		267988671B53A46B000F8CD6 /* AboutUs */ = {
+			isa = PBXGroup;
+			children = (
+				2679886C1B53A565000F8CD6 /* app@2x.png */,
+			);
+			name = AboutUs;
 			sourceTree = "<group>";
 		};
 		2688E80A1B4E185200A0FC84 /* ObjcRuntimes */ = {
@@ -906,7 +938,6 @@
 			children = (
 				7658F47A1B325FFF00E41A0B /* Main.storyboard */,
 				7658F47D1B325FFF00E41A0B /* Images.xcassets */,
-				7658F47F1B325FFF00E41A0B /* LaunchScreen.xib */,
 				7658F4741B325FFF00E41A0B /* POICollect.xcdatamodeld */,
 				7658F46E1B325FFF00E41A0B /* Info.plist */,
 				7658F46F1B325FFF00E41A0B /* main.m */,
@@ -975,6 +1006,7 @@
 		7658F4991B32607F00E41A0B /* Venders */ = {
 			isa = PBXGroup;
 			children = (
+				267988601B536369000F8CD6 /* CMImageHeaderView */,
 				2695B4351B428A2200CB34D0 /* TPKeyboardAvoiding */,
 				76615EB51B3D4C8E0064BCB0 /* CMPhotoKit */,
 				7625BA691B3C015C00D53440 /* CMDropDownButton */,
@@ -987,6 +1019,8 @@
 		7658F49A1B32608600E41A0B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				2679886E1B53AA3E000F8CD6 /* TdtWebViewController.h */,
+				2679886F1B53AA3E000F8CD6 /* TdtWebViewController.m */,
 				7658F4A41B3261F400E41A0B /* Login */,
 				7658F4A01B3261C400E41A0B /* Base */,
 				764C8C991B38E5FF00FF2F51 /* MainPOIListViewController.h */,
@@ -999,6 +1033,10 @@
 				265EE6D31B4CC055003DA89A /* SelectLocationViewController.m */,
 				265AF6511B4CD9E700789C58 /* SelectLocationModelViewController.h */,
 				265AF6521B4CD9E700789C58 /* SelectLocationModelViewController.m */,
+				2679885A1B534F64000F8CD6 /* SettingViewController.h */,
+				2679885B1B534F64000F8CD6 /* SettingViewController.m */,
+				267988641B539F4F000F8CD6 /* AboutUsViewController.h */,
+				267988651B539F4F000F8CD6 /* AboutUsViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1006,6 +1044,7 @@
 		7658F49B1B32609100E41A0B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				267988671B53A46B000F8CD6 /* AboutUs */,
 				2688E80E1B4E1E9900A0FC84 /* Navs */,
 				265EE6F21B4CC1FC003DA89A /* Map */,
 				26911FE61B4A845B004307B1 /* Locations */,
@@ -1067,6 +1106,8 @@
 				265C95B71B4B77D40047BC34 /* NSString+validator.m */,
 				2688E8061B4E177100A0FC84 /* UIViewController+Swizzle.h */,
 				2688E8071B4E177100A0FC84 /* UIViewController+Swizzle.m */,
+				2679885D1B535100000F8CD6 /* UIImage+ImageEffects.h */,
+				2679885E1B535100000F8CD6 /* UIImage+ImageEffects.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -1365,6 +1406,7 @@
 				7685EA7C1B3A761200AD1645 /* pass_ico.png in Resources */,
 				2688E8221B4E345D00A0FC84 /* nav_his@2x.png in Resources */,
 				26800A611B4E7019001C668C /* pass_ico@2x.png in Resources */,
+				2679886D1B53A565000F8CD6 /* app@2x.png in Resources */,
 				7658F47C1B325FFF00E41A0B /* Main.storyboard in Resources */,
 				A147714E1B3F9D4F00A3F60C /* Media.xcassets in Resources */,
 				2688E8141B4E1F1900A0FC84 /* nav_back@3x.png in Resources */,
@@ -1385,7 +1427,6 @@
 				2688E8211B4E345D00A0FC84 /* nav_his.png in Resources */,
 				7685EA7B1B3A761200AD1645 /* name_ico.png in Resources */,
 				2688E8251B4E345D00A0FC84 /* nav_ok@2x.png in Resources */,
-				7658F4811B325FFF00E41A0B /* LaunchScreen.xib in Resources */,
 				26800A571B4E7007001C668C /* nav_cancel@2x.png in Resources */,
 				2688E8241B4E345D00A0FC84 /* nav_ok.png in Resources */,
 				26800A561B4E7007001C668C /* nav_cancel.png in Resources */,
@@ -1457,6 +1498,7 @@
 				26B98D7A1B44FEA800FE83BB /* AIFApiProxy.m in Sources */,
 				265C95BB1B4B806C0047BC34 /* LocationManager.m in Sources */,
 				26DA23701B412FBC00A26B86 /* CMCameraPreviewView.m in Sources */,
+				2679885C1B534F64000F8CD6 /* SettingViewController.m in Sources */,
 				26B98DA41B453EB700FE83BB /* NSArray+AXNetworkingMethods.m in Sources */,
 				26782C991B4641BF00104330 /* TestAPIManager.m in Sources */,
 				A1CD5A401B37C27D008BC36A /* UIImage+Expanded.m in Sources */,
@@ -1466,6 +1508,7 @@
 				A1F484431B3DAFC100FD49A4 /* CMPhotoPickerGroupTableViewCell.m in Sources */,
 				26DA23761B4132C700A26B86 /* CMCameraPreviewTapView.m in Sources */,
 				76615EC11B3D4E840064BCB0 /* CMPhotoPickerViewController.m in Sources */,
+				2679885F1B535100000F8CD6 /* UIImage+ImageEffects.m in Sources */,
 				7658F4731B325FFF00E41A0B /* AppDelegate.m in Sources */,
 				A1CD5A4D1B384B4F008BC36A /* CMCustomPopAnimation.m in Sources */,
 				26B98DA11B4530E400FE83BB /* NSMutableString+AXNetworkingMethods.m in Sources */,
@@ -1475,6 +1518,7 @@
 				76E7CBFD1B3BC70C00D0BBED /* CMCustomWithButtonTextfield.m in Sources */,
 				A14771421B3F90B500A3F60C /* CMPhotoAssets.m in Sources */,
 				2695B4421B428A9900CB34D0 /* TPKeyboardAvoidingScrollView.m in Sources */,
+				267988661B539F4F000F8CD6 /* AboutUsViewController.m in Sources */,
 				26782CA11B4657F000104330 /* UserLoginService.m in Sources */,
 				265EE6D41B4CC055003DA89A /* SelectLocationViewController.m in Sources */,
 				265AF6561B4CFB0600789C58 /* CMTouchScrollView.m in Sources */,
@@ -1497,6 +1541,7 @@
 				26B98D7E1B4507A300FE83BB /* AIFRequestGenerator.m in Sources */,
 				26DA23791B41368D00A26B86 /* CMCameraPreviewImageView.m in Sources */,
 				766CC7061B329BB200DCFFB4 /* LoginViewController.m in Sources */,
+				267988631B5363A7000F8CD6 /* CMImageHeaderView.m in Sources */,
 				26782C871B46219100104330 /* AIFCache.m in Sources */,
 				764C8CA51B393C5200FF2F51 /* NSString+Expanded.m in Sources */,
 				76386F0A1B33A4B800E8A115 /* CMRoundSegmentedThumb.m in Sources */,
@@ -1538,6 +1583,7 @@
 				76615EAE1B3CFC6C0064BCB0 /* CMDropdownButtonTableViewCell.m in Sources */,
 				26B98D811B450B5300FE83BB /* AIFCommonParamsGenerator.m in Sources */,
 				26782C951B463FAC00104330 /* TestService.m in Sources */,
+				267988701B53AA3E000F8CD6 /* TdtWebViewController.m in Sources */,
 				7685EA711B3A445B00AD1645 /* CMCustomCircleAnimation.m in Sources */,
 				76E7CBFA1B3B897A00D0BBED /* CMSimpleCheckBoxBtn.m in Sources */,
 				764C8C9E1B38E68D00FF2F51 /* CMRoundBtn.m in Sources */,
@@ -1579,14 +1625,6 @@
 				7658F47B1B325FFF00E41A0B /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		7658F47F1B325FFF00E41A0B /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7658F4801B325FFF00E41A0B /* Base */,
-			);
-			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1683,7 +1721,9 @@
 			baseConfigurationReference = E894C5602C63A8F560BB3637 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/POICollect/POICollect-PrefixHeader.pch";
 				INFOPLIST_FILE = POICollect/Info.plist;
@@ -1693,6 +1733,7 @@
 					"$(PROJECT_DIR)/POICollect/TdtMaps",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -1701,7 +1742,9 @@
 			baseConfigurationReference = 3F88B26D608DC3CEEF691C2B /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/POICollect/POICollect-PrefixHeader.pch";
 				INFOPLIST_FILE = POICollect/Info.plist;
@@ -1711,6 +1754,7 @@
 					"$(PROJECT_DIR)/POICollect/TdtMaps",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

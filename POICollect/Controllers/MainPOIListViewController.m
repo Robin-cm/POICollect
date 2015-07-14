@@ -25,6 +25,7 @@
 #import "NSString+validator.h"
 #import "POIListCellViewModel.h"
 #import "UIView+Toast.h"
+#import "SettingViewController.h"
 
 #define kMainListCellIdentifine @"MainListCellIdentifine"
 
@@ -346,10 +347,15 @@
 - (void)logoutBtnTaped:(id)sender
 {
     NSLog(@"注销用户");
-    if (![self.userLogoutManager isLoading]) {
-        [self.view makeToastActivity];
-        [self.userLogoutManager loadData];
-    }
+    //    if (![self.userLogoutManager isLoading]) {
+    //        [self.view makeToastActivity];
+    //        [self.userLogoutManager loadData];
+    //    }
+
+    SettingViewController* settingVC = [[SettingViewController alloc] init];
+    UINavigationController* navVC = [[UINavigationController alloc] initWithRootViewController:settingVC];
+    //    [self pushVC:navVC andParams:nil];
+    [self.navigationController presentViewController:navVC animated:YES completion:nil];
 }
 
 - (void)historyBtnTaped:(id)sender
@@ -450,6 +456,8 @@
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    POIPoint* point = [self.datas objectAtIndex:indexPath.row];
+    [self gotoEditPOIWithPoipoint:point];
 }
 
 #pragma mark - UIViewControllerTransitioningDelegate

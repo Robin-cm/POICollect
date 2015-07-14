@@ -181,6 +181,8 @@ NSString* const CSToastPositionBottom = @"bottom";
 
 - (void)makeToastActivity:(id)position
 {
+    self.userInteractionEnabled = NO;
+
     // sanity
     UIView* existingActivityView = (UIView*)objc_getAssociatedObject(self, &CSToastActivityViewKey);
     if (existingActivityView != nil)

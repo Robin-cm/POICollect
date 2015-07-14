@@ -12,6 +12,11 @@
 
 @interface AppDelegate ()
 
+/**
+ *  欢迎页面
+ */
+@property (nonatomic, strong) UIView* launchScreen;
+
 @end
 
 @implementation AppDelegate
@@ -74,6 +79,26 @@
 {
     //    LoginViewController* mLoginViewController = [[LoginViewController alloc] initWithTitles:@[ @"登录", @"注册" ] andViewClasses:@[ [LoginView class], [RegisterView class] ]];
     //    [self.window setRootViewController:[[UINavigationController alloc] initWithRootViewController:mLoginViewController]];
+}
+
+- (void)showLaunchScreen
+{
+    if (!_launchScreen) {
+        _launchScreen = [[NSBundle mainBundle] loadNibNamed:@"LaunchScreen" owner:nil options:nil][0];
+        _launchScreen.frame = kScreenBounds;
+
+        //        UIImageView* image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"main_bg"]];
+        //        image.frame = CGRectMake(0, 0, 200, 200);
+        //        [_launchScreen addSubview:image];
+        [self.window addSubview:_launchScreen];
+        [self.window bringSubviewToFront:_launchScreen];
+        [NSTimer scheduledTimerWithTimeInterval:15 target:self selector:@selector(removeLaunchScreen) userInfo:nil repeats:NO];
+    }
+}
+
+- (void)removeLaunchScreen
+{
+    [_launchScreen removeFromSuperview];
 }
 
 #pragma mark - Core Data stack
