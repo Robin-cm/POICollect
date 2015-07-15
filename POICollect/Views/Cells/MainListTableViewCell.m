@@ -230,7 +230,7 @@ static const CGFloat sDefaultPadding = 10;
         [_thirdImageView makeConstraints:^(MASConstraintMaker* make) {
             make.top.equalTo(weakSelf.progressView.bottom).offset(sDefaultPadding);
             make.left.equalTo(weakSelf.secondImageView.right).offset(sDefaultPadding);
-            make.right.equalTo(weakSelf.secondImageView.left).offset(-sDefaultPadding);
+
             make.width.and.height.equalTo(@(50));
 
         }];

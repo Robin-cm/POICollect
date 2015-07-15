@@ -73,4 +73,19 @@
     return request;
 }
 
+- (NSURLRequest*)generatePOSTUploadRequestWithServiceIdentifier:(NSString*)serviceIdentifier requestParams:(NSDictionary*)requestParams methodName:(NSString*)methodName constructingBodyWithBlock:(void (^)(id<AFMultipartFormData> formData))block
+{
+    AIFService* service = [[AIFServiceFactory sharedInstance] serviceWithIdentifier:serviceIdentifier];
+    NSString* urlString = [NSString stringWithFormat:@"%@/%@?%@", service.apiBaseURL, methodName, [[AIFCommonParamsGenerator commonParamsDictionary] AIF_urlParamsStringSignature:NO]];
+
+    NSURLRequest* request = [self.httpRequestSerializer multipartFormRequestWithMethod:@"POST"
+                                                                             URLString:urlString
+                                                                            parameters:requestParams
+                                                             constructingBodyWithBlock:block
+                                                                                 error:nil];
+    request.requestParams = requestParams;
+    [AIFLogger logDebugInfoWithRequest:request apiName:methodName service:service requestParams:requestParams httpMethod:@"POST"];
+    return request;
+}
+
 @end

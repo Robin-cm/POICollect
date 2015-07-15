@@ -53,6 +53,16 @@
 
 @property (nonatomic, strong) NSMutableArray* cellViewModelsArray;
 
+@property (nonatomic, strong) UIBarButtonItem* editBtn;
+
+@property (nonatomic, strong) UIBarButtonItem* uploadBtn;
+
+@property (nonatomic, strong) UIBarButtonItem* cancelUploadBtn;
+
+@property (nonatomic, strong) UIBarButtonItem* historyBtn;
+
+@property (nonatomic, strong) UIBarButtonItem* settingBtn;
+
 @end
 
 @implementation MainPOIListViewController
@@ -71,6 +81,22 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Setter
+
+- (void)setMEdit:(BOOL)mEdit
+{
+    _mEdit = mEdit;
+    if (_mEdit) {
+        self.navigationItem.leftBarButtonItem = self.cancelUploadBtn;
+        self.navigationItem.rightBarButtonItems = @[];
+        self.navigationItem.rightBarButtonItem = self.uploadBtn;
+    }
+    else {
+        self.navigationItem.leftBarButtonItem = self.editBtn;
+        self.navigationItem.rightBarButtonItems = @[ self.settingBtn, self.historyBtn ];
+    }
+}
+
 #pragma mark Getter
 
 //- (AddPOIViewController*)addPoiViewController
@@ -81,6 +107,46 @@
 //    }
 //    return _addPoiViewController;
 //}
+
+- (UIBarButtonItem*)editBtn
+{
+    if (!_editBtn) {
+        _editBtn = [[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStylePlain target:self action:@selector(editBtnTaped:)];
+    }
+    return _editBtn;
+}
+
+- (UIBarButtonItem*)uploadBtn
+{
+    if (!_uploadBtn) {
+        _uploadBtn = [[UIBarButtonItem alloc] initWithTitle:@"上传" style:UIBarButtonItemStylePlain target:self action:@selector(editBtnTaped:)];
+    }
+    return _uploadBtn;
+}
+
+- (UIBarButtonItem*)cancelUploadBtn
+{
+    if (!_cancelUploadBtn) {
+        _cancelUploadBtn = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(editBtnTaped:)];
+    }
+    return _cancelUploadBtn;
+}
+
+- (UIBarButtonItem*)historyBtn
+{
+    if (!_historyBtn) {
+        _historyBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_his"] style:UIBarButtonItemStylePlain target:self action:@selector(historyBtnTaped:)];
+    }
+    return _historyBtn;
+}
+
+- (UIBarButtonItem*)settingBtn
+{
+    if (!_settingBtn) {
+        _settingBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_logout"] style:UIBarButtonItemStylePlain target:self action:@selector(logoutBtnTaped:)];
+    }
+    return _settingBtn;
+}
 
 - (NSMutableArray*)cellViewModelsArray
 {
@@ -142,7 +208,7 @@
 {
     _mAnimation = [[CMCustomCircleAnimation alloc] init];
     _mAnimation.delegate = self;
-    _mEdit = NO;
+    //    _mEdit = NO;
     [self refreshData];
 }
 
@@ -179,14 +245,8 @@
     [self setNavigationBarTranslucent:YES];
     [self showBackgroundImage:YES];
 
-    //    UIBarButtonItem* editBtn = [[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStylePlain target:self action:@selector(editBtnTaped:)];
-    //
-    //    self.navigationItem.leftBarButtonItem = editBtn;
+    self.mEdit = NO;
 
-    UIBarButtonItem* logoutBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_logout"] style:UIBarButtonItemStylePlain target:self action:@selector(logoutBtnTaped:)];
-    UIBarButtonItem* historyBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_his"] style:UIBarButtonItemStylePlain target:self action:@selector(historyBtnTaped:)];
-
-    self.navigationItem.rightBarButtonItems = @[ logoutBtn, historyBtn ];
 }
 
 - (void)initializeBody
@@ -340,7 +400,7 @@
 {
     NSLog(@"编辑按钮点击");
     //    [self.tableView setEditing:!self.tableView.editing animated:YES];
-    _mEdit = !_mEdit;
+    self.mEdit = !self.mEdit;
     [self.tableView reloadData];
 }
 
@@ -442,7 +502,7 @@
         };
         [actionSheetView show];
     };
-    cell.mEdit = _mEdit;
+    cell.mEdit = self.mEdit;
     return cell;
 }
 
@@ -457,7 +517,14 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     POIPoint* point = [self.datas objectAtIndex:indexPath.row];
-    [self gotoEditPOIWithPoipoint:point];
+    if (self.mEdit) {
+        NSLog(@"设置选中");
+        point.poiSelected = !point.poiSelected;
+        [[self findViewModelByPoipoint:point].cellView setMSeledted:point.poiSelected];
+    }
+    else {
+        [self gotoEditPOIWithPoipoint:point];
+    }
 }
 
 #pragma mark - UIViewControllerTransitioningDelegate

@@ -63,9 +63,52 @@
 
 - (NSInteger)uploadPostWithParams:(NSDictionary*)params photos:(NSArray*)photos serviceIdentifier:(NSString*)serviceIdentifiler methodName:(NSString*)methodName success:(AXCallback)success fail:(AXCallback)fail progress:(ProgressBlock)progress
 {
-    NSString* uploadURL = [[AIFRequestURLGenerator sharedInstance] generateUploadRequestURLWithServiceIdentifier:serviceIdentifiler methodName:methodName];
 
-    NSNumber* requestId = [self uploadDataWithRequestURL:uploadURL photos:photos params:params success:success fail:fail progress:progress];
+    NSURLRequest* request = [[AIFRequestGenerator sharedInstance] generatePOSTUploadRequestWithServiceIdentifier:serviceIdentifiler
+                                                                                                   requestParams:params
+                                                                                                      methodName:methodName
+                                                                                       constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+                                                                                           if (photos && photos.count > 0) {
+                                                                                               NSObject* firstObj = [photos objectAtIndex:0];
+                                                                                               if ([firstObj isKindOfClass:[CMPhoto class]]) {
+                                                                                                   //数组中是CMPhoto类型
+                                                                                                   for (CMPhoto* photo in photos) {
+                                                                                                       //                        NSData* data = UIImageJPEGRepresentation([UIImage imageNamed:@"AssetsPickerChecked"], 1);
+
+                                                                                                       NSLog(@"图片的地址是: %@", [photo getImageName]);
+                                                                                                       NSString* picCacheDirPath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:photo.imageURLString];
+
+                                                                                                       NSData* data = [[NSData alloc] initWithContentsOfFile:picCacheDirPath];
+                                                                                                       if (data) {
+                                                                                                           //                            [formData appendPartWithFormData:data name:@"img"];
+                                                                                                           [formData appendPartWithFileData:data name:@"img" fileName:[photo getImageName] mimeType:@"image/jpeg"];
+                                                                                                       }
+
+                                                                                                       //                        [formData appendPartWithFileURL:[NSURL URLWithString:photo.imageURLString] name:@"img" error:nil];
+                                                                                                   }
+                                                                                               }
+                                                                                               else if ([firstObj isKindOfClass:[NSString class]]) {
+                                                                                                   //数组中是字符串类型
+                                                                                                   for (NSString* urlStr in photos) {
+                                                                                                       [formData appendPartWithFileURL:[NSURL URLWithString:urlStr] name:@"image" error:nil];
+                                                                                                   }
+                                                                                               }
+                                                                                               else if ([firstObj isKindOfClass:[UIImage class]]) {
+                                                                                                   //数组中是UIImage类型
+                                                                                                   for (UIImage* img in photos) {
+                                                                                                       [formData appendPartWithFileData:UIImageJPEGRepresentation(img, 0.5f) name:@"img" fileName:[NSString stringWithFormat:@"image_%@", [NSString currentDateStr]] mimeType:@"image/jpeg"];
+                                                                                                   }
+                                                                                               }
+                                                                                           }
+                                                                                       }];
+
+    NSNumber* requestId = [self callUploadDataWithRequest:request success:success fail:fail progress:progress];
+
+    //旧的实现方法
+
+    //    NSString* uploadURL = [[AIFRequestURLGenerator sharedInstance] generateUploadRequestURLWithServiceIdentifier:serviceIdentifiler methodName:methodName];
+
+    //    NSNumber* requestId = [self uploadDataWithRequestURL:uploadURL photos:photos params:params success:success fail:fail progress:progress];
     return [requestId integerValue];
 }
 
@@ -161,6 +204,47 @@
 
     self.dispatchTable[requestId] = httpRequestOperation;
     [[self.operationManager operationQueue] addOperation:httpRequestOperation];
+    return requestId;
+}
+
+- (NSNumber*)callUploadDataWithRequest:(NSURLRequest*)request success:(AXCallback)success fail:(AXCallback)fail progress:(ProgressBlock)progress
+{
+    NSNumber* requestId = [self generateRequestId];
+    AFHTTPRequestOperation* httpUploadOperation = [self.operationManager HTTPRequestOperationWithRequest:request
+        success:^(AFHTTPRequestOperation* operation, id responseObject) {
+            AFHTTPRequestOperation* storedOperation = self.dispatchTable[requestId];
+            if (!storedOperation) {
+                return;
+            }
+            else {
+                [self.dispatchTable removeObjectForKey:requestId];
+            }
+
+            [AIFLogger logDebugInfoWithResponse:operation.response resposeString:operation.responseString request:operation.request error:nil];
+
+            AIFURLResponse* response = [[AIFURLResponse alloc] initWithResponseString:operation.responseString requestId:requestId request:operation.request responseData:operation.responseData status:AIFURLResponseStatusSuccess];
+
+            success ? success(response) : nil;
+        }
+        failure:^(AFHTTPRequestOperation* operation, NSError* error) {
+            AFHTTPRequestOperation* storedOperation = self.dispatchTable[requestId];
+            if (!storedOperation) {
+                return;
+            }
+            else {
+                [self.dispatchTable removeObjectForKey:requestId];
+            }
+
+            [AIFLogger logDebugInfoWithResponse:operation.response resposeString:operation.responseString request:operation.request error:nil];
+
+            AIFURLResponse* response = [[AIFURLResponse alloc] initWithResponseString:operation.responseString requestId:requestId request:operation.request responseData:operation.responseData error:error];
+
+            fail ? fail(response) : nil;
+        }];
+
+    [httpUploadOperation setUploadProgressBlock:progress];
+    self.dispatchTable[requestId] = httpUploadOperation;
+    [[self.operationManager operationQueue] addOperation:httpUploadOperation];
     return requestId;
 }
 

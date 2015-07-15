@@ -1019,8 +1019,6 @@
 		7658F49A1B32608600E41A0B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				2679886E1B53AA3E000F8CD6 /* TdtWebViewController.h */,
-				2679886F1B53AA3E000F8CD6 /* TdtWebViewController.m */,
 				7658F4A41B3261F400E41A0B /* Login */,
 				7658F4A01B3261C400E41A0B /* Base */,
 				764C8C991B38E5FF00FF2F51 /* MainPOIListViewController.h */,
@@ -1037,6 +1035,8 @@
 				2679885B1B534F64000F8CD6 /* SettingViewController.m */,
 				267988641B539F4F000F8CD6 /* AboutUsViewController.h */,
 				267988651B539F4F000F8CD6 /* AboutUsViewController.m */,
+				2679886E1B53AA3E000F8CD6 /* TdtWebViewController.h */,
+				2679886F1B53AA3E000F8CD6 /* TdtWebViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
