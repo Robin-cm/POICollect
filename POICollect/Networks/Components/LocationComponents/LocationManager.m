@@ -59,6 +59,23 @@ NSString* const locationManagerAddressInfoKey = @"locationManagerAddressInfoKey"
 
 @implementation LocationManager
 
+#pragma mark - RTAPIManager
+
+- (NSString*)methodName
+{
+    return @"";
+}
+
+- (NSString*)serviceType
+{
+    return @"";
+}
+
+- (RTAPIManagerRequestType)requestType
+{
+    return RTAPIManagerRequestTypePost;
+}
+
 #pragma mark - 初始化
 
 + (instancetype)sharedManager

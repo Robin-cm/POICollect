@@ -88,6 +88,10 @@
 		2695B4421B428A9900CB34D0 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2695B43C1B428A9900CB34D0 /* TPKeyboardAvoidingScrollView.m */; };
 		2695B4431B428A9900CB34D0 /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2695B43E1B428A9900CB34D0 /* TPKeyboardAvoidingTableView.m */; };
 		2695B4441B428A9900CB34D0 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2695B4401B428A9900CB34D0 /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
+		269AE31F1B5792D600210DA7 /* NSString+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 269AE31E1B5792D600210DA7 /* NSString+FontAwesome.m */; };
+		269AE3211B57955D00210DA7 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 269AE3201B57955D00210DA7 /* FontAwesome.ttf */; };
+		269AE3241B57958800210DA7 /* UIButton+Bootstrap.m in Sources */ = {isa = PBXBuildFile; fileRef = 269AE3231B57958800210DA7 /* UIButton+Bootstrap.m */; };
+		26A4A2431B56244900A1BA3D /* TestTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4A2421B56244900A1BA3D /* TestTableViewController.m */; };
 		26B98D741B44D6B900FE83BB /* RTAPIBaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B98D731B44D6B900FE83BB /* RTAPIBaseManager.m */; };
 		26B98D771B44F5D600FE83BB /* AIFURLResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B98D761B44F5D600FE83BB /* AIFURLResponse.m */; };
 		26B98D7A1B44FEA800FE83BB /* AIFApiProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B98D791B44FEA800FE83BB /* AIFApiProxy.m */; };
@@ -327,6 +331,13 @@
 		2695B43E1B428A9900CB34D0 /* TPKeyboardAvoidingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TPKeyboardAvoidingTableView.m; path = Venders/TPKeyboardAvoiding/TPKeyboardAvoidingTableView.m; sourceTree = "<group>"; };
 		2695B43F1B428A9900CB34D0 /* UIScrollView+TPKeyboardAvoidingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+TPKeyboardAvoidingAdditions.h"; path = "Venders/TPKeyboardAvoiding/UIScrollView+TPKeyboardAvoidingAdditions.h"; sourceTree = "<group>"; };
 		2695B4401B428A9900CB34D0 /* UIScrollView+TPKeyboardAvoidingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+TPKeyboardAvoidingAdditions.m"; path = "Venders/TPKeyboardAvoiding/UIScrollView+TPKeyboardAvoidingAdditions.m"; sourceTree = "<group>"; };
+		269AE31D1B5792D600210DA7 /* NSString+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+FontAwesome.h"; path = "Venders/ButstrapButton/NSString+FontAwesome.h"; sourceTree = "<group>"; };
+		269AE31E1B5792D600210DA7 /* NSString+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+FontAwesome.m"; path = "Venders/ButstrapButton/NSString+FontAwesome.m"; sourceTree = "<group>"; };
+		269AE3201B57955D00210DA7 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.ttf; path = Venders/ButstrapButton/FontAwesome.ttf; sourceTree = "<group>"; };
+		269AE3221B57958800210DA7 /* UIButton+Bootstrap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIButton+Bootstrap.h"; path = "Venders/ButstrapButton/UIButton+Bootstrap.h"; sourceTree = "<group>"; };
+		269AE3231B57958800210DA7 /* UIButton+Bootstrap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIButton+Bootstrap.m"; path = "Venders/ButstrapButton/UIButton+Bootstrap.m"; sourceTree = "<group>"; };
+		26A4A2411B56244900A1BA3D /* TestTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestTableViewController.h; path = Controllers/TestTableViewController.h; sourceTree = "<group>"; };
+		26A4A2421B56244900A1BA3D /* TestTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestTableViewController.m; path = Controllers/TestTableViewController.m; sourceTree = "<group>"; };
 		26B98D6F1B44D41700FE83BB /* AIFNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AIFNetworking.h; path = Networks/AIFNetworking.h; sourceTree = "<group>"; };
 		26B98D701B44D48700FE83BB /* AIFNetworkingConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIFNetworkingConfiguration.h; path = Networks/AIFNetworkingConfiguration.h; sourceTree = "<group>"; };
 		26B98D721B44D6B900FE83BB /* RTAPIBaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RTAPIBaseManager.h; path = Networks/Components/RTAPIBaseManager.h; sourceTree = "<group>"; };
@@ -751,6 +762,18 @@
 			name = TPKeyboardAvoiding;
 			sourceTree = "<group>";
 		};
+		269AE31C1B57928400210DA7 /* ButstrapButton */ = {
+			isa = PBXGroup;
+			children = (
+				269AE3201B57955D00210DA7 /* FontAwesome.ttf */,
+				269AE31D1B5792D600210DA7 /* NSString+FontAwesome.h */,
+				269AE31E1B5792D600210DA7 /* NSString+FontAwesome.m */,
+				269AE3221B57958800210DA7 /* UIButton+Bootstrap.h */,
+				269AE3231B57958800210DA7 /* UIButton+Bootstrap.m */,
+			);
+			name = ButstrapButton;
+			sourceTree = "<group>";
+		};
 		26B98D671B44CC2A00FE83BB /* Networks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1006,6 +1029,7 @@
 		7658F4991B32607F00E41A0B /* Venders */ = {
 			isa = PBXGroup;
 			children = (
+				269AE31C1B57928400210DA7 /* ButstrapButton */,
 				267988601B536369000F8CD6 /* CMImageHeaderView */,
 				2695B4351B428A2200CB34D0 /* TPKeyboardAvoiding */,
 				76615EB51B3D4C8E0064BCB0 /* CMPhotoKit */,
@@ -1037,6 +1061,8 @@
 				267988651B539F4F000F8CD6 /* AboutUsViewController.m */,
 				2679886E1B53AA3E000F8CD6 /* TdtWebViewController.h */,
 				2679886F1B53AA3E000F8CD6 /* TdtWebViewController.m */,
+				26A4A2411B56244900A1BA3D /* TestTableViewController.h */,
+				26A4A2421B56244900A1BA3D /* TestTableViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1435,6 +1461,7 @@
 				2688E8121B4E1F1900A0FC84 /* nav_back.png in Resources */,
 				2688E82A1B4E346F00A0FC84 /* location_btn@3x.png in Resources */,
 				2688E81F1B4E345D00A0FC84 /* nav_edit@2x.png in Resources */,
+				269AE3211B57955D00210DA7 /* FontAwesome.ttf in Resources */,
 				26800A5C1B4E7007001C668C /* nav_pen.png in Resources */,
 				7685EA771B3A5E1200AD1645 /* main_bg.png in Resources */,
 			);
@@ -1515,6 +1542,7 @@
 				265AF6531B4CD9E700789C58 /* SelectLocationModelViewController.m in Sources */,
 				A14822571B476DF300271FAC /* POIPoint.m in Sources */,
 				26782CAB1B46676700104330 /* LoginUser.m in Sources */,
+				269AE31F1B5792D600210DA7 /* NSString+FontAwesome.m in Sources */,
 				76E7CBFD1B3BC70C00D0BBED /* CMCustomWithButtonTextfield.m in Sources */,
 				A14771421B3F90B500A3F60C /* CMPhotoAssets.m in Sources */,
 				2695B4421B428A9900CB34D0 /* TPKeyboardAvoidingScrollView.m in Sources */,
@@ -1544,9 +1572,11 @@
 				267988631B5363A7000F8CD6 /* CMImageHeaderView.m in Sources */,
 				26782C871B46219100104330 /* AIFCache.m in Sources */,
 				764C8CA51B393C5200FF2F51 /* NSString+Expanded.m in Sources */,
+				26A4A2431B56244900A1BA3D /* TestTableViewController.m in Sources */,
 				76386F0A1B33A4B800E8A115 /* CMRoundSegmentedThumb.m in Sources */,
 				26B98D741B44D6B900FE83BB /* RTAPIBaseManager.m in Sources */,
 				A147713F1B3F8F7F00A3F60C /* CMPhotoPickerConllectionView.m in Sources */,
+				269AE3241B57958800210DA7 /* UIButton+Bootstrap.m in Sources */,
 				A1F4843C1B3DA62A00FD49A4 /* CMPhotoPickerDatas.m in Sources */,
 				26782C901B463F4A00104330 /* AIFService.m in Sources */,
 				26782CAE1B46690800104330 /* ViewModelClass.m in Sources */,

@@ -71,6 +71,33 @@
 
 - (void)addLineforPlainCell:(UITableViewCell*)cell forRowAtIndexPath:(NSIndexPath*)indexPath withLeftSpace:(CGFloat)leftSpace
 {
+    [self addLineForPlainCell:cell forRowAtIndexPath:indexPath withLineColor:[UIColor colorWithHexString:@"0x97C6E4"] withLeftSpace:leftSpace];
+}
+
+/**
+ *  给一个CELL添加横线
+ *
+ *  @param cell      cell
+ *  @param indexPath 序号
+ *  @param lineColor 线条的颜色
+ *  @param leftSpace 横线距离左边的长度
+ */
+- (void)addLineForPlainCell:(UITableViewCell*)cell forRowAtIndexPath:(NSIndexPath*)indexPath withLineColor:(UIColor*)lineColor withLeftSpace:(CGFloat)leftSpace
+{
+    [self addLineForPlainCell:cell forRowAtIndexPath:indexPath withLineColor:lineColor withSectionLineColor:nil withLeftSpace:leftSpace];
+}
+
+/**
+ *  给一个CELL添加横线
+ *
+ *  @param cell             CELL
+ *  @param indexPath        序号
+ *  @param lineColor        横线的颜色
+ *  @param sectionLineColor 头部的横线的颜色
+ *  @param leftSpace        左边的空白
+ */
+- (void)addLineForPlainCell:(UITableViewCell*)cell forRowAtIndexPath:(NSIndexPath*)indexPath withLineColor:(UIColor*)lineColor withSectionLineColor:(UIColor*)sectionLineColor withLeftSpace:(CGFloat)leftSpace
+{
     CAShapeLayer* layer = [[CAShapeLayer alloc] init];
     CGMutablePathRef pathRef = CGPathCreateMutable();
     NSLog(@"cell的高度是: %f", cell.bounds.size.height);
@@ -81,6 +108,8 @@
 
     if (cell.backgroundColor) {
         layer.fillColor = cell.backgroundColor.CGColor;
+        cell.backgroundColor = [UIColor clearColor];
+        //        layer.fillColor = [UIColor blackColor].CGColor;
     }
     else if (cell.backgroundView && cell.backgroundView.backgroundColor) {
         layer.fillColor = cell.backgroundView.backgroundColor.CGColor;
@@ -88,26 +117,32 @@
     else {
         layer.fillColor = [UIColor colorWithWhite:1.f alpha:0.8f].CGColor;
     }
-    CGColorRef lineColor = [UIColor colorWithHexString:@"0x97C6E4"].CGColor;
-    CGColorRef sectionLineColor = self.separatorColor.CGColor;
+
+    if (!lineColor) {
+        lineColor = self.separatorColor;
+    }
+
+    if (!sectionLineColor) {
+        sectionLineColor = self.separatorColor;
+    }
 
     if (indexPath.row == 0 && indexPath.row == [self numberOfRowsInSection:indexPath.section] - 1) {
         //只有一个cell。加上长线&下长线
-        [self layer:layer addLineUp:YES andLong:YES andColor:sectionLineColor andBounds:bounds withLeftSpace:0];
-        [self layer:layer addLineUp:NO andLong:YES andColor:sectionLineColor andBounds:bounds withLeftSpace:0];
+        [self layer:layer addLineUp:YES andLong:YES andColor:sectionLineColor.CGColor andBounds:bounds withLeftSpace:0];
+        [self layer:layer addLineUp:NO andLong:YES andColor:sectionLineColor.CGColor andBounds:bounds withLeftSpace:0];
     }
     else if (indexPath.row == 0) {
         //第一个cell。加上长线&下短线
-        [self layer:layer addLineUp:YES andLong:YES andColor:sectionLineColor andBounds:bounds withLeftSpace:0];
-        [self layer:layer addLineUp:NO andLong:NO andColor:lineColor andBounds:bounds withLeftSpace:leftSpace];
+        [self layer:layer addLineUp:YES andLong:YES andColor:sectionLineColor.CGColor andBounds:bounds withLeftSpace:0];
+        [self layer:layer addLineUp:NO andLong:NO andColor:lineColor.CGColor andBounds:bounds withLeftSpace:leftSpace];
     }
     else if (indexPath.row == [self numberOfRowsInSection:indexPath.section] - 1) {
         //最后一个cell。加下长线
-        [self layer:layer addLineUp:NO andLong:YES andColor:sectionLineColor andBounds:bounds withLeftSpace:0];
+        [self layer:layer addLineUp:NO andLong:YES andColor:sectionLineColor.CGColor andBounds:bounds withLeftSpace:0];
     }
     else {
         //中间的cell。只加下短线
-        [self layer:layer addLineUp:NO andLong:NO andColor:lineColor andBounds:bounds withLeftSpace:leftSpace];
+        [self layer:layer addLineUp:NO andLong:NO andColor:lineColor.CGColor andBounds:bounds withLeftSpace:leftSpace];
     }
     if (cell.backgroundView) {
         [cell.backgroundView.layer insertSublayer:layer atIndex:0];

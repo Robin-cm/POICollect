@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "CMThemeKit.h"
 #import "MainPOIListViewController.h"
+#import "TestTableViewController.h"
 
 @interface AppDelegate ()
 
@@ -71,8 +72,10 @@
 
 - (void)showMainListViewController
 {
-    MainPOIListViewController* mainListVieController = [[MainPOIListViewController alloc] init];
-    [self.window setRootViewController:[[UINavigationController alloc] initWithRootViewController:mainListVieController]];
+    //    MainPOIListViewController* mainListVieController = [[MainPOIListViewController alloc] init];
+
+    TestTableViewController* testTableViewController = [[TestTableViewController alloc] init];
+    [self.window setRootViewController:[[UINavigationController alloc] initWithRootViewController:testTableViewController]];
 }
 
 - (void)showLoginController

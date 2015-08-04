@@ -70,6 +70,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    UIImageView image = [[UIImageView alloc] init];
+    image.contentMode
     // Do any additional setup after loading the view.
     [self initializeView];
     [self initializeData];
